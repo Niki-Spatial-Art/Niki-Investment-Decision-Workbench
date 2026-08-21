@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T23:07:33+08:00",
+  "generated_at": "2026-08-21T23:15:21+08:00",
   "as_of_date": "2026-08-21",
   "a_share_trading_day": true,
   "skip_reason": "",
@@ -9,18 +9,18 @@
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
       "price": 4.68,
-      "ma20": 4.699199999999999,
+      "ma20": 4.6992,
       "above_ma20": false,
       "return_20d": -0.446713465220161,
       "as_of": "20260821",
       "source": "Tencent Finance quote"
     },
     "breadth": {
-      "advancers": 2265,
-      "decliners": 2581,
-      "flat": 149,
-      "sample_rows": 4995,
-      "total_amount": 1857598498815.0803
+      "advancers": 2183,
+      "decliners": 2444,
+      "flat": 141,
+      "sample_rows": 4768,
+      "total_amount": 1853680251521.1003
     },
     "breadth_ok": false
   },
@@ -68,34 +68,34 @@
       },
       {
         "name": "工业金属",
-        "count": 56,
-        "advancers": 49,
+        "count": 55,
+        "advancers": 48,
         "decliners": 6,
-        "amount": 48428127009.21001,
-        "avg_pct": 2.56,
-        "breadth_ratio": 0.875,
+        "amount": 48412175650.21001,
+        "avg_pct": 2.59,
+        "breadth_ratio": 0.8727,
         "status": "重点研究"
       }
     ],
     "observe": [
       {
         "name": "通信设备",
-        "count": 83,
-        "advancers": 58,
+        "count": 82,
+        "advancers": 57,
         "decliners": 25,
-        "amount": 164309079748.87003,
-        "avg_pct": 1.47,
-        "breadth_ratio": 0.6988,
+        "amount": 164293371760.87003,
+        "avg_pct": 1.49,
+        "breadth_ratio": 0.6951,
         "status": "可继续观察"
       },
       {
         "name": "电池",
-        "count": 89,
-        "advancers": 73,
+        "count": 87,
+        "advancers": 71,
         "decliners": 16,
-        "amount": 53397538482.740005,
-        "avg_pct": 1.45,
-        "breadth_ratio": 0.8202,
+        "amount": 53363301671.740005,
+        "avg_pct": 1.48,
+        "breadth_ratio": 0.8161,
         "status": "可继续观察"
       },
       {
@@ -139,13 +139,23 @@
         "status": "可继续观察"
       },
       {
+        "name": "汽车服务",
+        "count": 6,
+        "advancers": 4,
+        "decliners": 1,
+        "amount": 625770849.86,
+        "avg_pct": 1.22,
+        "breadth_ratio": 0.6667,
+        "status": "可继续观察"
+      },
+      {
         "name": "光伏设备",
-        "count": 58,
-        "advancers": 46,
+        "count": 57,
+        "advancers": 45,
         "decliners": 9,
-        "amount": 19904547646.62,
+        "amount": 19893187638.62,
         "avg_pct": 1.16,
-        "breadth_ratio": 0.7931,
+        "breadth_ratio": 0.7895,
         "status": "可继续观察"
       },
       {
@@ -160,48 +170,33 @@
       },
       {
         "name": "自动化设备",
-        "count": 80,
-        "advancers": 49,
-        "decliners": 30,
-        "amount": 32027928135.64,
-        "avg_pct": 1.05,
-        "breadth_ratio": 0.6125,
-        "status": "可继续观察"
-      },
-      {
-        "name": "保险Ⅱ",
-        "count": 5,
-        "advancers": 5,
-        "decliners": 0,
-        "amount": 9998969224.0,
-        "avg_pct": 1.04,
-        "breadth_ratio": 1.0,
+        "count": 77,
+        "advancers": 48,
+        "decliners": 28,
+        "amount": 31986566522.64,
+        "avg_pct": 1.12,
+        "breadth_ratio": 0.6234,
         "status": "可继续观察"
       }
     ],
     "hot": []
   },
   "market_scan": {
-    "scanned_count": 5552,
+    "scanned_count": 4900,
     "min_rows_target": 5000,
-    "missing_estimate": 0,
+    "missing_estimate": 100,
     "sources": [
       "eastmoney",
       "sina"
     ],
     "source_counts": {
-      "eastmoney": 5552
+      "eastmoney": 4900
     },
     "failures": [
       {
-        "page": 57,
+        "page": 50,
         "source": "eastmoney",
-        "error": "empty page"
-      },
-      {
-        "page": 58,
-        "source": "eastmoney",
-        "error": "empty page"
+        "error": "broad market scan time budget reached after 111.8s"
       }
     ],
     "candidate_count": 156
@@ -1600,7 +1595,7 @@
             "10": -5.451568864414413,
             "20": -13.581425118591152
           },
-          "ma20": 208.2089,
+          "ma20": 208.20889999999994,
           "above_ma20": false,
           "volume_ratio_5_20": 0.8112202659325694,
           "is_chase": false,
@@ -1656,48 +1651,48 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-08-21",
-          "price": 215.31109619140625,
-          "return_20d": 4.095484434102081,
+          "price": 215.75999450683594,
+          "return_20d": 4.31251127773844,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
           "as_of": "2026-08-21",
-          "price": 485.75,
-          "return_20d": 27.259623910237863,
+          "price": 484.4800109863281,
+          "return_20d": 26.926904766130775,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
           "as_of": "2026-08-21",
-          "price": 260.3949890136719,
-          "return_20d": 12.186027456353754,
+          "price": 259.5899963378906,
+          "return_20d": 11.839212293859912,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
           "as_of": "2026-08-21",
-          "price": 552.9500122070312,
-          "return_20d": -7.096891759120794,
+          "price": 550.219970703125,
+          "return_20d": -7.555575791565539,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
           "as_of": "2026-08-21",
-          "price": 344.9700012207031,
-          "return_20d": 7.890789940862297,
+          "price": 343.92999267578125,
+          "return_20d": 7.565522981243156,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-08-21",
-          "price": 367.1700134277344,
-          "return_20d": -3.862065218216415,
+          "price": 367.8699951171875,
+          "return_20d": -3.678785561523179,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -1751,7 +1746,7 @@
             "10": 3.180737702201797,
             "20": 23.199370644106843
           },
-          "ma20": 61.95550000000001,
+          "ma20": 61.955500000000015,
           "above_ma20": true,
           "volume_ratio_5_20": 0.9857094266105249,
           "is_chase": false,
@@ -1857,16 +1852,16 @@
         {
           "symbol": "MP",
           "as_of": "2026-08-21",
-          "price": 59.560001373291016,
-          "return_20d": 44.213081049756674,
+          "price": 59.599998474121094,
+          "return_20d": 44.30992633200594,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
           "as_of": "2026-08-21",
-          "price": 75.47000122070312,
-          "return_20d": 20.559110319950726,
+          "price": 75.55999755859375,
+          "return_20d": 20.702874441491126,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -2001,32 +1996,32 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-08-21",
-          "price": 215.26499938964844,
-          "return_20d": 4.073198221293173,
+          "price": 215.86000061035156,
+          "return_20d": 4.36086077749005,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-08-21",
-          "price": 367.1000061035156,
-          "return_20d": -3.8803955810561175,
+          "price": 367.8699951171875,
+          "return_20d": -3.678785561523179,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
           "as_of": "2026-08-21",
-          "price": 184.13999938964844,
-          "return_20d": 5.833664909495706,
+          "price": 185.7899932861328,
+          "return_20d": 6.781991735400195,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
           "as_of": "2026-08-21",
-          "price": 963.2100219726562,
-          "return_20d": 4.5887408877220315,
+          "price": 965.5994873046875,
+          "return_20d": 4.848197459779069,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
