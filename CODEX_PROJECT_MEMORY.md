@@ -26,6 +26,7 @@ Niki Smart Tools is a local-first A-share/ETF research and decision-discipline w
 - Candidate research now passes through `data/research_evidence.local.json`: original sources/time, supply-demand thesis, counter-evidence, trigger/invalidation, and separate data/logic checks are required before a card can be submitted for human review. `data/trade_attributions.local.csv` records market, selection, entry, sizing, exit, or discipline attribution for every locally confirmed fill.
 - Options are research/simulation only and do not appear in the daily dashboard flow. Xingyao is local optional research; iFind is off by default. Neither belongs in the default refresh path or GitHub Actions.
 - GitHub Actions only creates a public A-share market-snapshot artifact. It must not receive broker snapshots, Xingyao credentials, or private account data.
+- `watchlists/theme_watchlist.json` is a public, replaceable module configuration. `Theme Watch Daily` sends a separate QQ theme-research email after A-share close, using only public data and GitHub Secrets. Its public `reports/theme_watch_*.json*` snapshots contain no account or recipient data.
 - `.github/workflows/email-preview.yml` sends the public radar email on weekdays at 10:45 Beijing (`--intraday`) and 15:25 Beijing (post-close); manual dispatch retains an `intraday` / `postclose` mode selector. It receives only SMTP secrets and never broker/account data.
 
 ## Local Commands

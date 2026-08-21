@@ -1,0 +1,90 @@
+{
+  "name": "Replaceable Theme Watch Modules",
+  "description": "Public, replaceable research modules. They are observation templates, not recommendations or trade instructions.",
+  "benchmark": "510300",
+  "skip_if_not_a_share_trading_day": true,
+  "history_retention_days": 365,
+  "signal_rules": {
+    "ma_window": 20,
+    "relative_windows": [5, 10, 20],
+    "volume_window": 5,
+    "chase_day_change_pct": 7.0,
+    "minimum_module_breadth_ratio": 0.5
+  },
+  "modules": [
+    {
+      "id": "ai_optical_interconnect",
+      "name": "AI光互连与服务器互连",
+      "role": "主观察",
+      "thesis": "AI集群扩容会向800G/1.6T光模块、CPO、硅光和服务器互连传导；中际旭创与新易盛属于高度相关的同一风险暴露。",
+      "a_share_symbols": [
+        {"code": "300308", "name": "中际旭创", "role": "光模块核心"},
+        {"code": "300502", "name": "新易盛", "role": "光模块核心"},
+        {"code": "688008", "name": "澜起科技", "role": "服务器互连验证"}
+      ],
+      "us_symbols": ["NVDA", "MSFT", "AMZN", "META", "GOOGL", "AVGO"],
+      "evidence_to_watch": [
+        "海外云厂商AI资本开支指引是否下修",
+        "800G/1.6T出货、订单和客户认证",
+        "毛利率、库存和应收账款是否恶化"
+      ],
+      "invalidation": [
+        "云厂商资本开支连续下修",
+        "订单或出货低于预期且库存上升",
+        "只有单一龙头上涨、板块没有扩散"
+      ]
+    },
+    {
+      "id": "minor_metals",
+      "name": "小金属：钨、锡、锑、稀土",
+      "role": "主观察",
+      "thesis": "细分金属的机会来自供给约束、库存去化、价格趋势和下游需求，而不是“小金属”概念整体上涨。",
+      "a_share_symbols": [
+        {"code": "600549", "name": "厦门钨业", "role": "钨/稀土核心"},
+        {"code": "000657", "name": "中钨高新", "role": "钨验证"},
+        {"code": "000960", "name": "锡业股份", "role": "锡验证"},
+        {"code": "600301", "name": "华锡有色", "role": "锡/锑验证"},
+        {"code": "600111", "name": "北方稀土", "role": "稀土温度计"}
+      ],
+      "us_symbols": ["MP", "FCX"],
+      "evidence_to_watch": [
+        "细分现货价格和期限结构",
+        "交易所及产业库存是否持续去化",
+        "供给约束、出口政策和下游订单"
+      ],
+      "invalidation": [
+        "价格回落且库存累积",
+        "供给端约束缓解或下游需求转弱",
+        "公司盈利/产能不能兑现为现金流"
+      ]
+    },
+    {
+      "id": "ai_pcb_components",
+      "name": "元件：PCB、覆铜板与高速材料",
+      "role": "辅助确认",
+      "thesis": "AI服务器和交换机需求若真实扩散，应传导至高端PCB、覆铜板和高速材料；该模块用于确认AI硬件行情的扩散程度。",
+      "a_share_symbols": [
+        {"code": "002463", "name": "沪电股份", "role": "高端PCB核心"},
+        {"code": "600183", "name": "生益科技", "role": "覆铜板/材料验证"},
+        {"code": "300476", "name": "胜宏科技", "role": "PCB验证"},
+        {"code": "002916", "name": "深南电路", "role": "高端PCB验证"}
+      ],
+      "us_symbols": ["NVDA", "AVGO", "ANET", "MU"],
+      "evidence_to_watch": [
+        "AI服务器、交换机和网络设备需求",
+        "高端PCB/覆铜板订单、产能利用率和产品价格",
+        "毛利率、经营现金流和应收账款"
+      ],
+      "invalidation": [
+        "订单和产品价格没有持续改善",
+        "只有个别股票冲高、同层级没有扩散",
+        "毛利率或经营现金流明显转弱"
+      ]
+    }
+  ],
+  "github_components": [
+    {"repo": "akfamily/akshare", "purpose": "A股、港股、美股与宏观数据聚合备选"},
+    {"repo": "ranaroussi/yfinance", "purpose": "海外市场日线和财务数据备选"},
+    {"repo": "vnpy/vnpy", "purpose": "仅研究/回测框架参考，不连接实盘执行"}
+  ]
+}

@@ -1,0 +1,582 @@
+{
+  "generated_at": "2026-08-21T21:55:33+08:00",
+  "as_of_date": "2026-08-21",
+  "a_share_trading_day": true,
+  "skip_reason": "",
+  "benchmark": {
+    "code": "510300",
+    "name": "沪深300ETF华泰柏瑞",
+    "price": 4.68,
+    "return_20d": -0.446713465220161,
+    "ma20": 4.699199999999999,
+    "above_ma20": false,
+    "trend_confirmed": false
+  },
+  "market_data_status": {
+    "valid_quote_count": 13,
+    "valid_history_count": 13,
+    "quote_coverage_pct": 100.0,
+    "history_coverage_pct": 100.0
+  },
+  "modules": [
+    {
+      "id": "ai_optical_interconnect",
+      "name": "AI光互连与服务器互连",
+      "role": "主观察",
+      "thesis": "AI集群扩容会向800G/1.6T光模块、CPO、硅光和服务器互连传导；中际旭创与新易盛属于高度相关的同一风险暴露。",
+      "a_share": [
+        {
+          "code": "300308",
+          "name": "中际旭创",
+          "role": "光模块核心",
+          "as_of": "20260821",
+          "price": 943.0,
+          "daily_change_pct": 4.29,
+          "returns": {
+            "5": 0.0,
+            "10": 2.514485742550576,
+            "20": -9.890970941510357
+          },
+          "relative_returns": {
+            "5": 0.9733389758781241,
+            "10": 4.008907969450193,
+            "20": -9.444257476290197
+          },
+          "ma20": 935.878,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.7102413798527749,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "300502",
+          "name": "新易盛",
+          "role": "光模块核心",
+          "as_of": "20260821",
+          "price": 442.0,
+          "daily_change_pct": 6.76,
+          "returns": {
+            "5": -1.3569005534725953,
+            "10": 5.00059389476184,
+            "20": -7.146758539557164
+          },
+          "relative_returns": {
+            "5": -0.3835615775944712,
+            "10": 6.495016121661457,
+            "20": -6.700045074337003
+          },
+          "ma20": 425.145,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.8094340990233334,
+          "is_chase": false,
+          "signal_score": 1,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "688008",
+          "name": "澜起科技",
+          "role": "服务器互连验证",
+          "as_of": "20260821",
+          "price": 200.55,
+          "daily_change_pct": 0.72,
+          "returns": {
+            "5": -5.360766363078662,
+            "10": -6.9459910913140295,
+            "20": -14.028138583811312
+          },
+          "relative_returns": {
+            "5": -4.387427387200538,
+            "10": -5.451568864414413,
+            "20": -13.581425118591152
+          },
+          "ma20": 208.2089,
+          "above_ma20": false,
+          "volume_ratio_5_20": 0.8112202659325694,
+          "is_chase": false,
+          "signal_score": 0,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        }
+      ],
+      "us_validation": [
+        {
+          "symbol": "NVDA",
+          "as_of": "2026-08-21",
+          "price": 216.6970977783203,
+          "daily_change_pct": -0.07051340599101286,
+          "return_5d": -3.758618647248324,
+          "return_20d": 4.765568369246775,
+          "ma20": 213.27635498046874,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.7207215695317072,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "MSFT",
+          "as_of": "2026-08-21",
+          "price": 481.75,
+          "daily_change_pct": 0.12470250672906857,
+          "return_5d": -2.7553480146664255,
+          "return_20d": 26.211680532696025,
+          "ma20": 473.0174987792969,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.546330560904358,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "AMZN",
+          "as_of": "2026-08-21",
+          "price": 258.510009765625,
+          "daily_change_pct": -0.6151150190466526,
+          "return_5d": -1.5762361420389115,
+          "return_20d": 11.3739214535576,
+          "ma20": 261.3724990844727,
+          "above_ma20": false,
+          "volume_ratio_5_20": 0.6437972891408235,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "META",
+          "as_of": "2026-08-21",
+          "price": 549.541015625,
+          "daily_change_pct": 0.6798817248897082,
+          "return_5d": -6.833764792631536,
+          "return_20d": -7.669649461375183,
+          "ma20": 576.4665466308594,
+          "above_ma20": false,
+          "volume_ratio_5_20": 0.9250918917548997,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "GOOGL",
+          "as_of": "2026-08-21",
+          "price": 342.0199890136719,
+          "daily_change_pct": 0.3962707408128985,
+          "return_5d": -1.1217129087240263,
+          "return_20d": 6.968161462369871,
+          "ma20": 348.2569976806641,
+          "above_ma20": false,
+          "volume_ratio_5_20": 0.6163764729429487,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "AVGO",
+          "as_of": "2026-08-21",
+          "price": 367.9700012207031,
+          "daily_change_pct": 1.0823290538192643,
+          "return_5d": -6.366571575716273,
+          "return_20d": -3.652600470404732,
+          "ma20": 396.04100036621094,
+          "above_ma20": false,
+          "volume_ratio_5_20": 1.0660294602059028,
+          "source": "Yahoo Finance chart"
+        }
+      ],
+      "evidence_to_watch": [
+        "海外云厂商AI资本开支指引是否下修",
+        "800G/1.6T出货、订单和客户认证",
+        "毛利率、库存和应收账款是否恶化"
+      ],
+      "invalidation": [
+        "云厂商资本开支连续下修",
+        "订单或出货低于预期且库存上升",
+        "只有单一龙头上涨、板块没有扩散"
+      ],
+      "breadth": {
+        "eligible": 3,
+        "threshold": 2,
+        "above_ma20": 2,
+        "relative_20d_positive": 0,
+        "breadth_ok": false
+      },
+      "status": "等待：市场基准趋势未确认"
+    },
+    {
+      "id": "minor_metals",
+      "name": "小金属：钨、锡、锑、稀土",
+      "role": "主观察",
+      "thesis": "细分金属的机会来自供给约束、库存去化、价格趋势和下游需求，而不是“小金属”概念整体上涨。",
+      "a_share": [
+        {
+          "code": "600549",
+          "name": "厦门钨业",
+          "role": "钨/稀土核心",
+          "as_of": "20260821",
+          "price": 55.58,
+          "daily_change_pct": 4.3,
+          "returns": {
+            "5": -1.5237420269312518,
+            "10": -4.221954161640539,
+            "20": 14.858441826823721
+          },
+          "relative_returns": {
+            "5": -0.5504030510531277,
+            "10": -2.727531934740923,
+            "20": 15.305155292043882
+          },
+          "ma20": 53.229499999999994,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.8510875864830341,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "000657",
+          "name": "中钨高新",
+          "role": "钨验证",
+          "as_of": "20260821",
+          "price": 68.14,
+          "daily_change_pct": 5.73,
+          "returns": {
+            "5": -0.21965148630840314,
+            "10": 1.6863154753021803,
+            "20": 22.752657178886682
+          },
+          "relative_returns": {
+            "5": 0.753687489569721,
+            "10": 3.180737702201797,
+            "20": 23.199370644106843
+          },
+          "ma20": 61.95550000000001,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.9857094266105249,
+          "is_chase": false,
+          "signal_score": 3,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "000960",
+          "name": "锡业股份",
+          "role": "锡验证",
+          "as_of": "20260821",
+          "price": 37.1,
+          "daily_change_pct": 0.41,
+          "returns": {
+            "5": -3.9109039109039068,
+            "10": -8.03173029251364,
+            "20": 20.103593395921003
+          },
+          "relative_returns": {
+            "5": -2.9375649350257826,
+            "10": -6.537308065614023,
+            "20": 20.550306861141163
+          },
+          "ma20": 36.68,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.8068642233979607,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "600301",
+          "name": "华锡有色",
+          "role": "锡/锑验证",
+          "as_of": "20260821",
+          "price": 47.71,
+          "daily_change_pct": 0.78,
+          "returns": {
+            "5": -5.431119920713579,
+            "10": -5.41237113402061,
+            "20": 20.479797979797976
+          },
+          "relative_returns": {
+            "5": -4.457780944835455,
+            "10": -3.9179489071209934,
+            "20": 20.926511445018136
+          },
+          "ma20": 46.367000000000004,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.8813709116666558,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
+          "role": "稀土温度计",
+          "as_of": "20260821",
+          "price": 40.17,
+          "daily_change_pct": 0.98,
+          "returns": {
+            "5": -5.836849507735575,
+            "10": -8.828869723104859,
+            "20": 2.920830130668728
+          },
+          "relative_returns": {
+            "5": -4.863510531857451,
+            "10": -7.334447496205242,
+            "20": 3.367543595888889
+          },
+          "ma20": 41.1,
+          "above_ma20": false,
+          "volume_ratio_5_20": 0.8195152391277791,
+          "is_chase": false,
+          "signal_score": 1,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        }
+      ],
+      "us_validation": [
+        {
+          "symbol": "MP",
+          "as_of": "2026-08-21",
+          "price": 59.09000015258789,
+          "daily_change_pct": 7.358283375169794,
+          "return_5d": 0.5958434867552986,
+          "return_20d": 43.075063545191284,
+          "ma20": 50.388000106811525,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.613638533287795,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "FCX",
+          "as_of": "2026-08-21",
+          "price": 77.12999725341797,
+          "daily_change_pct": 8.29822512133973,
+          "return_5d": 16.00240597307372,
+          "return_20d": 23.210861235569503,
+          "ma20": 67.13050022125245,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.9931002022048618,
+          "source": "Yahoo Finance chart"
+        }
+      ],
+      "evidence_to_watch": [
+        "细分现货价格和期限结构",
+        "交易所及产业库存是否持续去化",
+        "供给约束、出口政策和下游订单"
+      ],
+      "invalidation": [
+        "价格回落且库存累积",
+        "供给端约束缓解或下游需求转弱",
+        "公司盈利/产能不能兑现为现金流"
+      ],
+      "breadth": {
+        "eligible": 5,
+        "threshold": 3,
+        "above_ma20": 4,
+        "relative_20d_positive": 5,
+        "breadth_ok": true
+      },
+      "status": "等待：市场基准趋势未确认"
+    },
+    {
+      "id": "ai_pcb_components",
+      "name": "元件：PCB、覆铜板与高速材料",
+      "role": "辅助确认",
+      "thesis": "AI服务器和交换机需求若真实扩散，应传导至高端PCB、覆铜板和高速材料；该模块用于确认AI硬件行情的扩散程度。",
+      "a_share": [
+        {
+          "code": "002463",
+          "name": "沪电股份",
+          "role": "高端PCB核心",
+          "as_of": "20260821",
+          "price": 121.21,
+          "daily_change_pct": 6.03,
+          "returns": {
+            "5": -0.04947637503092128,
+            "10": -3.702232462064048,
+            "20": 8.011049723756901
+          },
+          "relative_returns": {
+            "5": 0.9238626008472028,
+            "10": -2.2078102351644313,
+            "20": 8.457763188977061
+          },
+          "ma20": 115.3555,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.7828382950964482,
+          "is_chase": false,
+          "signal_score": 3,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "600183",
+          "name": "生益科技",
+          "role": "覆铜板/材料验证",
+          "as_of": "20260821",
+          "price": 132.8,
+          "daily_change_pct": 5.16,
+          "returns": {
+            "5": -7.269045457719425,
+            "10": -5.129304186312311,
+            "20": 11.86926122483365
+          },
+          "relative_returns": {
+            "5": -6.295706481841301,
+            "10": -3.634881959412694,
+            "20": 12.31597469005381
+          },
+          "ma20": 126.40299999999999,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.9787486892694862,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "300476",
+          "name": "胜宏科技",
+          "role": "PCB验证",
+          "as_of": "20260821",
+          "price": 253.74,
+          "daily_change_pct": 0.11,
+          "returns": {
+            "5": -5.788437975717509,
+            "10": -9.443254817987146,
+            "20": 10.31694274161994
+          },
+          "relative_returns": {
+            "5": -4.8150989998393845,
+            "10": -7.9488325910875295,
+            "20": 10.7636562068401
+          },
+          "ma20": 242.8765,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.7462187708788931,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        },
+        {
+          "code": "002916",
+          "name": "深南电路",
+          "role": "高端PCB验证",
+          "as_of": "20260821",
+          "price": 358.25,
+          "daily_change_pct": 3.84,
+          "returns": {
+            "5": -5.224867724867721,
+            "10": -6.371690667224206,
+            "20": 7.644001081698271
+          },
+          "relative_returns": {
+            "5": -4.251528748989597,
+            "10": -4.877268440324589,
+            "20": 8.09071454691843
+          },
+          "ma20": 350.8755,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.8664835661389109,
+          "is_chase": false,
+          "signal_score": 2,
+          "data_ready": true,
+          "source": "Tencent Finance quote / daily bars fallback route"
+        }
+      ],
+      "us_validation": [
+        {
+          "symbol": "NVDA",
+          "as_of": "2026-08-21",
+          "price": 216.6381072998047,
+          "daily_change_pct": -0.09771676170015064,
+          "return_5d": -3.7848180066177406,
+          "return_20d": 4.737048508697517,
+          "ma20": 213.27340545654297,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.7207375162756718,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "AVGO",
+          "as_of": "2026-08-21",
+          "price": 367.9700012207031,
+          "daily_change_pct": 1.0823290538192643,
+          "return_5d": -6.366571575716273,
+          "return_20d": -3.652600470404732,
+          "ma20": 396.04100036621094,
+          "above_ma20": false,
+          "volume_ratio_5_20": 1.066035140122105,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "ANET",
+          "as_of": "2026-08-21",
+          "price": 188.61500549316406,
+          "daily_change_pct": 2.647622037096098,
+          "return_5d": -5.132784154068181,
+          "return_20d": 8.40565523206136,
+          "ma20": 187.98075103759766,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.6696659181870992,
+          "source": "Yahoo Finance chart"
+        },
+        {
+          "symbol": "MU",
+          "as_of": "2026-08-21",
+          "price": 978.6060180664062,
+          "daily_change_pct": 0.438865774589825,
+          "return_5d": 0.7148637500622668,
+          "return_20d": 6.26049243663116,
+          "ma20": 896.8338012695312,
+          "above_ma20": true,
+          "volume_ratio_5_20": 0.6657310577017078,
+          "source": "Yahoo Finance chart"
+        }
+      ],
+      "evidence_to_watch": [
+        "AI服务器、交换机和网络设备需求",
+        "高端PCB/覆铜板订单、产能利用率和产品价格",
+        "毛利率、经营现金流和应收账款"
+      ],
+      "invalidation": [
+        "订单和产品价格没有持续改善",
+        "只有个别股票冲高、同层级没有扩散",
+        "毛利率或经营现金流明显转弱"
+      ],
+      "breadth": {
+        "eligible": 4,
+        "threshold": 2,
+        "above_ma20": 4,
+        "relative_20d_positive": 4,
+        "breadth_ok": true
+      },
+      "status": "等待：市场基准趋势未确认"
+    }
+  ],
+  "github_components": [
+    {
+      "repo": "akfamily/akshare",
+      "purpose": "A股、港股、美股与宏观数据聚合备选",
+      "source": "GitHub REST API",
+      "latest_tag": "release-v1.18.94",
+      "release_at": "2026-08-21T05:17:55Z",
+      "pushed_at": "2026-08-21T05:17:37Z",
+      "updated_at": "2026-08-21T12:43:01Z"
+    },
+    {
+      "repo": "ranaroussi/yfinance",
+      "purpose": "海外市场日线和财务数据备选",
+      "source": "GitHub REST API",
+      "latest_tag": "1.6.0",
+      "release_at": "2026-08-13T13:38:31Z",
+      "pushed_at": "2026-08-20T11:24:14Z",
+      "updated_at": "2026-08-21T12:41:59Z"
+    },
+    {
+      "repo": "vnpy/vnpy",
+      "purpose": "仅研究/回测框架参考，不连接实盘执行",
+      "source": "GitHub REST API",
+      "latest_tag": "4.4.0",
+      "release_at": "2026-05-14T12:18:00Z",
+      "pushed_at": "2026-08-10T01:07:58Z",
+      "updated_at": "2026-08-21T13:09:04Z"
+    }
+  ],
+  "disclaimer": "公开行情研究与人工复核工具，不连接券商、不自动下单、不提供目标价、固定仓位或收益承诺；相关性不等于因果。",
+  "github_component_changes": []
+}

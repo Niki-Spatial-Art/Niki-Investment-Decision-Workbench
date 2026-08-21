@@ -5,7 +5,10 @@ __pycache__/
 *.local.json
 portfolio.local.json
 logs/
-reports/
+reports/*
+!reports/.gitkeep
+!reports/theme_watch_latest.json
+!reports/theme_watch_history.jsonl
 reviews/
 vendor/
 data/*
