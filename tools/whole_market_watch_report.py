@@ -11,6 +11,7 @@ import argparse
 import html
 import json
 import math
+import os
 import sys
 import urllib.error
 import urllib.request
@@ -236,12 +237,12 @@ def render_html(report: dict[str, Any]) -> str:
 
 
 def send_email(report: dict[str, Any], content: str) -> None:
-    sender = __import__("os").environ.get("SENDER_EMAIL", "").strip()
-    password = __import__("os").environ.get("SENDER_PASSWORD", "").strip()
-    recipient = (__import__("os").environ.get("WHOLE_MARKET_RECIPIENT_EMAIL", "").strip() or __import__("os").environ.get("THEME_WATCH_RECIPIENT_EMAIL", "").strip() or __import__("os").environ.get("RECIPIENT_EMAIL", "").strip())
+    sender = os.getenv("SENDER_EMAIL", "").strip()
+    password = os.getenv("SENDER_PASSWORD", "").strip()
+    recipient = (os.getenv("WHOLE_MARKET_RECIPIENT_EMAIL", "").strip() or os.getenv("THEME_WATCH_RECIPIENT_EMAIL", "").strip() or os.getenv("RECIPIENT_EMAIL", "").strip())
     if not sender or not password or not recipient:
         raise SystemExit("Missing SENDER_EMAIL, SENDER_PASSWORD, or recipient secret")
-    notifier = EmailNotifier(sender, password, __import__("os").environ.get("SMTP_SERVER", "smtp.qq.com"), int(__import__("os").environ.get("SMTP_PORT", "465")))
+    notifier = EmailNotifier(sender, password, os.getenv("SMTP_SERVER") or "smtp.qq.com", int(os.getenv("SMTP_PORT") or "465"))
     subject = "Niki 决策工作台 | 全市场观察日报 | " + now_beijing().strftime("%Y-%m-%d")
     if not notifier.send_html_alert(recipient, subject, content):
         raise SystemExit("SMTP did not accept the whole-market watch email")
