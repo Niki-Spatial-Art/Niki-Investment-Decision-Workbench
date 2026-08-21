@@ -1,6 +1,6 @@
 {
   "name": "Whole Market Funnel Watch",
-  "description": "全市场行业初筛 + 可替换深度研究模块。只输出观察、等待和人工复核，不构成交易指令。",
+  "description": "全市场行业初筛 + 可替换深度研究模块。只输出观察、等待和人工复核，不构成交易指令；梅森规则仅作公开研究标签。",
   "benchmark": "510300",
   "skip_if_not_a_share_trading_day": true,
   "history_retention_days": 365,
@@ -22,6 +22,9 @@
     "volume_window": 5,
     "chase_day_change_pct": 7.0,
     "minimum_module_breadth_ratio": 0.5
+  },
+  "mason_rules": {
+    "overextension_pct": 8.0
   },
   "deep_research_modules": [
     {

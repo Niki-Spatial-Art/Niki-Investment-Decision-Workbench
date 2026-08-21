@@ -21,7 +21,7 @@
 
 ## GitHub Actions 与 QQ 邮箱
 
-工作流 `.github/workflows/theme-watch-daily.yml` 在工作日北京时间17:15运行。它会跳过A股休市日，发送独立主题邮件，并更新仅含公开行情的 `reports/theme_watch_latest.json` 与 `reports/theme_watch_history.jsonl`。
+工作流 `.github/workflows/theme-watch-daily.yml` 现在只保留手动触发。它仍会跳过A股休市日，发送独立主题邮件，并更新仅含公开行情的 `reports/theme_watch_latest.json` 与 `reports/theme_watch_history.jsonl`。
 
 `Theme Price Study Weekly` 在每周五北京时间17:35发送单独的价格条件研究邮件。它用前复权日线测试“MA20趋势 + 20日相对沪深300 + 量能确认 + 非单日过热”条件，并以次日开盘模拟进入、持有20个交易日、扣除0.3%完整进出成本。该研究只覆盖价格和成交，不能把产业证据、财报披露时点或真实流动性回测出来。
 

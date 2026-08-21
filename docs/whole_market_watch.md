@@ -4,8 +4,8 @@
 
 1. 市场层：沪深300、涨跌家数、成交和数据覆盖，决定是否处于“等待”或“观察”环境。
 2. 板块层：全行业按平均涨跌、上涨比例和成交额做初筛，只保留少量重点研究行业。
-3. 深研层：默认保留AI光互连、小金属、PCB/元件三条线，补看产业、财报、供需、估值和美股验证。
-4. 个股层：每条主线只保留少量代表股，记录5/10/20日相对沪深300、MA20、量能和单日过热。
+3. 深研层：默认保留AI光互连、小金属、PCB/元件三条线，补看产业、财报、供需和美股验证；梅森规则只作为公开研究标签，用来标记“顺大势逆小势 / 等待回踩 / 不追”，不直接生成仓位或买卖金额。
+4. 个股层：每条主线只保留少量代表股，记录5/10/20日相对沪深300、MA20、量能、单日过热和梅森观察标签。
 
 报告的“重点研究”不是买入清单。至少需要价格趋势、产业证据、财务/供需和板块广度中的三项同步，才进入人工复核；任一关键证据缺失就显示观察或等待。覆盖不足、接口失败或A股休市时，报告必须明确写出缺口并跳过邮件。
 
@@ -20,6 +20,8 @@ python tools/whole_market_watch_report.py --email
 ## GitHub Actions 与 QQ 邮箱
 
 `.github/workflows/whole-market-watch-daily.yml` 使用北京时间工作日17:25（UTC 09:25）运行。它只读取公开行情和GitHub API，不读取 `portfolio.local.json`、账户截图、券商数据或本地密钥。
+
+`.github/workflows/theme-watch-daily.yml` 和 `.github/workflows/email-preview.yml` 现在只保留手动触发，不再固定定时推送，避免与主日报重复。
 
 邮件可使用专用 secret `WHOLE_MARKET_RECIPIENT_EMAIL`；未配置时兼容 `THEME_WATCH_RECIPIENT_EMAIL` 或旧的 `RECIPIENT_EMAIL`。发件邮箱、SMTP授权码和服务器配置仍沿用 `SENDER_EMAIL`、`SENDER_PASSWORD`、`SMTP_SERVER`、`SMTP_PORT`。
 

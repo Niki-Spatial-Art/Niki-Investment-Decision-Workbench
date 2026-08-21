@@ -8,9 +8,6 @@ on:
         required: true
         default: true
         type: boolean
-  schedule:
-    # GitHub cron uses UTC. Beijing 17:15 on weekdays, after A-share and Hong Kong close.
-    - cron: '15 9 * * 1-5'
 
 permissions:
   contents: write

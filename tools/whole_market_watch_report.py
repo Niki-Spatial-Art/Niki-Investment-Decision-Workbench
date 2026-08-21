@@ -143,8 +143,47 @@ def github_component(repo: str, purpose: str) -> dict[str, Any]:
     return result
 
 
-def module_metrics(module: dict[str, Any], payload: dict[str, Any], benchmark_returns: dict[int, float | None], rules: dict[str, Any]) -> dict[str, Any]:
+def mason_public_tags(stock: dict[str, Any], bars: list[dict[str, Any]], rules: dict[str, Any]) -> dict[str, Any]:
+    closes = [finite(row.get("close")) for row in bars]
+    closes = [value for value in closes if value is not None]
+    ma20 = finite(stock.get("ma20"))
+    price = finite(stock.get("price"))
+    relative_20 = finite((stock.get("relative_returns") or {}).get(20))
+    return_5 = finite((stock.get("returns") or {}).get(5))
+    deviation = ((price - ma20) / ma20 * 100) if price is not None and ma20 else None
+    deviation_limit = finite(rules.get("overextension_pct")) or 8.0
+    trend_ok = bool(stock.get("above_ma20")) and relative_20 is not None and relative_20 >= 0
+    down_days = sum(1 for left, right in zip(closes[-5:-1], closes[-4:]) if right < left)
+    double_drop = trend_ok and down_days >= 2
+    pullback = trend_ok and return_5 is not None and return_5 < 0
+    overextended = bool(stock.get("is_chase")) or (deviation is not None and deviation >= deviation_limit)
+    if overextended:
+        status = "不追：单日或均线乖离过大"
+    elif pullback and double_drop:
+        status = "可人工复核：顺大势逆小势（双跌观察）"
+    elif pullback:
+        status = "观察：等待回踩确认"
+    elif trend_ok:
+        status = "观察：趋势延续，等待合适回踩"
+    else:
+        status = "等待：趋势未确认"
+    return {
+        "trend_ok": trend_ok,
+        "pullback_candidate": pullback,
+        "double_drop_observed": double_drop,
+        "down_days_last_5": down_days,
+        "deviation_from_ma20_pct": deviation,
+        "overextended": overextended,
+        "status": status,
+        "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。",
+    }
+
+
+def module_metrics(module: dict[str, Any], payload: dict[str, Any], benchmark_returns: dict[int, float | None], rules: dict[str, Any], mason_rules: dict[str, Any] | None = None) -> dict[str, Any]:
     stocks = [a_share_metric(str(item["code"]), item, payload, benchmark_returns, rules) for item in module.get("a_share_symbols") or []]
+    mason_rules = mason_rules or {}
+    for stock in stocks:
+        stock["mason"] = mason_public_tags(stock, clean_bars(payload, str(stock.get("code"))), mason_rules)
     active = [stock for stock in stocks if stock.get("data_ready")]
     threshold = max(1, math.ceil(len(active) * float(rules.get("minimum_module_breadth_ratio", 0.5)))) if active else 1
     above = sum(bool(stock.get("above_ma20")) for stock in active)
@@ -199,7 +238,7 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
     sector_groups = classify_sectors(market_scan.get("industry_breadth") or [], config.get("sector_rules") or {})
     modules = []
     for module in config.get("deep_research_modules") or []:
-        item = module_metrics(module, payload, benchmark_returns, config.get("signal_rules") or {})
+        item = module_metrics(module, payload, benchmark_returns, config.get("signal_rules") or {}, config.get("mason_rules") or {})
         item["us_validation"] = [yahoo_history(str(symbol)) for symbol in module.get("us_symbols") or []]
         modules.append(item)
     components = [github_component(str(item["repo"]), str(item.get("purpose") or "")) for item in config.get("github_components") or []]
@@ -227,11 +266,11 @@ def render_html(report: dict[str, Any]) -> str:
     candidate_rows = "".join("<tr>" + "".join(cell(value) for value in [item.get("code"), item.get("name"), item.get("industry"), pct(finite(item.get("pct_change"))), f"{(finite(item.get('amount')) or 0)/1e8:.1f}亿", item.get("action")]) + "</tr>" for item in (report.get("candidates") or [])[:20]) or "<tr><td colspan='6'>本次没有可验证的量价候选</td></tr>"
     module_sections = []
     for module in report.get("modules") or []:
-        rows = "".join("<tr>" + "".join(cell(value) for value in [f"{stock.get('code')} {stock.get('name')}", pct((stock.get('returns') or {}).get(5)), pct((stock.get('returns') or {}).get(20)), pct((stock.get('relative_returns') or {}).get(20)), "MA20上方" if stock.get("above_ma20") else "MA20下方" if stock.get("ma20") else "数据不足", num(stock.get("volume_ratio_5_20"))]) + "</tr>" for stock in module.get("a_share") or [])
+        rows = "".join("<tr>" + "".join(cell(value) for value in [f"{stock.get('code')} {stock.get('name')}", pct((stock.get('returns') or {}).get(5)), pct((stock.get('returns') or {}).get(20)), pct((stock.get('relative_returns') or {}).get(20)), "MA20上方" if stock.get("above_ma20") else "MA20下方" if stock.get("ma20") else "数据不足", num(stock.get("volume_ratio_5_20")), (stock.get("mason") or {}).get("status", "-")]) + "</tr>" for stock in module.get("a_share") or [])
         us = "；".join(f"{row.get('symbol')} 20日{pct(row.get('return_20d'))}" if not row.get("error") else f"{row.get('symbol')} 数据不可用" for row in module.get("us_validation") or [])
         evidence = "；".join(str(item) for item in module.get("evidence_to_watch") or [])
         invalidation = "；".join(str(item) for item in module.get("invalidation") or [])
-        module_sections.append(f"<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>{html.escape(str(module.get('name')))}</h2><p><strong>{html.escape(str(module.get('status')))}</strong> | {html.escape(str(module.get('thesis')))}</p><p>模块广度：{module.get('breadth', {}).get('above_ma20', 0)}/{module.get('breadth', {}).get('eligible', 0)} 站上MA20；20日相对沪深300为正 {module.get('breadth', {}).get('relative_20d_positive', 0)}/{module.get('breadth', {}).get('eligible', 0)}。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>标的</th><th>5日</th><th>20日</th><th>20日相对300</th><th>趋势</th><th>5/20量比</th></tr>{rows}</table><p><strong>美股验证：</strong>{html.escape(us or '-')}</p><p><strong>待核验产业/财务证据：</strong>{html.escape(evidence)}</p><p><strong>反证条件：</strong>{html.escape(invalidation)}</p></section>")
+        module_sections.append(f"<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>{html.escape(str(module.get('name')))}</h2><p><strong>{html.escape(str(module.get('status')))}</strong> | {html.escape(str(module.get('thesis')))}</p><p>模块广度：{module.get('breadth', {}).get('above_ma20', 0)}/{module.get('breadth', {}).get('eligible', 0)} 站上MA20；20日相对沪深300为正 {module.get('breadth', {}).get('relative_20d_positive', 0)}/{module.get('breadth', {}).get('eligible', 0)}。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>标的</th><th>5日</th><th>20日</th><th>20日相对300</th><th>趋势</th><th>5/20量比</th><th>梅森观察标签</th></tr>{rows}</table><p><strong>美股验证：</strong>{html.escape(us or '-')}</p><p><strong>待核验产业/财务证据：</strong>{html.escape(evidence)}</p><p><strong>反证条件：</strong>{html.escape(invalidation)}</p></section>")
     component_rows = "".join("<tr>" + "".join(cell(value) for value in [item.get("repo"), item.get("latest_tag") or "无Release", item.get("release_at") or "-", item.get("pushed_at") or "-", item.get("release_error") or item.get("repo_error") or "-"]) + "</tr>" for item in report.get("github_components") or [])
     return f"""<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'></head><body style='margin:0;background:#f4f6f8;color:#172033;font:14px Arial,'Microsoft YaHei',sans-serif;line-height:1.55'><main style='max-width:980px;margin:0 auto;padding:20px'><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px'><h1>全市场观察日报</h1><p>{html.escape(report.get('generated_at') or '-')} | A股交易日：{'是' if report.get('a_share_trading_day') else '否'}</p><p style='background:#eef5ff;padding:10px;border-radius:6px'><strong>市场总闸门：{html.escape(str(gate.get('status') or '-'))}</strong><br>基准 {html.escape(str(benchmark.get('name') or benchmark.get('code') or '-'))}：20日 {html.escape(pct(benchmark.get('return_20d')))}，{'MA20上方' if benchmark.get('above_ma20') else 'MA20下方' if benchmark.get('ma20') else '数据不足'}；上涨 {breadth.get('advancers', 0)}、下跌 {breadth.get('decliners', 0)}、平盘 {breadth.get('flat', 0)}。</p></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>全市场行业漏斗</h2><p>读取 {report.get('market_scan', {}).get('scanned_count', 0)} 行，目标 {report.get('market_scan', {}).get('min_rows_target', 0)} 行；缺口估算 {report.get('market_scan', {}).get('missing_estimate', 0)}。重点研究只保留前5个行业，其他行业只进入观察或等待。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>行业</th><th>分类</th><th>平均涨跌</th><th>上涨/样本</th><th>上涨比例</th><th>成交额</th></tr>{sector_rows or '<tr><td colspan=6>行业广度不可用</td></tr>'}</table></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>全市场量价候选</h2><p>候选只用于后续人工核验产业、财务、估值和反证条件，不是买入清单。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>代码</th><th>名称</th><th>行业</th><th>当日</th><th>成交额</th><th>状态</th></tr>{candidate_rows}</table></section>{''.join(module_sections)}<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>GitHub组件更新</h2><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>仓库</th><th>最新Release</th><th>发布日期</th><th>最近推送</th><th>错误/备注</th></tr>{component_rows}</table></section><p style='color:#5d6b82;font-size:12px'>{html.escape(str(report.get('disclaimer') or ''))}</p></main></body></html>"""
 

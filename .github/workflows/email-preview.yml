@@ -11,10 +11,6 @@ on:
         options:
           - intraday
           - postclose
-  schedule:
-    # GitHub cron uses UTC. Beijing time: 10:45 intraday and 15:25 post-close.
-    - cron: '45 2 * * 1-5'
-    - cron: '25 7 * * 1-5'
 
 permissions:
   contents: read
@@ -35,9 +31,7 @@ jobs:
 
       - name: Scan market and send radar email
         run: |
-          if [ "${{ github.event.schedule }}" = "45 2 * * 1-5" ]; then
-            python tools/send_workbench_email_preview.py --intraday
-          elif [ "${{ inputs.mode }}" = "intraday" ]; then
+          if [ "${{ inputs.mode }}" = "intraday" ]; then
             python tools/send_workbench_email_preview.py --intraday
           else
             python tools/send_workbench_email_preview.py
