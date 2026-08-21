@@ -11,6 +11,12 @@
     "chase_day_change_pct": 7.0,
     "minimum_module_breadth_ratio": 0.5
   },
+  "price_only_backtest": {
+    "holding_days": 20,
+    "round_trip_cost_pct": 0.3,
+    "minimum_history_bars": 180,
+    "note": "This is a non-overlapping price/volume event study. It cannot validate industry evidence, valuation, financial statements, liquidity shocks or execution quality."
+  },
   "modules": [
     {
       "id": "ai_optical_interconnect",

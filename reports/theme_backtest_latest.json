@@ -1,0 +1,991 @@
+{
+  "generated_at": "2026-08-21T22:04:43+08:00",
+  "benchmark": "510300",
+  "method": {
+    "entry": "当日收盘满足MA20、20日相对沪深300、近5日/20日量能和单日不过热后，于下一交易日开盘模拟进入",
+    "exit": "持有20个交易日后收盘模拟退出，信号不重叠",
+    "cost": "每次完整进出扣除0.3%费用与滑点估算",
+    "limitation": "This is a non-overlapping price/volume event study. It cannot validate industry evidence, valuation, financial statements, liquidity shocks or execution quality."
+  },
+  "modules": [
+    {
+      "id": "ai_optical_interconnect",
+      "name": "AI光互连与服务器互连",
+      "stocks": [
+        {
+          "code": "300308",
+          "name": "中际旭创",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 70.58823529411765,
+          "average_net_return_pct": 16.66319402873246,
+          "median_net_return_pct": 16.222169928164487,
+          "worst_net_return_pct": -24.016632443531826,
+          "best_net_return_pct": 55.03980582524274,
+          "average_max_adverse_pct": -8.268452770929878,
+          "worst_max_adverse_pct": -26.700889801505813,
+          "events": [
+            {
+              "signal_date": "2025-07-16",
+              "entry_date": "2025-07-17",
+              "exit_date": "2025-08-14",
+              "net_return_pct": 41.58569044639132,
+              "gross_return_pct": 41.88569044639132,
+              "max_adverse_close_pct": -0.011919661481607502
+            },
+            {
+              "signal_date": "2025-08-19",
+              "entry_date": "2025-08-20",
+              "exit_date": "2025-09-17",
+              "net_return_pct": 55.03980582524274,
+              "gross_return_pct": 55.339805825242735,
+              "max_adverse_close_pct": -2.260255573890013
+            },
+            {
+              "signal_date": "2025-10-22",
+              "entry_date": "2025-10-23",
+              "exit_date": "2025-11-20",
+              "net_return_pct": 11.270623522995827,
+              "gross_return_pct": 11.570623522995827,
+              "max_adverse_close_pct": -3.494819123795667
+            },
+            {
+              "signal_date": "2025-11-27",
+              "entry_date": "2025-11-28",
+              "exit_date": "2025-12-26",
+              "net_return_pct": 18.666172557962735,
+              "gross_return_pct": 18.966172557962736,
+              "max_adverse_close_pct": -3.534777651083243
+            },
+            {
+              "signal_date": "2026-01-15",
+              "entry_date": "2026-01-16",
+              "exit_date": "2026-02-13",
+              "net_return_pct": -16.83148967667765,
+              "gross_return_pct": -16.531489676677648,
+              "max_adverse_close_pct": -19.051293761910017
+            },
+            {
+              "signal_date": "2026-03-20",
+              "entry_date": "2026-03-23",
+              "exit_date": "2026-04-21",
+              "net_return_pct": 46.288383024214774,
+              "gross_return_pct": 46.58838302421478,
+              "max_adverse_close_pct": -5.991753067146311
+            },
+            {
+              "signal_date": "2026-04-22",
+              "entry_date": "2026-04-23",
+              "exit_date": "2026-05-26",
+              "net_return_pct": 23.77199100112485,
+              "gross_return_pct": 24.07199100112485,
+              "max_adverse_close_pct": -8.298087739032622
+            },
+            {
+              "signal_date": "2026-06-01",
+              "entry_date": "2026-06-02",
+              "exit_date": "2026-07-01",
+              "net_return_pct": 5.730686546463259,
+              "gross_return_pct": 6.03068654646326,
+              "max_adverse_close_pct": -5.253120665742017
+            }
+          ]
+        },
+        {
+          "code": "300502",
+          "name": "新易盛",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 20,
+          "win_rate_pct": 60.0,
+          "average_net_return_pct": 15.244447765022304,
+          "median_net_return_pct": 9.868284553762319,
+          "worst_net_return_pct": -28.337069133226034,
+          "best_net_return_pct": 116.61692789968654,
+          "average_max_adverse_pct": -11.82463794221344,
+          "worst_max_adverse_pct": -32.94852459016393,
+          "events": [
+            {
+              "signal_date": "2025-09-02",
+              "entry_date": "2025-09-03",
+              "exit_date": "2025-10-09",
+              "net_return_pct": -1.3875712359159516,
+              "gross_return_pct": -1.0875712359159517,
+              "max_adverse_close_pct": -16.904020849729296
+            },
+            {
+              "signal_date": "2025-10-28",
+              "entry_date": "2025-10-29",
+              "exit_date": "2025-11-26",
+              "net_return_pct": -22.988524590163927,
+              "gross_return_pct": -22.68852459016393,
+              "max_adverse_close_pct": -32.94852459016393
+            },
+            {
+              "signal_date": "2025-11-28",
+              "entry_date": "2025-12-01",
+              "exit_date": "2025-12-29",
+              "net_return_pct": 26.05353430602201,
+              "gross_return_pct": 26.35353430602201,
+              "max_adverse_close_pct": -2.4015411983375423
+            },
+            {
+              "signal_date": "2026-02-02",
+              "entry_date": "2026-02-03",
+              "exit_date": "2026-03-11",
+              "net_return_pct": -14.284661390053854,
+              "gross_return_pct": -13.984661390053855,
+              "max_adverse_close_pct": -24.179801912106946
+            },
+            {
+              "signal_date": "2026-03-19",
+              "entry_date": "2026-03-20",
+              "exit_date": "2026-04-20",
+              "net_return_pct": 24.325268307891534,
+              "gross_return_pct": 24.625268307891535,
+              "max_adverse_close_pct": -7.130694422793282
+            },
+            {
+              "signal_date": "2026-04-21",
+              "entry_date": "2026-04-22",
+              "exit_date": "2026-05-25",
+              "net_return_pct": 15.546877356955891,
+              "gross_return_pct": 15.84687735695589,
+              "max_adverse_close_pct": -9.859161872649203
+            },
+            {
+              "signal_date": "2026-05-27",
+              "entry_date": "2026-05-28",
+              "exit_date": "2026-06-26",
+              "net_return_pct": 13.878509829236563,
+              "gross_return_pct": 14.178509829236564,
+              "max_adverse_close_pct": -3.3472862431033867
+            },
+            {
+              "signal_date": "2026-06-29",
+              "entry_date": "2026-06-30",
+              "exit_date": "2026-07-28",
+              "net_return_pct": -28.337069133226034,
+              "gross_return_pct": -28.037069133226034,
+              "max_adverse_close_pct": -28.56410165714588
+            }
+          ]
+        },
+        {
+          "code": "688008",
+          "name": "澜起科技",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 18,
+          "win_rate_pct": 61.111111111111114,
+          "average_net_return_pct": 5.362039016655591,
+          "median_net_return_pct": 3.971136044901291,
+          "worst_net_return_pct": -16.737172430635137,
+          "best_net_return_pct": 57.28875720814185,
+          "average_max_adverse_pct": -9.513749131479145,
+          "worst_max_adverse_pct": -33.90366156605078,
+          "events": [
+            {
+              "signal_date": "2025-07-15",
+              "entry_date": "2025-07-16",
+              "exit_date": "2025-08-13",
+              "net_return_pct": 4.866380950144434,
+              "gross_return_pct": 5.1663809501444335,
+              "max_adverse_close_pct": -4.8023859286569825
+            },
+            {
+              "signal_date": "2025-08-15",
+              "entry_date": "2025-08-18",
+              "exit_date": "2025-09-15",
+              "net_return_pct": 25.81536630749922,
+              "gross_return_pct": 26.115366307499222,
+              "max_adverse_close_pct": -5.073780778051851
+            },
+            {
+              "signal_date": "2025-09-16",
+              "entry_date": "2025-09-17",
+              "exit_date": "2025-10-23",
+              "net_return_pct": 13.845465529972467,
+              "gross_return_pct": 14.145465529972467,
+              "max_adverse_close_pct": -3.574545210445057
+            },
+            {
+              "signal_date": "2025-12-12",
+              "entry_date": "2025-12-15",
+              "exit_date": "2026-01-14",
+              "net_return_pct": 12.0146006259355,
+              "gross_return_pct": 12.314600625935501,
+              "max_adverse_close_pct": -4.549938767179218
+            },
+            {
+              "signal_date": "2026-01-15",
+              "entry_date": "2026-01-16",
+              "exit_date": "2026-02-13",
+              "net_return_pct": 18.94277851198861,
+              "gross_return_pct": 19.24277851198861,
+              "max_adverse_close_pct": -1.5248994292519247
+            },
+            {
+              "signal_date": "2026-04-13",
+              "entry_date": "2026-04-14",
+              "exit_date": "2026-05-15",
+              "net_return_pct": 57.28875720814185,
+              "gross_return_pct": 57.58875720814185,
+              "max_adverse_close_pct": -8.376083608080753
+            },
+            {
+              "signal_date": "2026-05-18",
+              "entry_date": "2026-05-19",
+              "exit_date": "2026-06-16",
+              "net_return_pct": 1.8452753662052128,
+              "gross_return_pct": 2.1452753662052126,
+              "max_adverse_close_pct": -7.5629336640632765
+            },
+            {
+              "signal_date": "2026-06-25",
+              "entry_date": "2026-06-26",
+              "exit_date": "2026-07-24",
+              "net_return_pct": -14.57657979450545,
+              "gross_return_pct": -14.276579794505452,
+              "max_adverse_close_pct": -33.90366156605078
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "minor_metals",
+      "name": "小金属：钨、锡、锑、稀土",
+      "stocks": [
+        {
+          "code": "600549",
+          "name": "厦门钨业",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 70.58823529411765,
+          "average_net_return_pct": 4.8909794122331185,
+          "median_net_return_pct": 4.044048653344923,
+          "worst_net_return_pct": -19.860297445845465,
+          "best_net_return_pct": 22.962492820218262,
+          "average_max_adverse_pct": -6.406059099366653,
+          "worst_max_adverse_pct": -20.950533462657617,
+          "events": [
+            {
+              "signal_date": "2025-07-11",
+              "entry_date": "2025-07-14",
+              "exit_date": "2025-08-11",
+              "net_return_pct": 6.957164123557879,
+              "gross_return_pct": 7.25716412355788,
+              "max_adverse_close_pct": -3.3029400818756827
+            },
+            {
+              "signal_date": "2025-08-19",
+              "entry_date": "2025-08-20",
+              "exit_date": "2025-09-17",
+              "net_return_pct": 16.38270773179339,
+              "gross_return_pct": 16.68270773179339,
+              "max_adverse_close_pct": 0.0
+            },
+            {
+              "signal_date": "2025-10-14",
+              "entry_date": "2025-10-15",
+              "exit_date": "2025-11-12",
+              "net_return_pct": 4.065450576863105,
+              "gross_return_pct": 4.365450576863106,
+              "max_adverse_close_pct": -10.975990021827254
+            },
+            {
+              "signal_date": "2025-12-04",
+              "entry_date": "2025-12-05",
+              "exit_date": "2026-01-06",
+              "net_return_pct": 22.962492820218262,
+              "gross_return_pct": 23.262492820218263,
+              "max_adverse_close_pct": -0.258472142446875
+            },
+            {
+              "signal_date": "2026-01-12",
+              "entry_date": "2026-01-13",
+              "exit_date": "2026-02-10",
+              "net_return_pct": 18.11289522628642,
+              "gross_return_pct": 18.41289522628642,
+              "max_adverse_close_pct": -1.6119032858028515
+            },
+            {
+              "signal_date": "2026-02-26",
+              "entry_date": "2026-02-27",
+              "exit_date": "2026-03-27",
+              "net_return_pct": -8.237509862711057,
+              "gross_return_pct": -7.937509862711057,
+              "max_adverse_close_pct": -20.151491241912566
+            },
+            {
+              "signal_date": "2026-04-17",
+              "entry_date": "2026-04-20",
+              "exit_date": "2026-05-21",
+              "net_return_pct": -19.860297445845465,
+              "gross_return_pct": -19.560297445845464,
+              "max_adverse_close_pct": -20.950533462657617
+            },
+            {
+              "signal_date": "2026-06-04",
+              "entry_date": "2026-06-05",
+              "exit_date": "2026-07-06",
+              "net_return_pct": 12.862939297124598,
+              "gross_return_pct": 13.162939297124598,
+              "max_adverse_close_pct": -9.584664536741217
+            }
+          ]
+        },
+        {
+          "code": "000657",
+          "name": "中钨高新",
+          "sample_start": "2024-01-10",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 70.58823529411765,
+          "average_net_return_pct": 11.786705547251325,
+          "median_net_return_pct": 10.335002581311292,
+          "worst_net_return_pct": -39.964518768538404,
+          "best_net_return_pct": 61.368625146886046,
+          "average_max_adverse_pct": -9.540532209975309,
+          "worst_max_adverse_pct": -48.020865296103096,
+          "events": [
+            {
+              "signal_date": "2025-08-27",
+              "entry_date": "2025-08-28",
+              "exit_date": "2025-09-25",
+              "net_return_pct": -9.821358723623275,
+              "gross_return_pct": -9.521358723623274,
+              "max_adverse_close_pct": -13.793103448275856
+            },
+            {
+              "signal_date": "2025-10-24",
+              "entry_date": "2025-10-27",
+              "exit_date": "2025-11-24",
+              "net_return_pct": 10.335002581311292,
+              "gross_return_pct": 10.635002581311293,
+              "max_adverse_close_pct": 0.0
+            },
+            {
+              "signal_date": "2025-12-09",
+              "entry_date": "2025-12-10",
+              "exit_date": "2026-01-09",
+              "net_return_pct": 33.827310061601615,
+              "gross_return_pct": 34.12731006160161,
+              "max_adverse_close_pct": -3.901437371663252
+            },
+            {
+              "signal_date": "2026-01-22",
+              "entry_date": "2026-01-23",
+              "exit_date": "2026-03-02",
+              "net_return_pct": 61.368625146886046,
+              "gross_return_pct": 61.66862514688604,
+              "max_adverse_close_pct": -4.653349001175078
+            },
+            {
+              "signal_date": "2026-03-03",
+              "entry_date": "2026-03-04",
+              "exit_date": "2026-04-01",
+              "net_return_pct": -21.949484536082476,
+              "gross_return_pct": -21.649484536082475,
+              "max_adverse_close_pct": -25.62822164948453
+            },
+            {
+              "signal_date": "2026-04-20",
+              "entry_date": "2026-04-21",
+              "exit_date": "2026-05-22",
+              "net_return_pct": 7.281789856326803,
+              "gross_return_pct": 7.581789856326804,
+              "max_adverse_close_pct": -11.8919854595811
+            },
+            {
+              "signal_date": "2026-05-25",
+              "entry_date": "2026-05-26",
+              "exit_date": "2026-06-24",
+              "net_return_pct": 56.42578873018363,
+              "gross_return_pct": 56.72578873018364,
+              "max_adverse_close_pct": -4.143776487207662
+            },
+            {
+              "signal_date": "2026-06-26",
+              "entry_date": "2026-06-29",
+              "exit_date": "2026-07-27",
+              "net_return_pct": -39.964518768538404,
+              "gross_return_pct": -39.6645187685384,
+              "max_adverse_close_pct": -48.020865296103096
+            }
+          ]
+        },
+        {
+          "code": "000960",
+          "name": "锡业股份",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 64.70588235294117,
+          "average_net_return_pct": 2.464943024024306,
+          "median_net_return_pct": 4.337832204273051,
+          "worst_net_return_pct": -25.351759834368536,
+          "best_net_return_pct": 26.408949964763917,
+          "average_max_adverse_pct": -9.524488233154448,
+          "worst_max_adverse_pct": -36.737980216241084,
+          "events": [
+            {
+              "signal_date": "2025-07-08",
+              "entry_date": "2025-07-09",
+              "exit_date": "2025-08-06",
+              "net_return_pct": 14.806520335700435,
+              "gross_return_pct": 15.106520335700434,
+              "max_adverse_close_pct": -2.453195610071024
+            },
+            {
+              "signal_date": "2025-08-20",
+              "entry_date": "2025-08-21",
+              "exit_date": "2025-09-18",
+              "net_return_pct": 4.337832204273051,
+              "gross_return_pct": 4.637832204273051,
+              "max_adverse_close_pct": -1.3027618551328835
+            },
+            {
+              "signal_date": "2025-10-10",
+              "entry_date": "2025-10-13",
+              "exit_date": "2025-11-10",
+              "net_return_pct": -2.4573604060913796,
+              "gross_return_pct": -2.15736040609138,
+              "max_adverse_close_pct": -10.659898477157359
+            },
+            {
+              "signal_date": "2025-11-13",
+              "entry_date": "2025-11-14",
+              "exit_date": "2025-12-12",
+              "net_return_pct": 5.630138099106407,
+              "gross_return_pct": 5.930138099106408,
+              "max_adverse_close_pct": -11.494719740048753
+            },
+            {
+              "signal_date": "2026-01-05",
+              "entry_date": "2026-01-06",
+              "exit_date": "2026-02-03",
+              "net_return_pct": 26.408949964763917,
+              "gross_return_pct": 26.708949964763917,
+              "max_adverse_close_pct": -0.21141649048624922
+            },
+            {
+              "signal_date": "2026-04-17",
+              "entry_date": "2026-04-20",
+              "exit_date": "2026-05-21",
+              "net_return_pct": 1.781575246132217,
+              "gross_return_pct": 2.081575246132217,
+              "max_adverse_close_pct": -3.319268635724326
+            },
+            {
+              "signal_date": "2026-05-26",
+              "entry_date": "2026-05-27",
+              "exit_date": "2026-06-25",
+              "net_return_pct": 6.710358949650697,
+              "gross_return_pct": 7.010358949650697,
+              "max_adverse_close_pct": -20.019272464466386
+            },
+            {
+              "signal_date": "2026-06-26",
+              "entry_date": "2026-06-29",
+              "exit_date": "2026-07-27",
+              "net_return_pct": -25.351759834368536,
+              "gross_return_pct": -25.051759834368536,
+              "max_adverse_close_pct": -36.737980216241084
+            }
+          ]
+        },
+        {
+          "code": "600301",
+          "name": "华锡有色",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 70.58823529411765,
+          "average_net_return_pct": 7.0702214152380725,
+          "median_net_return_pct": 7.081221719457009,
+          "worst_net_return_pct": -22.882677165354337,
+          "best_net_return_pct": 32.54584980237153,
+          "average_max_adverse_pct": -9.589893335357331,
+          "worst_max_adverse_pct": -32.73761169780667,
+          "events": [
+            {
+              "signal_date": "2025-07-11",
+              "entry_date": "2025-07-14",
+              "exit_date": "2025-08-11",
+              "net_return_pct": 8.395652173913037,
+              "gross_return_pct": 8.695652173913038,
+              "max_adverse_close_pct": -2.4366937410415623
+            },
+            {
+              "signal_date": "2025-08-14",
+              "entry_date": "2025-08-15",
+              "exit_date": "2025-09-12",
+              "net_return_pct": 32.54584980237153,
+              "gross_return_pct": 32.84584980237153,
+              "max_adverse_close_pct": -1.5415019762845872
+            },
+            {
+              "signal_date": "2025-10-31",
+              "entry_date": "2025-11-03",
+              "exit_date": "2025-12-01",
+              "net_return_pct": 21.965246853823828,
+              "gross_return_pct": 22.26524685382383,
+              "max_adverse_close_pct": -9.777347531461755
+            },
+            {
+              "signal_date": "2025-12-02",
+              "entry_date": "2025-12-03",
+              "exit_date": "2025-12-31",
+              "net_return_pct": 7.081221719457009,
+              "gross_return_pct": 7.3812217194570096,
+              "max_adverse_close_pct": 0.0
+            },
+            {
+              "signal_date": "2026-01-07",
+              "entry_date": "2026-01-08",
+              "exit_date": "2026-02-05",
+              "net_return_pct": 28.052881183069868,
+              "gross_return_pct": 28.35288118306987,
+              "max_adverse_close_pct": -2.167261601223869
+            },
+            {
+              "signal_date": "2026-03-03",
+              "entry_date": "2026-03-04",
+              "exit_date": "2026-04-01",
+              "net_return_pct": -22.882677165354337,
+              "gross_return_pct": -22.582677165354337,
+              "max_adverse_close_pct": -30.094488188976378
+            },
+            {
+              "signal_date": "2026-04-20",
+              "entry_date": "2026-04-21",
+              "exit_date": "2026-05-22",
+              "net_return_pct": 3.1101918232900543,
+              "gross_return_pct": 3.410191823290054,
+              "max_adverse_close_pct": -6.684751017244728
+            },
+            {
+              "signal_date": "2026-05-27",
+              "entry_date": "2026-05-28",
+              "exit_date": "2026-06-26",
+              "net_return_pct": 4.36431095406361,
+              "gross_return_pct": 4.664310954063611,
+              "max_adverse_close_pct": -7.067137809187274
+            }
+          ]
+        },
+        {
+          "code": "600111",
+          "name": "北方稀土",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 18,
+          "win_rate_pct": 44.44444444444444,
+          "average_net_return_pct": 0.2909062309511053,
+          "median_net_return_pct": -0.14584159925162796,
+          "worst_net_return_pct": -24.382031250000015,
+          "best_net_return_pct": 24.66653279785812,
+          "average_max_adverse_pct": -8.690092839609923,
+          "worst_max_adverse_pct": -25.5859375,
+          "events": [
+            {
+              "signal_date": "2025-08-19",
+              "entry_date": "2025-08-20",
+              "exit_date": "2025-09-17",
+              "net_return_pct": 14.15178937770688,
+              "gross_return_pct": 14.45178937770688,
+              "max_adverse_close_pct": 0.0
+            },
+            {
+              "signal_date": "2025-10-14",
+              "entry_date": "2025-10-15",
+              "exit_date": "2025-11-12",
+              "net_return_pct": -20.352770448548807,
+              "gross_return_pct": -20.052770448548806,
+              "max_adverse_close_pct": -21.002638522427453
+            },
+            {
+              "signal_date": "2025-12-03",
+              "entry_date": "2025-12-04",
+              "exit_date": "2026-01-05",
+              "net_return_pct": -0.21431019708654217,
+              "gross_return_pct": 0.08568980291345785,
+              "max_adverse_close_pct": -7.047986289631536
+            },
+            {
+              "signal_date": "2026-01-07",
+              "entry_date": "2026-01-08",
+              "exit_date": "2026-02-05",
+              "net_return_pct": -3.241176470588236,
+              "gross_return_pct": -2.941176470588236,
+              "max_adverse_close_pct": -4.371474617244164
+            },
+            {
+              "signal_date": "2026-02-13",
+              "entry_date": "2026-02-24",
+              "exit_date": "2026-03-24",
+              "net_return_pct": -19.022033291569716,
+              "gross_return_pct": -18.722033291569716,
+              "max_adverse_close_pct": -21.442634687667795
+            },
+            {
+              "signal_date": "2026-04-10",
+              "entry_date": "2026-04-13",
+              "exit_date": "2026-05-14",
+              "net_return_pct": 0.11572184429325975,
+              "gross_return_pct": 0.41572184429325976,
+              "max_adverse_close_pct": -12.792894935752086
+            },
+            {
+              "signal_date": "2026-05-15",
+              "entry_date": "2026-05-18",
+              "exit_date": "2026-06-15",
+              "net_return_pct": -4.111701924909472,
+              "gross_return_pct": -3.811701924909472,
+              "max_adverse_close_pct": -11.835334476843917
+            },
+            {
+              "signal_date": "2026-06-16",
+              "entry_date": "2026-06-17",
+              "exit_date": "2026-07-16",
+              "net_return_pct": -24.382031250000015,
+              "gross_return_pct": -24.082031250000014,
+              "max_adverse_close_pct": -25.5859375
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ai_pcb_components",
+      "name": "元件：PCB、覆铜板与高速材料",
+      "stocks": [
+        {
+          "code": "002463",
+          "name": "沪电股份",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 18,
+          "win_rate_pct": 61.111111111111114,
+          "average_net_return_pct": 8.751213745109524,
+          "median_net_return_pct": 8.786450895052456,
+          "worst_net_return_pct": -18.503124999999997,
+          "best_net_return_pct": 33.132835820895515,
+          "average_max_adverse_pct": -7.298889026154591,
+          "worst_max_adverse_pct": -24.453124999999996,
+          "events": [
+            {
+              "signal_date": "2025-06-10",
+              "entry_date": "2025-06-11",
+              "exit_date": "2025-07-09",
+              "net_return_pct": 29.743980208905995,
+              "gross_return_pct": 30.043980208905996,
+              "max_adverse_close_pct": -1.0720175920835628
+            },
+            {
+              "signal_date": "2025-07-18",
+              "entry_date": "2025-07-21",
+              "exit_date": "2025-08-18",
+              "net_return_pct": 7.6198287604592245,
+              "gross_return_pct": 7.919828760459224,
+              "max_adverse_close_pct": -5.818252578322635
+            },
+            {
+              "signal_date": "2025-08-19",
+              "entry_date": "2025-08-20",
+              "exit_date": "2025-09-17",
+              "net_return_pct": 32.20517598343685,
+              "gross_return_pct": 32.50517598343685,
+              "max_adverse_close_pct": -4.197252023338982
+            },
+            {
+              "signal_date": "2025-11-28",
+              "entry_date": "2025-12-01",
+              "exit_date": "2025-12-29",
+              "net_return_pct": 9.953073029645687,
+              "gross_return_pct": 10.253073029645687,
+              "max_adverse_close_pct": -3.109182935647148
+            },
+            {
+              "signal_date": "2025-12-30",
+              "entry_date": "2025-12-31",
+              "exit_date": "2026-01-30",
+              "net_return_pct": -7.880408381155757,
+              "gross_return_pct": -7.580408381155756,
+              "max_adverse_close_pct": -11.023622047244096
+            },
+            {
+              "signal_date": "2026-02-27",
+              "entry_date": "2026-03-02",
+              "exit_date": "2026-03-30",
+              "net_return_pct": -3.7478527607362033,
+              "gross_return_pct": -3.447852760736203,
+              "max_adverse_close_pct": -15.337423312883436
+            },
+            {
+              "signal_date": "2026-04-15",
+              "entry_date": "2026-04-16",
+              "exit_date": "2026-05-19",
+              "net_return_pct": 11.52561307901906,
+              "gross_return_pct": 11.82561307901906,
+              "max_adverse_close_pct": -0.37057220708447414
+            },
+            {
+              "signal_date": "2026-05-27",
+              "entry_date": "2026-05-28",
+              "exit_date": "2026-06-26",
+              "net_return_pct": 16.496193497224432,
+              "gross_return_pct": 16.796193497224433,
+              "max_adverse_close_pct": -5.471847739888968
+            }
+          ]
+        },
+        {
+          "code": "600183",
+          "name": "生益科技",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 18,
+          "win_rate_pct": 72.22222222222221,
+          "average_net_return_pct": 10.82163577469081,
+          "median_net_return_pct": 9.083332188353166,
+          "worst_net_return_pct": -25.255330553901135,
+          "best_net_return_pct": 82.20430554148518,
+          "average_max_adverse_pct": -7.558952799585779,
+          "worst_max_adverse_pct": -30.017867778439545,
+          "events": [
+            {
+              "signal_date": "2025-08-14",
+              "entry_date": "2025-08-15",
+              "exit_date": "2025-09-12",
+              "net_return_pct": 31.862849872773534,
+              "gross_return_pct": 32.162849872773535,
+              "max_adverse_close_pct": -0.254452926208637
+            },
+            {
+              "signal_date": "2025-09-15",
+              "entry_date": "2025-09-16",
+              "exit_date": "2025-10-22",
+              "net_return_pct": 9.637178754997134,
+              "gross_return_pct": 9.937178754997134,
+              "max_adverse_close_pct": -3.293356177422435
+            },
+            {
+              "signal_date": "2025-10-28",
+              "entry_date": "2025-10-29",
+              "exit_date": "2025-11-26",
+              "net_return_pct": -17.85591287823417,
+              "gross_return_pct": -17.55591287823417,
+              "max_adverse_close_pct": -25.595673147200703
+            },
+            {
+              "signal_date": "2025-12-10",
+              "entry_date": "2025-12-11",
+              "exit_date": "2026-01-12",
+              "net_return_pct": 9.780183276059551,
+              "gross_return_pct": 10.08018327605955,
+              "max_adverse_close_pct": -5.825560464735724
+            },
+            {
+              "signal_date": "2026-02-25",
+              "entry_date": "2026-02-26",
+              "exit_date": "2026-03-26",
+              "net_return_pct": -20.58900890380967,
+              "gross_return_pct": -20.28900890380967,
+              "max_adverse_close_pct": -20.799883228725747
+            },
+            {
+              "signal_date": "2026-04-13",
+              "entry_date": "2026-04-14",
+              "exit_date": "2026-05-15",
+              "net_return_pct": 39.652904238618525,
+              "gross_return_pct": 39.95290423861852,
+              "max_adverse_close_pct": -1.9152276295133497
+            },
+            {
+              "signal_date": "2026-05-19",
+              "entry_date": "2026-05-20",
+              "exit_date": "2026-06-17",
+              "net_return_pct": 82.20430554148518,
+              "gross_return_pct": 82.50430554148518,
+              "max_adverse_close_pct": -1.8741768817748916
+            },
+            {
+              "signal_date": "2026-06-23",
+              "entry_date": "2026-06-24",
+              "exit_date": "2026-07-22",
+              "net_return_pct": -25.255330553901135,
+              "gross_return_pct": -24.955330553901135,
+              "max_adverse_close_pct": -30.017867778439545
+            }
+          ]
+        },
+        {
+          "code": "300476",
+          "name": "胜宏科技",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 16,
+          "win_rate_pct": 68.75,
+          "average_net_return_pct": 12.802061274991326,
+          "median_net_return_pct": 6.297578194011455,
+          "worst_net_return_pct": -25.9170281038586,
+          "best_net_return_pct": 69.48338360296134,
+          "average_max_adverse_pct": -10.751828796784295,
+          "worst_max_adverse_pct": -26.633152391903092,
+          "events": [
+            {
+              "signal_date": "2025-05-29",
+              "entry_date": "2025-05-30",
+              "exit_date": "2025-06-30",
+              "net_return_pct": 63.4710920876837,
+              "gross_return_pct": 63.7710920876837,
+              "max_adverse_close_pct": -0.7793557325943778
+            },
+            {
+              "signal_date": "2025-07-09",
+              "entry_date": "2025-07-10",
+              "exit_date": "2025-08-07",
+              "net_return_pct": 22.880915029284566,
+              "gross_return_pct": 23.180915029284566,
+              "max_adverse_close_pct": -10.317779826759988
+            },
+            {
+              "signal_date": "2025-08-22",
+              "entry_date": "2025-08-25",
+              "exit_date": "2025-09-22",
+              "net_return_pct": 40.826613404429715,
+              "gross_return_pct": 41.12661340442971,
+              "max_adverse_close_pct": -6.827414139412557
+            },
+            {
+              "signal_date": "2025-10-29",
+              "entry_date": "2025-10-30",
+              "exit_date": "2025-11-27",
+              "net_return_pct": -17.67845887778632,
+              "gross_return_pct": -17.37845887778632,
+              "max_adverse_close_pct": -26.286870676402764
+            },
+            {
+              "signal_date": "2025-12-10",
+              "entry_date": "2025-12-11",
+              "exit_date": "2026-01-12",
+              "net_return_pct": -5.33345570223418,
+              "gross_return_pct": -5.03345570223418,
+              "max_adverse_close_pct": -6.070347576894419
+            },
+            {
+              "signal_date": "2026-02-27",
+              "entry_date": "2026-03-02",
+              "exit_date": "2026-03-30",
+              "net_return_pct": -14.635281839962943,
+              "gross_return_pct": -14.335281839962944,
+              "max_adverse_close_pct": -15.878874921981422
+            },
+            {
+              "signal_date": "2026-04-09",
+              "entry_date": "2026-04-10",
+              "exit_date": "2026-05-13",
+              "net_return_pct": 38.55006057217408,
+              "gross_return_pct": 38.85006057217409,
+              "max_adverse_close_pct": -0.7204146147394619
+            },
+            {
+              "signal_date": "2026-05-14",
+              "entry_date": "2026-05-15",
+              "exit_date": "2026-06-12",
+              "net_return_pct": -8.084009243863255,
+              "gross_return_pct": -7.784009243863254,
+              "max_adverse_close_pct": -13.603697545303383
+            }
+          ]
+        },
+        {
+          "code": "002916",
+          "name": "深南电路",
+          "sample_start": "2023-12-28",
+          "sample_end": "2026-08-21",
+          "signal_count": 17,
+          "win_rate_pct": 64.70588235294117,
+          "average_net_return_pct": 7.169384546053697,
+          "median_net_return_pct": 12.330838244348675,
+          "worst_net_return_pct": -26.012053571428574,
+          "best_net_return_pct": 37.38205083144782,
+          "average_max_adverse_pct": -9.951536384938166,
+          "worst_max_adverse_pct": -34.08928571428572,
+          "events": [
+            {
+              "signal_date": "2025-08-19",
+              "entry_date": "2025-08-20",
+              "exit_date": "2025-09-17",
+              "net_return_pct": 32.98783851734789,
+              "gross_return_pct": 33.28783851734789,
+              "max_adverse_close_pct": -3.0744917750161638
+            },
+            {
+              "signal_date": "2025-10-27",
+              "entry_date": "2025-10-28",
+              "exit_date": "2025-11-25",
+              "net_return_pct": -8.253438760840325,
+              "gross_return_pct": -7.953438760840326,
+              "max_adverse_close_pct": -15.781663033900662
+            },
+            {
+              "signal_date": "2025-12-10",
+              "entry_date": "2025-12-11",
+              "exit_date": "2026-01-12",
+              "net_return_pct": 12.38204794554828,
+              "gross_return_pct": 12.68204794554828,
+              "max_adverse_close_pct": -7.812421800710679
+            },
+            {
+              "signal_date": "2026-01-16",
+              "entry_date": "2026-01-19",
+              "exit_date": "2026-02-24",
+              "net_return_pct": 12.330838244348675,
+              "gross_return_pct": 12.630838244348674,
+              "max_adverse_close_pct": -3.531533116369079
+            },
+            {
+              "signal_date": "2026-02-27",
+              "entry_date": "2026-03-02",
+              "exit_date": "2026-03-30",
+              "net_return_pct": -19.490383083496265,
+              "gross_return_pct": -19.190383083496265,
+              "max_adverse_close_pct": -21.753928597291626
+            },
+            {
+              "signal_date": "2026-04-13",
+              "entry_date": "2026-04-14",
+              "exit_date": "2026-05-15",
+              "net_return_pct": 18.64787573218655,
+              "gross_return_pct": 18.947875732186546,
+              "max_adverse_close_pct": -2.265144212945802
+            },
+            {
+              "signal_date": "2026-05-25",
+              "entry_date": "2026-05-26",
+              "exit_date": "2026-06-24",
+              "net_return_pct": 6.711892963330024,
+              "gross_return_pct": 7.011892963330024,
+              "max_adverse_close_pct": -13.280475718533202
+            },
+            {
+              "signal_date": "2026-06-25",
+              "entry_date": "2026-06-26",
+              "exit_date": "2026-07-24",
+              "net_return_pct": -26.012053571428574,
+              "gross_return_pct": -25.712053571428573,
+              "max_adverse_close_pct": -34.08928571428572
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "disclaimer": "这是价格条件事件研究，不是完整策略回测或投资建议。它无法历史化验证产业催化、财报披露时点、估值、流动性冲击和实际执行；结果不代表未来收益。"
+}

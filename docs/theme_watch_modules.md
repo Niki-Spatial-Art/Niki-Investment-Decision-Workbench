@@ -23,6 +23,8 @@
 
 工作流 `.github/workflows/theme-watch-daily.yml` 在工作日北京时间17:15运行。它会跳过A股休市日，发送独立主题邮件，并更新仅含公开行情的 `reports/theme_watch_latest.json` 与 `reports/theme_watch_history.jsonl`。
 
+`Theme Price Study Weekly` 在每周五北京时间17:35发送单独的价格条件研究邮件。它用前复权日线测试“MA20趋势 + 20日相对沪深300 + 量能确认 + 非单日过热”条件，并以次日开盘模拟进入、持有20个交易日、扣除0.3%完整进出成本。该研究只覆盖价格和成交，不能把产业证据、财报披露时点或真实流动性回测出来。
+
 在仓库 `Settings -> Secrets and variables -> Actions` 配置：
 
 | Secret | 用途 |
@@ -41,6 +43,8 @@
 python tools/theme_watch_report.py --dry-run
 python tools/theme_watch_report.py --output reports/theme_watch_latest.json --history reports/theme_watch_history.jsonl
 python tools/theme_watch_report.py --email
+python tools/theme_signal_backtest.py --dry-run
+python tools/theme_signal_backtest.py --email
 ```
 
 在修改规则或执行任何人工交易前，应先重新回测并做样本外验证。历史规律不能保证未来，相关性不等于因果。

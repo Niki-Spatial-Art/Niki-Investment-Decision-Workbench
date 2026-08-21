@@ -414,7 +414,12 @@ def send_email(report: dict[str, Any], html_content: str) -> bool:
     missing = [label for label, value in {"SENDER_EMAIL": sender, "SENDER_PASSWORD": password, "THEME_WATCH_RECIPIENT_EMAIL or RECIPIENT_EMAIL": recipient}.items() if not value]
     if missing:
         raise SystemExit("Missing email secrets: " + ", ".join(missing))
-    notifier = EmailNotifier(sender, password, os.getenv("SMTP_SERVER", "smtp.qq.com"), int(os.getenv("SMTP_PORT", "465")))
+    notifier = EmailNotifier(
+        sender,
+        password,
+        (os.getenv("SMTP_SERVER") or "smtp.qq.com").strip(),
+        int((os.getenv("SMTP_PORT") or "465").strip()),
+    )
     subject = "Niki 决策工作台 | 主题观察日报 | " + now_beijing().strftime("%Y-%m-%d")
     if not notifier.send_html_alert(recipient, subject, html_content):
         raise SystemExit("SMTP did not accept the theme watch email")

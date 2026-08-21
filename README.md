@@ -47,6 +47,8 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 本地工作台可选地读取 `data/trade_journal.local.csv`。它只记录你手动确认的成交，并与最新券商快照对照剩余份额；该文件被 Git 忽略，不会发送到 GitHub 或任何云端邮件。
 
+`Theme Watch Daily` 在工作日收盘后发送重点观察模块日报；`Theme Price Study Weekly` 在周五发送独立的价格条件研究邮件。两者都只使用公开数据与 GitHub Secrets，不读取账户或连接券商。
+
 ## 安全边界
 
 - 不连接券商，不自动下单。
