@@ -49,6 +49,8 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 `Theme Watch Daily` 在工作日收盘后发送重点观察模块日报；`Theme Price Study Weekly` 在周五发送独立的价格条件研究邮件。两者都只使用公开数据与 GitHub Secrets，不读取账户或连接券商。
 
+`Whole Market Watch Daily` 在工作日A股收盘后先扫描全市场行业广度、成交和涨跌，再把结果压缩为“重点研究 / 可继续观察 / 价格强、证据待补 / 等待”的漏斗；只有三条可替换深研模块继续核对产业、财报、供需和美股验证。它发送独立的全市场QQ邮件，公开快照不含账户或仓位信息。
+
 ## 安全边界
 
 - 不连接券商，不自动下单。
@@ -61,5 +63,6 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 - [投资决策工作台说明](docs/investment_workbench.md)
 - [候选证据与成交归因闭环](docs/evidence_and_attribution_workflow.md)
 - [可替换主题观察模块与QQ日报](docs/theme_watch_modules.md)
+- [全市场漏斗观察与QQ日报](docs/whole_market_watch.md)
 - [项目记忆与运行约定](CODEX_PROJECT_MEMORY.md)
 - [A 股数据依赖](requirements-a-stock.txt)

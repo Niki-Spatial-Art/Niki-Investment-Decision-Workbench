@@ -1,0 +1,62 @@
+name: Whole Market Watch Daily
+
+on:
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: Send the configured QQ email after building the public report
+        required: true
+        default: true
+        type: boolean
+  schedule:
+    # GitHub cron uses UTC. Beijing 17:25 on weekdays, after the A-share close.
+    - cron: '25 9 * * 1-5'
+
+permissions:
+  contents: write
+
+jobs:
+  whole-market-watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Build and optionally send whole-market report
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
+            python tools/whole_market_watch_report.py
+          else
+            python tools/whole_market_watch_report.py --email
+          fi
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          WHOLE_MARKET_RECIPIENT_EMAIL: ${{ secrets.WHOLE_MARKET_RECIPIENT_EMAIL }}
+          THEME_WATCH_RECIPIENT_EMAIL: ${{ secrets.THEME_WATCH_RECIPIENT_EMAIL }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      - name: Persist public whole-market snapshot on trading days
+        run: |
+          if ! python -c "import json; raise SystemExit(0 if json.load(open('reports/whole_market_watch_latest.json', encoding='utf-8')).get('a_share_trading_day') else 1)"; then
+            echo "A-share is closed; public history and email were skipped."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/whole_market_watch_latest.json reports/whole_market_watch_history.jsonl
+          git diff --cached --quiet || git commit -m "chore: update public whole-market watch snapshot"
+          git push
+      - name: Upload whole-market artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: whole-market-watch-${{ github.run_id }}
+          path: reports/whole_market_watch_*
+          if-no-files-found: warn
+          retention-days: 30

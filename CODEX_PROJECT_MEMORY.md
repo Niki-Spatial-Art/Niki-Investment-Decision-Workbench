@@ -28,6 +28,7 @@ Niki Smart Tools is a local-first A-share/ETF research and decision-discipline w
 - GitHub Actions only creates a public A-share market-snapshot artifact. It must not receive broker snapshots, Xingyao credentials, or private account data.
 - `watchlists/theme_watchlist.json` is a public, replaceable module configuration. `Theme Watch Daily` sends a separate QQ theme-research email after A-share close, using only public data and GitHub Secrets. Its public `reports/theme_watch_*.json*` snapshots contain no account or recipient data.
 - `.github/workflows/email-preview.yml` sends the public radar email on weekdays at 10:45 Beijing (`--intraday`) and 15:25 Beijing (post-close); manual dispatch retains an `intraday` / `postclose` mode selector. It receives only SMTP secrets and never broker/account data.
+- `watchlists/whole_market_watchlist.json` and `tools/whole_market_watch_report.py` implement the four-layer whole-market funnel: market gate -> sector breadth -> 3 deep research modules -> small stock set. `.github/workflows/whole-market-watch-daily.yml` sends a separate public QQ email after the A-share close and persists only public snapshots. It never emits buy amounts, target prices, fixed positions, or orders.
 
 ## Local Commands
 

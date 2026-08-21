@@ -10,6 +10,8 @@ reports/*
 !reports/theme_watch_latest.json
 !reports/theme_watch_history.jsonl
 !reports/theme_backtest_latest.json
+!reports/whole_market_watch_latest.json
+!reports/whole_market_watch_history.jsonl
 reviews/
 vendor/
 data/*
