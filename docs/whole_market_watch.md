@@ -15,11 +15,14 @@
 python tools/whole_market_watch_report.py --dry-run
 python tools/whole_market_watch_report.py
 python tools/whole_market_watch_report.py --email
+python tools/whole_market_watch_report.py --resend-existing
 ```
 
 ## GitHub Actions 与 QQ 邮箱
 
 `.github/workflows/whole-market-watch-daily.yml` 使用北京时间工作日17:25（UTC 09:25）运行。它只读取公开行情和GitHub API，不读取 `portfolio.local.json`、账户截图、券商数据或本地密钥。
+
+周末或休市日如需核定邮件，可手动选择 `resend_saved_report`，重发仓库中最近一个已保存的A股交易日报；该模式不刷新行情、不改写历史，并拒绝发送非交易日报告。
 
 `.github/workflows/theme-watch-daily.yml` 和 `.github/workflows/email-preview.yml` 现在只保留手动触发，不再固定定时推送，避免与主日报重复。
 

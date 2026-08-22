@@ -8,6 +8,11 @@ on:
         required: true
         default: true
         type: boolean
+      resend_saved_report:
+        description: Resend the saved trading-day report without refreshing weekend/holiday data
+        required: true
+        default: false
+        type: boolean
   schedule:
     # GitHub cron uses UTC. Beijing 17:25 on weekdays, after the A-share close.
     - cron: '25 9 * * 1-5'
@@ -28,7 +33,9 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Build and optionally send whole-market report
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.resend_saved_report }}" = "true" ]; then
+            python tools/whole_market_watch_report.py --resend-existing
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
             python tools/whole_market_watch_report.py
           else
             python tools/whole_market_watch_report.py --email
@@ -42,6 +49,7 @@ jobs:
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
       - name: Persist public whole-market snapshot on trading days
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.resend_saved_report != true }}
         run: |
           if ! python -c "import json; raise SystemExit(0 if json.load(open('reports/whole_market_watch_latest.json', encoding='utf-8')).get('a_share_trading_day') else 1)"; then
             echo "A-share is closed; public history and email were skipped."

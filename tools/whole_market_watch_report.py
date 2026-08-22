@@ -282,7 +282,8 @@ def send_email(report: dict[str, Any], content: str) -> None:
     if not sender or not password or not recipient:
         raise SystemExit("Missing SENDER_EMAIL, SENDER_PASSWORD, or recipient secret")
     notifier = EmailNotifier(sender, password, os.getenv("SMTP_SERVER") or "smtp.qq.com", int(os.getenv("SMTP_PORT") or "465"))
-    subject = "Niki 决策工作台 | 全市场观察日报 | " + now_beijing().strftime("%Y-%m-%d")
+    report_date = str(report.get("as_of_date") or now_beijing().date().isoformat())
+    subject = "Niki 决策工作台 | 全市场观察日报 | " + report_date
     if not notifier.send_html_alert(recipient, subject, content):
         raise SystemExit("SMTP did not accept the whole-market watch email")
     print("whole_market_email=sent")
@@ -294,14 +295,21 @@ def main() -> int:
     parser.add_argument("--output", default="reports/whole_market_watch_latest.json")
     parser.add_argument("--history", default="reports/whole_market_watch_history.jsonl")
     parser.add_argument("--email", action="store_true")
+    parser.add_argument("--resend-existing", action="store_true", help="Resend the saved trading-day report without refreshing market data")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
+    output = ROOT / args.output
+    if args.resend_existing:
+        report = read_json(output)
+        if not report.get("a_share_trading_day"):
+            raise SystemExit("Saved report is not an A-share trading-day report; refusing to resend")
+        send_email(report, render_html(report))
+        return 0
     report = build_report(read_json(ROOT / args.config))
     content = render_html(report)
     if args.dry_run:
         print("dry_run=OK " + json.dumps({"a_share_trading_day": report["a_share_trading_day"], "market_gate": report["market_gate"]["status"], "sectors": {key: len(value) for key, value in report["sector_funnel"].items()}, "modules": len(report["modules"]), "html_bytes": len(content.encode("utf-8"))}, ensure_ascii=False))
         return 0
-    output = ROOT / args.output
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     history = ROOT / args.history
