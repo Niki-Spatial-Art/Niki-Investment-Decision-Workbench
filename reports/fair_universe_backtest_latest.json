@@ -1,0 +1,945 @@
+{
+  "generated_at": "2026-08-22T12:23:54+08:00",
+  "method": {
+    "benchmark": "510300 is used as the CSI 300 ETF market-Beta reference for this audit.",
+    "signal_timing": "Close-of-day signal, next benchmark session return; no future function.",
+    "rolling_oos": "2 years warm-up + 1-year non-overlapping test windows.",
+    "cost": "Weight turnover cost 0.15% per rebalance.",
+    "fairness": "Fixed audit pool includes theme names, broad-market controls and failed/delisted samples. It is not a complete point-in-time A-share universe.",
+    "risk_constraints": "Constrained run applies account -12%, theme -8%, single-stock -6% hard locks for the remainder of the audit run; the hard lock is deliberately conservative.",
+    "limitations": "Public history for several failed/delisted names is incomplete. Delisting-day execution, suspensions, dividends, taxes and real slippage are not fully observable; gaps are reported in coverage."
+  },
+  "history": {
+    "start": "2016-08-22",
+    "end": "2026-08-20",
+    "sessions": 2424
+  },
+  "coverage": {
+    "510300": {
+      "rows": 2424,
+      "start": "2016-08-22",
+      "end": "2026-08-20",
+      "source": "Yahoo Finance adjusted daily"
+    },
+    "300308": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "300502": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "688008": {
+      "rows": 1720,
+      "start": "2019-07-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 1719,
+      "in_test_start": "2019-07-22",
+      "in_test_end": "2026-08-20"
+    },
+    "300394": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600549": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000657": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000960": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600301": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600111": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "002463": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600183": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "300476": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "002916": {
+      "rows": 2107,
+      "start": "2017-12-13",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2106,
+      "in_test_start": "2017-12-13",
+      "in_test_end": "2026-08-20"
+    },
+    "000792": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000898": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000709": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000100": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600186": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600022": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "601857": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "601398": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600519": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000333": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "000651": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "601318": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600028": {
+      "rows": 2426,
+      "start": "2016-08-22",
+      "end": "2026-08-21",
+      "source": "Yahoo Finance adjusted daily",
+      "usable_in_test": 2425,
+      "in_test_start": "2016-08-22",
+      "in_test_end": "2026-08-20"
+    },
+    "600401": {
+      "rows": 640,
+      "start": "2015-06-10",
+      "end": "2019-07-08",
+      "source": "Tencent Finance qfq daily",
+      "usable_in_test": 520,
+      "in_test_start": "2016-01-19",
+      "in_test_end": "2019-07-08"
+    },
+    "600890": {
+      "rows": 640,
+      "start": "2019-09-23",
+      "end": "2022-06-15",
+      "source": "Tencent Finance qfq daily",
+      "usable_in_test": 640,
+      "in_test_start": "2019-09-23",
+      "in_test_end": "2022-06-15"
+    },
+    "600240": {
+      "rows": 640,
+      "start": "2017-05-12",
+      "end": "2020-01-23",
+      "source": "Tencent Finance qfq daily",
+      "usable_in_test": 640,
+      "in_test_start": "2017-05-12",
+      "in_test_end": "2020-01-23"
+    },
+    "000585": {
+      "rows": 640,
+      "start": "2019-08-29",
+      "end": "2022-05-23",
+      "source": "Tencent Finance qfq daily",
+      "usable_in_test": 640,
+      "in_test_start": "2019-08-29",
+      "in_test_end": "2022-05-23"
+    }
+  },
+  "failed_samples": [
+    {
+      "code": "600401",
+      "name": "海润光伏",
+      "reason": "退市/失败样本，公开接口只返回早期历史"
+    },
+    {
+      "code": "600890",
+      "name": "中房股份",
+      "reason": "退市/长期弱势样本，公开接口历史覆盖不完整"
+    },
+    {
+      "code": "600240",
+      "name": "华业资本",
+      "reason": "退市/重大风险样本，公开接口历史覆盖不完整"
+    },
+    {
+      "code": "000585",
+      "name": "东北电气",
+      "reason": "退市/失败样本，公开接口历史覆盖不完整"
+    }
+  ],
+  "results": {
+    "benchmark_510300": {
+      "start_date": "2016-08-22",
+      "end_date": "2026-08-20",
+      "cumulative_return_pct": 63.14275807208305,
+      "annualized_return_pct": 5.2222909062504375,
+      "max_drawdown_pct": -42.15702301031378,
+      "annualized_volatility_pct": 18.735595190268864,
+      "sharpe": 0.365456659940143,
+      "positive_days_pct": 50.26826248452332,
+      "hypothetical_pnl": 315713.79036041524,
+      "hypothetical_end_value": 815713.7903604152,
+      "turnover": null,
+      "trade_events": null,
+      "losing_years": null,
+      "label": "510300 buy-and-hold",
+      "periods": {
+        "recent_three_year": {
+          "start_date": "2023-07-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 28.37388268700325,
+          "annualized_return_pct": 8.694303706439133,
+          "max_drawdown_pct": -20.462858285392283,
+          "annualized_volatility_pct": 18.447320885229832,
+          "sharpe": 0.5440908724843181,
+          "positive_days_pct": 49.5364238410596,
+          "hypothetical_pnl": 141869.41343501623,
+          "hypothetical_end_value": 641869.4134350163
+        },
+        "recent_five_year": {
+          "start_date": "2021-06-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": -2.75507334391909,
+          "annualized_return_pct": -0.5576306966821987,
+          "max_drawdown_pct": -36.491930943087795,
+          "annualized_volatility_pct": 18.02098543330538,
+          "sharpe": 0.05902910673867386,
+          "positive_days_pct": 47.97458300238284,
+          "hypothetical_pnl": -13775.36671959545,
+          "hypothetical_end_value": 486224.63328040455
+        }
+      },
+      "outperformance_vs_510300_pct": 0.0
+    },
+    "unconstrained": {
+      "start_date": "2016-08-22",
+      "end_date": "2026-08-20",
+      "cumulative_return_pct": 57.165818212973754,
+      "annualized_return_pct": 4.814626354396334,
+      "max_drawdown_pct": -44.98427098264931,
+      "annualized_volatility_pct": 26.403346072884982,
+      "sharpe": 0.30677394918914586,
+      "positive_days_pct": 49.525381758151056,
+      "hypothetical_pnl": 285829.0910648687,
+      "hypothetical_end_value": 785829.0910648687,
+      "turnover": 881.8727994227986,
+      "trade_events": 1931,
+      "losing_years": [
+        "2016",
+        "2018",
+        "2022"
+      ],
+      "label": "fixed-universe trend strategy",
+      "periods": {
+        "recent_three_year": {
+          "start_date": "2023-07-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 103.62278644368934,
+          "annualized_return_pct": 26.788093830818084,
+          "max_drawdown_pct": -27.81213531351886,
+          "annualized_volatility_pct": 27.62906469781894,
+          "sharpe": 0.9972610864267264,
+          "positive_days_pct": 49.80132450331126,
+          "hypothetical_pnl": 518113.93221844663,
+          "hypothetical_end_value": 1018113.9322184466
+        },
+        "recent_five_year": {
+          "start_date": "2021-06-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 106.60029788001273,
+          "annualized_return_pct": 15.631523891638576,
+          "max_drawdown_pct": -40.77344759425916,
+          "annualized_volatility_pct": 28.766397777297183,
+          "sharpe": 0.6427933025013186,
+          "positive_days_pct": 49.88085782366958,
+          "hypothetical_pnl": 533001.4894000636,
+          "hypothetical_end_value": 1033001.4894000636
+        }
+      },
+      "outperformance_vs_510300_pct": -5.976939859109294
+    },
+    "risk_constrained": {
+      "start_date": "2016-08-22",
+      "end_date": "2026-08-20",
+      "cumulative_return_pct": -10.867278872454712,
+      "annualized_return_pct": -1.1893627342359547,
+      "max_drawdown_pct": -12.426371037819283,
+      "annualized_volatility_pct": 3.297385385250426,
+      "sharpe": -0.34633416187803795,
+      "positive_days_pct": 1.8984729673957903,
+      "hypothetical_pnl": -54336.39436227356,
+      "hypothetical_end_value": 445663.60563772643,
+      "turnover": 47.476190476190474,
+      "trade_events": 68,
+      "losing_years": [
+        "2016",
+        "2017"
+      ],
+      "label": "fixed-universe trend strategy with drawdown locks",
+      "periods": {
+        "recent_three_year": {
+          "start_date": "2023-07-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0,
+          "hypothetical_pnl": 0.0,
+          "hypothetical_end_value": 500000.0
+        },
+        "recent_five_year": {
+          "start_date": "2021-06-10",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0,
+          "hypothetical_pnl": 0.0,
+          "hypothetical_end_value": 500000.0
+        }
+      },
+      "outperformance_vs_510300_pct": -74.01003694453776
+    }
+  },
+  "rolling_oos": {
+    "unconstrained": [
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2017-12-29",
+        "test_start": "2018-01-02",
+        "test_end": "2019-01-02",
+        "strategy": {
+          "start_date": "2018-01-02",
+          "end_date": "2019-01-02",
+          "cumulative_return_pct": -32.52814753063331,
+          "annualized_return_pct": -33.50425704619094,
+          "max_drawdown_pct": -35.922844230601406,
+          "annualized_volatility_pct": 24.50535480213302,
+          "sharpe": -1.540176927505534,
+          "positive_days_pct": 47.73662551440329
+        },
+        "benchmark": {
+          "start_date": "2018-01-02",
+          "end_date": "2019-01-02",
+          "cumulative_return_pct": -26.2826887682283,
+          "annualized_return_pct": -27.110553469772146,
+          "max_drawdown_pct": -31.29127697110392,
+          "annualized_volatility_pct": 22.129178515835726,
+          "sharpe": -1.3171934985500713,
+          "positive_days_pct": 45.267489711934154
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2018-12-28",
+        "test_start": "2019-01-02",
+        "test_end": "2020-01-02",
+        "strategy": {
+          "start_date": "2019-01-02",
+          "end_date": "2020-01-02",
+          "cumulative_return_pct": 16.924482718879254,
+          "annualized_return_pct": 17.682386752732484,
+          "max_drawdown_pct": -24.880379152070876,
+          "annualized_volatility_pct": 22.969994883875316,
+          "sharpe": 0.8240707448949839,
+          "positive_days_pct": 53.30578512396694
+        },
+        "benchmark": {
+          "start_date": "2019-01-02",
+          "end_date": "2020-01-02",
+          "cumulative_return_pct": 42.344678635280154,
+          "annualized_return_pct": 44.43673113413045,
+          "max_drawdown_pct": -13.398050824368092,
+          "annualized_volatility_pct": 19.780521049534585,
+          "sharpe": 1.9584332762037788,
+          "positive_days_pct": 54.54545454545454
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2019-12-31",
+        "test_start": "2020-01-02",
+        "test_end": "2021-01-04",
+        "strategy": {
+          "start_date": "2020-01-02",
+          "end_date": "2021-01-04",
+          "cumulative_return_pct": 12.295833275978008,
+          "annualized_return_pct": 12.779187690793737,
+          "max_drawdown_pct": -19.97697134604316,
+          "annualized_volatility_pct": 29.52583651799451,
+          "sharpe": 0.5547125610212527,
+          "positive_days_pct": 51.028806584362144
+        },
+        "benchmark": {
+          "start_date": "2020-01-02",
+          "end_date": "2021-01-04",
+          "cumulative_return_pct": 28.561079869070905,
+          "annualized_return_pct": 29.76291850594661,
+          "max_drawdown_pct": -16.087580680203793,
+          "annualized_volatility_pct": 23.449530381622164,
+          "sharpe": 1.229525058114112,
+          "positive_days_pct": 55.144032921810705
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2020-12-31",
+        "test_start": "2021-01-04",
+        "test_end": "2022-01-04",
+        "strategy": {
+          "start_date": "2021-01-04",
+          "end_date": "2022-01-04",
+          "cumulative_return_pct": 17.33378216815067,
+          "annualized_return_pct": 18.030513043641584,
+          "max_drawdown_pct": -18.56384402072736,
+          "annualized_volatility_pct": 37.96204919136505,
+          "sharpe": 0.6034906398381753,
+          "positive_days_pct": 53.086419753086425
+        },
+        "benchmark": {
+          "start_date": "2021-01-04",
+          "end_date": "2022-01-04",
+          "cumulative_return_pct": -5.214183463279021,
+          "annualized_return_pct": -5.401990440912973,
+          "max_drawdown_pct": -17.1861613355097,
+          "annualized_volatility_pct": 18.401302721783317,
+          "sharpe": -0.20948351614313235,
+          "positive_days_pct": 50.617283950617285
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2021-12-31",
+        "test_start": "2022-01-04",
+        "test_end": "2023-01-03",
+        "strategy": {
+          "start_date": "2022-01-04",
+          "end_date": "2023-01-03",
+          "cumulative_return_pct": -28.03660555137042,
+          "annualized_return_pct": -29.008367567271065,
+          "max_drawdown_pct": -30.020155626943023,
+          "annualized_volatility_pct": 20.125088516795937,
+          "sharpe": -1.6000744628651336,
+          "positive_days_pct": 45.45454545454545
+        },
+        "benchmark": {
+          "start_date": "2022-01-04",
+          "end_date": "2023-01-03",
+          "cumulative_return_pct": -19.626739896096367,
+          "annualized_return_pct": -20.34912049274927,
+          "max_drawdown_pct": -27.44221859145315,
+          "annualized_volatility_pct": 20.055821551538497,
+          "sharpe": -1.0335151044637403,
+          "positive_days_pct": 44.62809917355372
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2022-12-30",
+        "test_start": "2023-01-03",
+        "test_end": "2024-01-02",
+        "strategy": {
+          "start_date": "2023-01-03",
+          "end_date": "2024-01-02",
+          "cumulative_return_pct": 4.086953544069072,
+          "annualized_return_pct": 4.259383583236698,
+          "max_drawdown_pct": -17.812376863834835,
+          "annualized_volatility_pct": 21.37717924622537,
+          "sharpe": 0.30175673736814296,
+          "positive_days_pct": 47.93388429752066
+        },
+        "benchmark": {
+          "start_date": "2023-01-03",
+          "end_date": "2024-01-02",
+          "cumulative_return_pct": -11.188529873942088,
+          "annualized_return_pct": -11.622913253588596,
+          "max_drawdown_pct": -19.881092303079427,
+          "annualized_volatility_pct": 13.402077093277326,
+          "sharpe": -0.8548321827610212,
+          "positive_days_pct": 42.561983471074385
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2023-12-29",
+        "test_start": "2024-01-02",
+        "test_end": "2025-01-02",
+        "strategy": {
+          "start_date": "2024-01-02",
+          "end_date": "2025-01-02",
+          "cumulative_return_pct": 15.364835491783847,
+          "annualized_return_pct": 16.048216343966047,
+          "max_drawdown_pct": -17.49703038442615,
+          "annualized_volatility_pct": 25.99689128316307,
+          "sharpe": 0.7016907873614215,
+          "positive_days_pct": 45.867768595041326
+        },
+        "benchmark": {
+          "start_date": "2024-01-02",
+          "end_date": "2025-01-02",
+          "cumulative_return_pct": 15.629488349270225,
+          "annualized_return_pct": 16.325450892203452,
+          "max_drawdown_pct": -12.44333271122432,
+          "annualized_volatility_pct": 22.61496193224778,
+          "sharpe": 0.7811215697514752,
+          "positive_days_pct": 47.93388429752066
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2024-12-31",
+        "test_start": "2025-01-02",
+        "test_end": "2026-01-05",
+        "strategy": {
+          "start_date": "2025-01-02",
+          "end_date": "2026-01-05",
+          "cumulative_return_pct": 69.45669952025399,
+          "annualized_return_pct": 73.19046601551675,
+          "max_drawdown_pct": -15.9860433261097,
+          "annualized_volatility_pct": 25.591176977059337,
+          "sharpe": 2.276656302661555,
+          "positive_days_pct": 55.371900826446286
+        },
+        "benchmark": {
+          "start_date": "2025-01-02",
+          "end_date": "2026-01-05",
+          "cumulative_return_pct": 26.71457610043646,
+          "annualized_return_pct": 27.960405331578308,
+          "max_drawdown_pct": -10.075453130591782,
+          "annualized_volatility_pct": 14.916163449961637,
+          "sharpe": 1.7288820754606855,
+          "positive_days_pct": 55.78512396694215
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2025-12-31",
+        "test_start": "2026-01-05",
+        "test_end": "2026-08-20",
+        "strategy": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 9.118331131856493,
+          "annualized_return_pct": 15.566090731398695,
+          "max_drawdown_pct": -27.81213531351886,
+          "annualized_volatility_pct": 37.1128294275134,
+          "sharpe": 0.5751957781490284,
+          "positive_days_pct": 51.973684210526315
+        },
+        "benchmark": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": -1.4483028800524544,
+          "annualized_return_pct": -2.38967536546002,
+          "max_drawdown_pct": -9.860535202167785,
+          "annualized_volatility_pct": 19.244869724750554,
+          "sharpe": -0.029206970181261727,
+          "positive_days_pct": 49.34210526315789
+        }
+      }
+    ],
+    "risk_constrained": [
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2017-12-29",
+        "test_start": "2018-01-02",
+        "test_end": "2019-01-02",
+        "strategy": {
+          "start_date": "2018-01-02",
+          "end_date": "2019-01-02",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2018-01-02",
+          "end_date": "2019-01-02",
+          "cumulative_return_pct": -26.2826887682283,
+          "annualized_return_pct": -27.110553469772146,
+          "max_drawdown_pct": -31.29127697110392,
+          "annualized_volatility_pct": 22.129178515835726,
+          "sharpe": -1.3171934985500713,
+          "positive_days_pct": 45.267489711934154
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2018-12-28",
+        "test_start": "2019-01-02",
+        "test_end": "2020-01-02",
+        "strategy": {
+          "start_date": "2019-01-02",
+          "end_date": "2020-01-02",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2019-01-02",
+          "end_date": "2020-01-02",
+          "cumulative_return_pct": 42.344678635280154,
+          "annualized_return_pct": 44.43673113413045,
+          "max_drawdown_pct": -13.398050824368092,
+          "annualized_volatility_pct": 19.780521049534585,
+          "sharpe": 1.9584332762037788,
+          "positive_days_pct": 54.54545454545454
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2019-12-31",
+        "test_start": "2020-01-02",
+        "test_end": "2021-01-04",
+        "strategy": {
+          "start_date": "2020-01-02",
+          "end_date": "2021-01-04",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2020-01-02",
+          "end_date": "2021-01-04",
+          "cumulative_return_pct": 28.561079869070905,
+          "annualized_return_pct": 29.76291850594661,
+          "max_drawdown_pct": -16.087580680203793,
+          "annualized_volatility_pct": 23.449530381622164,
+          "sharpe": 1.229525058114112,
+          "positive_days_pct": 55.144032921810705
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2020-12-31",
+        "test_start": "2021-01-04",
+        "test_end": "2022-01-04",
+        "strategy": {
+          "start_date": "2021-01-04",
+          "end_date": "2022-01-04",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2021-01-04",
+          "end_date": "2022-01-04",
+          "cumulative_return_pct": -5.214183463279021,
+          "annualized_return_pct": -5.401990440912973,
+          "max_drawdown_pct": -17.1861613355097,
+          "annualized_volatility_pct": 18.401302721783317,
+          "sharpe": -0.20948351614313235,
+          "positive_days_pct": 50.617283950617285
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2021-12-31",
+        "test_start": "2022-01-04",
+        "test_end": "2023-01-03",
+        "strategy": {
+          "start_date": "2022-01-04",
+          "end_date": "2023-01-03",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2022-01-04",
+          "end_date": "2023-01-03",
+          "cumulative_return_pct": -19.626739896096367,
+          "annualized_return_pct": -20.34912049274927,
+          "max_drawdown_pct": -27.44221859145315,
+          "annualized_volatility_pct": 20.055821551538497,
+          "sharpe": -1.0335151044637403,
+          "positive_days_pct": 44.62809917355372
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2022-12-30",
+        "test_start": "2023-01-03",
+        "test_end": "2024-01-02",
+        "strategy": {
+          "start_date": "2023-01-03",
+          "end_date": "2024-01-02",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2023-01-03",
+          "end_date": "2024-01-02",
+          "cumulative_return_pct": -11.188529873942088,
+          "annualized_return_pct": -11.622913253588596,
+          "max_drawdown_pct": -19.881092303079427,
+          "annualized_volatility_pct": 13.402077093277326,
+          "sharpe": -0.8548321827610212,
+          "positive_days_pct": 42.561983471074385
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2023-12-29",
+        "test_start": "2024-01-02",
+        "test_end": "2025-01-02",
+        "strategy": {
+          "start_date": "2024-01-02",
+          "end_date": "2025-01-02",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2024-01-02",
+          "end_date": "2025-01-02",
+          "cumulative_return_pct": 15.629488349270225,
+          "annualized_return_pct": 16.325450892203452,
+          "max_drawdown_pct": -12.44333271122432,
+          "annualized_volatility_pct": 22.61496193224778,
+          "sharpe": 0.7811215697514752,
+          "positive_days_pct": 47.93388429752066
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2024-12-31",
+        "test_start": "2025-01-02",
+        "test_end": "2026-01-05",
+        "strategy": {
+          "start_date": "2025-01-02",
+          "end_date": "2026-01-05",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2025-01-02",
+          "end_date": "2026-01-05",
+          "cumulative_return_pct": 26.71457610043646,
+          "annualized_return_pct": 27.960405331578308,
+          "max_drawdown_pct": -10.075453130591782,
+          "annualized_volatility_pct": 14.916163449961637,
+          "sharpe": 1.7288820754606855,
+          "positive_days_pct": 55.78512396694215
+        }
+      },
+      {
+        "train_start": "2016-08-22",
+        "train_end": "2025-12-31",
+        "test_start": "2026-01-05",
+        "test_end": "2026-08-20",
+        "strategy": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": 0.0,
+          "annualized_return_pct": 0.0,
+          "max_drawdown_pct": 0.0,
+          "annualized_volatility_pct": 0.0,
+          "sharpe": null,
+          "positive_days_pct": 0.0
+        },
+        "benchmark": {
+          "start_date": "2026-01-05",
+          "end_date": "2026-08-20",
+          "cumulative_return_pct": -1.4483028800524544,
+          "annualized_return_pct": -2.38967536546002,
+          "max_drawdown_pct": -9.860535202167785,
+          "annualized_volatility_pct": 19.244869724750554,
+          "sharpe": -0.029206970181261727,
+          "positive_days_pct": 49.34210526315789
+        }
+      }
+    ],
+    "unconstrained_summary": {
+      "windows": 9,
+      "positive_windows": 7,
+      "losing_windows": 2,
+      "beat_benchmark_windows": 4,
+      "median_return_pct": 12.295833275978008,
+      "mean_return_pct": 9.335129418774178
+    },
+    "risk_constrained_summary": {
+      "windows": 9,
+      "positive_windows": 0,
+      "losing_windows": 0,
+      "beat_benchmark_windows": 5,
+      "median_return_pct": 0.0,
+      "mean_return_pct": 0.0
+    }
+  }
+}
