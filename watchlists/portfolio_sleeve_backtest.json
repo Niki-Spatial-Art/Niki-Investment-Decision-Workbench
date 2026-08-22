@@ -1,0 +1,117 @@
+{
+  "name": "Layered Theme Portfolio Research",
+  "description": "公开研究用分层组合回测，不是当前配置或买入指令。",
+  "benchmark": "510300",
+  "history_bars": 1000,
+  "ytd_start": "2026-01-01",
+  "h1_end": "2026-06-30",
+  "three_year_days": 756,
+  "transaction_cost": 0.0015,
+  "windows": {
+    "5": 5,
+    "20": 20,
+    "60": 60
+  },
+  "symbols": [
+    "300308",
+    "300502",
+    "688008",
+    "300394",
+    "600549",
+    "000657",
+    "000960",
+    "600301",
+    "600111",
+    "002463",
+    "600183",
+    "300476",
+    "002916"
+  ],
+  "themes": {
+    "300308": "ai_optical",
+    "300502": "ai_optical",
+    "688008": "ai_server",
+    "300394": "ai_optical",
+    "600549": "minor_metals",
+    "000657": "minor_metals",
+    "000960": "minor_metals",
+    "600301": "minor_metals",
+    "600111": "minor_metals",
+    "002463": "pcb",
+    "600183": "pcb",
+    "300476": "pcb",
+    "002916": "pcb"
+  },
+  "scenarios": {
+    "defensive": {
+      "deep": {
+        "allocation": 0.30,
+        "rebalance_every": 60,
+        "max_per_theme": 1
+      },
+      "swing": {
+        "allocation": 0.15,
+        "rebalance_every": 20,
+        "max_per_theme": 1
+      },
+      "shallow": {
+        "allocation": 0.05,
+        "rebalance_every": 5,
+        "max_per_theme": 1
+      }
+    },
+    "balanced": {
+      "deep": {
+        "allocation": 0.40,
+        "rebalance_every": 60,
+        "max_per_theme": 1
+      },
+      "swing": {
+        "allocation": 0.20,
+        "rebalance_every": 20,
+        "max_per_theme": 1
+      },
+      "shallow": {
+        "allocation": 0.10,
+        "rebalance_every": 5,
+        "max_per_theme": 1
+      }
+    },
+    "aggressive_research": {
+      "deep": {
+        "allocation": 0.45,
+        "rebalance_every": 60,
+        "max_per_theme": 1
+      },
+      "swing": {
+        "allocation": 0.25,
+        "rebalance_every": 20,
+        "max_per_theme": 1
+      },
+      "shallow": {
+        "allocation": 0.15,
+        "rebalance_every": 5,
+        "max_per_theme": 1
+      }
+    },
+    "risk_capped": {
+      "deep": {
+        "allocation": 0.20,
+        "rebalance_every": 60,
+        "max_per_theme": 1
+      },
+      "swing": {
+        "allocation": 0.10,
+        "rebalance_every": 20,
+        "max_per_theme": 1
+      },
+      "shallow": {
+        "allocation": 0.05,
+        "rebalance_every": 5,
+        "max_per_theme": 1
+      },
+      "market_filter": "benchmark_ma20",
+      "gate_scale": 0.0
+    }
+  }
+}

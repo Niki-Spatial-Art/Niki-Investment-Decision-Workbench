@@ -51,6 +51,10 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 `Theme Watch Daily` 现在保留为手动触发的主题研究模块，`email-preview.yml` 也只保留手动预览。这样可以避免同一套观察池一天里发出多封重复邮件，把注意力集中在收盘后的人工复核。
 
+`tools/portfolio_sleeve_backtest.py` 提供分层埋伏组合研究：深埋伏、中段波段、浅埋伏和市场闸门场景，输出上半年、年至今、近三年和近五年的收益与回撤。它只用于历史验证，不把回测结果当作明日预测或交易指令。
+
+`Portfolio Sleeve Backtest Weekly` 每周五北京时间17:45更新公开回测快照，不发送交易指令。
+
 ## 安全边界
 
 - 不连接券商，不自动下单。
@@ -64,5 +68,6 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 - [候选证据与成交归因闭环](docs/evidence_and_attribution_workflow.md)
 - [可替换主题观察模块与QQ日报](docs/theme_watch_modules.md)
 - [全市场漏斗观察与QQ日报](docs/whole_market_watch.md)
+- [回测与分层埋伏组合](backtests/README.md)
 - [项目记忆与运行约定](CODEX_PROJECT_MEMORY.md)
 - [A 股数据依赖](requirements-a-stock.txt)

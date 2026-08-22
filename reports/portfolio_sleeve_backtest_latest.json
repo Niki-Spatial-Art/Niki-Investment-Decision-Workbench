@@ -1,0 +1,910 @@
+{
+  "generated_at": "2026-08-22T11:35:35+08:00",
+  "method": {
+    "signal_timing": "收盘计算信号，下一交易日收益开始计入，避免未来函数",
+    "deep": "约每60个交易日重评，MA60/相对强弱为主，偏长期埋伏",
+    "swing": "约每20个交易日重评，MA20/回踩/相对强弱为主，偏中段波段",
+    "shallow": "约每5个交易日重评，使用短周期条件，持有逻辑偏浅；A股个股仍按T+1建模，不等同T+0",
+    "cost": "每次权重变动按单边成本 0.15% 估算",
+    "limitations": "价格/成交回测不能验证产业、估值、财报披露时点、停牌、涨跌停成交和真实滑点；不能保证未来收益。样本来自可获得的公开历史，个股篮子存在幸存者偏差。"
+  },
+  "history": {
+    "start": "2021-08-23",
+    "end": "2026-08-20",
+    "sessions": 1209
+  },
+  "benchmark": {
+    "full_period": {
+      "start_date": "2021-08-23",
+      "end_date": "2026-08-20",
+      "cumulative_return_pct": 4.880503014893556,
+      "annualized_return_pct": 0.9990105407276184,
+      "max_drawdown_pct": -34.87899204248368,
+      "annualized_volatility_pct": 17.961516664790835,
+      "sharpe": 0.14482406014594904,
+      "positive_days_pct": 47.847682119205295
+    }
+  },
+  "scenarios": {
+    "defensive": {
+      "initial_capital": 500000,
+      "weights": {
+        "deep": 0.3,
+        "swing": 0.15,
+        "shallow": 0.05
+      },
+      "market_filter": "none",
+      "gate_scale": 0.0,
+      "full_period": {
+        "start_date": "2021-08-23",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 96.7848567571259,
+        "annualized_return_pct": 15.16735406124019,
+        "max_drawdown_pct": -20.47021143027109,
+        "annualized_volatility_pct": 18.27138470943426,
+        "sharpe": 0.8641201869630599,
+        "positive_days_pct": 41.05960264900662,
+        "hypothetical_pnl": 483924.28378562944,
+        "hypothetical_end_value": 983924.2837856294
+      },
+      "h1_2026": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-30",
+        "cumulative_return_pct": 21.454301424923482,
+        "annualized_return_pct": 53.09970561563813,
+        "max_drawdown_pct": -9.96760934966715,
+        "annualized_volatility_pct": 23.377323885572558,
+        "sharpe": 1.940369181718582,
+        "positive_days_pct": 55.65217391304348,
+        "hypothetical_pnl": 107271.50712461742,
+        "hypothetical_end_value": 607271.5071246175
+      },
+      "ytd": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 5.306557450832083,
+        "annualized_return_pct": 8.950371469378338,
+        "max_drawdown_pct": -13.295324895572392,
+        "annualized_volatility_pct": 23.081832965341174,
+        "sharpe": 0.48691502490635713,
+        "positive_days_pct": 47.368421052631575,
+        "hypothetical_pnl": 26532.787254160416,
+        "hypothetical_end_value": 526532.7872541604
+      },
+      "recent_three_year": {
+        "start_date": "2023-07-10",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 77.23481644423391,
+        "annualized_return_pct": 21.04850068562849,
+        "max_drawdown_pct": -17.626187037279685,
+        "annualized_volatility_pct": 18.09957805789915,
+        "sharpe": 1.1459625885715694,
+        "positive_days_pct": 42.78145695364238,
+        "hypothetical_pnl": 386174.08222116955,
+        "hypothetical_end_value": 886174.0822211695
+      },
+      "trade_events": 540,
+      "turnover": 67.69999999999993,
+      "last_decisions": [
+        {
+          "date": "2026-07-17",
+          "entries": [
+            "600183"
+          ],
+          "exits": [
+            "300502"
+          ],
+          "positions": {
+            "600183": 0.3
+          },
+          "turnover": 0.3,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-07-20",
+          "entries": [],
+          "exits": [
+            "600183"
+          ],
+          "positions": {},
+          "turnover": 0.3,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-07-27",
+          "entries": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.0125,
+            "600549": 0.0125,
+            "300476": 0.0125,
+            "300308": 0.0125
+          },
+          "turnover": 0.05,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-07-28",
+          "entries": [],
+          "exits": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.05,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-03",
+          "entries": [
+            "000960"
+          ],
+          "exits": [],
+          "positions": {
+            "000960": 0.05
+          },
+          "turnover": 0.05,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-10",
+          "entries": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "exits": [
+            "000960"
+          ],
+          "positions": {
+            "300394": 0.0125,
+            "002463": 0.0125,
+            "688008": 0.0125,
+            "600549": 0.0125
+          },
+          "turnover": 0.1,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-11",
+          "entries": [],
+          "exits": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.05,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-17",
+          "entries": [
+            "300502",
+            "600111",
+            "600183",
+            "600301",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.0625,
+            "600301": 0.049999999999999996,
+            "600183": 0.0625,
+            "300502": 0.0125,
+            "600111": 0.0125
+          },
+          "turnover": 0.2,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-18",
+          "entries": [
+            "600111",
+            "600183",
+            "600301"
+          ],
+          "exits": [
+            "300502",
+            "688008"
+          ],
+          "positions": {
+            "600301": 0.075,
+            "600183": 0.1,
+            "600111": 0.025
+          },
+          "turnover": 0.15000000000000002,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-19",
+          "entries": [
+            "600111",
+            "600301"
+          ],
+          "exits": [
+            "600183"
+          ],
+          "positions": {
+            "600301": 0.15,
+            "600111": 0.05
+          },
+          "turnover": 0.2,
+          "action": "调仓"
+        }
+      ]
+    },
+    "balanced": {
+      "initial_capital": 500000,
+      "weights": {
+        "deep": 0.4,
+        "swing": 0.2,
+        "shallow": 0.1
+      },
+      "market_filter": "none",
+      "gate_scale": 0.0,
+      "full_period": {
+        "start_date": "2021-08-23",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 143.45804252027028,
+        "annualized_return_pct": 20.395888305721677,
+        "max_drawdown_pct": -27.460398350172365,
+        "annualized_volatility_pct": 25.316931795734494,
+        "sharpe": 0.8594442687587633,
+        "positive_days_pct": 40.97682119205298,
+        "hypothetical_pnl": 717290.2126013514,
+        "hypothetical_end_value": 1217290.2126013516
+      },
+      "h1_2026": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-30",
+        "cumulative_return_pct": 31.823882168982685,
+        "annualized_return_pct": 83.20764287141205,
+        "max_drawdown_pct": -13.46964498361074,
+        "annualized_volatility_pct": 32.68050828826799,
+        "sharpe": 2.0182909091064034,
+        "positive_days_pct": 55.65217391304348,
+        "hypothetical_pnl": 159119.41084491342,
+        "hypothetical_end_value": 659119.4108449135
+      },
+      "ytd": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 7.775019226622648,
+        "annualized_return_pct": 13.216989287858638,
+        "max_drawdown_pct": -18.24317608210948,
+        "annualized_volatility_pct": 32.250023779664886,
+        "sharpe": 0.5463769537581682,
+        "positive_days_pct": 47.368421052631575,
+        "hypothetical_pnl": 38875.09613311324,
+        "hypothetical_end_value": 538875.0961331133
+      },
+      "recent_three_year": {
+        "start_date": "2023-07-10",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 117.28809577106492,
+        "annualized_return_pct": 29.566913434790052,
+        "max_drawdown_pct": -23.120699244578535,
+        "annualized_volatility_pct": 25.18369435786369,
+        "sharpe": 1.154415148656925,
+        "positive_days_pct": 42.78145695364238,
+        "hypothetical_pnl": 586440.4788553246,
+        "hypothetical_end_value": 1086440.4788553244
+      },
+      "trade_events": 540,
+      "turnover": 107.64999999999988,
+      "last_decisions": [
+        {
+          "date": "2026-07-17",
+          "entries": [
+            "600183"
+          ],
+          "exits": [
+            "300502"
+          ],
+          "positions": {
+            "600183": 0.4
+          },
+          "turnover": 0.4,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-07-20",
+          "entries": [],
+          "exits": [
+            "600183"
+          ],
+          "positions": {},
+          "turnover": 0.4,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-07-27",
+          "entries": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.025,
+            "600549": 0.025,
+            "300476": 0.025,
+            "300308": 0.025
+          },
+          "turnover": 0.1,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-07-28",
+          "entries": [],
+          "exits": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.1,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-03",
+          "entries": [
+            "000960"
+          ],
+          "exits": [],
+          "positions": {
+            "000960": 0.1
+          },
+          "turnover": 0.1,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-10",
+          "entries": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "exits": [
+            "000960"
+          ],
+          "positions": {
+            "300394": 0.025,
+            "002463": 0.025,
+            "688008": 0.025,
+            "600549": 0.025
+          },
+          "turnover": 0.2,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-11",
+          "entries": [],
+          "exits": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.1,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-17",
+          "entries": [
+            "300502",
+            "600111",
+            "600183",
+            "600301",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.09166666666666667,
+            "600301": 0.06666666666666667,
+            "600183": 0.09166666666666667,
+            "300502": 0.025,
+            "600111": 0.025
+          },
+          "turnover": 0.30000000000000004,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-18",
+          "entries": [
+            "600111",
+            "600183",
+            "600301"
+          ],
+          "exits": [
+            "300502",
+            "688008"
+          ],
+          "positions": {
+            "600301": 0.1,
+            "600183": 0.15000000000000002,
+            "600111": 0.05
+          },
+          "turnover": 0.23333333333333336,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-19",
+          "entries": [
+            "600111",
+            "600301"
+          ],
+          "exits": [
+            "600183"
+          ],
+          "positions": {
+            "600301": 0.2,
+            "600111": 0.1
+          },
+          "turnover": 0.30000000000000004,
+          "action": "调仓"
+        }
+      ]
+    },
+    "aggressive_research": {
+      "initial_capital": 500000,
+      "weights": {
+        "deep": 0.45,
+        "swing": 0.25,
+        "shallow": 0.15
+      },
+      "market_filter": "none",
+      "gate_scale": 0.0,
+      "full_period": {
+        "start_date": "2021-08-23",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 174.03178334445656,
+        "annualized_return_pct": 23.40402769247749,
+        "max_drawdown_pct": -32.77884567859615,
+        "annualized_volatility_pct": 30.249550980662132,
+        "sharpe": 0.845976288498466,
+        "positive_days_pct": 41.30794701986755,
+        "hypothetical_pnl": 870158.9167222828,
+        "hypothetical_end_value": 1370158.9167222828
+      },
+      "h1_2026": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-30",
+        "cumulative_return_pct": 39.58294702767524,
+        "annualized_return_pct": 107.6690554534935,
+        "max_drawdown_pct": -16.028703241988683,
+        "annualized_volatility_pct": 39.25677223314681,
+        "sharpe": 2.0605677943187164,
+        "positive_days_pct": 55.65217391304348,
+        "hypothetical_pnl": 197914.7351383762,
+        "hypothetical_end_value": 697914.7351383762
+      },
+      "ytd": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 9.66103307018862,
+        "annualized_return_pct": 16.52055696217616,
+        "max_drawdown_pct": -21.439504870707704,
+        "annualized_volatility_pct": 38.60011573025976,
+        "sharpe": 0.5893769761996601,
+        "positive_days_pct": 47.368421052631575,
+        "hypothetical_pnl": 48305.1653509431,
+        "hypothetical_end_value": 548305.1653509431
+      },
+      "recent_three_year": {
+        "start_date": "2023-07-10",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 146.70948764307553,
+        "annualized_return_pct": 35.17667745889668,
+        "max_drawdown_pct": -26.501655604022822,
+        "annualized_volatility_pct": 30.255117105466724,
+        "sharpe": 1.1472979950108653,
+        "positive_days_pct": 43.17880794701986,
+        "hypothetical_pnl": 733547.4382153777,
+        "hypothetical_end_value": 1233547.4382153777
+      },
+      "trade_events": 540,
+      "turnover": 145.03333333333373,
+      "last_decisions": [
+        {
+          "date": "2026-07-17",
+          "entries": [
+            "600183"
+          ],
+          "exits": [
+            "300502"
+          ],
+          "positions": {
+            "600183": 0.45
+          },
+          "turnover": 0.45,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-07-20",
+          "entries": [],
+          "exits": [
+            "600183"
+          ],
+          "positions": {},
+          "turnover": 0.45,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-07-27",
+          "entries": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.0375,
+            "600549": 0.0375,
+            "300476": 0.0375,
+            "300308": 0.0375
+          },
+          "turnover": 0.15,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-07-28",
+          "entries": [],
+          "exits": [
+            "300308",
+            "300476",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.15,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-03",
+          "entries": [
+            "000960"
+          ],
+          "exits": [],
+          "positions": {
+            "000960": 0.15
+          },
+          "turnover": 0.15,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-10",
+          "entries": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "exits": [
+            "000960"
+          ],
+          "positions": {
+            "300394": 0.0375,
+            "002463": 0.0375,
+            "688008": 0.0375,
+            "600549": 0.0375
+          },
+          "turnover": 0.3,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-11",
+          "entries": [],
+          "exits": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.15,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-17",
+          "entries": [
+            "300502",
+            "600111",
+            "600183",
+            "600301",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.12083333333333332,
+            "600301": 0.08333333333333333,
+            "600183": 0.12083333333333332,
+            "300502": 0.0375,
+            "600111": 0.0375
+          },
+          "turnover": 0.39999999999999997,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-18",
+          "entries": [
+            "600111",
+            "600183",
+            "600301"
+          ],
+          "exits": [
+            "300502",
+            "688008"
+          ],
+          "positions": {
+            "600301": 0.125,
+            "600183": 0.2,
+            "600111": 0.075
+          },
+          "turnover": 0.31666666666666665,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-19",
+          "entries": [
+            "600111",
+            "600301"
+          ],
+          "exits": [
+            "600183"
+          ],
+          "positions": {
+            "600301": 0.25,
+            "600111": 0.15
+          },
+          "turnover": 0.4,
+          "action": "调仓"
+        }
+      ]
+    },
+    "risk_capped": {
+      "initial_capital": 500000,
+      "weights": {
+        "deep": 0.2,
+        "swing": 0.1,
+        "shallow": 0.05
+      },
+      "market_filter": "benchmark_ma20",
+      "gate_scale": 0.0,
+      "full_period": {
+        "start_date": "2021-08-23",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 27.811710673594558,
+        "annualized_return_pct": 5.252307329210781,
+        "max_drawdown_pct": -22.48435164053859,
+        "annualized_volatility_pct": 9.645521370096475,
+        "sharpe": 0.5788651064518127,
+        "positive_days_pct": 20.281456953642383,
+        "hypothetical_pnl": 139058.55336797278,
+        "hypothetical_end_value": 639058.5533679728
+      },
+      "h1_2026": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-06-30",
+        "cumulative_return_pct": 10.78264055633733,
+        "annualized_return_pct": 25.155822037493802,
+        "max_drawdown_pct": -4.471365622191281,
+        "annualized_volatility_pct": 11.973890733690371,
+        "sharpe": 1.9347648821404257,
+        "positive_days_pct": 37.391304347826086,
+        "hypothetical_pnl": 53913.202781686654,
+        "hypothetical_end_value": 553913.2027816867
+      },
+      "ytd": {
+        "start_date": "2026-01-05",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 5.0367074647364785,
+        "annualized_return_pct": 8.487898547446694,
+        "max_drawdown_pct": -5.186672806087178,
+        "annualized_volatility_pct": 11.218081297016452,
+        "sharpe": 0.7825807645279561,
+        "positive_days_pct": 28.947368421052634,
+        "hypothetical_pnl": 25183.53732368239,
+        "hypothetical_end_value": 525183.5373236823
+      },
+      "recent_three_year": {
+        "start_date": "2023-07-10",
+        "end_date": "2026-08-20",
+        "cumulative_return_pct": 25.487484867184197,
+        "annualized_return_pct": 7.87239898243508,
+        "max_drawdown_pct": -16.813478718650632,
+        "annualized_volatility_pct": 10.114843349377525,
+        "sharpe": 0.799727232798945,
+        "positive_days_pct": 23.973509933774835,
+        "hypothetical_pnl": 127437.42433592098,
+        "hypothetical_end_value": 627437.424335921
+      },
+      "trade_events": 348,
+      "turnover": 50.80833333333337,
+      "last_decisions": [
+        {
+          "date": "2026-06-22",
+          "entries": [
+            "300394",
+            "300476",
+            "688008"
+          ],
+          "exits": [
+            "002916",
+            "300502"
+          ],
+          "positions": {
+            "688008": 0.08333333333333333,
+            "600183": 0.06666666666666667,
+            "300502": 0.06666666666666667,
+            "300394": 0.11666666666666667,
+            "300476": 0.016666666666666666
+          },
+          "turnover": 0.2,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-06-23",
+          "entries": [],
+          "exits": [
+            "300394",
+            "300476",
+            "688008"
+          ],
+          "positions": {
+            "688008": 0.06666666666666667,
+            "600183": 0.06666666666666667,
+            "300502": 0.06666666666666667
+          },
+          "turnover": 0.15,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-06-29",
+          "entries": [
+            "300502",
+            "600183"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.06666666666666667,
+            "600183": 0.09166666666666667,
+            "300502": 0.09166666666666667
+          },
+          "turnover": 0.05000000000000002,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-07-02",
+          "entries": [],
+          "exits": [
+            "300502",
+            "600183",
+            "688008"
+          ],
+          "positions": {
+            "688008": 0.0,
+            "600183": 0.0,
+            "300502": 0.0
+          },
+          "turnover": 0.25,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-07",
+          "entries": [
+            "000960"
+          ],
+          "exits": [],
+          "positions": {
+            "000960": 0.05
+          },
+          "turnover": 0.05,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-10",
+          "entries": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "exits": [
+            "000960"
+          ],
+          "positions": {
+            "300394": 0.0125,
+            "002463": 0.0125,
+            "688008": 0.0125,
+            "600549": 0.0125
+          },
+          "turnover": 0.1,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-11",
+          "entries": [],
+          "exits": [
+            "002463",
+            "300394",
+            "600549",
+            "688008"
+          ],
+          "positions": {},
+          "turnover": 0.05,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-17",
+          "entries": [
+            "300502",
+            "600111",
+            "600183",
+            "600301",
+            "688008"
+          ],
+          "exits": [],
+          "positions": {
+            "688008": 0.04583333333333334,
+            "600301": 0.03333333333333333,
+            "600183": 0.04583333333333334,
+            "300502": 0.0125,
+            "600111": 0.0125
+          },
+          "turnover": 0.15000000000000002,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-18",
+          "entries": [
+            "600111",
+            "600183",
+            "600301"
+          ],
+          "exits": [
+            "300502",
+            "688008"
+          ],
+          "positions": {
+            "600301": 0.05,
+            "600183": 0.07500000000000001,
+            "600111": 0.025
+          },
+          "turnover": 0.11666666666666668,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-19",
+          "entries": [],
+          "exits": [
+            "600111",
+            "600183",
+            "600301"
+          ],
+          "positions": {
+            "600301": 0.0,
+            "600111": 0.0
+          },
+          "turnover": 0.15000000000000002,
+          "action": "退出/减仓"
+        }
+      ]
+    }
+  }
+}
