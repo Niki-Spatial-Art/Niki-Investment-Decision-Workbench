@@ -204,48 +204,6 @@ def module_metrics(module: dict[str, Any], payload: dict[str, Any], benchmark_re
     }
 
 
-def action_card_conclusion(module_status: str, stock: dict[str, Any]) -> str:
-    if stock.get("is_chase"):
-        return "不追"
-    if module_status.startswith("可人工复核") and stock.get("signal_score", 0) >= 3:
-        return "复核"
-    if module_status.startswith("观察"):
-        return "观察"
-    return "等待"
-
-
-def build_action_cards(modules: list[dict[str, Any]], as_of_date: str) -> list[dict[str, Any]]:
-    cards: list[dict[str, Any]] = []
-    for module in modules:
-        catalyst = str(module.get("thesis") or "")
-        invalidation = "；".join(str(item) for item in module.get("invalidation") or [])
-        for stock in module.get("a_share") or []:
-            if not stock.get("data_ready"):
-                continue
-            rel20 = (stock.get("relative_returns") or {}).get(20)
-            ret5 = (stock.get("returns") or {}).get(5)
-            ret20 = (stock.get("returns") or {}).get(20)
-            evidence = " / ".join([
-                f"20日相对沪深300 {pct(rel20)}",
-                f"5日 {pct(ret5)}",
-                f"20日 {pct(ret20)}",
-                "MA20上方" if stock.get("above_ma20") else "MA20下方",
-                f"5/20量比 {num(stock.get('volume_ratio_5_20'))}",
-            ])
-            cards.append({
-                "日期": stock.get("as_of") or as_of_date or "",
-                "板块": module.get("name") or "",
-                "股票": f"{stock.get('code')} {stock.get('name')}",
-                "产业催化": catalyst,
-                "价格/成交证据": evidence,
-                "反证条件": invalidation,
-                "结论（观察/复核）": action_card_conclusion(str(module.get("status") or ""), stock),
-                "梅森标签": (stock.get("mason") or {}).get("status") or "-",
-            })
-    cards.sort(key=lambda item: (item.get("结论（观察/复核）") != "复核", item.get("板块") or "", item.get("股票") or ""))
-    return cards
-
-
 def yahoo_history(symbol: str) -> dict[str, Any]:
     url = "https://query1.finance.yahoo.com/v8/finance/chart/" + symbol + "?range=4mo&interval=1d"
     try:
@@ -284,14 +242,13 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
         item["us_validation"] = [yahoo_history(str(symbol)) for symbol in module.get("us_symbols") or []]
         modules.append(item)
     components = [github_component(str(item["repo"]), str(item.get("purpose") or "")) for item in config.get("github_components") or []]
-    cards = build_action_cards(modules, now_beijing().date().isoformat())
     return {
         "generated_at": now_beijing().isoformat(timespec="seconds"), "as_of_date": now_beijing().date().isoformat(), "a_share_trading_day": is_trading,
         "skip_reason": "A股非交易日或行情时间未更新，跳过邮件发送。" if config.get("skip_if_not_a_share_trading_day") and not is_trading else "",
         "market_gate": {"status": gate, "benchmark": benchmark_info, "breadth": breadth, "breadth_ok": breadth_ok},
         "sector_funnel": sector_groups,
         "market_scan": {key: market_scan.get(key) for key in ("scanned_count", "min_rows_target", "missing_estimate", "sources", "source_counts", "failures", "candidate_count")},
-        "candidates": market_scan.get("results") or [], "modules": modules, "action_cards": cards, "secondary_themes": config.get("secondary_themes") or [], "github_components": components,
+        "candidates": market_scan.get("results") or [], "modules": modules, "secondary_themes": config.get("secondary_themes") or [], "github_components": components,
         "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。",
     }
 
@@ -351,22 +308,7 @@ def main() -> int:
     history.parent.mkdir(parents=True, exist_ok=True)
     old = [json.loads(line) for line in history.read_text(encoding="utf-8").splitlines() if line.strip()] if history.exists() else []
     old = [item for item in old if item.get("as_of_date") != report.get("as_of_date")][-364:]
-    old.append({
-        "as_of_date": report.get("as_of_date"),
-        "generated_at": report.get("generated_at"),
-        "market_gate": report.get("market_gate"),
-        "sector_funnel": report.get("sector_funnel"),
-        "modules": [{"id": item.get("id"), "status": item.get("status")} for item in report.get("modules") or []],
-        "action_cards": [
-            {
-                "日期": item.get("日期"),
-                "板块": item.get("板块"),
-                "股票": item.get("股票"),
-                "结论（观察/复核）": item.get("结论（观察/复核）"),
-            }
-            for item in (report.get("action_cards") or [])[:30]
-        ],
-    })
+    old.append({"as_of_date": report.get("as_of_date"), "generated_at": report.get("generated_at"), "market_gate": report.get("market_gate"), "sector_funnel": report.get("sector_funnel"), "modules": [{"id": item.get("id"), "status": item.get("status")} for item in report.get("modules") or []]})
     history.write_text("\n".join(json.dumps(item, ensure_ascii=False, sort_keys=True) for item in old) + "\n", encoding="utf-8")
     print(f"whole_market_report={output}")
     if args.email and not report.get("skip_reason"):
