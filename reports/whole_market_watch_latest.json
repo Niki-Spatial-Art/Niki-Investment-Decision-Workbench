@@ -1,26 +1,26 @@
 {
-  "generated_at": "2026-08-21T23:15:21+08:00",
-  "as_of_date": "2026-08-21",
-  "a_share_trading_day": true,
-  "skip_reason": "",
+  "generated_at": "2026-08-22T13:45:15+08:00",
+  "as_of_date": "2026-08-22",
+  "a_share_trading_day": false,
+  "skip_reason": "A股非交易日或行情时间未更新，跳过邮件发送。",
   "market_gate": {
-    "status": "等待：市场基准或广度未确认",
+    "status": "等待：A股未开市",
     "benchmark": {
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
       "price": 4.68,
-      "ma20": 4.6992,
+      "ma20": 4.699199999999999,
       "above_ma20": false,
       "return_20d": -0.446713465220161,
       "as_of": "20260821",
       "source": "Tencent Finance quote"
     },
     "breadth": {
-      "advancers": 2183,
-      "decliners": 2444,
-      "flat": 141,
-      "sample_rows": 4768,
-      "total_amount": 1853680251521.1003
+      "advancers": 2265,
+      "decliners": 2581,
+      "flat": 149,
+      "sample_rows": 4995,
+      "total_amount": 1857598498815.0803
     },
     "breadth_ok": false
   },
@@ -68,34 +68,34 @@
       },
       {
         "name": "工业金属",
-        "count": 55,
-        "advancers": 48,
+        "count": 56,
+        "advancers": 49,
         "decliners": 6,
-        "amount": 48412175650.21001,
-        "avg_pct": 2.59,
-        "breadth_ratio": 0.8727,
+        "amount": 48428127009.21001,
+        "avg_pct": 2.56,
+        "breadth_ratio": 0.875,
         "status": "重点研究"
       }
     ],
     "observe": [
       {
         "name": "通信设备",
-        "count": 82,
-        "advancers": 57,
+        "count": 83,
+        "advancers": 58,
         "decliners": 25,
-        "amount": 164293371760.87003,
-        "avg_pct": 1.49,
-        "breadth_ratio": 0.6951,
+        "amount": 164309079748.87003,
+        "avg_pct": 1.47,
+        "breadth_ratio": 0.6988,
         "status": "可继续观察"
       },
       {
         "name": "电池",
-        "count": 87,
-        "advancers": 71,
+        "count": 89,
+        "advancers": 73,
         "decliners": 16,
-        "amount": 53363301671.740005,
-        "avg_pct": 1.48,
-        "breadth_ratio": 0.8161,
+        "amount": 53397538482.740005,
+        "avg_pct": 1.45,
+        "breadth_ratio": 0.8202,
         "status": "可继续观察"
       },
       {
@@ -139,23 +139,13 @@
         "status": "可继续观察"
       },
       {
-        "name": "汽车服务",
-        "count": 6,
-        "advancers": 4,
-        "decliners": 1,
-        "amount": 625770849.86,
-        "avg_pct": 1.22,
-        "breadth_ratio": 0.6667,
-        "status": "可继续观察"
-      },
-      {
         "name": "光伏设备",
-        "count": 57,
-        "advancers": 45,
+        "count": 58,
+        "advancers": 46,
         "decliners": 9,
-        "amount": 19893187638.62,
+        "amount": 19904547646.62,
         "avg_pct": 1.16,
-        "breadth_ratio": 0.7895,
+        "breadth_ratio": 0.7931,
         "status": "可继续观察"
       },
       {
@@ -170,33 +160,48 @@
       },
       {
         "name": "自动化设备",
-        "count": 77,
-        "advancers": 48,
-        "decliners": 28,
-        "amount": 31986566522.64,
-        "avg_pct": 1.12,
-        "breadth_ratio": 0.6234,
+        "count": 80,
+        "advancers": 49,
+        "decliners": 30,
+        "amount": 32027928135.64,
+        "avg_pct": 1.05,
+        "breadth_ratio": 0.6125,
+        "status": "可继续观察"
+      },
+      {
+        "name": "保险Ⅱ",
+        "count": 5,
+        "advancers": 5,
+        "decliners": 0,
+        "amount": 9998969224.0,
+        "avg_pct": 1.04,
+        "breadth_ratio": 1.0,
         "status": "可继续观察"
       }
     ],
     "hot": []
   },
   "market_scan": {
-    "scanned_count": 4900,
+    "scanned_count": 5552,
     "min_rows_target": 5000,
-    "missing_estimate": 100,
+    "missing_estimate": 0,
     "sources": [
       "eastmoney",
       "sina"
     ],
     "source_counts": {
-      "eastmoney": 4900
+      "eastmoney": 5552
     },
     "failures": [
       {
-        "page": 50,
+        "page": 57,
         "source": "eastmoney",
-        "error": "broad market scan time budget reached after 111.8s"
+        "error": "empty page"
+      },
+      {
+        "page": 58,
+        "source": "eastmoney",
+        "error": "empty page"
       }
     ],
     "candidate_count": 156
@@ -1551,7 +1556,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": false,
+            "pullback_candidate": false,
+            "double_drop_observed": false,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 0.7609966256285495,
+            "overextended": false,
+            "status": "等待：趋势未确认",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "300502",
@@ -1576,7 +1591,17 @@
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": false,
+            "pullback_candidate": false,
+            "double_drop_observed": false,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 3.964529748673986,
+            "overextended": false,
+            "status": "等待：趋势未确认",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "688008",
@@ -1595,13 +1620,23 @@
             "10": -5.451568864414413,
             "20": -13.581425118591152
           },
-          "ma20": 208.20889999999994,
+          "ma20": 208.2089,
           "above_ma20": false,
           "volume_ratio_5_20": 0.8112202659325694,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": false,
+            "pullback_candidate": false,
+            "double_drop_observed": false,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -3.6784690760097134,
+            "overextended": false,
+            "status": "等待：趋势未确认",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "300394",
@@ -1626,7 +1661,17 @@
           "is_chase": false,
           "signal_score": 4,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": false,
+            "double_drop_observed": true,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": 19.133676378524683,
+            "overextended": true,
+            "status": "不追：单日或均线乖离过大",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         }
       ],
       "breadth": {
@@ -1651,48 +1696,48 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-08-21",
-          "price": 215.75999450683594,
-          "return_20d": 4.31251127773844,
+          "price": 214.72000122070312,
+          "return_20d": 3.8097104149720895,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
           "as_of": "2026-08-21",
-          "price": 484.4800109863281,
-          "return_20d": 26.926904766130775,
+          "price": 483.239990234375,
+          "return_20d": 26.602036882374858,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
           "as_of": "2026-08-21",
-          "price": 259.5899963378906,
-          "return_20d": 11.839212293859912,
+          "price": 258.6300048828125,
+          "return_20d": 11.425618974936235,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
           "as_of": "2026-08-21",
-          "price": 550.219970703125,
-          "return_20d": -7.555575791565539,
+          "price": 549.9000244140625,
+          "return_20d": -7.6093311113374025,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
           "as_of": "2026-08-21",
-          "price": 343.92999267578125,
-          "return_20d": 7.565522981243156,
+          "price": 344.82000732421875,
+          "return_20d": 7.843878731421627,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-08-21",
-          "price": 367.8699951171875,
-          "return_20d": -3.678785561523179,
+          "price": 368.45001220703125,
+          "return_20d": -3.526916827376969,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -1727,7 +1772,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": 4.415784480410307,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "000657",
@@ -1746,13 +1801,23 @@
             "10": 3.180737702201797,
             "20": 23.199370644106843
           },
-          "ma20": 61.955500000000015,
+          "ma20": 61.95550000000001,
           "above_ma20": true,
           "volume_ratio_5_20": 0.9857094266105249,
           "is_chase": false,
           "signal_score": 3,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 9.98216461815334,
+            "overextended": true,
+            "status": "不追：单日或均线乖离过大",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "000960",
@@ -1777,7 +1842,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 1.145038167938936,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "600301",
@@ -1802,7 +1877,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 2.8964565315849558,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "600111",
@@ -1827,7 +1912,17 @@
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": false,
+            "pullback_candidate": false,
+            "double_drop_observed": false,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -2.2627737226277365,
+            "overextended": false,
+            "status": "等待：趋势未确认",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         }
       ],
       "breadth": {
@@ -1852,16 +1947,16 @@
         {
           "symbol": "MP",
           "as_of": "2026-08-21",
-          "price": 59.599998474121094,
-          "return_20d": 44.30992633200594,
+          "price": 60.04999923706055,
+          "return_20d": 45.399516577169074,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
           "as_of": "2026-08-21",
-          "price": 75.55999755859375,
-          "return_20d": 20.702874441491126,
+          "price": 76.66000366210938,
+          "return_20d": 22.460072732750458,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -1896,7 +1991,17 @@
           "is_chase": false,
           "signal_score": 3,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 5.075180637247454,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "600183",
@@ -1921,7 +2026,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 5.060797607651733,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "300476",
@@ -1946,7 +2061,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 4.472849369947284,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         },
         {
           "code": "002916",
@@ -1971,7 +2096,17 @@
           "is_chase": false,
           "signal_score": 2,
           "data_ready": true,
-          "source": "Tencent Finance quote / daily bars fallback route"
+          "source": "Tencent Finance quote / daily bars fallback route",
+          "mason": {
+            "trend_ok": true,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": 2.101742640908246,
+            "overextended": false,
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
+            "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          }
         }
       ],
       "breadth": {
@@ -1996,36 +2131,168 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-08-21",
-          "price": 215.86000061035156,
-          "return_20d": 4.36086077749005,
+          "price": 214.72000122070312,
+          "return_20d": 3.8097104149720895,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-08-21",
-          "price": 367.8699951171875,
-          "return_20d": -3.678785561523179,
+          "price": 368.45001220703125,
+          "return_20d": -3.526916827376969,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
           "as_of": "2026-08-21",
-          "price": 185.7899932861328,
-          "return_20d": 6.781991735400195,
-          "above_ma20": false,
+          "price": 188.64999389648438,
+          "return_20d": 8.42576466491134,
+          "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
           "as_of": "2026-08-21",
-          "price": 965.5994873046875,
-          "return_20d": 4.848197459779069,
+          "price": 966.780029296875,
+          "return_20d": 4.976384872400774,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
       ]
+    }
+  ],
+  "action_cards": [
+    {
+      "日期": "20260821",
+      "板块": "元件：PCB、覆铜板与高速材料",
+      "股票": "002463 沪电股份",
+      "产业催化": "AI服务器、交换机和网络设备需求若真实扩散，应逐步传导到高端PCB、覆铜板和高速材料；它用于验证AI硬件是否从光互连向上游扩散。",
+      "价格/成交证据": "20日相对沪深300 +8.46% / 5日 -0.05% / 20日 +8.01% / MA20上方 / 5/20量比 0.78",
+      "反证条件": "订单和产品价格没有持续改善；只有个别股票冲高，同层级没有扩散；毛利率或经营现金流明显转弱",
+      "结论（观察/复核）": "复核",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "小金属：钨、锡、锑、稀土",
+      "股票": "000657 中钨高新",
+      "产业催化": "小金属机会需要细分价格、库存、供给约束和下游订单至少两项支持，不能只把单日板块涨幅当产业反转。",
+      "价格/成交证据": "20日相对沪深300 +23.20% / 5日 -0.22% / 20日 +22.75% / MA20上方 / 5/20量比 0.99",
+      "反证条件": "价格回落且库存重新累积；供给约束缓解或下游需求转弱；盈利改善不能兑现为现金流",
+      "结论（观察/复核）": "复核",
+      "梅森标签": "不追：单日或均线乖离过大"
+    },
+    {
+      "日期": "20260821",
+      "板块": "AI光互连与服务器互连",
+      "股票": "300308 中际旭创",
+      "产业催化": "云厂商资本开支和AI集群扩容若持续，需求可能传导到800G/1.6T光模块、服务器互连和高速器件；中际旭创与新易盛按同一风险暴露处理。",
+      "价格/成交证据": "20日相对沪深300 -9.44% / 5日 +0.00% / 20日 -9.89% / MA20上方 / 5/20量比 0.71",
+      "反证条件": "云厂商资本开支连续下修；订单/出货低于预期且库存或应收上升；仅单一龙头上涨，板块广度持续收缩",
+      "结论（观察/复核）": "观察",
+      "梅森标签": "等待：趋势未确认"
+    },
+    {
+      "日期": "20260821",
+      "板块": "AI光互连与服务器互连",
+      "股票": "300394 天孚通信",
+      "产业催化": "云厂商资本开支和AI集群扩容若持续，需求可能传导到800G/1.6T光模块、服务器互连和高速器件；中际旭创与新易盛按同一风险暴露处理。",
+      "价格/成交证据": "20日相对沪深300 +34.70% / 5日 +2.01% / 20日 +34.25% / MA20上方 / 5/20量比 1.02",
+      "反证条件": "云厂商资本开支连续下修；订单/出货低于预期且库存或应收上升；仅单一龙头上涨，板块广度持续收缩",
+      "结论（观察/复核）": "观察",
+      "梅森标签": "不追：单日或均线乖离过大"
+    },
+    {
+      "日期": "20260821",
+      "板块": "AI光互连与服务器互连",
+      "股票": "300502 新易盛",
+      "产业催化": "云厂商资本开支和AI集群扩容若持续，需求可能传导到800G/1.6T光模块、服务器互连和高速器件；中际旭创与新易盛按同一风险暴露处理。",
+      "价格/成交证据": "20日相对沪深300 -6.70% / 5日 -1.36% / 20日 -7.15% / MA20上方 / 5/20量比 0.81",
+      "反证条件": "云厂商资本开支连续下修；订单/出货低于预期且库存或应收上升；仅单一龙头上涨，板块广度持续收缩",
+      "结论（观察/复核）": "观察",
+      "梅森标签": "等待：趋势未确认"
+    },
+    {
+      "日期": "20260821",
+      "板块": "AI光互连与服务器互连",
+      "股票": "688008 澜起科技",
+      "产业催化": "云厂商资本开支和AI集群扩容若持续，需求可能传导到800G/1.6T光模块、服务器互连和高速器件；中际旭创与新易盛按同一风险暴露处理。",
+      "价格/成交证据": "20日相对沪深300 -13.58% / 5日 -5.36% / 20日 -14.03% / MA20下方 / 5/20量比 0.81",
+      "反证条件": "云厂商资本开支连续下修；订单/出货低于预期且库存或应收上升；仅单一龙头上涨，板块广度持续收缩",
+      "结论（观察/复核）": "观察",
+      "梅森标签": "等待：趋势未确认"
+    },
+    {
+      "日期": "20260821",
+      "板块": "元件：PCB、覆铜板与高速材料",
+      "股票": "002916 深南电路",
+      "产业催化": "AI服务器、交换机和网络设备需求若真实扩散，应逐步传导到高端PCB、覆铜板和高速材料；它用于验证AI硬件是否从光互连向上游扩散。",
+      "价格/成交证据": "20日相对沪深300 +8.09% / 5日 -5.22% / 20日 +7.64% / MA20上方 / 5/20量比 0.87",
+      "反证条件": "订单和产品价格没有持续改善；只有个别股票冲高，同层级没有扩散；毛利率或经营现金流明显转弱",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "元件：PCB、覆铜板与高速材料",
+      "股票": "300476 胜宏科技",
+      "产业催化": "AI服务器、交换机和网络设备需求若真实扩散，应逐步传导到高端PCB、覆铜板和高速材料；它用于验证AI硬件是否从光互连向上游扩散。",
+      "价格/成交证据": "20日相对沪深300 +10.76% / 5日 -5.79% / 20日 +10.32% / MA20上方 / 5/20量比 0.75",
+      "反证条件": "订单和产品价格没有持续改善；只有个别股票冲高，同层级没有扩散；毛利率或经营现金流明显转弱",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "元件：PCB、覆铜板与高速材料",
+      "股票": "600183 生益科技",
+      "产业催化": "AI服务器、交换机和网络设备需求若真实扩散，应逐步传导到高端PCB、覆铜板和高速材料；它用于验证AI硬件是否从光互连向上游扩散。",
+      "价格/成交证据": "20日相对沪深300 +12.32% / 5日 -7.27% / 20日 +11.87% / MA20上方 / 5/20量比 0.98",
+      "反证条件": "订单和产品价格没有持续改善；只有个别股票冲高，同层级没有扩散；毛利率或经营现金流明显转弱",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "小金属：钨、锡、锑、稀土",
+      "股票": "000960 锡业股份",
+      "产业催化": "小金属机会需要细分价格、库存、供给约束和下游订单至少两项支持，不能只把单日板块涨幅当产业反转。",
+      "价格/成交证据": "20日相对沪深300 +20.55% / 5日 -3.91% / 20日 +20.10% / MA20上方 / 5/20量比 0.81",
+      "反证条件": "价格回落且库存重新累积；供给约束缓解或下游需求转弱；盈利改善不能兑现为现金流",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "小金属：钨、锡、锑、稀土",
+      "股票": "600111 北方稀土",
+      "产业催化": "小金属机会需要细分价格、库存、供给约束和下游订单至少两项支持，不能只把单日板块涨幅当产业反转。",
+      "价格/成交证据": "20日相对沪深300 +3.37% / 5日 -5.84% / 20日 +2.92% / MA20下方 / 5/20量比 0.82",
+      "反证条件": "价格回落且库存重新累积；供给约束缓解或下游需求转弱；盈利改善不能兑现为现金流",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "等待：趋势未确认"
+    },
+    {
+      "日期": "20260821",
+      "板块": "小金属：钨、锡、锑、稀土",
+      "股票": "600301 华锡有色",
+      "产业催化": "小金属机会需要细分价格、库存、供给约束和下游订单至少两项支持，不能只把单日板块涨幅当产业反转。",
+      "价格/成交证据": "20日相对沪深300 +20.93% / 5日 -5.43% / 20日 +20.48% / MA20上方 / 5/20量比 0.88",
+      "反证条件": "价格回落且库存重新累积；供给约束缓解或下游需求转弱；盈利改善不能兑现为现金流",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
+    },
+    {
+      "日期": "20260821",
+      "板块": "小金属：钨、锡、锑、稀土",
+      "股票": "600549 厦门钨业",
+      "产业催化": "小金属机会需要细分价格、库存、供给约束和下游订单至少两项支持，不能只把单日板块涨幅当产业反转。",
+      "价格/成交证据": "20日相对沪深300 +15.31% / 5日 -1.52% / 20日 +14.86% / MA20上方 / 5/20量比 0.85",
+      "反证条件": "价格回落且库存重新累积；供给约束缓解或下游需求转弱；盈利改善不能兑现为现金流",
+      "结论（观察/复核）": "等待",
+      "梅森标签": "可人工复核：顺大势逆小势（双跌观察）"
     }
   ],
   "secondary_themes": [
@@ -2060,37 +2327,29 @@
       "repo": "akfamily/akshare",
       "purpose": "A股、港股、美股与宏观数据聚合备选",
       "source": "GitHub REST API",
-      "latest_tag": "release-v1.18.94",
-      "release_at": "2026-08-21T05:17:55Z",
-      "pushed_at": "2026-08-21T05:17:37Z",
-      "updated_at": "2026-08-21T15:06:51Z"
+      "release_error": "HTTP 403",
+      "repo_error": "HTTP 403"
     },
     {
       "repo": "ranaroussi/yfinance",
       "purpose": "海外市场日线和财务数据备选",
       "source": "GitHub REST API",
-      "latest_tag": "1.6.0",
-      "release_at": "2026-08-13T13:38:31Z",
-      "pushed_at": "2026-08-20T11:24:14Z",
-      "updated_at": "2026-08-21T14:53:00Z"
+      "release_error": "HTTP 403",
+      "repo_error": "HTTP 403"
     },
     {
       "repo": "vnpy/vnpy",
       "purpose": "仅研究/回测框架参考，不连接实盘执行",
       "source": "GitHub REST API",
-      "latest_tag": "4.4.0",
-      "release_at": "2026-05-14T12:18:00Z",
-      "pushed_at": "2026-08-10T01:07:58Z",
-      "updated_at": "2026-08-21T14:28:49Z"
+      "release_error": "HTTP 403",
+      "repo_error": "HTTP 403"
     },
     {
       "repo": "simonlin1212/a-stock-data",
       "purpose": "A股多源行情、财报、研报与公告路由参考",
       "source": "GitHub REST API",
-      "latest_tag": "v3.7.1",
-      "release_at": "2026-08-20T05:09:04Z",
-      "pushed_at": "2026-08-20T05:08:43Z",
-      "updated_at": "2026-08-21T14:25:02Z"
+      "release_error": "HTTP 403",
+      "repo_error": "HTTP 403"
     }
   ],
   "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。"

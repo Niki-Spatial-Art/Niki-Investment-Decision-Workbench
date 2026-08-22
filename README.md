@@ -57,6 +57,8 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 `tools/fair_universe_backtest.py` 提供固定股票池公平审计：把主题、控制样本和失败/退市样本放在同一个可审计池中，对比510300，并做滚动样本外与账户/主题/单股回撤约束。它不等同于完整点时全市场数据库。
 
+`tools/whole_market_watch_report.py` 还会把日报整理成“每日动作卡”，并可用 `tools/export_daily_action_cards.py` 导出成 Markdown/CSV，方便按 `日期｜板块｜股票｜产业催化｜价格/成交证据｜反证条件｜结论（观察/复核）｜梅森标签` 做日记式跟踪。
+
 ## 安全边界
 
 - 不连接券商，不自动下单。
