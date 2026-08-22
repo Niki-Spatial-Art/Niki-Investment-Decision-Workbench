@@ -55,6 +55,8 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 `Portfolio Sleeve Backtest Weekly` 每周五北京时间17:45更新公开回测快照，不发送交易指令。
 
+`tools/fair_universe_backtest.py` 提供固定股票池公平审计：把主题、控制样本和失败/退市样本放在同一个可审计池中，对比510300，并做滚动样本外与账户/主题/单股回撤约束。它不等同于完整点时全市场数据库。
+
 ## 安全边界
 
 - 不连接券商，不自动下单。

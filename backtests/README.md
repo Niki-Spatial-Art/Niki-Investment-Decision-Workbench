@@ -65,6 +65,24 @@ python tools/portfolio_sleeve_backtest.py
 
 组合设计、Alpha 的边界、过拟合风险和阅读资料见 [组合方法论与论文/论坛阅读清单](../docs/portfolio_methodology_and_reading.md)。
 
+## 固定股票池公平审计
+
+`tools/fair_universe_backtest.py` 是更严格的审计版，不把原先的主题代表股结果当作公平结论。它固定纳入：
+
+- 原主题观察股；
+- 大盘/行业控制样本；
+- 公开接口仍可取得部分历史的退市/失败样本。
+
+它输出 510300 买入持有基准、无风险锁策略、账户 `-12%` / 主题 `-8%` / 单股 `-6%` 硬锁策略，并计算年化收益、最大回撤、Sharpe、换手、亏损年份和滚动样本外窗口。信号仍是收盘计算、下一交易日计入，成本按权重换手估算。
+
+重要限制：公开行情接口没有完整的点时全市场股票池，也没有所有退市股票的连续历史；报告会输出每只股票的覆盖区间，不能把这份固定审计池描述为“无幸存者偏差的全市场回测”。
+
+```powershell
+python tools/fair_universe_backtest.py
+```
+
+结果文件：`reports/fair_universe_backtest_latest.json`。
+
 ## Why This Comes Before Automation
 
 The project should prove that action cards improve review quality and risk discipline before adding stronger automation. A strategy that cannot survive paper-trade audit should not be connected to execution.
