@@ -6,6 +6,7 @@
   "ytd_start": "2026-01-01",
   "h1_end": "2026-06-30",
   "three_year_days": 756,
+  "five_year_days": 1260,
   "transaction_cost": 0.0015,
   "windows": {
     "5": 5,
@@ -112,6 +113,29 @@
       },
       "market_filter": "benchmark_ma20",
       "gate_scale": 0.0
+    }
+  },
+  "blend_scenarios": {
+    "defensive_aggressive_50_50": {
+      "defensive": 0.5,
+      "aggressive_research": 0.5
+    },
+    "three_way_equal": {
+      "defensive": 0.333333,
+      "balanced": 0.333333,
+      "aggressive_research": 0.333334
+    },
+    "four_way_equal": {
+      "defensive": 0.25,
+      "balanced": 0.25,
+      "aggressive_research": 0.25,
+      "risk_capped": 0.25
+    },
+    "risk_first": {
+      "risk_capped": 0.5,
+      "defensive": 0.25,
+      "balanced": 0.15,
+      "aggressive_research": 0.1
     }
   }
 }

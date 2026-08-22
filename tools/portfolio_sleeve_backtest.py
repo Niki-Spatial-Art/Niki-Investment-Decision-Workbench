@@ -375,6 +375,77 @@ def summarize(equity: list[float], daily_returns: list[float], dates: list[str],
     }
 
 
+def add_hypothetical_capital(result: dict[str, Any], capital: float) -> dict[str, Any]:
+    """Attach a research-only 500k illustration without treating it as advice."""
+    result["hypothetical_pnl"] = capital * ((result.get("cumulative_return_pct") or 0) / 100)
+    result["hypothetical_end_value"] = capital + result["hypothetical_pnl"]
+    return result
+
+
+def scenario_result(
+    run: dict[str, Any],
+    common_dates: list[str],
+    config: dict[str, Any],
+    metadata: dict[str, Any],
+) -> dict[str, Any]:
+    """Build the same period metrics for a base scenario or a blended portfolio."""
+    ytd_start = next((i for i, day in enumerate(common_dates) if day >= config["ytd_start"]), 0)
+    h1_end = max(
+        ytd_start,
+        max(
+            (i for i, day in enumerate(common_dates) if day <= config.get("h1_end", "2026-06-30")),
+            default=ytd_start,
+        ),
+    )
+    three_year_start = max(0, len(common_dates) - int(config.get("three_year_days", 756)))
+    five_year_start = max(0, len(common_dates) - int(config.get("five_year_days", 1260)))
+    capital = float(config.get("initial_capital", 500000))
+    result: dict[str, Any] = {
+        **metadata,
+        "full_period": summarize(run["equity"], run["daily_returns"], common_dates, 0, len(common_dates) - 1),
+        "h1_2026": summarize(run["equity"], run["daily_returns"], common_dates, ytd_start, h1_end),
+        "ytd": summarize(run["equity"], run["daily_returns"], common_dates, ytd_start, len(common_dates) - 1),
+        "recent_three_year": summarize(
+            run["equity"], run["daily_returns"], common_dates, three_year_start, len(common_dates) - 1
+        ),
+        "recent_five_year": summarize(
+            run["equity"], run["daily_returns"], common_dates, five_year_start, len(common_dates) - 1
+        ),
+    }
+    for period in ("full_period", "h1_2026", "ytd", "recent_three_year", "recent_five_year"):
+        add_hypothetical_capital(result[period], capital)
+    return result
+
+
+def blend_run(
+    scenario_runs: dict[str, dict[str, Any]],
+    blend_weights: dict[str, float],
+) -> dict[str, Any]:
+    """Blend constituent *daily* net returns, leaving any residual in cash."""
+    length = len(next(iter(scenario_runs.values()))["daily_returns"])
+    daily_returns = [
+        sum(float(weight) * scenario_runs[name]["daily_returns"][index] for name, weight in blend_weights.items())
+        for index in range(length)
+    ]
+    equity = [1.0]
+    for value in daily_returns:
+        equity.append(equity[-1] * (1 + value))
+    decision_dates = sorted(
+        {
+            decision["date"]
+            for name in blend_weights
+            for decision in scenario_runs[name].get("decisions", [])
+        }
+    )
+    return {
+        "equity": equity,
+        "daily_returns": daily_returns,
+        "turnover": sum(float(blend_weights[name]) * scenario_runs[name].get("turnover", 0.0) for name in blend_weights),
+        "trade_events": None,
+        "decisions": [{"date": day, "action": "底层场景组合发生调仓"} for day in decision_dates],
+    }
+
+
 def build_report(config: dict[str, Any]) -> dict[str, Any]:
     codes = [str(config["benchmark"])] + [str(code) for code in config["symbols"]]
     histories = {code: fetch_history(code, int(config.get("history_bars", 1000))) for code in codes}
@@ -388,7 +459,8 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
         code: metrics_for(code, aligned[code], aligned[config["benchmark"]], config["windows"])
         for code in config["symbols"]
     }
-    scenarios = {}
+    scenarios: dict[str, dict[str, Any]] = {}
+    scenario_runs: dict[str, dict[str, Any]] = {}
     for name, sleeves in config["scenarios"].items():
         scenario_settings = sleeves
         run = simulate_portfolio(
@@ -401,33 +473,49 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
             str(scenario_settings.get("market_filter") or "none"),
             float(scenario_settings.get("gate_scale") or 0.0),
         )
-        ytd_start = next((i for i, day in enumerate(common_dates) if day >= config["ytd_start"]), 0)
-        h1_end = max(
-            ytd_start,
-            max(
-                (i for i, day in enumerate(common_dates) if day <= config.get("h1_end", "2026-06-30")),
-                default=ytd_start,
-            ),
-        )
-        three_year_start = max(0, len(common_dates) - int(config.get("three_year_days", 756)))
-        scenarios[name] = {
+        scenario_runs[name] = run
+        scenarios[name] = scenario_result(
+            run,
+            common_dates,
+            config,
+            {
+            "kind": "base_scenario",
             "initial_capital": config.get("initial_capital", 500000),
             "weights": {sleeve: value["allocation"] for sleeve, value in sleeves.items() if isinstance(value, dict) and "allocation" in value},
             "market_filter": scenario_settings.get("market_filter") or "none",
             "gate_scale": scenario_settings.get("gate_scale", 0.0),
-            "full_period": summarize(run["equity"], run["daily_returns"], common_dates, 0, len(common_dates) - 1),
-            "h1_2026": summarize(run["equity"], run["daily_returns"], common_dates, ytd_start, h1_end),
-            "ytd": summarize(run["equity"], run["daily_returns"], common_dates, ytd_start, len(common_dates) - 1),
-            "recent_three_year": summarize(run["equity"], run["daily_returns"], common_dates, three_year_start, len(common_dates) - 1),
             "trade_events": run["trade_events"],
             "turnover": run["turnover"],
             "last_decisions": run["decisions"][-10:],
-        }
-        capital = float(config.get("initial_capital", 500000))
-        for period in ("full_period", "h1_2026", "ytd", "recent_three_year"):
-            result = scenarios[name][period]
-            result["hypothetical_pnl"] = capital * ((result.get("cumulative_return_pct") or 0) / 100)
-            result["hypothetical_end_value"] = capital + result["hypothetical_pnl"]
+            },
+        )
+    blends: dict[str, dict[str, Any]] = {}
+    for name, raw_weights in (config.get("blend_scenarios") or {}).items():
+        weights = {str(key): float(value) for key, value in raw_weights.items()}
+        unknown = sorted(set(weights) - set(scenario_runs))
+        if unknown:
+            raise ValueError(f"Blend {name} references unknown scenarios: {unknown}")
+        if any(value < 0 for value in weights.values()):
+            raise ValueError(f"Blend {name} has negative weights")
+        total_weight = sum(weights.values())
+        if total_weight > 1.000001:
+            raise ValueError(f"Blend {name} weights exceed 100%: {total_weight:.4f}")
+        run = blend_run(scenario_runs, weights)
+        scenario_runs[name] = run
+        blends[name] = scenario_result(
+            run,
+            common_dates,
+            config,
+            {
+                "kind": "blended_portfolio",
+                "weights": weights,
+                "cash_weight": max(0.0, 1.0 - total_weight),
+                "trade_events": None,
+                "turnover": run["turnover"],
+                "last_decisions": run["decisions"][-10:],
+                "method_note": "按底层场景逐日净收益加权复合；未把累计收益率做简单平均。",
+            },
+        )
     benchmark_returns = {
         "full_period": summarize(
             [1.0] + [aligned[config["benchmark"]][i]["close"] / aligned[config["benchmark"]][0]["close"] for i in range(len(common_dates))],
@@ -443,11 +531,13 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
             "swing": "约每20个交易日重评，MA20/回踩/相对强弱为主，偏中段波段",
             "shallow": "约每5个交易日重评，使用短周期条件，持有逻辑偏浅；A股个股仍按T+1建模，不等同T+0",
             "cost": f"每次权重变动按单边成本 {config['transaction_cost'] * 100:.2f}% 估算",
-            "limitations": "价格/成交回测不能验证产业、估值、财报披露时点、停牌、涨跌停成交和真实滑点；不能保证未来收益。样本来自可获得的公开历史，个股篮子存在幸存者偏差。",
+            "blend": "混合组合使用基础场景的逐日净收益按权重加权后再复合；未简单平均各场景累计收益。权重未占满部分视为现金，现金收益按0计。",
+            "limitations": "价格/成交回测不能验证产业、估值、财报披露时点、停牌、涨跌停成交和真实滑点；不能保证未来收益。样本来自可获得的公开历史，个股篮子存在幸存者偏差。历史组合结果不能直接转化为当前买入金额。",
         },
         "history": {"start": common_dates[0], "end": common_dates[-1], "sessions": len(common_dates)},
         "benchmark": benchmark_returns,
         "scenarios": scenarios,
+        "blended_portfolios": blends,
     }
 
 
@@ -462,6 +552,7 @@ def main() -> int:
         print(json.dumps({
             "history": report["history"],
             "scenarios": list(report["scenarios"]),
+            "blended_portfolios": list(report["blended_portfolios"]),
         }, ensure_ascii=False))
         return 0
     output = ROOT / args.output
@@ -470,6 +561,8 @@ def main() -> int:
     print(f"portfolio_sleeve_backtest={output}")
     for name, scenario in report["scenarios"].items():
         print(name, scenario["ytd"], scenario["recent_three_year"])
+    for name, scenario in report["blended_portfolios"].items():
+        print("blend", name, scenario["ytd"], scenario["recent_three_year"])
     return 0
 
 
