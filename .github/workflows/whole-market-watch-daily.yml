@@ -14,8 +14,8 @@ on:
         default: false
         type: boolean
   schedule:
-    # GitHub cron uses UTC. Beijing 17:25 on weekdays, after the A-share close.
-    - cron: '25 9 * * 1-5'
+    # GitHub cron uses UTC. Beijing 15:40 on weekdays, after the A-share close.
+    - cron: '40 7 * * 1-5'
 
 permissions:
   contents: write
