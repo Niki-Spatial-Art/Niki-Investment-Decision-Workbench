@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T11:50:36+08:00",
+  "generated_at": "2026-08-29T04:59:57+08:00",
   "method": {
     "signal_timing": "收盘计算信号，下一交易日收益开始计入，避免未来函数",
     "deep": "约每60个交易日重评，MA60/相对强弱为主，偏长期埋伏",
@@ -10,20 +10,20 @@
     "limitations": "价格/成交回测不能验证产业、估值、财报披露时点、停牌、涨跌停成交和真实滑点；不能保证未来收益。样本来自可获得的公开历史，个股篮子存在幸存者偏差。历史组合结果不能直接转化为当前买入金额。"
   },
   "history": {
-    "start": "2021-08-23",
-    "end": "2026-08-20",
-    "sessions": 1209
+    "start": "2021-08-30",
+    "end": "2026-08-26",
+    "sessions": 1208
   },
   "benchmark": {
     "full_period": {
-      "start_date": "2021-08-23",
-      "end_date": "2026-08-20",
-      "cumulative_return_pct": 4.880514285137072,
-      "annualized_return_pct": 0.9990128047944635,
+      "start_date": "2021-08-30",
+      "end_date": "2026-08-26",
+      "cumulative_return_pct": 4.5356744194735565,
+      "annualized_return_pct": 0.9304217866997977,
       "max_drawdown_pct": -34.87899204248368,
-      "annualized_volatility_pct": 17.96151733348326,
-      "sharpe": 0.14482418486108464,
-      "positive_days_pct": 47.847682119205295
+      "annualized_volatility_pct": 17.956993670571006,
+      "sharpe": 0.15031357197868592,
+      "positive_days_pct": 47.80447390223695
     }
   },
   "scenarios": {
@@ -37,51 +37,9 @@
       },
       "market_filter": "none",
       "gate_scale": 0.0,
-      "trade_events": 540,
-      "turnover": 67.69999999999993,
+      "trade_events": 538,
+      "turnover": 67.87499999999984,
       "last_decisions": [
-        {
-          "date": "2026-07-17",
-          "entries": [
-            "600183"
-          ],
-          "exits": [
-            "300502"
-          ],
-          "positions": {
-            "600183": 0.3
-          },
-          "turnover": 0.3,
-          "action": "调仓"
-        },
-        {
-          "date": "2026-07-20",
-          "entries": [],
-          "exits": [
-            "600183"
-          ],
-          "positions": {},
-          "turnover": 0.3,
-          "action": "退出/减仓"
-        },
-        {
-          "date": "2026-07-27",
-          "entries": [
-            "300308",
-            "300476",
-            "600549",
-            "688008"
-          ],
-          "exits": [],
-          "positions": {
-            "688008": 0.0125,
-            "600549": 0.0125,
-            "300476": 0.0125,
-            "300308": 0.0125
-          },
-          "turnover": 0.05,
-          "action": "进入/加仓"
-        },
         {
           "date": "2026-07-28",
           "entries": [],
@@ -124,7 +82,7 @@
             "688008": 0.0125,
             "600549": 0.0125
           },
-          "turnover": 0.1,
+          "turnover": 0.09999999999999999,
           "action": "调仓"
         },
         {
@@ -146,115 +104,150 @@
             "300502",
             "600111",
             "600183",
-            "600301",
             "688008"
           ],
           "exits": [],
           "positions": {
-            "688008": 0.0625,
-            "600301": 0.049999999999999996,
-            "600183": 0.0625,
             "300502": 0.0125,
+            "688008": 0.0125,
+            "600183": 0.0125,
             "600111": 0.0125
           },
-          "turnover": 0.2,
+          "turnover": 0.05,
           "action": "进入/加仓"
         },
         {
           "date": "2026-08-18",
           "entries": [
             "600111",
-            "600183",
-            "600301"
+            "600183"
           ],
           "exits": [
             "300502",
             "688008"
           ],
           "positions": {
-            "600301": 0.075,
-            "600183": 0.1,
+            "600183": 0.025,
             "600111": 0.025
           },
-          "turnover": 0.15000000000000002,
+          "turnover": 0.05,
           "action": "调仓"
         },
         {
           "date": "2026-08-19",
           "entries": [
-            "600111",
-            "600301"
+            "600111"
           ],
           "exits": [
             "600183"
           ],
           "positions": {
-            "600301": 0.15,
             "600111": 0.05
           },
+          "turnover": 0.05,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "entries": [],
+          "exits": [
+            "600111"
+          ],
+          "positions": {},
+          "turnover": 0.05,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-24",
+          "entries": [
+            "002463",
+            "300394",
+            "600549"
+          ],
+          "exits": [],
+          "positions": {
+            "600549": 0.06666666666666667,
+            "002463": 0.06666666666666667,
+            "300394": 0.06666666666666667
+          },
           "turnover": 0.2,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-25",
+          "entries": [
+            "300394"
+          ],
+          "exits": [
+            "002463",
+            "600549"
+          ],
+          "positions": {
+            "300394": 0.2
+          },
+          "turnover": 0.2666666666666667,
           "action": "调仓"
         }
       ],
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 96.7848779191148,
-        "annualized_return_pct": 15.167356644855111,
-        "max_drawdown_pct": -20.470208881185712,
-        "annualized_volatility_pct": 18.271385055641975,
-        "sharpe": 0.864120297397432,
-        "positive_days_pct": 41.05960264900662,
-        "hypothetical_pnl": 483924.38959557406,
-        "hypothetical_end_value": 983924.389595574
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 79.28750500324205,
+        "annualized_return_pct": 12.963127427572442,
+        "max_drawdown_pct": -17.788740758590816,
+        "annualized_volatility_pct": 17.443036955806786,
+        "sharpe": 0.7860510700036218,
+        "positive_days_pct": 42.004971002485505,
+        "hypothetical_pnl": 396437.5250162102,
+        "hypothetical_end_value": 896437.5250162103
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 21.454301424923482,
-        "annualized_return_pct": 53.09970561563813,
-        "max_drawdown_pct": -9.96760934966714,
-        "annualized_volatility_pct": 23.377323885572558,
-        "sharpe": 1.940369181718582,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 107271.50712461742,
-        "hypothetical_end_value": 607271.5071246175
+        "cumulative_return_pct": 30.618829058909935,
+        "annualized_return_pct": 79.55767926705892,
+        "max_drawdown_pct": -7.564090692502912,
+        "annualized_volatility_pct": 23.29038906491292,
+        "sharpe": 2.632316711716107,
+        "positive_days_pct": 57.391304347826086,
+        "hypothetical_pnl": 153094.14529454967,
+        "hypothetical_end_value": 653094.1452945496
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 5.306557450832106,
-        "annualized_return_pct": 8.950371469378382,
-        "max_drawdown_pct": -13.29532489557238,
-        "annualized_volatility_pct": 23.081832965341174,
-        "sharpe": 0.48691502490635713,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 26532.78725416053,
-        "hypothetical_end_value": 526532.7872541605
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 12.175831870668086,
+        "annualized_return_pct": 20.394475671540956,
+        "max_drawdown_pct": -14.11970794802022,
+        "annualized_volatility_pct": 23.640908655338,
+        "sharpe": 0.9039316230527723,
+        "positive_days_pct": 47.43589743589743,
+        "hypothetical_pnl": 60879.15935334043,
+        "hypothetical_end_value": 560879.1593533404
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 77.23481431630745,
-        "annualized_return_pct": 21.04850020054043,
-        "max_drawdown_pct": -17.626184722458817,
-        "annualized_volatility_pct": 18.099578178147592,
-        "sharpe": 1.1459625601160022,
-        "positive_days_pct": 42.78145695364238,
-        "hypothetical_pnl": 386174.07158153725,
-        "hypothetical_end_value": 886174.0715815373
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 59.74895284567532,
+        "annualized_return_pct": 16.923684248275727,
+        "max_drawdown_pct": -14.708368234393776,
+        "annualized_volatility_pct": 17.66572610279768,
+        "sharpe": 0.9735835007900502,
+        "positive_days_pct": 43.576158940397356,
+        "hypothetical_pnl": 298744.7642283766,
+        "hypothetical_end_value": 798744.7642283766
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 96.7848779191148,
-        "annualized_return_pct": 15.167356644855111,
-        "max_drawdown_pct": -20.470208881185712,
-        "annualized_volatility_pct": 18.271385055641975,
-        "sharpe": 0.864120297397432,
-        "positive_days_pct": 41.05960264900662,
-        "hypothetical_pnl": 483924.38959557406,
-        "hypothetical_end_value": 983924.389595574
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 79.28750500324205,
+        "annualized_return_pct": 12.963127427572442,
+        "max_drawdown_pct": -17.788740758590816,
+        "annualized_volatility_pct": 17.443036955806786,
+        "sharpe": 0.7860510700036218,
+        "positive_days_pct": 42.004971002485505,
+        "hypothetical_pnl": 396437.5250162102,
+        "hypothetical_end_value": 896437.5250162103
       }
     },
     "balanced": {
@@ -267,51 +260,9 @@
       },
       "market_filter": "none",
       "gate_scale": 0.0,
-      "trade_events": 540,
-      "turnover": 107.64999999999988,
+      "trade_events": 538,
+      "turnover": 107.71666666666651,
       "last_decisions": [
-        {
-          "date": "2026-07-17",
-          "entries": [
-            "600183"
-          ],
-          "exits": [
-            "300502"
-          ],
-          "positions": {
-            "600183": 0.4
-          },
-          "turnover": 0.4,
-          "action": "调仓"
-        },
-        {
-          "date": "2026-07-20",
-          "entries": [],
-          "exits": [
-            "600183"
-          ],
-          "positions": {},
-          "turnover": 0.4,
-          "action": "退出/减仓"
-        },
-        {
-          "date": "2026-07-27",
-          "entries": [
-            "300308",
-            "300476",
-            "600549",
-            "688008"
-          ],
-          "exits": [],
-          "positions": {
-            "688008": 0.025,
-            "600549": 0.025,
-            "300476": 0.025,
-            "300308": 0.025
-          },
-          "turnover": 0.1,
-          "action": "进入/加仓"
-        },
         {
           "date": "2026-07-28",
           "entries": [],
@@ -354,7 +305,7 @@
             "688008": 0.025,
             "600549": 0.025
           },
-          "turnover": 0.2,
+          "turnover": 0.19999999999999998,
           "action": "调仓"
         },
         {
@@ -376,115 +327,150 @@
             "300502",
             "600111",
             "600183",
-            "600301",
             "688008"
           ],
           "exits": [],
           "positions": {
-            "688008": 0.09166666666666667,
-            "600301": 0.06666666666666667,
-            "600183": 0.09166666666666667,
             "300502": 0.025,
+            "688008": 0.025,
+            "600183": 0.025,
             "600111": 0.025
           },
-          "turnover": 0.30000000000000004,
+          "turnover": 0.1,
           "action": "进入/加仓"
         },
         {
           "date": "2026-08-18",
           "entries": [
             "600111",
-            "600183",
-            "600301"
+            "600183"
           ],
           "exits": [
             "300502",
             "688008"
           ],
           "positions": {
-            "600301": 0.1,
-            "600183": 0.15000000000000002,
+            "600183": 0.05,
             "600111": 0.05
           },
-          "turnover": 0.23333333333333336,
+          "turnover": 0.1,
           "action": "调仓"
         },
         {
           "date": "2026-08-19",
           "entries": [
-            "600111",
-            "600301"
+            "600111"
           ],
           "exits": [
             "600183"
           ],
           "positions": {
-            "600301": 0.2,
             "600111": 0.1
           },
+          "turnover": 0.1,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "entries": [],
+          "exits": [
+            "600111"
+          ],
+          "positions": {},
+          "turnover": 0.1,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-24",
+          "entries": [
+            "002463",
+            "300394",
+            "600549"
+          ],
+          "exits": [],
+          "positions": {
+            "600549": 0.1,
+            "002463": 0.1,
+            "300394": 0.1
+          },
           "turnover": 0.30000000000000004,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-25",
+          "entries": [
+            "300394"
+          ],
+          "exits": [
+            "002463",
+            "600549"
+          ],
+          "positions": {
+            "300394": 0.30000000000000004
+          },
+          "turnover": 0.4,
           "action": "调仓"
         }
       ],
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 143.4580781044932,
-        "annualized_return_pct": 20.395891976672775,
-        "max_drawdown_pct": -27.460395241830536,
-        "annualized_volatility_pct": 25.316932296509613,
-        "sharpe": 0.8594443781837219,
-        "positive_days_pct": 40.97682119205298,
-        "hypothetical_pnl": 717290.390522466,
-        "hypothetical_end_value": 1217290.390522466
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 115.72905415382415,
+        "annualized_return_pct": 17.412449458462987,
+        "max_drawdown_pct": -24.32785178446467,
+        "annualized_volatility_pct": 24.22107301434221,
+        "sharpe": 0.7838542549780135,
+        "positive_days_pct": 42.08782104391052,
+        "hypothetical_pnl": 578645.2707691208,
+        "hypothetical_end_value": 1078645.2707691207
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 31.823882168982955,
-        "annualized_return_pct": 83.20764287141284,
-        "max_drawdown_pct": -13.469644983610651,
-        "annualized_volatility_pct": 32.68050828826799,
-        "sharpe": 2.0182909091064034,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 159119.41084491476,
-        "hypothetical_end_value": 659119.4108449147
+        "cumulative_return_pct": 45.28325814127883,
+        "annualized_return_pct": 126.70635044234575,
+        "max_drawdown_pct": -10.425113075621606,
+        "annualized_volatility_pct": 32.50710009115681,
+        "sharpe": 2.6840509298661357,
+        "positive_days_pct": 58.26086956521739,
+        "hypothetical_pnl": 226416.29070639412,
+        "hypothetical_end_value": 726416.2907063941
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 7.77501922662287,
-        "annualized_return_pct": 13.216989287859015,
-        "max_drawdown_pct": -18.243176082109468,
-        "annualized_volatility_pct": 32.250023779664886,
-        "sharpe": 0.5463769537581682,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 38875.09613311435,
-        "hypothetical_end_value": 538875.0961331143
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 17.116790675854475,
+        "annualized_return_pct": 29.0762502105002,
+        "max_drawdown_pct": -19.387276845095414,
+        "annualized_volatility_pct": 32.93683650175348,
+        "sharpe": 0.9406341464597786,
+        "positive_days_pct": 48.07692307692308,
+        "hypothetical_pnl": 85583.95337927237,
+        "hypothetical_end_value": 585583.9533792724
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 117.28809147447308,
-        "annualized_return_pct": 29.566912579652715,
-        "max_drawdown_pct": -23.120696702938037,
-        "annualized_volatility_pct": 25.183694520630144,
-        "sharpe": 1.1544151167965082,
-        "positive_days_pct": 42.78145695364238,
-        "hypothetical_pnl": 586440.4573723654,
-        "hypothetical_end_value": 1086440.4573723655
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 89.1058848363772,
+        "annualized_return_pct": 23.696434157350744,
+        "max_drawdown_pct": -20.005443343451635,
+        "annualized_volatility_pct": 24.604128049988883,
+        "sharpe": 0.987597631446506,
+        "positive_days_pct": 43.443708609271525,
+        "hypothetical_pnl": 445529.424181886,
+        "hypothetical_end_value": 945529.424181886
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 143.4580781044932,
-        "annualized_return_pct": 20.395891976672775,
-        "max_drawdown_pct": -27.460395241830536,
-        "annualized_volatility_pct": 25.316932296509613,
-        "sharpe": 0.8594443781837219,
-        "positive_days_pct": 40.97682119205298,
-        "hypothetical_pnl": 717290.390522466,
-        "hypothetical_end_value": 1217290.390522466
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 115.72905415382415,
+        "annualized_return_pct": 17.412449458462987,
+        "max_drawdown_pct": -24.32785178446467,
+        "annualized_volatility_pct": 24.22107301434221,
+        "sharpe": 0.7838542549780135,
+        "positive_days_pct": 42.08782104391052,
+        "hypothetical_pnl": 578645.2707691208,
+        "hypothetical_end_value": 1078645.2707691207
       }
     },
     "aggressive_research": {
@@ -497,51 +483,9 @@
       },
       "market_filter": "none",
       "gate_scale": 0.0,
-      "trade_events": 540,
-      "turnover": 145.03333333333373,
+      "trade_events": 538,
+      "turnover": 145.02500000000043,
       "last_decisions": [
-        {
-          "date": "2026-07-17",
-          "entries": [
-            "600183"
-          ],
-          "exits": [
-            "300502"
-          ],
-          "positions": {
-            "600183": 0.45
-          },
-          "turnover": 0.45,
-          "action": "调仓"
-        },
-        {
-          "date": "2026-07-20",
-          "entries": [],
-          "exits": [
-            "600183"
-          ],
-          "positions": {},
-          "turnover": 0.45,
-          "action": "退出/减仓"
-        },
-        {
-          "date": "2026-07-27",
-          "entries": [
-            "300308",
-            "300476",
-            "600549",
-            "688008"
-          ],
-          "exits": [],
-          "positions": {
-            "688008": 0.0375,
-            "600549": 0.0375,
-            "300476": 0.0375,
-            "300308": 0.0375
-          },
-          "turnover": 0.15,
-          "action": "进入/加仓"
-        },
         {
           "date": "2026-07-28",
           "entries": [],
@@ -606,115 +550,150 @@
             "300502",
             "600111",
             "600183",
-            "600301",
             "688008"
           ],
           "exits": [],
           "positions": {
-            "688008": 0.12083333333333332,
-            "600301": 0.08333333333333333,
-            "600183": 0.12083333333333332,
             "300502": 0.0375,
+            "688008": 0.0375,
+            "600183": 0.0375,
             "600111": 0.0375
           },
-          "turnover": 0.39999999999999997,
+          "turnover": 0.15,
           "action": "进入/加仓"
         },
         {
           "date": "2026-08-18",
           "entries": [
             "600111",
-            "600183",
-            "600301"
+            "600183"
           ],
           "exits": [
             "300502",
             "688008"
           ],
           "positions": {
-            "600301": 0.125,
-            "600183": 0.2,
+            "600183": 0.075,
             "600111": 0.075
           },
-          "turnover": 0.31666666666666665,
+          "turnover": 0.15,
           "action": "调仓"
         },
         {
           "date": "2026-08-19",
           "entries": [
-            "600111",
-            "600301"
+            "600111"
           ],
           "exits": [
             "600183"
           ],
           "positions": {
-            "600301": 0.25,
             "600111": 0.15
           },
+          "turnover": 0.15,
+          "action": "调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "entries": [],
+          "exits": [
+            "600111"
+          ],
+          "positions": {},
+          "turnover": 0.15,
+          "action": "退出/减仓"
+        },
+        {
+          "date": "2026-08-24",
+          "entries": [
+            "002463",
+            "300394",
+            "600549"
+          ],
+          "exits": [],
+          "positions": {
+            "600549": 0.13333333333333333,
+            "002463": 0.13333333333333333,
+            "300394": 0.13333333333333333
+          },
           "turnover": 0.4,
+          "action": "进入/加仓"
+        },
+        {
+          "date": "2026-08-25",
+          "entries": [
+            "300394"
+          ],
+          "exits": [
+            "002463",
+            "600549"
+          ],
+          "positions": {
+            "300394": 0.4
+          },
+          "turnover": 0.5333333333333334,
           "action": "调仓"
         }
       ],
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 174.03183381222652,
-        "annualized_return_pct": 23.40403243354443,
-        "max_drawdown_pct": -32.77884235946003,
-        "annualized_volatility_pct": 30.249551706085377,
-        "sharpe": 0.845976403746509,
-        "positive_days_pct": 41.30794701986755,
-        "hypothetical_pnl": 870159.1690611327,
-        "hypothetical_end_value": 1370159.1690611327
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 136.0043999119064,
+        "annualized_return_pct": 19.635217419872465,
+        "max_drawdown_pct": -29.11994399125426,
+        "annualized_volatility_pct": 28.804254576646333,
+        "sharpe": 0.7664290884230233,
+        "positive_days_pct": 42.17067108533554,
+        "hypothetical_pnl": 680021.999559532,
+        "hypothetical_end_value": 1180021.999559532
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 39.58294702767535,
-        "annualized_return_pct": 107.66905545349385,
-        "max_drawdown_pct": -16.028703241988662,
-        "annualized_volatility_pct": 39.25677223314681,
-        "sharpe": 2.0605677943187164,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 197914.73513837677,
-        "hypothetical_end_value": 697914.7351383767
+        "cumulative_return_pct": 58.34836272099642,
+        "annualized_return_pct": 173.7878048279952,
+        "max_drawdown_pct": -12.514225759116293,
+        "annualized_volatility_pct": 38.938348268226726,
+        "sharpe": 2.7858290536667827,
+        "positive_days_pct": 58.26086956521739,
+        "hypothetical_pnl": 291741.8136049821,
+        "hypothetical_end_value": 791741.8136049821
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 9.661033070188685,
-        "annualized_return_pct": 16.52055696217627,
-        "max_drawdown_pct": -21.439504870707715,
-        "annualized_volatility_pct": 38.60011573025976,
-        "sharpe": 0.5893769761996601,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 48305.165350943425,
-        "hypothetical_end_value": 548305.1653509435
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 21.86552263912955,
+        "annualized_return_pct": 37.63554678293348,
+        "max_drawdown_pct": -23.039606760032115,
+        "annualized_volatility_pct": 39.38273520165303,
+        "sharpe": 1.009477048474553,
+        "positive_days_pct": 48.07692307692308,
+        "hypothetical_pnl": 109327.61319564775,
+        "hypothetical_end_value": 609327.6131956477
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 146.70948021455393,
-        "annualized_return_pct": 35.17667610035833,
-        "max_drawdown_pct": -26.50165325866546,
-        "annualized_volatility_pct": 30.255117478692835,
-        "sharpe": 1.1472979516056163,
-        "positive_days_pct": 43.17880794701986,
-        "hypothetical_pnl": 733547.4010727698,
-        "hypothetical_end_value": 1233547.40107277
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 111.39429444615705,
+        "annualized_return_pct": 28.383127009556965,
+        "max_drawdown_pct": -23.831400375709656,
+        "annualized_volatility_pct": 29.45224455416974,
+        "sharpe": 0.9958770530261742,
+        "positive_days_pct": 43.841059602649004,
+        "hypothetical_pnl": 556971.4722307853,
+        "hypothetical_end_value": 1056971.4722307853
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 174.03183381222652,
-        "annualized_return_pct": 23.40403243354443,
-        "max_drawdown_pct": -32.77884235946003,
-        "annualized_volatility_pct": 30.249551706085377,
-        "sharpe": 0.845976403746509,
-        "positive_days_pct": 41.30794701986755,
-        "hypothetical_pnl": 870159.1690611327,
-        "hypothetical_end_value": 1370159.1690611327
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 136.0043999119064,
+        "annualized_return_pct": 19.635217419872465,
+        "max_drawdown_pct": -29.11994399125426,
+        "annualized_volatility_pct": 28.804254576646333,
+        "sharpe": 0.7664290884230233,
+        "positive_days_pct": 42.17067108533554,
+        "hypothetical_pnl": 680021.999559532,
+        "hypothetical_end_value": 1180021.999559532
       }
     },
     "risk_capped": {
@@ -727,8 +706,8 @@
       },
       "market_filter": "benchmark_ma20",
       "gate_scale": 0.0,
-      "trade_events": 348,
-      "turnover": 50.80833333333337,
+      "trade_events": 344,
+      "turnover": 54.88333333333334,
       "last_decisions": [
         {
           "date": "2026-06-22",
@@ -742,13 +721,12 @@
             "300502"
           ],
           "positions": {
-            "688008": 0.08333333333333333,
-            "600183": 0.06666666666666667,
-            "300502": 0.06666666666666667,
-            "300394": 0.11666666666666667,
-            "300476": 0.016666666666666666
+            "688008": 0.11666666666666667,
+            "300502": 0.1,
+            "300476": 0.016666666666666666,
+            "300394": 0.016666666666666666
           },
-          "turnover": 0.2,
+          "turnover": 0.09999999999999999,
           "action": "调仓"
         },
         {
@@ -760,42 +738,44 @@
             "688008"
           ],
           "positions": {
-            "688008": 0.06666666666666667,
-            "600183": 0.06666666666666667,
-            "300502": 0.06666666666666667
+            "688008": 0.1,
+            "300502": 0.1
           },
-          "turnover": 0.15,
+          "turnover": 0.04999999999999999,
           "action": "退出/减仓"
         },
         {
           "date": "2026-06-29",
           "entries": [
+            "002463",
             "300502",
-            "600183"
+            "600183",
+            "688008"
           ],
           "exits": [],
           "positions": {
-            "688008": 0.06666666666666667,
-            "600183": 0.09166666666666667,
-            "300502": 0.09166666666666667
+            "688008": 0.13333333333333333,
+            "300502": 0.15833333333333333,
+            "002463": 0.03333333333333333,
+            "600183": 0.025
           },
-          "turnover": 0.05000000000000002,
+          "turnover": 0.14999999999999997,
           "action": "进入/加仓"
         },
         {
           "date": "2026-07-02",
           "entries": [],
           "exits": [
+            "002463",
             "300502",
             "600183",
             "688008"
           ],
           "positions": {
             "688008": 0.0,
-            "600183": 0.0,
             "300502": 0.0
           },
-          "turnover": 0.25,
+          "turnover": 0.35,
           "action": "退出/减仓"
         },
         {
@@ -827,7 +807,7 @@
             "688008": 0.0125,
             "600549": 0.0125
           },
-          "turnover": 0.1,
+          "turnover": 0.09999999999999999,
           "action": "调仓"
         },
         {
@@ -849,37 +829,33 @@
             "300502",
             "600111",
             "600183",
-            "600301",
             "688008"
           ],
           "exits": [],
           "positions": {
-            "688008": 0.04583333333333334,
-            "600301": 0.03333333333333333,
-            "600183": 0.04583333333333334,
             "300502": 0.0125,
+            "688008": 0.0125,
+            "600183": 0.0125,
             "600111": 0.0125
           },
-          "turnover": 0.15000000000000002,
+          "turnover": 0.05,
           "action": "进入/加仓"
         },
         {
           "date": "2026-08-18",
           "entries": [
             "600111",
-            "600183",
-            "600301"
+            "600183"
           ],
           "exits": [
             "300502",
             "688008"
           ],
           "positions": {
-            "600301": 0.05,
-            "600183": 0.07500000000000001,
+            "600183": 0.025,
             "600111": 0.025
           },
-          "turnover": 0.11666666666666668,
+          "turnover": 0.05,
           "action": "调仓"
         },
         {
@@ -887,76 +863,74 @@
           "entries": [],
           "exits": [
             "600111",
-            "600183",
-            "600301"
+            "600183"
           ],
           "positions": {
-            "600301": 0.0,
             "600111": 0.0
           },
-          "turnover": 0.15000000000000002,
+          "turnover": 0.05,
           "action": "退出/减仓"
         }
       ],
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 27.81172895056312,
-        "annualized_return_pct": 5.252310468987198,
-        "max_drawdown_pct": -22.484345324899678,
-        "annualized_volatility_pct": 9.6455223895639,
-        "sharpe": 0.5788653648826065,
-        "positive_days_pct": 20.281456953642383,
-        "hypothetical_pnl": 139058.6447528156,
-        "hypothetical_end_value": 639058.6447528156
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 22.771244304645432,
+        "annualized_return_pct": 4.376273566255606,
+        "max_drawdown_pct": -24.846266575095154,
+        "annualized_volatility_pct": 8.907314775480469,
+        "sharpe": 0.5254389119977875,
+        "positive_days_pct": 20.878210439105217,
+        "hypothetical_pnl": 113856.22152322717,
+        "hypothetical_end_value": 613856.2215232272
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 10.782640556337263,
-        "annualized_return_pct": 25.155822037493646,
-        "max_drawdown_pct": -4.471365622191259,
-        "annualized_volatility_pct": 11.973890733690371,
-        "sharpe": 1.9347648821404257,
-        "positive_days_pct": 37.391304347826086,
-        "hypothetical_pnl": 53913.20278168631,
-        "hypothetical_end_value": 553913.2027816863
+        "cumulative_return_pct": 18.95166133017232,
+        "annualized_return_pct": 46.27150521785233,
+        "max_drawdown_pct": -4.084804776924688,
+        "annualized_volatility_pct": 12.5248898006114,
+        "sharpe": 3.101062788414093,
+        "positive_days_pct": 39.130434782608695,
+        "hypothetical_pnl": 94758.3066508616,
+        "hypothetical_end_value": 594758.3066508616
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 5.036707464736434,
-        "annualized_return_pct": 8.487898547446626,
-        "max_drawdown_pct": -5.186672806087156,
-        "annualized_volatility_pct": 11.218081297016452,
-        "sharpe": 0.7825807645279561,
-        "positive_days_pct": 28.947368421052634,
-        "hypothetical_pnl": 25183.53732368217,
-        "hypothetical_end_value": 525183.5373236822
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 12.116192838800233,
+        "annualized_return_pct": 20.29109419452526,
+        "max_drawdown_pct": -5.746425409224831,
+        "annualized_volatility_pct": 12.260098698205848,
+        "sharpe": 1.5689506371330553,
+        "positive_days_pct": 29.48717948717949,
+        "hypothetical_pnl": 60580.964194001164,
+        "hypothetical_end_value": 560580.9641940012
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 25.487500467953716,
-        "annualized_return_pct": 7.872403458635402,
-        "max_drawdown_pct": -16.813469226468627,
-        "annualized_volatility_pct": 10.114843774606038,
-        "sharpe": 0.7997276137511842,
-        "positive_days_pct": 23.973509933774835,
-        "hypothetical_pnl": 127437.50233976859,
-        "hypothetical_end_value": 627437.5023397686
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 18.45494767878244,
+        "annualized_return_pct": 5.8157242768782424,
+        "max_drawdown_pct": -21.230477213643915,
+        "annualized_volatility_pct": 9.75212967731158,
+        "sharpe": 0.6284978276099112,
+        "positive_days_pct": 23.841059602649008,
+        "hypothetical_pnl": 92274.7383939122,
+        "hypothetical_end_value": 592274.7383939122
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 27.81172895056312,
-        "annualized_return_pct": 5.252310468987198,
-        "max_drawdown_pct": -22.484345324899678,
-        "annualized_volatility_pct": 9.6455223895639,
-        "sharpe": 0.5788653648826065,
-        "positive_days_pct": 20.281456953642383,
-        "hypothetical_pnl": 139058.6447528156,
-        "hypothetical_end_value": 639058.6447528156
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 22.771244304645432,
+        "annualized_return_pct": 4.376273566255606,
+        "max_drawdown_pct": -24.846266575095154,
+        "annualized_volatility_pct": 8.907314775480469,
+        "sharpe": 0.5254389119977875,
+        "positive_days_pct": 20.878210439105217,
+        "hypothetical_pnl": 113856.22152322717,
+        "hypothetical_end_value": 613856.2215232272
       }
     }
   },
@@ -969,20 +943,8 @@
       },
       "cash_weight": 0.0,
       "trade_events": null,
-      "turnover": 106.36666666666683,
+      "turnover": 106.45000000000013,
       "last_decisions": [
-        {
-          "date": "2026-07-17",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-20",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-27",
-          "action": "底层场景组合发生调仓"
-        },
         {
           "date": "2026-07-28",
           "action": "底层场景组合发生调仓"
@@ -1010,68 +972,80 @@
         {
           "date": "2026-08-19",
           "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-24",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-25",
+          "action": "底层场景组合发生调仓"
         }
       ],
       "method_note": "按底层场景逐日净收益加权复合；未把累计收益率做简单平均。",
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 134.26586950792662,
-        "annualized_return_pct": 19.433106715889203,
-        "max_drawdown_pct": -26.72767845368842,
-        "annualized_volatility_pct": 24.23826309768083,
-        "sharpe": 0.8535900755067256,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 671329.3475396332,
-        "hypothetical_end_value": 1171329.347539633
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 107.34624037910612,
+        "annualized_return_pct": 16.444905240534414,
+        "max_drawdown_pct": -23.568754971302962,
+        "annualized_volatility_pct": 23.101240698025762,
+        "sharpe": 0.7745803982763316,
+        "positive_days_pct": 42.33637116818558,
+        "hypothetical_pnl": 536731.2018955306,
+        "hypothetical_end_value": 1036731.2018955306
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 30.398930669316538,
-        "annualized_return_pct": 78.89593944567225,
-        "max_drawdown_pct": -13.028037309730378,
-        "annualized_volatility_pct": 31.287039693078896,
-        "sharpe": 2.0176386233670236,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 151994.6533465827,
-        "hypothetical_end_value": 651994.6533465827
+        "cumulative_return_pct": 44.02662395242787,
+        "annualized_return_pct": 122.43153265602062,
+        "max_drawdown_pct": -10.065121047872893,
+        "annualized_volatility_pct": 31.088367723065307,
+        "sharpe": 2.730655783825459,
+        "positive_days_pct": 58.26086956521739,
+        "hypothetical_pnl": 220133.11976213934,
+        "hypothetical_end_value": 720133.1197621394
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 7.663910623557735,
-        "annualized_return_pct": 13.023547270874868,
-        "max_drawdown_pct": -17.434974297000473,
-        "annualized_volatility_pct": 30.80857862892262,
-        "sharpe": 0.5516143924171923,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 38319.55311778867,
-        "hypothetical_end_value": 538319.5531177886
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 17.15415466987693,
+        "annualized_return_pct": 29.142777379322517,
+        "max_drawdown_pct": -18.657987353384698,
+        "annualized_volatility_pct": 31.484012336566657,
+        "sharpe": 0.9707424131658082,
+        "positive_days_pct": 48.07692307692308,
+        "hypothetical_pnl": 85770.77334938466,
+        "hypothetical_end_value": 585770.7733493847
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 110.29304254166222,
-        "annualized_return_pct": 28.15950727414127,
-        "max_drawdown_pct": -22.136457556377888,
-        "annualized_volatility_pct": 24.153265155785075,
-        "sharpe": 1.147941549460849,
-        "positive_days_pct": 42.64900662251655,
-        "hypothetical_pnl": 551465.212708311,
-        "hypothetical_end_value": 1051465.2127083112
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 84.75752082813854,
+        "annualized_return_pct": 22.739706507831325,
+        "max_drawdown_pct": -19.320204982080803,
+        "annualized_volatility_pct": 23.534676919899216,
+        "sharpe": 0.9885386175713847,
+        "positive_days_pct": 43.841059602649004,
+        "hypothetical_pnl": 423787.60414069274,
+        "hypothetical_end_value": 923787.6041406927
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 134.26586950792662,
-        "annualized_return_pct": 19.433106715889203,
-        "max_drawdown_pct": -26.72767845368842,
-        "annualized_volatility_pct": 24.23826309768083,
-        "sharpe": 0.8535900755067256,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 671329.3475396332,
-        "hypothetical_end_value": 1171329.347539633
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 107.34624037910612,
+        "annualized_return_pct": 16.444905240534414,
+        "max_drawdown_pct": -23.568754971302962,
+        "annualized_volatility_pct": 23.101240698025762,
+        "sharpe": 0.7745803982763316,
+        "positive_days_pct": 42.33637116818558,
+        "hypothetical_pnl": 536731.2018955306,
+        "hypothetical_end_value": 1036731.2018955306
       }
     },
     "three_way_equal": {
@@ -1083,20 +1057,8 @@
       },
       "cash_weight": 0.0,
       "trade_events": null,
-      "turnover": 106.7944826833334,
+      "turnover": 106.87226037500004,
       "last_decisions": [
-        {
-          "date": "2026-07-17",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-20",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-27",
-          "action": "底层场景组合发生调仓"
-        },
         {
           "date": "2026-07-28",
           "action": "底层场景组合发生调仓"
@@ -1124,68 +1086,80 @@
         {
           "date": "2026-08-19",
           "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-24",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-25",
+          "action": "底层场景组合发生调仓"
         }
       ],
       "method_note": "按底层场景逐日净收益加权复合；未把累计收益率做简单平均。",
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 137.3074909598052,
-        "annualized_return_pct": 19.75494280589607,
-        "max_drawdown_pct": -26.971501699902724,
-        "annualized_volatility_pct": 24.597032026401056,
-        "sharpe": 0.8556261361990264,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 686537.4547990259,
-        "hypothetical_end_value": 1186537.4547990258
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 110.11937868797976,
+        "annualized_return_pct": 16.768352467292935,
+        "max_drawdown_pct": -23.82176874403984,
+        "annualized_volatility_pct": 23.47377185920039,
+        "sharpe": 0.7777948848329029,
+        "positive_days_pct": 42.25352112676056,
+        "hypothetical_pnl": 550596.8934398988,
+        "hypothetical_end_value": 1050596.8934398987
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 30.87371695980019,
-        "annualized_return_pct": 80.32637538794995,
-        "max_drawdown_pct": -13.175351732437314,
-        "annualized_volatility_pct": 31.750380782876437,
-        "sharpe": 2.017935931244708,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 154368.58479900096,
-        "hypothetical_end_value": 654368.584799001
+        "cumulative_return_pct": 44.4460217419256,
+        "annualized_return_pct": 123.8533217710713,
+        "max_drawdown_pct": -10.185230190722205,
+        "annualized_volatility_pct": 31.56005173696666,
+        "sharpe": 2.7147615285643654,
+        "positive_days_pct": 58.26086956521739,
+        "hypothetical_pnl": 222230.108709628,
+        "hypothetical_end_value": 722230.108709628
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 7.70266723341646,
-        "annualized_return_pct": 13.091008296326478,
-        "max_drawdown_pct": -17.704891604401418,
-        "annualized_volatility_pct": 31.2879438524693,
-        "sharpe": 0.5498347584877332,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 38513.3361670823,
-        "hypothetical_end_value": 538513.3361670823
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 17.143670567472434,
+        "annualized_return_pct": 29.12410895491746,
+        "max_drawdown_pct": -18.90142133733036,
+        "annualized_volatility_pct": 31.967182561046187,
+        "sharpe": 0.9604357249621807,
+        "positive_days_pct": 48.07692307692308,
+        "hypothetical_pnl": 85718.35283736217,
+        "hypothetical_end_value": 585718.3528373622
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 112.60810287080893,
-        "annualized_return_pct": 28.62870508763704,
-        "max_drawdown_pct": -22.46568285585322,
-        "annualized_volatility_pct": 24.495931986349092,
-        "sharpe": 1.1501981983898102,
-        "positive_days_pct": 42.64900662251655,
-        "hypothetical_pnl": 563040.5143540447,
-        "hypothetical_end_value": 1063040.5143540446
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 86.20394585122592,
+        "annualized_return_pct": 23.059598465624376,
+        "max_drawdown_pct": -19.548633193784205,
+        "annualized_volatility_pct": 23.890326186945664,
+        "sharpe": 0.9882503510708598,
+        "positive_days_pct": 43.70860927152318,
+        "hypothetical_pnl": 431019.72925612965,
+        "hypothetical_end_value": 931019.7292561296
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 137.3074909598052,
-        "annualized_return_pct": 19.75494280589607,
-        "max_drawdown_pct": -26.971501699902724,
-        "annualized_volatility_pct": 24.597032026401056,
-        "sharpe": 0.8556261361990264,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 686537.4547990259,
-        "hypothetical_end_value": 1186537.4547990258
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 110.11937868797976,
+        "annualized_return_pct": 16.768352467292935,
+        "max_drawdown_pct": -23.82176874403984,
+        "annualized_volatility_pct": 23.47377185920039,
+        "sharpe": 0.7777948848329029,
+        "positive_days_pct": 42.25352112676056,
+        "hypothetical_pnl": 550596.8934398988,
+        "hypothetical_end_value": 1050596.8934398987
       }
     },
     "four_way_equal": {
@@ -1198,20 +1172,8 @@
       },
       "cash_weight": 0.0,
       "trade_events": null,
-      "turnover": 92.79791666666672,
+      "turnover": 93.87500000000003,
       "last_decisions": [
-        {
-          "date": "2026-07-20",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-27",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-28",
-          "action": "底层场景组合发生调仓"
-        },
         {
           "date": "2026-08-03",
           "action": "底层场景组合发生调仓"
@@ -1239,68 +1201,80 @@
         {
           "date": "2026-08-19",
           "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-24",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-25",
+          "action": "底层场景组合发生调仓"
         }
       ],
       "method_note": "按底层场景逐日净收益加权复合；未把累计收益率做简单平均。",
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 106.37117443607322,
-        "annualized_return_pct": 16.31579841654094,
-        "max_drawdown_pct": -25.60563944660058,
-        "annualized_volatility_pct": 20.345896671527466,
-        "sharpe": 0.8444090316769343,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 531855.8721803661,
-        "hypothetical_end_value": 1031855.8721803661
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 86.37865001268656,
+        "annualized_return_pct": 13.881683765274545,
+        "max_drawdown_pct": -22.47507506537091,
+        "annualized_volatility_pct": 19.301902923528836,
+        "sharpe": 0.7700481346778325,
+        "positive_days_pct": 42.17067108533554,
+        "hypothetical_pnl": 431893.25006343285,
+        "hypothetical_end_value": 931893.2500634328
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 25.854961600516123,
-        "annualized_return_pct": 65.51841295211578,
-        "max_drawdown_pct": -10.478659659339096,
-        "annualized_volatility_pct": 26.07710736302281,
-        "sharpe": 2.0648121786493516,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 129274.80800258063,
-        "hypothetical_end_value": 629274.8080025807
+        "cumulative_return_pct": 37.92498480668436,
+        "annualized_return_pct": 102.30200733292784,
+        "max_drawdown_pct": -7.901663667059722,
+        "annualized_volatility_pct": 26.152128068123453,
+        "sharpe": 2.828397400502413,
+        "positive_days_pct": 58.26086956521739,
+        "hypothetical_pnl": 189624.9240334218,
+        "hypothetical_end_value": 689624.9240334218
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 7.401602187616563,
-        "annualized_return_pct": 12.567384646506818,
-        "max_drawdown_pct": -14.662401210270525,
-        "annualized_volatility_pct": 25.501560983954175,
-        "sharpe": 0.5920092027952297,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 37008.010938082814,
-        "hypothetical_end_value": 537008.0109380828
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 16.26186072004918,
+        "annualized_return_pct": 27.557605529544492,
+        "max_drawdown_pct": -15.706453850256496,
+        "annualized_volatility_pct": 26.345979231985662,
+        "sharpe": 1.0565439036906334,
+        "positive_days_pct": 48.07692307692308,
+        "hypothetical_pnl": 81309.30360024591,
+        "hypothetical_end_value": 581309.3036002459
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 87.9471851838986,
-        "annualized_return_pct": 23.44294163963907,
-        "max_drawdown_pct": -18.927342481953822,
-        "annualized_volatility_pct": 20.45622603672084,
-        "sharpe": 1.1318636024971311,
-        "positive_days_pct": 42.64900662251655,
-        "hypothetical_pnl": 439735.925919493,
-        "hypothetical_end_value": 939735.925919493
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 67.68464373238123,
+        "annualized_return_pct": 18.831125774712,
+        "max_drawdown_pct": -18.32058873845266,
+        "annualized_volatility_pct": 19.904217819444302,
+        "sharpe": 0.9666047364384361,
+        "positive_days_pct": 43.576158940397356,
+        "hypothetical_pnl": 338423.21866190614,
+        "hypothetical_end_value": 838423.2186619062
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 106.37117443607322,
-        "annualized_return_pct": 16.31579841654094,
-        "max_drawdown_pct": -25.60563944660058,
-        "annualized_volatility_pct": 20.345896671527466,
-        "sharpe": 0.8444090316769343,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 531855.8721803661,
-        "hypothetical_end_value": 1031855.8721803661
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 86.37865001268656,
+        "annualized_return_pct": 13.881683765274545,
+        "max_drawdown_pct": -22.47507506537091,
+        "annualized_volatility_pct": 19.301902923528836,
+        "sharpe": 0.7700481346778325,
+        "positive_days_pct": 42.17067108533554,
+        "hypothetical_pnl": 431893.25006343285,
+        "hypothetical_end_value": 931893.2500634328
       }
     },
     "risk_first": {
@@ -1313,20 +1287,8 @@
       },
       "cash_weight": 0.0,
       "trade_events": null,
-      "turnover": 72.98000000000002,
+      "turnover": 75.07041666666666,
       "last_decisions": [
-        {
-          "date": "2026-07-20",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-27",
-          "action": "底层场景组合发生调仓"
-        },
-        {
-          "date": "2026-07-28",
-          "action": "底层场景组合发生调仓"
-        },
         {
           "date": "2026-08-03",
           "action": "底层场景组合发生调仓"
@@ -1354,68 +1316,80 @@
         {
           "date": "2026-08-19",
           "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-20",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-24",
+          "action": "底层场景组合发生调仓"
+        },
+        {
+          "date": "2026-08-25",
+          "action": "底层场景组合发生调仓"
         }
       ],
       "method_note": "按底层场景逐日净收益加权复合；未把累计收益率做简单平均。",
       "full_period": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 72.55818029092076,
-        "annualized_return_pct": 12.053893896374968,
-        "max_drawdown_pct": -23.486220608667587,
-        "annualized_volatility_pct": 15.375071036836191,
-        "sharpe": 0.8170182126436462,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 362790.9014546038,
-        "hypothetical_end_value": 862790.9014546038
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 59.7255162827782,
+        "annualized_return_pct": 10.270898800698692,
+        "max_drawdown_pct": -21.37326891348573,
+        "annualized_volatility_pct": 14.456402942668973,
+        "sharpe": 0.7486934979681206,
+        "positive_days_pct": 41.922120961060486,
+        "hypothetical_pnl": 298627.581413891,
+        "hypothetical_end_value": 798627.5814138909
       },
       "h1_2026": {
         "start_date": "2026-01-05",
         "end_date": "2026-06-30",
-        "cumulative_return_pct": 19.468936010526527,
-        "annualized_return_pct": 47.66895732321008,
-        "max_drawdown_pct": -7.261547047596284,
-        "annualized_volatility_pct": 19.460815486739975,
-        "sharpe": 2.101989577688737,
-        "positive_days_pct": 55.65217391304348,
-        "hypothetical_pnl": 97344.68005263264,
-        "hypothetical_end_value": 597344.6800526327
+        "cumulative_return_pct": 29.508694549832228,
+        "annualized_return_pct": 76.23052059045708,
+        "max_drawdown_pct": -5.687684308985419,
+        "annualized_volatility_pct": 19.804787359365086,
+        "sharpe": 2.963037112910375,
+        "positive_days_pct": 57.391304347826086,
+        "hypothetical_pnl": 147543.47274916113,
+        "hypothetical_end_value": 647543.4727491611
       },
       "ytd": {
         "start_date": "2026-01-05",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 6.438550045154479,
-        "annualized_return_pct": 10.898891765924157,
-        "max_drawdown_pct": -10.906923925583412,
-        "annualized_volatility_pct": 18.796828924422364,
-        "sharpe": 0.6446487648374021,
-        "positive_days_pct": 47.368421052631575,
-        "hypothetical_pnl": 32192.750225772394,
-        "hypothetical_end_value": 532192.7502257724
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 14.312998992981019,
+        "annualized_return_pct": 24.121429440995446,
+        "max_drawdown_pct": -11.733340073939381,
+        "annualized_volatility_pct": 19.784345416599805,
+        "sharpe": 1.1920035392057684,
+        "positive_days_pct": 47.43589743589743,
+        "hypothetical_pnl": 71564.9949649051,
+        "hypothetical_end_value": 571564.9949649051
       },
       "recent_three_year": {
-        "start_date": "2023-07-10",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 60.70223988818386,
-        "annualized_return_pct": 17.156107968531444,
-        "max_drawdown_pct": -16.331145098021526,
-        "annualized_volatility_pct": 15.66782451836753,
-        "sharpe": 1.0889800771495557,
-        "positive_days_pct": 42.64900662251655,
-        "hypothetical_pnl": 303511.1994409193,
-        "hypothetical_end_value": 803511.1994409193
+        "start_date": "2023-07-14",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 46.669424518352145,
+        "annualized_return_pct": 13.637054566316188,
+        "max_drawdown_pct": -17.539954650653456,
+        "annualized_volatility_pct": 15.19797730187607,
+        "sharpe": 0.9173779501241105,
+        "positive_days_pct": 43.3112582781457,
+        "hypothetical_pnl": 233347.1225917607,
+        "hypothetical_end_value": 733347.1225917607
       },
       "recent_five_year": {
-        "start_date": "2021-08-23",
-        "end_date": "2026-08-20",
-        "cumulative_return_pct": 72.55818029092076,
-        "annualized_return_pct": 12.053893896374968,
-        "max_drawdown_pct": -23.486220608667587,
-        "annualized_volatility_pct": 15.375071036836191,
-        "sharpe": 0.8170182126436462,
-        "positive_days_pct": 40.894039735099334,
-        "hypothetical_pnl": 362790.9014546038,
-        "hypothetical_end_value": 862790.9014546038
+        "start_date": "2021-08-30",
+        "end_date": "2026-08-26",
+        "cumulative_return_pct": 59.7255162827782,
+        "annualized_return_pct": 10.270898800698692,
+        "max_drawdown_pct": -21.37326891348573,
+        "annualized_volatility_pct": 14.456402942668973,
+        "sharpe": 0.7486934979681206,
+        "positive_days_pct": 41.922120961060486,
+        "hypothetical_pnl": 298627.581413891,
+        "hypothetical_end_value": 798627.5814138909
       }
     }
   }
