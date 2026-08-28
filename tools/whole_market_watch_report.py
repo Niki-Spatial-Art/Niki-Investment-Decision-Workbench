@@ -126,6 +126,9 @@ def github_component(repo: str, purpose: str) -> dict[str, Any]:
     base = "https://api.github.com/repos/" + repo
     result = {"repo": repo, "purpose": purpose, "source": "GitHub REST API"}
     headers = {"User-Agent": USER_AGENT, "Accept": "application/vnd.github+json"}
+    token = (os.getenv("GITHUB_TOKEN") or os.getenv("GH_TOKEN") or "").strip()
+    if token:
+        headers["Authorization"] = "Bearer " + token
     for suffix, prefix in (("/releases/latest", "release"), ("", "repo")):
         try:
             request = urllib.request.Request(base + suffix, headers=headers)
@@ -289,6 +292,17 @@ def send_email(report: dict[str, Any], content: str) -> None:
     print("whole_market_email=sent")
 
 
+def existing_trading_report_for_today(path: Path) -> bool:
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+    except (FileNotFoundError, json.JSONDecodeError):
+        return False
+    return bool(
+        report.get("a_share_trading_day")
+        and report.get("as_of_date") == now_beijing().date().isoformat()
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build a public whole-market observation report")
     parser.add_argument("--config", default="watchlists/whole_market_watchlist.json")
@@ -296,6 +310,11 @@ def main() -> int:
     parser.add_argument("--history", default="reports/whole_market_watch_history.jsonl")
     parser.add_argument("--email", action="store_true")
     parser.add_argument("--resend-existing", action="store_true", help="Resend the saved trading-day report without refreshing market data")
+    parser.add_argument(
+        "--skip-existing-today",
+        action="store_true",
+        help="Skip scheduled duplicate runs when today's trading-day report has already been persisted",
+    )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     output = ROOT / args.output
@@ -304,6 +323,9 @@ def main() -> int:
         if not report.get("a_share_trading_day"):
             raise SystemExit("Saved report is not an A-share trading-day report; refusing to resend")
         send_email(report, render_html(report))
+        return 0
+    if args.skip_existing_today and existing_trading_report_for_today(output):
+        print(f"whole_market_report=skipped_existing_today {output}")
         return 0
     report = build_report(read_json(ROOT / args.config))
     content = render_html(report)

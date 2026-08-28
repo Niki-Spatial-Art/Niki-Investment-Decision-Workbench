@@ -14,8 +14,16 @@ on:
         default: false
         type: boolean
   schedule:
-    # GitHub cron uses UTC. Beijing 15:40 on weekdays, after the A-share close.
+    # GitHub cron uses UTC. Beijing 15:40/15:50/16:00 on weekdays.
+    # Multiple post-close attempts reduce missed GitHub schedule runs; the script
+    # skips duplicates once the same Beijing-date trading-day report exists.
     - cron: '40 7 * * 1-5'
+    - cron: '50 7 * * 1-5'
+    - cron: '0 8 * * 1-5'
+
+concurrency:
+  group: whole-market-watch-daily-${{ github.ref }}
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -38,7 +46,7 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
             python tools/whole_market_watch_report.py
           else
-            python tools/whole_market_watch_report.py --email
+            python tools/whole_market_watch_report.py --email --skip-existing-today
           fi
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
@@ -48,6 +56,7 @@ jobs:
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          GITHUB_TOKEN: ${{ github.token }}
       - name: Persist public whole-market snapshot on trading days
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.resend_saved_report != true }}
         run: |
