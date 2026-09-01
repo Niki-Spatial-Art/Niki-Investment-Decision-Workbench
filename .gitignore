@@ -13,7 +13,8 @@ reports/*
 !reports/portfolio_sleeve_backtest_latest.json
 !reports/whole_market_watch_latest.json
 !reports/whole_market_watch_history.jsonl
-reviews/
+reviews/*
+!reviews/daily/
 vendor/
 data/*
 !data/.gitkeep
