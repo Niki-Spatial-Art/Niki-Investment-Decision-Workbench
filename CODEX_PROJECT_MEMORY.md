@@ -36,6 +36,7 @@ Niki Smart Tools is a local-first A-share/ETF research and decision-discipline w
 - `.github/workflows/portfolio-sleeve-backtest-weekly.yml` refreshes the public layered backtest snapshot each Friday at 17:45 Beijing time without sending orders or trade instructions.
 - Every A-share trading day requires a local `reports/daily_review_YYYY-MM-DD.md` with market-gate evidence, prior-day validation, risk-bucket review, event risks, next-day conditions, and a generation check. `tools/daily_review_guard.py` performs only a local file/section completeness check and writes `reports/daily_review_check_YYYY-MM-DD.json`; it never fetches market data or reads broker data. `install_daily_review_guard_task.ps1` registers the weekday 15:35 local guard.
 - Daily observation-window convention: Beijing time 09:00–16:00. Low-frequency A-share reads remain limited to the configured 09:30–15:00 checkpoints; 15:30 is the close-review window, and 16:00 is the workflow cutoff rather than an exchange trading-close extension.
+- `.github/workflows/action-audit.yml` is the scheduled intraday email path. It runs on Beijing A-share checkpoints and calls `tools/send_workbench_email_preview.py --intraday`; the script must pass its Beijing-time intraday guard before reading market data, then verifies current-day A-share quotes before sending. Manual emergency resend uses `force_send=true` / `--force`.
 
 ## Local Commands
 

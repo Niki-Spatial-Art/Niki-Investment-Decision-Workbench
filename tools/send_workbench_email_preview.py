@@ -7,7 +7,7 @@ import argparse
 import html
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -23,6 +23,20 @@ from monitor import broad_market_tiers, load_digital_infra_watchlist, run_broad_
 INDEX_CODES = ["510300", "512100", "512880", "588000", "518880"]
 CORE_INDEX_CODES = ["510300", "512100", "588000"]
 BEIJING_TZ = ZoneInfo("Asia/Shanghai")
+INTRADAY_WINDOWS = [
+    (9, 30),
+    (10, 0),
+    (10, 30),
+    (11, 0),
+    (11, 30),
+    (13, 0),
+    (13, 30),
+    (14, 0),
+    (14, 30),
+    (14, 55),
+    (15, 0),
+]
+DEFAULT_INTRADAY_TOLERANCE_MINUTES = 12
 
 
 def as_float(value: object, default: float = 0.0) -> float:
@@ -68,6 +82,31 @@ def fmt_beijing_time(value: object) -> str:
     if parsed.tzinfo is None:
         parsed = parsed.replace(tzinfo=BEIJING_TZ)
     return f"{parsed.astimezone(BEIJING_TZ):%Y-%m-%d %H:%M:%S} 北京时间"
+
+
+def intraday_window_state(now: datetime | None = None) -> tuple[bool, str]:
+    """Return whether an intraday email is allowed before reading market data."""
+    current = now.astimezone(BEIJING_TZ) if now else datetime.now(BEIJING_TZ)
+    tolerance = as_float(os.getenv("INTRADAY_WINDOW_TOLERANCE_MINUTES"), DEFAULT_INTRADAY_TOLERANCE_MINUTES)
+    if current.weekday() >= 5:
+        return False, f"skip_intraday=weekend now={current:%Y-%m-%d %H:%M:%S %Z}"
+    for hour, minute in INTRADAY_WINDOWS:
+        scheduled = current.replace(hour=hour, minute=minute, second=0, microsecond=0)
+        delay = current - scheduled
+        if timedelta(0) <= delay <= timedelta(minutes=tolerance):
+            return True, f"window={hour:02d}:{minute:02d} delay_minutes={delay.total_seconds() / 60:.1f}"
+    windows = ",".join(f"{hour:02d}:{minute:02d}" for hour, minute in INTRADAY_WINDOWS)
+    return False, f"skip_intraday=outside_window now={current:%Y-%m-%d %H:%M:%S %Z} windows={windows} tolerance_minutes={tolerance:g}"
+
+
+def quote_day(payload: dict, code: str) -> str:
+    raw = "".join(char for char in str((payload.get("quotes") or {}).get(code, {}).get("quote_time") or "") if char.isdigit())
+    return raw[:8] if len(raw) >= 8 else ""
+
+
+def is_current_a_share_trading_day(payload: dict) -> bool:
+    today = datetime.now(BEIJING_TZ).strftime("%Y%m%d")
+    return any(quote_day(payload, code) == today for code in CORE_INDEX_CODES)
 
 
 def index_stop_state(payload: dict) -> tuple[bool, int]:
@@ -180,23 +219,19 @@ def action_card_rows(items: list[dict], gate_open: bool) -> str:
         return '<p style="color:#5d6b82">交易闸门关闭：不生成盘中买入动作卡。</p>'
     if not items:
         return '<p style="color:#5d6b82">闸门开放，但没有通过量价、流动性和主题过滤的标的。</p>'
-    max_capital = as_float(os.getenv("INTRADAY_ACTION_CARD_MAX_CAPITAL", "20000"), 20_000)
     rows = []
     for item in items[:3]:
-        price = as_float(item.get("price"))
-        shares = int(max_capital // price // 100 * 100) if price else 0
-        entry_low = price * 0.995
-        entry_high = price * 1.005
-        stop_loss = price * 0.97
-        take_profit_1 = price * 1.03
-        take_profit_2 = price * 1.05
+        evidence = (
+            f"当日 {fmt_pct(item.get('pct_change'))}；"
+            f"成交额 {fmt_amount(item.get('amount'))}"
+        )
         rows.append(
             "<tr>"
             f"<td>{html.escape(str(item.get('code') or '-'))} {html.escape(str(item.get('name') or ''))}</td>"
-            f"<td>{html.escape(fmt_price(entry_low))}-{html.escape(fmt_price(entry_high))}</td>"
-            f"<td>{html.escape(fmt_price(take_profit_1))}/{html.escape(fmt_price(take_profit_2))}</td>"
-            f"<td>{html.escape(fmt_price(stop_loss))}</td>"
-            f"<td>最多 {html.escape(fmt_amount(max_capital))}<br>约 {shares} 股</td>"
+            f"<td>{html.escape(str(item.get('industry') or '-'))}</td>"
+            f"<td>{html.escape(evidence)}</td>"
+            "<td>只进入人工复核；不自动下单、不追涨、不给固定金额。</td>"
+            "<td>板块转弱、冲高回落、跌破当日低点或数据不可验证即取消。</td>"
             "</tr>"
         )
     return "".join(rows)
@@ -229,7 +264,7 @@ def build_html(payload: dict, scan: dict, summary: dict, intraday: bool = False)
       <h2 style="font-size:17px;margin-top:22px">3. 观察候选（最多 3 个）</h2>
       <table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f7f9fc"><th style="text-align:left;padding:8px">标的</th><th style="text-align:left;padding:8px">行业</th><th style="text-align:right;padding:8px">涨跌幅</th><th style="text-align:left;padding:8px">处理</th></tr></thead><tbody>{candidate_rows(summary['candidates'], summary['gate_open'])}</tbody></table>
 
-      {'<h2 style="font-size:17px;margin-top:22px">盘中动作卡（最多 3 张）</h2><table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f7f9fc"><th style="text-align:left;padding:8px">标的</th><th style="text-align:left;padding:8px">入场区</th><th style="text-align:left;padding:8px">止盈</th><th style="text-align:left;padding:8px">止损</th><th style="text-align:left;padding:8px">最大试错</th></tr></thead><tbody>' + action_card_rows(summary['actionable_candidates'], summary['gate_open']) + '</tbody></table>' if intraday else ''}
+      {'<h2 style="font-size:17px;margin-top:22px">盘中动作卡（最多 3 张）</h2><table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f7f9fc"><th style="text-align:left;padding:8px">标的</th><th style="text-align:left;padding:8px">行业</th><th style="text-align:left;padding:8px">触发证据</th><th style="text-align:left;padding:8px">处理</th><th style="text-align:left;padding:8px">失效条件</th></tr></thead><tbody>' + action_card_rows(summary['actionable_candidates'], summary['gate_open']) + '</tbody></table>' if intraday else ''}
 
       <h2 style="font-size:17px;margin-top:22px">4. 交易闸门</h2>
       <div style="border-left:4px solid {gate_color};background:#f7f9fc;padding:12px"><strong style="color:{gate_color}">{gate_label}</strong><br>{html.escape(summary['gate_reason'])}<br><span style="color:#5d6b82">规则：全市场覆盖、上涨家数占优、核心指数止跌三项同时满足，才允许为候选生成次日人工复核计划。</span></div>
@@ -243,9 +278,21 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Send a manual workbench market-scan email")
     parser.add_argument("--dry-run", action="store_true", help="Generate and validate the preview without SMTP")
     parser.add_argument("--intraday", action="store_true", help="Include conditional intraday action cards")
+    parser.add_argument("--force", action="store_true", help="Bypass the intraday time guard for manual resend/testing")
     args = parser.parse_args()
 
+    if args.intraday and not args.force:
+        allowed, reason = intraday_window_state()
+        if not allowed:
+            print(reason)
+            return 0
+        print("intraday_guard=pass " + reason)
+
     payload = snapshot(INDEX_CODES, bars=65)
+    if args.intraday and not args.force and not is_current_a_share_trading_day(payload):
+        print("skip_intraday=a_share_closed_or_quote_not_current")
+        return 0
+
     scan = run_broad_market_scan(load_digital_infra_watchlist())
     summary = build_scan_summary(payload, scan)
     email_html = build_html(payload, scan, summary, intraday=args.intraday)

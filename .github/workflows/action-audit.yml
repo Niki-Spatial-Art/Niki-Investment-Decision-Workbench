@@ -2,6 +2,27 @@ name: Intraday Action Card Scan
 
 on:
   workflow_dispatch:
+    inputs:
+      force_send:
+        description: Force-send an intraday preview outside the guarded Beijing windows
+        required: true
+        default: false
+        type: boolean
+  schedule:
+    # GitHub cron uses UTC. Beijing A-share intraday checkpoints:
+    # 09:30, 10:00, 10:30, 11:00, 11:30, 13:00, 13:30, 14:00, 14:30, 14:55, 15:00.
+    # The Python guard below silently exits if GitHub starts too late or A-shares are closed.
+    - cron: '30 1 * * 1-5'
+    - cron: '0 2 * * 1-5'
+    - cron: '30 2 * * 1-5'
+    - cron: '0 3 * * 1-5'
+    - cron: '30 3 * * 1-5'
+    - cron: '0 5 * * 1-5'
+    - cron: '30 5 * * 1-5'
+    - cron: '0 6 * * 1-5'
+    - cron: '30 6 * * 1-5'
+    - cron: '55 6 * * 1-5'
+    - cron: '0 7 * * 1-5'
 
 permissions:
   contents: read
@@ -21,7 +42,12 @@ jobs:
       - run: pip install -r requirements.txt -r requirements-a-stock.txt
 
       - name: Scan market and send conditional action cards
-        run: python tools/send_workbench_email_preview.py --intraday
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.force_send }}" = "true" ]; then
+            python tools/send_workbench_email_preview.py --intraday --force
+          else
+            python tools/send_workbench_email_preview.py --intraday
+          fi
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
