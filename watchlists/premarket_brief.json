@@ -1,0 +1,120 @@
+{
+  "name": "Premarket Brief (美股→A股映射 + 追踪票盘前推送)",
+  "description": "每个A股交易日早盘前(8:50)推送：美股隔夜涨跌 → 映射A股板块/龙头一句话结论 + 用户追踪票盘前状态。仅研究观察，不构成买卖指令。",
+  "skip_if_not_a_share_trading_day": true,
+  "history_retention_days": 365,
+  "us_indices": [
+    {"symbol": "^GSPC", "name": "标普500", "a_share_proxy": "沪深300", "a_share_index": "sz399300"},
+    {"symbol": "^IXIC", "name": "纳斯达克", "a_share_proxy": "创业板指", "a_share_index": "sz399006"},
+    {"symbol": "^DJI", "name": "道琼斯", "a_share_proxy": "上证指数", "a_share_index": "sh000001"}
+  ],
+  "us_to_a_mapping": [
+    {
+      "id": "ai_compute",
+      "us_symbols": ["NVDA", "AMD", "AVGO", "MSFT", "GOOGL", "META", "AMZN"],
+      "a_share_sector": "AI算力/光互连/PCB元件",
+      "a_share_symbols": [
+        {"code": "300308", "name": "中际旭创", "role": "光模块核心"},
+        {"code": "300502", "name": "新易盛", "role": "光模块核心"},
+        {"code": "688008", "name": "澜起科技", "role": "服务器互连"},
+        {"code": "002463", "name": "沪电股份", "role": "高端PCB"},
+        {"code": "600183", "name": "生益科技", "role": "覆铜板"},
+        {"code": "300476", "name": "胜宏科技", "role": "PCB"},
+        {"code": "002916", "name": "深南电路", "role": "高端PCB"}
+      ],
+      "mapping_note": "美股AI算力链(英伟达/AMD/博通/云厂商)涨跌 → A股光模块、服务器互连、高端PCB联动；云厂商资本开支是核心变量。"
+    },
+    {
+      "id": "rare_earth_minor_metals",
+      "us_symbols": ["MP", "FCX"],
+      "a_share_sector": "小金属(钨锡锑稀土)+铜",
+      "a_share_symbols": [
+        {"code": "600549", "name": "厦门钨业", "role": "钨/稀土核心"},
+        {"code": "000657", "name": "中钨高新", "role": "钨验证"},
+        {"code": "000960", "name": "锡业股份", "role": "锡验证"},
+        {"code": "600301", "name": "华锡有色", "role": "锡/锑验证"},
+        {"code": "600111", "name": "北方稀土", "role": "稀土温度计"}
+      ],
+      "mapping_note": "美股MP材料(稀土)/自由港(铜)涨跌 → A股稀土、钨锡锑、铜相关龙头联动；供给约束与库存是核心变量。"
+    },
+    {
+      "id": "semiconductor_memory",
+      "us_symbols": ["MU", "TSM", "INTC"],
+      "a_share_sector": "半导体/存储",
+      "a_share_symbols": [
+        {"code": "688981", "name": "中芯国际", "role": "晶圆代工核心"},
+        {"code": "603986", "name": "兆易创新", "role": "存储芯片"},
+        {"code": "688525", "name": "佰维存储", "role": "存储模组"}
+      ],
+      "mapping_note": "美股美光(存储)/台积电/英特尔涨跌 → A股存储、晶圆代工联动；存储涨价周期是关键变量。"
+    },
+    {
+      "id": "agriculture_grains",
+      "us_symbols": ["ADM", "BG"],
+      "commodity_symbols": ["ZC=F", "ZS=F", "ZW=F"],
+      "a_share_sector": "农业种业/粮食(玉米大豆小麦)",
+      "a_share_symbols": [
+        {"code": "000998", "name": "隆平高科", "role": "种业核心"},
+        {"code": "002041", "name": "登海种业", "role": "玉米种业核心"},
+        {"code": "002385", "name": "大北农", "role": "种业+饲料"},
+        {"code": "600598", "name": "北大荒", "role": "粮食种植"},
+        {"code": "601952", "name": "苏垦农发", "role": "粮食种植"},
+        {"code": "600737", "name": "中粮糖业", "role": "中粮系"}
+      ],
+      "mapping_note": "CBOT玉米/大豆/小麦期货 + 国际粮商(ADM/BG)涨跌 → A股种业、粮食种植龙头联动；粮价与种植景气是核心变量。"
+    },
+    {
+      "id": "agriculture_livestock",
+      "us_symbols": ["TSN"],
+      "a_share_sector": "养殖(生猪/禽)",
+      "a_share_symbols": [
+        {"code": "002714", "name": "牧原股份", "role": "生猪龙头"},
+        {"code": "300498", "name": "温氏股份", "role": "生猪+禽"},
+        {"code": "002311", "name": "海大集团", "role": "饲料龙头"}
+      ],
+      "mapping_note": "美股泰森食品涨跌 → A股生猪养殖、饲料联动；猪周期与饲料成本是核心变量。"
+    }
+  ],
+  "tracked_stocks": {
+    "持仓ETF": [
+      {"code": "510300", "name": "沪深300ETF"},
+      {"code": "515220", "name": "煤炭ETF"},
+      {"code": "512100", "name": "中证1000ETF"},
+      {"code": "512800", "name": "银行ETF"},
+      {"code": "513120", "name": "港股创新药ETF"},
+      {"code": "518880", "name": "黄金ETF"}
+    ],
+    "农业种业主线": [
+      {"code": "000998", "name": "隆平高科", "role": "种业核心"},
+      {"code": "002041", "name": "登海种业", "role": "玉米种业核心"},
+      {"code": "002385", "name": "大北农", "role": "种业+饲料"},
+      {"code": "600598", "name": "北大荒", "role": "粮食种植"},
+      {"code": "601952", "name": "苏垦农发", "role": "粮食种植"},
+      {"code": "600354", "name": "敦煌种业", "role": "玉米种业"},
+      {"code": "600371", "name": "万向德农", "role": "玉米种业"}
+    ],
+    "小金属主线": [
+      {"code": "600549", "name": "厦门钨业", "role": "钨/稀土"},
+      {"code": "000657", "name": "中钨高新", "role": "钨"},
+      {"code": "000960", "name": "锡业股份", "role": "锡"},
+      {"code": "600301", "name": "华锡有色", "role": "锡/锑"},
+      {"code": "600111", "name": "北方稀土", "role": "稀土"}
+    ],
+    "AI算力主线": [
+      {"code": "300308", "name": "中际旭创", "role": "光模块"},
+      {"code": "300502", "name": "新易盛", "role": "光模块"},
+      {"code": "688008", "name": "澜起科技", "role": "服务器互连"},
+      {"code": "002463", "name": "沪电股份", "role": "PCB"},
+      {"code": "600183", "name": "生益科技", "role": "覆铜板"},
+      {"code": "300476", "name": "胜宏科技", "role": "PCB"},
+      {"code": "002916", "name": "深南电路", "role": "PCB"}
+    ]
+  },
+  "signal_rules": {
+    "ma_window": 20,
+    "relative_windows": [5, 20],
+    "volume_window": 5,
+    "chase_day_change_pct": 7.0
+  },
+  "disclaimer": "公开行情研究与人工复核工具，不连接券商、不自动下单、不提供目标价、固定仓位或收益承诺；美股→A股映射是相关性观察，相关性不等于因果。"
+}

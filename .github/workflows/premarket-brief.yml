@@ -1,0 +1,66 @@
+name: Premarket Brief
+
+on:
+  schedule:
+    # 每个工作日北京时间 08:50（UTC 00:50）触发；脚本内部会判断是否为 A 股交易日，非交易日自动跳过
+    - cron: '50 0 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: Send the premarket brief email after building
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  premarket-brief:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Build and send premarket brief
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
+            python tools/premarket_brief.py
+          else
+            python tools/premarket_brief.py --email
+          fi
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          PREMARKET_RECIPIENT_EMAIL: ${{ secrets.PREMARKET_RECIPIENT_EMAIL }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+
+      - name: Persist public snapshot on A-share trading days
+        run: |
+          if ! python -c "import json; raise SystemExit(0 if json.load(open('reports/premarket_brief_latest.json', encoding='utf-8')).get('a_share_trading_day') else 1)"; then
+            echo "A-share is closed; snapshot and email were skipped."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports/premarket_brief_latest.json
+          git diff --cached --quiet || git commit -m "chore: update premarket brief snapshot"
+          git push
+
+      - name: Upload premarket brief artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: premarket-brief-${{ github.run_id }}
+          path: reports/premarket_brief_*
+          if-no-files-found: warn
+          retention-days: 30
