@@ -363,11 +363,11 @@ def send_email(subject: str, body: str):
     from email.utils import formatdate, make_msgid
     import smtplib
 
-    sender = os.environ.get("SENDER_EMAIL")
-    password = os.environ.get("SENDER_PASSWORD")
-    recipient = os.environ.get("RECIPIENT_EMAIL")
-    smtp_server = os.environ.get("SMTP_SERVER", "smtp.qq.com")
-    smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+    sender = (os.environ.get("SENDER_EMAIL") or "").strip()
+    password = (os.environ.get("SENDER_PASSWORD") or "").strip()
+    recipient = (os.environ.get("RECIPIENT_EMAIL") or "").strip()
+    smtp_server = (os.environ.get("SMTP_SERVER") or "smtp.qq.com").strip()
+    smtp_port = int((os.environ.get("SMTP_PORT") or "465").strip())
 
     if not (sender and password and recipient):
         print("[skip-email] 缺少邮件环境变量，跳过发送")
