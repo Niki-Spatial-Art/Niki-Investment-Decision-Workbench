@@ -1,0 +1,42 @@
+name: Review Weekly
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间每周五 17:30（盘后，覆盖本周总结）
+    - cron: '30 9 * * 5'
+      timezone: 'Asia/Shanghai'
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Build weekly review and send email
+        run: python tools/review_aggregator.py --period weekly --email
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+
+      - name: Commit and push weekly review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reviews/weekly/
+          git diff --cached --quiet || git commit -m "chore: weekly review $(date +%F)"
+          git push

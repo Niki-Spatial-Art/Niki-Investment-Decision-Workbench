@@ -1,0 +1,42 @@
+name: Review Quarterly
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间 3/6/9/12 月最后一天 17:30
+    - cron: '30 9 L 3,6,9,12 *'
+      timezone: 'Asia/Shanghai'
+
+permissions:
+  contents: write
+
+jobs:
+  quarterly-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - run: pip install -r requirements.txt
+
+      - name: Build quarterly review and send email
+        run: python tools/review_aggregator.py --period quarterly --email
+        env:
+          SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+          SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+
+      - name: Commit and push quarterly review
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reviews/quarterly/
+          git diff --cached --quiet || git commit -m "chore: quarterly review $(date +%F)"
+          git push

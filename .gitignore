@@ -15,6 +15,9 @@ reports/*
 !reports/whole_market_watch_history.jsonl
 reviews/*
 !reviews/daily/
+!reviews/weekly/
+!reviews/monthly/
+!reviews/quarterly/
 vendor/
 data/*
 !data/.gitkeep
