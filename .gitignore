@@ -20,6 +20,8 @@ reviews/*
 !reviews/monthly/
 !reviews/quarterly/
 !reviews/yearly/
+!reviews/us_daily/
+local_reviews/
 vendor/
 data/*
 !data/.gitkeep
