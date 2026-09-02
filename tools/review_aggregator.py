@@ -7,9 +7,10 @@
 - 周复盘：聚合本周 daily 复盘 + whole_market_watch 数据，计算胜率/纪律违反/盈亏。
 - 月复盘：聚合本月 weekly 复盘，对比资金计划目标，产出策略优化项。
 - 季复盘：聚合本季 monthly 复盘，做胜率/执行率/回报率总账。
+- 年复盘：聚合本年 quarterly 复盘，做年度策略、纪律和账户总账。
 
 设计原则：
-- 只读 reports/ 和 reviews/daily/，生成 reviews/{weekly,monthly,quarterly}/。
+- 只读 reports/ 和 reviews/daily/，生成 reviews/{weekly,monthly,quarterly,yearly}/。
 - 不连接券商、不自动交易、不承诺收益。
 - 邮件发送复用 emailer.EmailNotifier，由 workflow 传入 secrets 环境变量。
 
@@ -17,6 +18,7 @@
   python tools/review_aggregator.py --period weekly   [--email]
   python tools/review_aggregator.py --period monthly  [--email]
   python tools/review_aggregator.py --period quarterly [--email]
+  python tools/review_aggregator.py --period yearly   [--email]
   python tools/review_aggregator.py --period daily --us-stock   # 仅补美股隔夜数据
 """
 
@@ -27,6 +29,10 @@ import os
 import re
 import sys
 from pathlib import Path
+try:
+    from zoneinfo import ZoneInfo
+except Exception:  # pragma: no cover - Python 3.9+ ships zoneinfo; keep fallback safe.
+    ZoneInfo = None
 
 # 允许直接运行和作为模块导入
 ROOT = Path(__file__).resolve().parent.parent
@@ -36,6 +42,20 @@ DAILY = REVIEWS / "daily"
 WEEKLY = REVIEWS / "weekly"
 MONTHLY = REVIEWS / "monthly"
 QUARTERLY = REVIEWS / "quarterly"
+YEARLY = REVIEWS / "yearly"
+BEIJING_TZ = ZoneInfo("Asia/Shanghai") if ZoneInfo else dt.timezone(dt.timedelta(hours=8))
+
+
+def now_beijing() -> dt.datetime:
+    return dt.datetime.now(BEIJING_TZ)
+
+
+def today_beijing() -> dt.date:
+    return now_beijing().date()
+
+
+def generated_line() -> str:
+    return f"> 生成时间：{now_beijing():%Y-%m-%d %H:%M:%S} 北京时间\n"
 
 
 # ---------------------------------------------------------------------------
@@ -191,7 +211,7 @@ def build_weekly(today: dt.date):
 
     lines = []
     lines.append(f"# 周复盘 {monday} ~ {sunday}\n")
-    lines.append(f"> 生成时间：{dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    lines.append(generated_line())
 
     # 美股隔夜
     lines.append("## 一、美股周度概览（最近一次隔夜收盘）\n")
@@ -257,7 +277,7 @@ def build_monthly(today: dt.date):
     month_start = today.replace(day=1)
     lines = []
     lines.append(f"# 月复盘 {month_start:%Y-%m}\n")
-    lines.append(f"> 生成时间：{dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    lines.append(generated_line())
 
     lines.append("## 一、本月目标 vs 实际\n")
     lines.append("| 项目 | 目标 | 实际 | 状态 |")
@@ -294,7 +314,7 @@ def build_quarterly(today: dt.date):
     q_start = today.replace(month=q_start_month, day=1)
     lines = []
     lines.append(f"# 季复盘 {today.year} Q{q}\n")
-    lines.append(f"> 生成时间：{dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+    lines.append(generated_line())
 
     lines.append("## 一、季度总账\n")
     lines.append("| 指标 | 数值 | 说明 |")
@@ -330,6 +350,41 @@ def build_quarterly(today: dt.date):
     return "\n".join(lines)
 
 
+def build_yearly(today: dt.date):
+    lines = []
+    lines.append(f"# 年复盘 {today.year}\n")
+    lines.append(generated_line())
+
+    lines.append("## 一、年度总账\n")
+    lines.append("| 指标 | 数值 | 说明 |")
+    lines.append("|---|---|---|")
+    lines.append("| 年度回报率 | _待统计_ | 需完整交割单或账户净值序列 |")
+    lines.append("| 年度胜率 | _待统计_ | 盈利回合 / 总回合 |")
+    lines.append("| 盈亏比 | _待统计_ | 平均盈利 / 平均亏损 |")
+    lines.append("| 最大回撤 | _待统计_ | 需完整资金曲线 |")
+    lines.append("| 纪律执行率 | _待统计_ | 按计划执行 / 总交易 |")
+    lines.append("")
+
+    lines.append("## 二、年度季度复盘索引\n")
+    quarterly_list = sorted(QUARTERLY.glob("*.md"))
+    matched = [p for p in quarterly_list if p.name.startswith(f"{today.year}-Q")]
+    if matched:
+        for p in matched:
+            lines.append(f"- [{p.name}](quarterly/{p.name})")
+    else:
+        lines.append("_本年暂无季度复盘。_\n")
+
+    lines.append("## 三、年度策略结论\n")
+    lines.append("_（待人工补充：全年最有效策略、最应删除动作、主要回撤来源、下一年资金与纪律规则）_\n")
+
+    lines.append("## 四、下一年度计划\n")
+    lines.append("- 先完成完整交割单/成交查询整理，再更新年度胜率、盈亏比、最大回撤。")
+    lines.append("- 不用收益目标倒推出手次数；继续以市场闸门、主题证据、账户风险预算决定动作。")
+    lines.append("- _（待人工补充）_\n")
+
+    return "\n".join(lines)
+
+
 # ---------------------------------------------------------------------------
 # 写入文件
 # ---------------------------------------------------------------------------
@@ -346,6 +401,9 @@ def write_review(period: str, content: str, today: dt.date):
         q = (today.month - 1) // 3 + 1
         name = f"{today.year}-Q{q}_quarterly_review.md"
         target = QUARTERLY / name
+    elif period == "yearly":
+        name = f"{today.year}_yearly_review.md"
+        target = YEARLY / name
     else:
         raise ValueError(f"unsupported period: {period}")
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -417,12 +475,12 @@ def send_email(subject: str, body: str):
 def main():
     parser = argparse.ArgumentParser(description="复盘聚合器")
     parser.add_argument("--period", required=True,
-                        choices=["daily", "weekly", "monthly", "quarterly"])
+                        choices=["daily", "weekly", "monthly", "quarterly", "yearly"])
     parser.add_argument("--email", action="store_true", help="发送邮件")
     parser.add_argument("--us-stock", action="store_true", help="(daily) 仅输出美股隔夜概览")
     args = parser.parse_args()
 
-    today = dt.date.today()
+    today = today_beijing()
 
     if args.period == "daily":
         if args.us_stock:
@@ -441,10 +499,13 @@ def main():
     elif args.period == "monthly":
         content = build_monthly(today)
         subject = f"投资月复盘 {today:%Y-%m}"
-    else:
+    elif args.period == "quarterly":
         content = build_quarterly(today)
         q = (today.month - 1) // 3 + 1
         subject = f"投资季复盘 {today.year} Q{q}"
+    else:
+        content = build_yearly(today)
+        subject = f"投资年复盘 {today.year}"
 
     target = write_review(args.period, content, today)
     print(f"[wrote] {target}")

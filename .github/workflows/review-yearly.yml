@@ -1,16 +1,16 @@
-name: Review Weekly
+name: Review Yearly
 
 on:
   workflow_dispatch:
   schedule:
-    # GitHub Actions cron uses UTC. Beijing Friday 17:30 post-close weekly review.
-    - cron: '30 9 * * 5'
+    # GitHub Actions cron uses UTC. Beijing Dec 31 17:30 annual review.
+    - cron: '30 9 31 12 *'
 
 permissions:
   contents: write
 
 jobs:
-  weekly-review:
+  yearly-review:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -23,8 +23,8 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - name: Build weekly review and send email
-        run: python tools/review_aggregator.py --period weekly --email
+      - name: Build yearly review and send email
+        run: python tools/review_aggregator.py --period yearly --email
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
@@ -32,10 +32,10 @@ jobs:
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
-      - name: Commit and push weekly review
+      - name: Commit and push yearly review
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add reviews/weekly/
-          git diff --cached --quiet || git commit -m "chore: weekly review $(date +%F)"
+          git add reviews/yearly/
+          git diff --cached --quiet || git commit -m "chore: yearly review $(date +%F)"
           git push

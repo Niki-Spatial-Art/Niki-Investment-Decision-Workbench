@@ -2,8 +2,8 @@ name: Premarket Brief
 
 on:
   schedule:
-    # 每个工作日北京时间 08:50（UTC 00:50）触发；脚本内部会判断是否为 A 股交易日，非交易日自动跳过
-    - cron: '50 0 * * 1-5'
+    # GitHub Actions cron uses UTC. Beijing 08:30 premarket; script skips non-A-share trading days.
+    - cron: '30 0 * * 1-5'
   workflow_dispatch:
     inputs:
       send_email:
