@@ -60,6 +60,7 @@ jobs:
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           GITHUB_TOKEN: ${{ github.token }}
+          BROAD_MARKET_TIME_BUDGET_SECONDS: "180"
       - name: Persist public whole-market snapshot on trading days
         if: ${{ github.event_name != 'workflow_dispatch' || inputs.resend_saved_report != true }}
         run: |

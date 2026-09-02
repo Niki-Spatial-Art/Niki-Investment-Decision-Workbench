@@ -60,6 +60,23 @@ def num(value: float | None, digits: int = 2) -> str:
     return "-" if value is None else f"{value:.{digits}f}"
 
 
+def keyed_metric(payload: dict[str, Any] | None, key: int | str) -> float | None:
+    """Read metric dictionaries before or after JSON serialization.
+
+    Python keeps return-window keys as integers while the report is being built,
+    but saved JSON turns them into strings. Resending a saved report must render
+    the same metrics instead of showing "-".
+    """
+    if not isinstance(payload, dict):
+        return None
+    if key in payload:
+        return finite(payload.get(key))
+    text_key = str(key)
+    if text_key in payload:
+        return finite(payload.get(text_key))
+    return None
+
+
 def quote_day(payload: dict[str, Any], code: str) -> str:
     raw = "".join(char for char in str((payload.get("quotes") or {}).get(code, {}).get("quote_time") or "") if char.isdigit())
     return raw[:8] if len(raw) >= 8 else ""
@@ -269,7 +286,7 @@ def render_html(report: dict[str, Any]) -> str:
     candidate_rows = "".join("<tr>" + "".join(cell(value) for value in [item.get("code"), item.get("name"), item.get("industry"), pct(finite(item.get("pct_change"))), f"{(finite(item.get('amount')) or 0)/1e8:.1f}亿", item.get("action")]) + "</tr>" for item in (report.get("candidates") or [])[:20]) or "<tr><td colspan='6'>本次没有可验证的量价候选</td></tr>"
     module_sections = []
     for module in report.get("modules") or []:
-        rows = "".join("<tr>" + "".join(cell(value) for value in [f"{stock.get('code')} {stock.get('name')}", pct((stock.get('returns') or {}).get(5)), pct((stock.get('returns') or {}).get(20)), pct((stock.get('relative_returns') or {}).get(20)), "MA20上方" if stock.get("above_ma20") else "MA20下方" if stock.get("ma20") else "数据不足", num(stock.get("volume_ratio_5_20")), (stock.get("mason") or {}).get("status", "-")]) + "</tr>" for stock in module.get("a_share") or [])
+        rows = "".join("<tr>" + "".join(cell(value) for value in [f"{stock.get('code')} {stock.get('name')}", pct(keyed_metric(stock.get("returns"), 5)), pct(keyed_metric(stock.get("returns"), 20)), pct(keyed_metric(stock.get("relative_returns"), 20)), "MA20上方" if stock.get("above_ma20") else "MA20下方" if stock.get("ma20") else "数据不足", num(finite(stock.get("volume_ratio_5_20"))), (stock.get("mason") or {}).get("status", "-")]) + "</tr>" for stock in module.get("a_share") or [])
         us = "；".join(f"{row.get('symbol')} 20日{pct(row.get('return_20d'))}" if not row.get("error") else f"{row.get('symbol')} 数据不可用" for row in module.get("us_validation") or [])
         evidence = "；".join(str(item) for item in module.get("evidence_to_watch") or [])
         invalidation = "；".join(str(item) for item in module.get("invalidation") or [])
