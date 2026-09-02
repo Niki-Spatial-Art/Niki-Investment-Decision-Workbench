@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import html
+import json
 import os
 import sys
 from datetime import datetime, timedelta
@@ -34,7 +35,6 @@ INTRADAY_WINDOWS = [
     (14, 0),
     (14, 30),
     (14, 55),
-    (15, 0),
 ]
 DEFAULT_INTRADAY_TOLERANCE_MINUTES = 12
 
@@ -274,6 +274,50 @@ def build_html(payload: dict, scan: dict, summary: dict, intraday: bool = False)
 </body></html>"""
 
 
+def should_send_intraday(summary: dict) -> tuple[bool, str]:
+    """Decide whether an intraday email is worth sending.
+
+    Returns (should_send, reason).  The goal is to stop the "no-action spam":
+    only send when there is a concrete, immediately-verifiable action card.
+
+    Design note: GitHub Actions runs each cron in a fresh container, so we
+    deliberately avoid cross-run state.  This keeps the rule stateless and 100%
+    reliable in CI.  Risk-trend changes are instead surfaced by the separate
+    盘前简报 and 收盘日报 reports, which already render the full picture.
+    """
+    gate_open = bool(summary.get("gate_open"))
+    actionable = summary.get("actionable_candidates") or []
+
+    # 有明确动作候选（闸门开放且存在可复核标的）才发邮件。
+    if gate_open and actionable:
+        return True, f"actionable_candidates={len(actionable)} gate_open=True"
+
+    # 其余一律静默：闸门关闭、或闸门开放但无通过过滤的候选，都不发邮件。
+    if not gate_open:
+        return False, "gate_closed_no_action"
+    return False, "gate_open_but_no_candidate"
+
+
+def _write_intraday_silent_log(summary: dict) -> None:
+    """Append a silent-skip entry so each intraday scan is still auditable.
+
+    Written to the local checkout only; it is intentionally not committed, so
+    it doubles as a per-run audit trail inside the CI log rather than repo state.
+    """
+    path = ROOT / "reports" / "intraday_silent_log.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "ts": datetime.now(BEIJING_TZ).isoformat(),
+        "gate_open": summary.get("gate_open"),
+        "recovered_count": summary.get("recovered_count"),
+        "advancers": summary.get("advancers"),
+        "decliners": summary.get("decliners"),
+        "actionable_candidates": len(summary.get("actionable_candidates") or []),
+    }
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Send a manual workbench market-scan email")
     parser.add_argument("--dry-run", action="store_true", help="Generate and validate the preview without SMTP")
@@ -295,7 +339,20 @@ def main() -> int:
 
     scan = run_broad_market_scan(load_digital_infra_watchlist())
     summary = build_scan_summary(payload, scan)
-    email_html = build_html(payload, scan, summary, intraday=args.intraday)
+
+    # 盘中静默规则：只有"交易闸门开放 且 存在可复核动作候选"才发邮件；
+    # 闸门关闭、或闸门开放但无候选 → 静默，仅写日志，不发送邮件（避免无动作狂发）。
+    if args.intraday and not args.force:
+        email_html = build_html(payload, scan, summary, intraday=True)
+        should_send, skip_reason = should_send_intraday(summary)
+        if not should_send:
+            print(f"skip_intraday=no_action_or_risk_change reason={skip_reason}")
+            _write_intraday_silent_log(summary)
+            return 0
+        print(f"intraday_send=triggered reason={skip_reason}")
+    else:
+        email_html = build_html(payload, scan, summary, intraday=args.intraday)
+
     if args.dry_run:
         print(
             f"dry_run=OK quotes={(payload.get('status') or {}).get('valid_quote_count', 0)}/{len(INDEX_CODES)} "
