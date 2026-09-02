@@ -3,9 +3,9 @@ name: Review Monthly
 on:
   workflow_dispatch:
   schedule:
-    # 北京时间每月最后一天 17:30
-    - cron: '30 9 L * *'
-      timezone: 'Asia/Shanghai'
+    # GitHub Actions cron does not support "L" (last day of month).
+    # Run at 17:30 Beijing time on days 28-31, then skip unless it is actually month-end.
+    - cron: '30 9 28-31 * *'
 
 permissions:
   contents: write
@@ -15,16 +15,39 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
+      - name: Check monthly review window
+        id: review-window
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+            echo "beijing_date=manual" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+
+          today = datetime.now(ZoneInfo("Asia/Shanghai")).date()
+          should_run = (today + timedelta(days=1)).month != today.month
+          print(f"should_run={'true' if should_run else 'false'}")
+          print(f"beijing_date={today.isoformat()}")
+          PY
+
       - uses: actions/checkout@v4
+        if: steps.review-window.outputs.should_run == 'true'
 
       - uses: actions/setup-python@v5
+        if: steps.review-window.outputs.should_run == 'true'
         with:
           python-version: '3.11'
           cache: 'pip'
 
       - run: pip install -r requirements.txt
+        if: steps.review-window.outputs.should_run == 'true'
 
       - name: Build monthly review and send email
+        if: steps.review-window.outputs.should_run == 'true'
         run: python tools/review_aggregator.py --period monthly --email
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
@@ -34,6 +57,7 @@ jobs:
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
       - name: Commit and push monthly review
+        if: steps.review-window.outputs.should_run == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
