@@ -14,12 +14,15 @@ on:
         default: false
         type: boolean
   schedule:
-    # GitHub cron uses UTC. Beijing 15:40/15:50/16:00 on weekdays.
+    # Beijing 15:40/15:50/16:00 on weekdays, pinned with timezone.
     # Multiple post-close attempts reduce missed GitHub schedule runs; the script
     # skips duplicates once the same Beijing-date trading-day report exists.
-    - cron: '40 7 * * 1-5'
-    - cron: '50 7 * * 1-5'
-    - cron: '0 8 * * 1-5'
+    - cron: '40 15 * * 1-5'
+      timezone: Asia/Shanghai
+    - cron: '50 15 * * 1-5'
+      timezone: Asia/Shanghai
+    - cron: '0 16 * * 1-5'
+      timezone: Asia/Shanghai
 
 concurrency:
   group: whole-market-watch-daily-${{ github.ref }}

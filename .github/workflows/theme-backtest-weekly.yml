@@ -9,8 +9,9 @@ on:
         default: true
         type: boolean
   schedule:
-    # GitHub cron uses UTC. Beijing Friday 17:35, after the daily theme report.
-    - cron: '35 9 * * 5'
+    # Beijing Friday 17:35, after the daily theme report, pinned with timezone.
+    - cron: '35 17 * * 5'
+      timezone: Asia/Shanghai
 
 permissions:
   contents: write

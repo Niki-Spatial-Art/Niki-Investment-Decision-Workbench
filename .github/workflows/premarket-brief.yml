@@ -2,8 +2,9 @@ name: Premarket Brief
 
 on:
   schedule:
-    # GitHub Actions cron uses UTC. Beijing 08:30 premarket; script skips non-A-share trading days.
-    - cron: '30 0 * * 1-5'
+    # Beijing 08:30 premarket, pinned with timezone; script skips non-A-share trading days.
+    - cron: '30 8 * * 1-5'
+      timezone: Asia/Shanghai
   workflow_dispatch:
     inputs:
       send_email:

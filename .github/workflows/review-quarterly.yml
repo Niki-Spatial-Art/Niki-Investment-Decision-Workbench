@@ -5,7 +5,8 @@ on:
   schedule:
     # GitHub Actions cron does not support "L" (last day of month).
     # Run at 17:30 Beijing time on quarter-end candidate days, then skip unless it is actually quarter-end.
-    - cron: '30 9 28-31 3,6,9,12 *'
+    - cron: '30 17 28-31 3,6,9,12 *'
+      timezone: Asia/Shanghai
 
 permissions:
   contents: write

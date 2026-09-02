@@ -26,6 +26,9 @@ jobs:
       - name: Pre-publish privacy check
         run: python tools/pre_publish_check.py --include-untracked
 
+      - name: Workflow timezone guard
+        run: python tools/check_workflow_timezones.py
+
       - name: Offline action-card demo
         run: python workflows/demo_quant_research.py
         env:
