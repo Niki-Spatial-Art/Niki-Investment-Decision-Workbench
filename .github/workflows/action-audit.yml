@@ -9,29 +9,20 @@ on:
         default: false
         type: boolean
   schedule:
-    # 北京时间 A股盘中节点（显式 timezone，避免 GitHub 默认时区错位 8 小时）
+    # GitHub Actions cron uses UTC; do not add unsupported timezone fields.
+    # Beijing A-share intraday checkpoints:
     # 09:30, 10:00, 10:30, 11:00, 11:30, 13:00, 13:30, 14:00, 14:30, 14:55.
     # 注：14:55 为尾盘风险确认，15:00 已删除(与收盘复盘边界混淆)，尾盘只保留 14:55。
-    - cron: '30 9 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '0 10 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '30 10 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '0 11 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '30 11 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '0 13 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '30 13 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '0 14 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '30 14 * * 1-5'
-      timezone: 'Asia/Shanghai'
-    - cron: '55 14 * * 1-5'
-      timezone: 'Asia/Shanghai'
+    - cron: '30 1 * * 1-5'
+    - cron: '0 2 * * 1-5'
+    - cron: '30 2 * * 1-5'
+    - cron: '0 3 * * 1-5'
+    - cron: '30 3 * * 1-5'
+    - cron: '0 5 * * 1-5'
+    - cron: '30 5 * * 1-5'
+    - cron: '0 6 * * 1-5'
+    - cron: '30 6 * * 1-5'
+    - cron: '55 6 * * 1-5'
 
 permissions:
   contents: read
