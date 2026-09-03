@@ -16,6 +16,11 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  # 与 whole-market-watch-daily、theme-watch-daily 共用同一个锁，串行化所有写 main 的每日任务
+  group: daily-report-push-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   premarket-brief:
     runs-on: ubuntu-latest
@@ -54,8 +59,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reports/premarket_brief_latest.json
-          git diff --cached --quiet || git commit -m "chore: update premarket brief snapshot"
-          git push
+          bash tools/safe_push.sh "chore: update premarket brief snapshot"
 
       - name: Upload premarket brief artifact
         if: always()

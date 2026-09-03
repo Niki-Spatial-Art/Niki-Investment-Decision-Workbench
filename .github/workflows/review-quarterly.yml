@@ -65,5 +65,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add reviews/quarterly/
-          git diff --cached --quiet || git commit -m "chore: quarterly review $(date +%F)"
-          git push
+          bash tools/safe_push.sh "chore: quarterly review $(date +%F)"
