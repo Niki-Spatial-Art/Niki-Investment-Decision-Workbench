@@ -5,7 +5,8 @@ v6 相对 v5 的核心变化（胜率优化）：
   在 v5 财务因子基础上，新增两个「资金面」信号：
     · 融资余额变化（10分）：反向指标（实证回测证明），融资余额近20日暴增
       = 杠杆资金高位追涨 = 后续踩踏，应扣分；平稳/回落反而抗跌加分
-    · 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
+    · 业绩预告（10分）：反向指标（实证回测），预增公告"见光死"扣分，预减/首亏
+      公告"利空出尽"（困境反转）反而加分
 
   财务因子满分从 30 分扩到 50 分：
     净利增速10 + 营收增速5 + 筹码集中10 + 龙虎榜5 + 融资余额10 + 业绩预告10
@@ -468,7 +469,8 @@ def score_fundamental(cache):
 
     v6 在 v5 基础上新增两个资金面因子：
       · 融资余额变化（10分）：反向指标，融资余额近20日暴增 = 杠杆追涨应扣分
-      · 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
+      · 业绩预告（10分）：反向指标（实证回测），预增公告"见光死"扣分，预减/首亏
+      公告"利空出尽"（困境反转）反而加分
     """
     inc = cache.get("income")
     holder = cache.get("holder")
@@ -597,7 +599,11 @@ def score_fundamental(cache):
                 else:
                     detail["融资得分"] = 10
 
-    # 因子F 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
+    # 因子F 业绩预告（10分）：实证回测(300只/1275事件)证明预增"见光死"、预减"利空出尽"
+    #   事件研究(超额收益，控制沪深300 beta)：
+    #     预增/扭亏公告后20日超额 +3.55%(胜率53.2%) → 无正向预测力
+    #     预减/亏损公告后20日超额 +5.27%(胜率70.1%) → 利空出尽，困境反转
+    #   故反转打分：预减/首亏(利空出尽)加分，预增/略增(见光死)扣分
     if notice is not None and hasattr(notice, "columns") and len(notice):
         # 只看最新一条预告（按 ANN_DATE 公告日取最新）
         n = notice.sort_values("ANN_DATE")
@@ -605,9 +611,9 @@ def score_fundamental(cache):
         p_change_max = _safe_float(latest.get("P_CHANGE_MAX"))
         p_change_min = _safe_float(latest.get("P_CHANGE_MIN"))
         p_typecode = str(latest.get("P_TYPECODE", ""))
-        # 去年同期归母净利（用于判断低基数/扭亏）
+        # 去年同期归母净利（保留用于展示，反转打分不再依赖增速）
         prev_parent = _safe_float(latest.get("P_NET_PARENT_FIRM"))
-        # 预告增速取区间中值
+        # 预告增速取区间中值（仅用于展示，不参与反转打分）
         if p_change_max is not None and p_change_min is not None:
             pct_mid = (p_change_max + p_change_min) / 2
         elif p_change_max is not None:
@@ -616,31 +622,24 @@ def score_fundamental(cache):
             pct_mid = p_change_min
         else:
             pct_mid = None
-        if pct_mid is not None:
-            detail["业绩预告"] = round(pct_mid, 1)
-            # 性质修正：区分扭亏/低基数/正常（与净利增速逻辑一致）
-            if prev_parent is not None and prev_parent <= 0:
-                # 扭亏型：去年同期亏损，增速无参考意义，给中高分
-                detail["预告得分"] = 8
-            elif prev_parent is not None and prev_parent > 0 and abs(prev_parent) < abs(_safe_float(latest.get("NET_PROFIT_MAX")) or 0) * 0.20:
-                # 低基数：去年净利 < 今年预告净利的 20%，增速虚高，封顶 7 分
-                detail["预告得分"] = 7
+        detail["业绩预告"] = round(pct_mid, 1) if pct_mid is not None else None
+        # 反转打分：按 P_TYPECODE 直接判定方向
+        #   P_TYPECODE: 1=预亏 2=首亏 4=扭亏 5=续亏 6=预减 7=略减 9=略减(另一编码)
+        #               3=略增 10=预增 11=续盈 12=续增 13=预增(另一编码)
+        #   利空型(预亏/首亏/续亏/预减/略减) = 困境反转机会 → 加分
+        #   利好型(预增/略增/续盈) = 见光死 → 扣分
+        GOOD = {"3", "10", "11", "12", "13"}          # 预增/略增/续盈
+        BAD = {"1", "2", "5", "6", "7", "9", "14", "15", "16"}  # 预亏/首亏/续亏/预减/略减
+        if p_typecode in BAD:
+            # 利空出尽：预减/首亏/预亏，困境反转，重点加分
+            if p_typecode in {"1", "2", "5"}:
+                detail["预告得分"] = 10     # 预亏/首亏/续亏（反转空间最大）
             else:
-                # 正常：按增速分档，>200% 封顶 10 分
-                capped = min(pct_mid, 200.0)
-                if capped > 50:
-                    detail["预告得分"] = 10
-                elif capped > 30:
-                    detail["预告得分"] = 8
-                elif capped > 15:
-                    detail["预告得分"] = 6
-                elif capped > 0:
-                    detail["预告得分"] = 4
-                else:
-                    detail["预告得分"] = 0
+                detail["预告得分"] = 7      # 预减/略减
+        elif p_typecode in GOOD:
+            detail["预告得分"] = 0          # 预增/略增：见光死，不给分
         else:
-            # 有预告但增速缺失：可能是"扭亏/续亏"等定性表述，给基础分
-            detail["业绩预告"] = None
+            # 其他/扭亏型定性表述：中性基础分
             detail["预告得分"] = 3
 
     total = (detail["净利增速得分"] + detail["营收增速得分"]
