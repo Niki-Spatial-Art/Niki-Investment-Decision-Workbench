@@ -3,9 +3,8 @@ name: Review Weekly
 on:
   workflow_dispatch:
   schedule:
-    # Beijing Friday 17:30 post-close weekly review, pinned with timezone.
-    - cron: '30 17 * * 5'
-      timezone: Asia/Shanghai
+    # GitHub Actions cron is UTC: Friday 09:30 UTC = Beijing Friday 17:30.
+    - cron: '30 9 * * 5'
 
 permissions:
   contents: write

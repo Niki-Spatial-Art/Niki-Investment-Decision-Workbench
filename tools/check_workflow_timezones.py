@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Guard GitHub Actions schedules against accidental UTC rewrites.
+"""Guard GitHub Actions schedules against accidental local-time rewrites.
 
-All recurring report workflows in this project are written in Beijing time and
-must pin each schedule entry with ``timezone: Asia/Shanghai``.  The scripts
-still perform their own Beijing-time market/trading-day guards, but this check
-keeps workflow files readable and prevents agents from converting them back to
-UTC by mistake.
+GitHub Actions scheduled workflows are kept in UTC cron syntax.  Comments next
+to the cron entries record the Beijing-time intent, and the Python scripts still
+perform their own Asia/Shanghai market/trading-day guards.  This check prevents
+agents from adding unsupported local-time fields or claiming the cron is already
+written in Beijing hours.
 """
 
 from __future__ import annotations
@@ -16,11 +16,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW_DIR = ROOT / ".github" / "workflows"
-EXPECTED_TZ = "Asia/Shanghai"
 FORBIDDEN_TEXT = (
-    "GitHub Actions schedules must be written in UTC only",
-    "GitHub Actions cron uses UTC; do not add unsupported timezone fields",
-    "do not add unsupported timezone fields",
+    "Times are written directly in Beijing time and pinned with timezone",
+    "Do not convert these back to UTC",
+    "GitHub Actions supports schedule.timezone",
+    "pinned with timezone",
 )
 
 
@@ -42,7 +42,6 @@ def check_workflow(path: Path) -> list[str]:
             continue
 
         indent = _line_indent(line)
-        timezone_ok = False
         for next_line in lines[idx + 1 :]:
             stripped = next_line.strip()
             if not stripped:
@@ -50,11 +49,9 @@ def check_workflow(path: Path) -> list[str]:
             next_indent = _line_indent(next_line)
             if next_indent <= indent or re.match(r"^\s*-\s*cron:", next_line):
                 break
-            if stripped == f"timezone: {EXPECTED_TZ}":
-                timezone_ok = True
+            if stripped.startswith("timezone:"):
+                errors.append(f"line {idx + 1}: cron entry must not use timezone fields; encode Beijing time as UTC cron and document it in a comment")
                 break
-        if not timezone_ok:
-            errors.append(f"line {idx + 1}: cron entry missing timezone: {EXPECTED_TZ}")
 
     return errors
 

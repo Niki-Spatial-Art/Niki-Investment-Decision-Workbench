@@ -3,13 +3,11 @@ name: A-share Market Watch
 on:
   workflow_dispatch:
   schedule:
-    # Times are written directly in Beijing time and pinned with timezone.
+    # GitHub Actions cron is UTC: 01:10/07:35 UTC = Beijing 09:10/15:35.
     # 职责边界：本工作流只做"原始市场快照存档"(供雷达安全闸门读取)，不发邮件、不做动作卡。
     # 收盘日报与邮件由 whole-market-watch-daily.yml(15:40/15:50/16:00) 负责，二者不重叠。
-    - cron: '10 9 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '35 15 * * 1-5'
-      timezone: Asia/Shanghai
+    - cron: '10 1 * * 1-5'
+    - cron: '35 7 * * 1-5'
 
 permissions:
   contents: read

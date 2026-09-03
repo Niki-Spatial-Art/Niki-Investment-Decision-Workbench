@@ -3,9 +3,8 @@ name: Review Yearly
 on:
   workflow_dispatch:
   schedule:
-    # Beijing Dec 31 17:30 annual review, pinned with timezone.
-    - cron: '30 17 31 12 *'
-      timezone: Asia/Shanghai
+    # GitHub Actions cron is UTC: Dec 31 09:30 UTC = Beijing Dec 31 17:30.
+    - cron: '30 9 31 12 *'
 
 permissions:
   contents: write

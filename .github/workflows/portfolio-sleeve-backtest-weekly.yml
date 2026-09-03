@@ -3,9 +3,8 @@ name: Portfolio Sleeve Backtest Weekly
 on:
   workflow_dispatch:
   schedule:
-    # Beijing time, pinned with timezone.
-    - cron: '45 17 * * 5'
-      timezone: Asia/Shanghai
+    # GitHub Actions cron is UTC: Friday 09:45 UTC = Beijing Friday 17:45.
+    - cron: '45 9 * * 5'
 
 permissions:
   contents: write

@@ -9,31 +9,21 @@ on:
         default: false
         type: boolean
   schedule:
-    # Times are written directly in Beijing time and pinned with timezone.
-    # Do not convert these back to UTC; GitHub Actions supports schedule.timezone.
-    # A-share intraday checkpoints:
+    # GitHub Actions cron is UTC. These entries are the UTC equivalents of
+    # the Beijing A-share intraday checkpoints below. Do not write local
+    # Beijing hours here; the script still validates actual Asia/Shanghai time.
     # 09:30, 10:00, 10:30, 11:00, 11:30, 13:00, 13:30, 14:00, 14:30, 14:55.
     # 注：14:55 为尾盘风险确认，15:00 已删除(与收盘复盘边界混淆)，尾盘只保留 14:55。
-    - cron: '30 9 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '0 10 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '30 10 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '0 11 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '30 11 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '0 13 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '30 13 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '0 14 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '30 14 * * 1-5'
-      timezone: Asia/Shanghai
-    - cron: '55 14 * * 1-5'
-      timezone: Asia/Shanghai
+    - cron: '30 1 * * 1-5'   # Beijing 09:30
+    - cron: '0 2 * * 1-5'    # Beijing 10:00
+    - cron: '30 2 * * 1-5'   # Beijing 10:30
+    - cron: '0 3 * * 1-5'    # Beijing 11:00
+    - cron: '30 3 * * 1-5'   # Beijing 11:30
+    - cron: '0 5 * * 1-5'    # Beijing 13:00
+    - cron: '30 5 * * 1-5'   # Beijing 13:30
+    - cron: '0 6 * * 1-5'    # Beijing 14:00
+    - cron: '30 6 * * 1-5'   # Beijing 14:30
+    - cron: '55 6 * * 1-5'   # Beijing 14:55
 
 permissions:
   contents: read
