@@ -23,7 +23,11 @@ v6 相对 v5 的核心变化（胜率优化）：
   · get_margin_detail-> dict{code: DataFrame}，字段 BORROW_MONEY_BALANCE(融资余额)
                        / PURCH_WITH_BORROW_MONEY(融资买入)
   · get_profit_notice-> DataFrame，字段 P_CHANGE_MAX/MIN(预告增速区间) / ANN_DATE(公告日)
-  · get_balance_sheet -> 接口不稳定（查询失败），故 ROE 暂不纳入，改用净利增速替代
+  · get_balance_sheet -> dict{code: DataFrame}，字段 TOT_SHARE_EQUITY_INCL_MIN_INT(归母净资产)
+                       / REPORTING_PERIOD / ANN_DATE / STATEMENT_TYPE。
+                       接口已恢复（2026-09-03 验证）。ROE 已实证为"排除型因子"
+                       （IC20日+0.044/60日-0.034反向，分层倒U型），故不新增独立打分，
+                       亏损股已由 _growth_nature 识别归零分，无需 ROE 二次排除。
 
 依赖：
   - AmazingData SDK（tgw），凭据从 Windows 用户级环境变量读取
