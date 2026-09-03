@@ -1,6 +1,8 @@
 """邮件发送模块"""
 import smtplib
 import time
+import re
+import html as html_lib
 from email.utils import formatdate, make_msgid
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -9,6 +11,20 @@ from typing import Optional
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+
+def html_to_plain_text(html_content: str) -> str:
+    """Build a useful plain-text fallback for HTML-only mail clients."""
+    text = re.sub(r"(?is)<(script|style).*?>.*?</\1>", " ", html_content)
+    text = re.sub(r"(?i)<br\s*/?>", "\n", text)
+    text = re.sub(r"(?i)</(p|div|h[1-6]|tr|table|section|main|li)>", "\n", text)
+    text = re.sub(r"(?i)</t[dh]>", "\t", text)
+    text = re.sub(r"(?s)<[^>]+>", " ", text)
+    text = html_lib.unescape(text)
+    text = re.sub(r"[ \t\r\f\v]+", " ", text)
+    text = re.sub(r"\n\s+", "\n", text)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip() or "本邮件包含 HTML 格式报告；如果正文显示异常，请在邮箱中切换为 HTML 显示。"
 
 
 class EmailNotifier:
@@ -135,11 +151,7 @@ class EmailNotifier:
             msg["Date"] = formatdate(localtime=True)
             msg["Message-ID"] = make_msgid(domain=self.sender_email.split("@")[-1])
 
-            text_part = MIMEText(
-                "ETF Strategy Monitor report. 本邮件包含HTML格式策略报告；如果正文显示异常，请查看同一封邮件的HTML版本或GitHub Actions日志。",
-                "plain",
-                "utf-8",
-            )
+            text_part = MIMEText(html_to_plain_text(html_content), "plain", "utf-8")
             html_part = MIMEText(html_content, "html", "utf-8")
             msg.attach(text_part)
             msg.attach(html_part)
