@@ -13,6 +13,13 @@ v6 相对 v5 的核心变化（胜率优化）：
     净利增速 0（实证 IC≈0 无效，仅展示）
     筹码集中 0（实证 IC≈0 无效，仅展示）
 
+  横截面 CSRANK 升级（2026-09-03 实证，结论=负向不采纳）：
+    尝试把营收/净利增速从"绝对阈值"升级为"截面百分位排名"（CSPCTRANK），
+    300 只 / 约 1 万对样本回测：IC 与分层单调性均未提升、反而变差
+    （营收60日 IC +0.039→-0.013，分层单调→倒U）。根因=截面排名只是把
+    基本面噪声重新排列，未提取新信息。故默认打分维持绝对阈值，
+    --csrank 仅作可选开关保留（csrank_factors.py / backtest_csrank.py）。
+
   综合分 = 技术分(0-100) + 财务分(0-33)，满分 133。
   输出保留 tech_score 与 fund_score 两个独立分数，便于技基对比。
 
@@ -38,6 +45,8 @@ v6 相对 v5 的核心变化（胜率优化）：
   python stock_screen_v6.py            # 默认跑全市场（技术+财务+资金面）
   python stock_screen_v6.py --quick    # 快速模式（仅扫描成交额前800只）
   python stock_screen_v6.py --no-fund  # 只看技术面（等价 v4，跳过财务）
+  python stock_screen_v6.py --csrank   # 财务/资金面因子用「截面相对强弱」打分
+                                        # （候选池内排名，替代绝对阈值）
 """
 import os
 import sys
@@ -51,6 +60,12 @@ try:
     import pandas as pd
 except ImportError:
     pd = None
+
+try:
+    from csrank_factors import build_all_scores, FACTOR_SPECS as CSRANK_SPECS
+except ImportError:
+    build_all_scores = None
+    CSRANK_SPECS = {}
 
 # ---------------------------------------------------------------------------
 # 凭据读取（Windows 用户级环境变量，Bash 子进程读不到，需用 winreg）
@@ -638,6 +653,79 @@ def score_fundamental(cache):
 
 
 # ---------------------------------------------------------------------------
+# 截面相对强弱打分（CSRANK 升级，候选池内排名）
+# ---------------------------------------------------------------------------
+
+def score_fundamental_csrank(caches: dict):
+    """对候选池整体做截面相对强弱打分（替代单票绝对阈值打分）。
+
+    caches : {code: cache}（fetch_finance_batch 的输出）。
+    先把每只票的绝对因子值抽出来（营收增速/融资变化/预告方向），
+    再在候选池内做截面百分位排名，映射为 0~33 的相对分数。
+    返回 {code: (fund_total, fund_detail)}，detail 结构与 score_fundamental 兼容，
+    额外带一个 "截面排名" 说明字段。
+
+    注意：龙虎榜（3分）是离散事件型因子，截面排名意义弱，保留绝对打分；
+          净利/筹码已归零不参与。截面排名只作用于营收/融资/预告三个连续因子。
+    """
+    # 1. 先复用绝对打分逻辑，拿到每只票的绝对因子值（营收增速/融资变化/预告方向）
+    abs_detail = {}
+    for code, cache in caches.items():
+        _, d = score_fundamental(cache)
+        abs_detail[code] = d
+
+    # 2. 抽出三个连续因子的绝对数值，供截面排名
+    #    营收增速（正向，越大越好）
+    #    融资变化（反向，越大越差）—— 注意方向在 csrank 的 direction 里已配 -1
+    #    预告方向：P_TYPECODE 是分类值，截面排名无意义，改用「反转打分后的分数」
+    #             但反转分数本身是绝对阈值，这里改为：预告利空型记"强"信号，
+    #             直接复用绝对打分的"预告得分"作为强度，再做截面排名。
+    factor_values = {}
+    for code, d in abs_detail.items():
+        fv = {}
+        # 营收增速（%）—— 正向
+        if d.get("营收增速") is not None:
+            fv["营收增速"] = d["营收增速"]
+        # 融资变化（%）—— 反向
+        if d.get("融资变化") is not None:
+            fv["融资变化"] = d["融资变化"]
+        # 预告：用绝对打分的"预告得分"（0/3/7/10）作为截面强度
+        # 预告得分越高 = 越"利空出尽/困境反转"，是正向的选股信号
+        fv["预告方向"] = float(d.get("预告得分", 0))
+        factor_values[code] = fv
+
+    # 3. 截面百分位排名 + 映射分数
+    if not build_all_scores or not factor_values:
+        # 兜底：模块不可用时回退绝对打分
+        return {c: score_fundamental(cache) for c, cache in caches.items()}
+
+    cs_scores = build_all_scores(factor_values)
+
+    # 4. 组装返回：营收/融资/预告用截面分，龙虎榜保留绝对分，净利/筹码归零
+    result = {}
+    for code, d in abs_detail.items():
+        detail = dict(d)  # 复制绝对 detail，保留展示字段
+        rev_cs = cs_scores.get("营收增速", pd.Series()).get(code, float("nan")) if cs_scores.get("营收增速") is not None else float("nan")
+        mar_cs = cs_scores.get("融资变化", pd.Series()).get(code, float("nan")) if cs_scores.get("融资变化") is not None else float("nan")
+        pre_cs = cs_scores.get("预告方向", pd.Series()).get(code, float("nan")) if cs_scores.get("预告方向") is not None else float("nan")
+
+        rev_cs = 0 if rev_cs != rev_cs else rev_cs  # NaN -> 0
+        mar_cs = 0 if mar_cs != mar_cs else mar_cs
+        pre_cs = 0 if pre_cs != pre_cs else pre_cs
+
+        detail["营收增速得分"] = round(rev_cs, 1)
+        detail["融资得分"] = round(mar_cs, 1)
+        detail["预告得分"] = round(pre_cs, 1)
+        detail["截面排名"] = True
+
+        total = (detail["净利增速得分"] + detail["营收增速得分"]
+                 + detail["筹码得分"] + detail["龙虎榜得分"]
+                 + detail["融资得分"] + detail["预告得分"])
+        result[code] = (total, detail)
+    return result
+
+
+# ---------------------------------------------------------------------------
 # 主流程
 # ---------------------------------------------------------------------------
 
@@ -647,6 +735,7 @@ def main():
     ap.add_argument("--quick-n", type=int, default=800, help="快速模式扫描数量（默认800）")
     ap.add_argument("--top", type=int, default=20, help="输出Top N（默认20）")
     ap.add_argument("--no-fund", action="store_true", help="跳过财务因子（等价 v4）")
+    ap.add_argument("--csrank", action="store_true", help="财务/资金面因子用截面相对强弱打分")
     args = ap.parse_args()
 
     print("=== 步骤0/5：登录星耀数智并初始化 ===", file=sys.stderr)
@@ -714,12 +803,24 @@ def main():
         fcache = fetch_finance_batch(cand_codes)
         t1 = time.time()
         print(f"  财务数据拉取完成，耗时 {round(t1 - t0, 1)}s", file=sys.stderr)
-        for r in results:
-            c = r["code"]
-            fund_total, fund_detail = score_fundamental(fcache.get(c, {}))
-            r["fund_score"] = fund_total
-            r["fund_detail"] = fund_detail
-            r["score"] = round(r["tech_score"] + fund_total, 1)
+
+        if args.csrank and build_all_scores:
+            # 截面相对强弱打分：对候选池整体排名后统一映射分数
+            print(f"  [--csrank] 财务/资金面因子用截面相对强弱打分", file=sys.stderr)
+            cs_result = score_fundamental_csrank(fcache)
+            for r in results:
+                c = r["code"]
+                fund_total, fund_detail = cs_result.get(c, score_fundamental(fcache.get(c, {})))
+                r["fund_score"] = fund_total
+                r["fund_detail"] = fund_detail
+                r["score"] = round(r["tech_score"] + fund_total, 1)
+        else:
+            for r in results:
+                c = r["code"]
+                fund_total, fund_detail = score_fundamental(fcache.get(c, {}))
+                r["fund_score"] = fund_total
+                r["fund_detail"] = fund_detail
+                r["score"] = round(r["tech_score"] + fund_total, 1)
     else:
         for r in results:
             r["fund_score"] = 0
