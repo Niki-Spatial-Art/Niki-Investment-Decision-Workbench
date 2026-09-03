@@ -5,6 +5,8 @@ __pycache__/
 *.local.json
 portfolio.local.json
 logs/
+strategies/screen_result_*.json
+strategies/bt.log
 reports/*
 !reports/.gitkeep
 !reports/theme_watch_latest.json
