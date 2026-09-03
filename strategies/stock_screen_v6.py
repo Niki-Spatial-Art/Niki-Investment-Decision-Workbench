@@ -2,8 +2,9 @@
 """全市场A股选股 v6 —— 技术面 + 基本面（财务+资金面）结合版。
 
 v6 相对 v5 的核心变化（胜率优化）：
-  在 v5 财务因子基础上，新增两个「资金面」高胜率信号：
-    · 融资余额变化（10分）：融资余额近20日上升 = 杠杆资金进场
+  在 v5 财务因子基础上，新增两个「资金面」信号：
+    · 融资余额变化（10分）：反向指标（实证回测证明），融资余额近20日暴增
+      = 杠杆资金高位追涨 = 后续踩踏，应扣分；平稳/回落反而抗跌加分
     · 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
 
   财务因子满分从 30 分扩到 50 分：
@@ -466,7 +467,7 @@ def score_fundamental(cache):
     """对单只候选计算财务因子分（0-50），返回 (总分, 明细dict)。
 
     v6 在 v5 基础上新增两个资金面因子：
-      · 融资余额变化（10分）：融资余额近20日上升 = 杠杆资金进场
+      · 融资余额变化（10分）：反向指标，融资余额近20日暴增 = 杠杆追涨应扣分
       · 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
     """
     inc = cache.get("income")
@@ -569,7 +570,9 @@ def score_fundamental(cache):
             else:
                 detail["龙虎榜得分"] = 3
 
-    # 因子E 融资余额变化（10分）：融资余额近20日上升 = 杠杆资金进场
+    # 因子E 融资余额变化（10分）：实证回测(200只/2479对)证明其为反向指标
+    #   IC(未来5/10/20日) = -0.062/-0.055/-0.054，t值均<-2.7，显著反向
+    #   融资余额暴增 = 杠杆资金高位追涨 = 后续踩踏，应扣分；平稳/回落反而抗跌
     if margin is not None and hasattr(margin, "columns") and len(margin):
         m = margin.sort_values("TRADE_DATE")
         if "BORROW_MONEY_BALANCE" in m.columns and len(m) >= 2:
@@ -578,20 +581,21 @@ def score_fundamental(cache):
             base_idx = max(0, len(m) - 21)
             base_bal = _safe_float(m["BORROW_MONEY_BALANCE"].iloc[base_idx])
             if latest_bal and base_bal and base_bal > 0:
-                mchg = (latest_bal / base_bal - 1) * 100  # 正 = 余额上升 = 资金进场
+                mchg = (latest_bal / base_bal - 1) * 100  # 正 = 余额上升 = 杠杆追涨
                 detail["融资变化"] = round(mchg, 1)
+                # 反向打分：融资余额大幅上升(追涨)扣分，回落(去杠杆)加分
                 if mchg > 15:
-                    detail["融资得分"] = 10
+                    detail["融资得分"] = 0
                 elif mchg > 8:
-                    detail["融资得分"] = 8
+                    detail["融资得分"] = 2
                 elif mchg > 3:
-                    detail["融资得分"] = 6
-                elif mchg > 0:
                     detail["融资得分"] = 4
                 elif mchg > -5:
-                    detail["融资得分"] = 2
+                    detail["融资得分"] = 6
+                elif mchg > -15:
+                    detail["融资得分"] = 8
                 else:
-                    detail["融资得分"] = 0
+                    detail["融资得分"] = 10
 
     # 因子F 业绩预告（10分）：有预增/扭亏预告且未过期 = 业绩提前确认
     if notice is not None and hasattr(notice, "columns") and len(notice):
