@@ -8,10 +8,12 @@ v6 相对 v5 的核心变化（胜率优化）：
     · 业绩预告（10分）：反向指标（实证回测），预增公告"见光死"扣分，预减/首亏
       公告"利空出尽"（困境反转）反而加分
 
-  财务因子满分从 30 分扩到 50 分：
-    净利增速10 + 营收增速5 + 筹码集中10 + 龙虎榜5 + 融资余额10 + 业绩预告10
+  财务/资金面因子权重（实证校准版，基于 IC 回测结论重新分配）：
+    营收增速10 + 融资余额10 + 业绩预告10 + 龙虎榜3 = 满分 33 分
+    净利增速 0（实证 IC≈0 无效，仅展示）
+    筹码集中 0（实证 IC≈0 无效，仅展示）
 
-  综合分 = 技术分(0-100) + 财务分(0-50)，满分 150。
+  综合分 = 技术分(0-100) + 财务分(0-33)，满分 133。
   输出保留 tech_score 与 fund_score 两个独立分数，便于技基对比。
 
 财务/资金面接口（星耀数智 AmazingData InfoData）：
@@ -304,7 +306,7 @@ def eval_one(item, df):
 
 
 # ---------------------------------------------------------------------------
-# 财务因子打分（基本面，满分 30）
+# 财务/资金面因子打分（基本面，实证校准后满分 33）
 # ---------------------------------------------------------------------------
 
 def _safe_float(v):
@@ -465,12 +467,16 @@ def _growth_nature(cur, prev):
 
 
 def score_fundamental(cache):
-    """对单只候选计算财务因子分（0-50），返回 (总分, 明细dict)。
+    """对单只候选计算财务/资金面因子分（0-33），返回 (总分, 明细dict)。
 
-    v6 在 v5 基础上新增两个资金面因子：
+    v6 因子权重经全量 IC 实证回测校准（提高胜率的核心抓手）：
       · 融资余额变化（10分）：反向指标，融资余额近20日暴增 = 杠杆追涨应扣分
-      · 业绩预告（10分）：反向指标（实证回测），预增公告"见光死"扣分，预减/首亏
-      公告"利空出尽"（困境反转）反而加分
+      · 业绩预告（10分）：反向指标，预增公告"见光死"扣分，预减/首亏
+        公告"利空出尽"（困境反转）反而加分
+      · 营收增速（10分）：唯一弱有效财务因子(IC 60日+0.031)，升权 5→10
+      · 净利增速（0分）：实证 IC≈0 无效，降权归零仅展示
+      · 筹码集中（0分）：实证 IC≈0 无效，降权归零仅展示
+      · 龙虎榜（3分）：未单独实证，保守从 5 分降至 3 分
     """
     inc = cache.get("income")
     holder = cache.get("holder")
@@ -483,54 +489,41 @@ def score_fundamental(cache):
               "净利增速得分": 0, "营收增速得分": 0, "筹码得分": 0, "龙虎榜得分": 0,
               "融资得分": 0, "预告得分": 0}
 
-    # 因子A 净利润增速（10分）
+    # 因子A 净利润增速（实证无效，IC≈0，已降权为 0 分，仅展示）
+    #   回测结论(200只/6614对)：IC 未来20日+0.009/60日+0.005 = 纯噪音。
+    #   市场对财报定价极快，"好业绩"早已反映在股价里，无法靠净利增速跑赢。
     _, cur_np = _period_value(inc, "NET_PRO_EXCL_MIN_INT_INC", offset=0)
     _, prev_np = _period_value(inc, "NET_PRO_EXCL_MIN_INT_INC", offset=1)
     np_yoy = _yoy(cur_np, prev_np)
     nature, distorted = _growth_nature(cur_np, prev_np)
     detail["净利增速"] = round(np_yoy, 1) if np_yoy is not None else None
     detail["增速性质"] = nature
-    if nature == "扭亏":
-        # 扭亏为盈：无法算同比，但属于重大改善，给中高分（8）
-        detail["净利增速得分"] = 8
-    elif nature == "低基数":
-        # 低基数高增长：增速失真，封顶 7 分（承认增长但不过度奖励）
-        detail["净利增速得分"] = 7
-    elif nature == "亏损":
-        # 今年仍亏损：0 分
-        detail["净利增速得分"] = 0
-    elif np_yoy is not None:
-        # 正常区间：按增速分档，>200% 封顶 10 分
-        capped = min(np_yoy, 200.0)
-        if capped > 30:
-            detail["净利增速得分"] = 10
-        elif capped > 15:
-            detail["净利增速得分"] = 8
-        elif capped > 0:
-            detail["净利增速得分"] = 6
-        elif capped > -10:
-            detail["净利增速得分"] = 3
-        else:
-            detail["净利增速得分"] = 0
+    detail["净利增速得分"] = 0   # 无效因子，不参与排序（仅展示）
 
-    # 因子B 营收增速（5分）
+    # 因子B 营收增速（弱有效，升权重 5→10 分）
+    #   回测结论：IC 未来60日 +0.031，是四个老财务因子里唯一过线的。
+    #   营收增长比利润增长更"硬"(不易被会计调节)，市场反应稍慢，有微弱信号。
     _, cur_rev = _period_value(inc, "OPERA_REV", offset=0)
     _, prev_rev = _period_value(inc, "OPERA_REV", offset=1)
     rev_yoy = _yoy(cur_rev, prev_rev)
     detail["营收增速"] = round(rev_yoy, 1) if rev_yoy is not None else None
     if rev_yoy is not None:
-        if rev_yoy > 20:
-            detail["营收增速得分"] = 5
+        if rev_yoy > 30:
+            detail["营收增速得分"] = 10
+        elif rev_yoy > 20:
+            detail["营收增速得分"] = 8
         elif rev_yoy > 10:
-            detail["营收增速得分"] = 4
+            detail["营收增速得分"] = 6
         elif rev_yoy > 0:
-            detail["营收增速得分"] = 3
+            detail["营收增速得分"] = 4
         elif rev_yoy > -10:
-            detail["营收增速得分"] = 1
+            detail["营收增速得分"] = 2
         else:
             detail["营收增速得分"] = 0
 
-    # 因子C 筹码集中度（10分）：股东户数环比减少 = 筹码集中
+    # 因子C 筹码集中度（实证无效，IC≈0，已降权为 0 分，仅展示）
+    #   回测结论(200只/13699对)：IC 未来20日-0.025/60日-0.001 = 噪音。
+    #   "股东户数减少=筹码集中=看多"在A股短线不成立(户数减少也可能是无人问津)。
     if holder is not None and hasattr(holder, "columns") and len(holder):
         h = holder.sort_values("HOLDER_ENDDATE")
         if "HOLDER_NUM" in h.columns and len(h) >= 2:
@@ -539,18 +532,10 @@ def score_fundamental(cache):
             if latest_hn and prev_hn and prev_hn > 0:
                 chg = (latest_hn / prev_hn - 1) * 100  # 负 = 户数减少 = 集中
                 detail["筹码集中"] = round(chg, 1)
-                if chg < -8:
-                    detail["筹码得分"] = 10
-                elif chg < -3:
-                    detail["筹码得分"] = 8
-                elif chg < 0:
-                    detail["筹码得分"] = 6
-                elif chg < 5:
-                    detail["筹码得分"] = 3
-                else:
-                    detail["筹码得分"] = 0
+                detail["筹码得分"] = 0   # 无效因子，不参与排序（仅展示）
 
-    # 因子D 资金关注度（5分）：近60日是否上龙虎榜 + 净买入
+    # 因子D 资金关注度（3分）：近60日是否上龙虎榜 + 净买入
+    #   未单独实证回测，保守从 5 分降至 3 分（避免未验证因子权重过高稀释技术面）
     if lhb is not None and hasattr(lhb, "columns") and len(lhb):
         # 只看近约3个月（90自然日）内的龙虎榜
         recent = lhb
@@ -566,11 +551,11 @@ def score_fundamental(cache):
                 buys = sum(_safe_float(v) or 0 for v in recent["BUY_AMOUNT"])
                 sells = sum(_safe_float(v) or 0 for v in recent["SELL_AMOUNT"])
                 if buys > sells:
-                    detail["龙虎榜得分"] = 5
+                    detail["龙虎榜得分"] = 3
                 else:
-                    detail["龙虎榜得分"] = 2
+                    detail["龙虎榜得分"] = 1
             else:
-                detail["龙虎榜得分"] = 3
+                detail["龙虎榜得分"] = 2
 
     # 因子E 融资余额变化（10分）：实证回测(200只/2479对)证明其为反向指标
     #   IC(未来5/10/20日) = -0.062/-0.055/-0.054，t值均<-2.7，显著反向
