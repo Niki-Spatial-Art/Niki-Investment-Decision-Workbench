@@ -413,28 +413,62 @@ def _yoy(cur, prev):
     return (cur / prev - 1) * 100
 
 
+def _growth_nature(cur, prev):
+    """判断利润增速的「性质」，用于稳健性修正。
+
+    返回 (性质标签, 是否失真)：
+      - "扭亏"    ：去年净利 <=0，今年 >0（重大利好，但无法算同比）
+      - "低基数"  ：去年净利为正但 < 今年净利的 20%（增速会虚高，如 1561%）
+      - "正常"    ：其余情况
+    """
+    if cur is None or prev is None:
+        return "缺失", True
+    if cur <= 0:
+        return "亏损", True  # 今年仍亏损，无增长可言
+    if prev <= 0:
+        return "扭亏", True  # 去年亏今年赚
+    # 低基数：去年净利 < 今年净利的 20%，增速失真
+    # （半年报/季报绝对量小、波动大，20% 阈值比 5% 更贴合直觉）
+    if abs(prev) < abs(cur) * 0.20:
+        return "低基数", True
+    return "正常", False
+
+
 def score_fundamental(cache):
     """对单只候选计算财务因子分（0-30），返回 (总分, 明细dict)。"""
     inc = cache.get("income")
     holder = cache.get("holder")
     lhb = cache.get("lhb")
 
-    detail = {"净利增速": None, "营收增速": None, "筹码集中": None, "资金关注": None,
+    detail = {"净利增速": None, "增速性质": "缺失", "营收增速": None, "筹码集中": None, "资金关注": None,
               "净利增速得分": 0, "营收增速得分": 0, "筹码得分": 0, "龙虎榜得分": 0}
 
     # 因子A 净利润增速（10分）
     _, cur_np = _period_value(inc, "NET_PRO_EXCL_MIN_INT_INC", offset=0)
     _, prev_np = _period_value(inc, "NET_PRO_EXCL_MIN_INT_INC", offset=1)
     np_yoy = _yoy(cur_np, prev_np)
+    nature, distorted = _growth_nature(cur_np, prev_np)
     detail["净利增速"] = round(np_yoy, 1) if np_yoy is not None else None
-    if np_yoy is not None:
-        if np_yoy > 30:
+    detail["增速性质"] = nature
+    if nature == "扭亏":
+        # 扭亏为盈：无法算同比，但属于重大改善，给中高分（8）
+        detail["净利增速得分"] = 8
+    elif nature == "低基数":
+        # 低基数高增长：增速失真，封顶 7 分（承认增长但不过度奖励）
+        detail["净利增速得分"] = 7
+    elif nature == "亏损":
+        # 今年仍亏损：0 分
+        detail["净利增速得分"] = 0
+    elif np_yoy is not None:
+        # 正常区间：按增速分档，>200% 封顶 10 分
+        capped = min(np_yoy, 200.0)
+        if capped > 30:
             detail["净利增速得分"] = 10
-        elif np_yoy > 15:
+        elif capped > 15:
             detail["净利增速得分"] = 8
-        elif np_yoy > 0:
+        elif capped > 0:
             detail["净利增速得分"] = 6
-        elif np_yoy > -10:
+        elif capped > -10:
             detail["净利增速得分"] = 3
         else:
             detail["净利增速得分"] = 0
@@ -589,7 +623,7 @@ def main():
     else:
         for r in results:
             r["fund_score"] = 0
-            r["fund_detail"] = {"净利增速": None, "营收增速": None, "筹码集中": None, "资金关注": None}
+            r["fund_detail"] = {"净利增速": None, "增速性质": "缺失", "营收增速": None, "筹码集中": None, "资金关注": None}
             r["score"] = r["tech_score"]
         if args.no_fund:
             print(f"\n  [--no-fund] 已跳过财务因子，仅技术面", file=sys.stderr)
@@ -607,7 +641,10 @@ def main():
               f"{r['tech_score']:>7.1f}{r['fund_score']:>7.0f}{r['score']:>7.1f}")
         print(f"     技术[动量{r['factor']['动量']}/回踩{r['factor']['回踩']}/量能{r['factor']['量能']}/趋势{r['factor']['趋势']}/波动{r['factor']['波动']}] "
               f"乖离20={r['b20']}% 20日={r['r20']}% 成交额={r['amount']}亿")
-        print(f"     财务[净利增速{fd.get('净利增速')}%/营收增速{fd.get('营收增速')}%/筹码{fd.get('筹码集中')}%/龙虎榜{'有' if fd.get('资金关注') else '无'}]")
+        np_label = fd.get('净利增速')
+        np_nature = fd.get('增速性质', '')
+        np_str = f"{np_label}%({np_nature})" if np_label is not None and np_nature and np_nature != "正常" else (f"{np_label}%" if np_label is not None else "无")
+        print(f"     财务[净利增速{np_str}/营收增速{fd.get('营收增速')}%/筹码{fd.get('筹码集中')}%/龙虎榜{'有' if fd.get('资金关注') else '无'}]")
 
     out = {"source": "星耀数智 AmazingData", "version": "v5 技术+财务",
            "gate": gate, "gate_open": gate_open,
