@@ -58,19 +58,40 @@ def add_xingyao_sdk_paths() -> bool:
 # 凭据解析
 # ---------------------------------------------------------------------------
 
+def _read_user_env(key: str) -> str:
+    """读取 Windows 用户级环境变量（注册表 HKCU\\Environment）。
+
+    星耀凭据常配置在用户级环境变量中，Bash/子进程的 os.environ 未必包含，
+    因此需兜底读取注册表。非 Windows 或读不到时返回空字符串。
+    """
+    try:
+        import winreg
+        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, "Environment", 0, winreg.KEY_READ) as k:
+            val, _ = winreg.QueryValueEx(k, key)
+        return str(val)
+    except Exception:
+        return ""
+
+
 def _env(key: str, fallback: str = "") -> str:
-    """读取环境变量，支持 AD_* 和 XINGYAO_* 两套命名。"""
+    """读取环境变量，支持 AD_* 和 XINGYAO_* 两套命名。
+
+    读取顺序：进程 os.environ → Windows 用户级注册表（兜底）。
+    """
     val = os.environ.get(key, "")
+    if not val:
+        val = _read_user_env(key)
     if val:
         return val
     # fallback: AD_ → XINGYAO_ 或反之
     if key.startswith("AD_"):
         alt = "XINGYAO_" + key[3:]
-        return os.environ.get(alt) or fallback
-    if key.startswith("XINGYAO_"):
+    else:
         alt = "AD_" + key[len("XINGYAO_"):]
-        return os.environ.get(alt) or fallback
-    return fallback
+    alt_val = os.environ.get(alt, "")
+    if not alt_val:
+        alt_val = _read_user_env(alt)
+    return alt_val or fallback
 
 
 def credentials() -> Dict[str, Any]:
