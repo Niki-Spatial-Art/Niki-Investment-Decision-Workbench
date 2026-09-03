@@ -137,6 +137,14 @@ def _ma(series, n):
 
 
 def check_market_gate():
+    """大盘三信号闸门。
+
+    2026-09-03 实证（backtest_market_gate.py，1359交易日，2015以来）：
+    「上证>4000」固定阈值是顶部追高陷阱（开启后沪深300未来60日 -9.53%、
+    胜率22.6%；2015牛顶30天60日均跌22.22%、胜率0%）。故 c2 已改为
+    「上证站上MA20」动态阈值（60日 -0.50%，仍弱但远好于4000固定值）。
+    注：闸门本质是"避免极端追高"的保险丝，非正期望择时信号。
+    """
     code_map = {"沪深300": "000300.SH", "上证指数": "000001.SH", "中证1000": "000852.SH"}
     end = int(str(CAL[-1]))
     begin = int(str(CAL[-70]))
@@ -152,15 +160,15 @@ def check_market_gate():
         gate[label] = {"现价": round(float(close.iloc[-1]), 2),
                        "MA20": round(_ma(close, 20), 2)}
     hs = gate["沪深300"]["现价"]; hs_ma = gate["沪深300"]["MA20"]
-    sh = gate["上证指数"]["现价"]
+    sh = gate["上证指数"]["现价"]; sh_ma = gate["上证指数"]["MA20"]
     zz = gate["中证1000"]["现价"]; zz_ma = gate["中证1000"]["MA20"]
     c1 = hs > hs_ma if hs and hs_ma else False
-    c2 = sh > 4000 if sh else False
+    c2 = sh > sh_ma if sh and sh_ma else False   # 原"上证>4000"已改动态MA20
     c3 = zz > zz_ma if zz and zz_ma else False
     open3 = c1 and c2 and c3
     return open3, {
         "沪深300现价": hs, "沪深300_MA20": hs_ma, "沪深300站上MA20": c1,
-        "上证现价": sh, "上证站上4000": c2,
+        "上证现价": sh, "上证_MA20": sh_ma, "上证站上MA20": c2,
         "中证1000现价": zz, "中证1000_MA20": zz_ma, "中证1000站上MA20": c3,
         "三信号全开": open3,
     }
