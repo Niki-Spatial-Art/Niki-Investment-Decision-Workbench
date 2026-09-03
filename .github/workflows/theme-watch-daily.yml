@@ -8,6 +8,10 @@ on:
         required: true
         default: true
         type: boolean
+  schedule:
+    # GitHub Actions cron is UTC: 08:00 UTC = Beijing 16:00 on weekdays.
+    # 收盘后发送主题监控日报，脚本在非交易日自动跳过。
+    - cron: '0 8 * * 1-5'
 
 permissions:
   contents: write
