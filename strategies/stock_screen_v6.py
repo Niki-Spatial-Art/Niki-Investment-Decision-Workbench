@@ -145,11 +145,17 @@ def set_sector_context(research_names, hot_names, ind_map):
 
 
 def sector_bonus(code):
-    """板块共振加分：research 档满分、hot 档半分、非热门 0。"""
+    """板块共振加分：已按 2026-09-04 实证结论降为 0 不启用。
+
+    实证(backtest_sector_resonance.py)：5日 IC=+0.191(短线有效)、20日 IC=-0.099(中线反转)。
+    「当日领涨」是追涨因子，与 v6 回踩缩量(中线持有)定位冲突，故 weight=0 不参与打分。
+    仅保留 industry 字段填充供观察。权重唯一来源 factor_registry.json。
+    默认 0.0：即使 registry 加载失败也不误加分(避免偷偷恢复 +10)。
+    """
     ind = _SECTOR_IND_MAP.get(code, "")
     if not ind:
         return 0.0, ""
-    w = _w("sector_resonance", 10.0)
+    w = _w("sector_resonance", 0.0)
     if ind in _SECTOR_RESEARCH:
         return float(w), ind
     if ind in _SECTOR_HOT:
