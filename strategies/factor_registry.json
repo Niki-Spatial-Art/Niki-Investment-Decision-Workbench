@@ -1,9 +1,10 @@
 {
   "_meta": {
-    "说明": "A股选股因子实证结论注册表 —— 裁判(factor-validation)与执行器(stock_screen_v6 / a-stock-full-screen)的唯一权重来源。改权重=改本文件=改 stock_screen_v6.score_stock=改两个 SKILL.md 权重表，四处必须一致。",
+    "说明": "A股选股因子实证结论注册表 —— 裁判(factor-validation)与执行器(stock_screen_v6 / a-stock-full-screen)的唯一权重来源。stock_screen_v6.py 启动时 load 本文件，score_stock 的权重与打分阈值全部来自本文件（代码内不再硬编码），两个 SKILL.md 权重表亦从本文件同步。改权重=只改本文件。",
     "方法": "单因子IC(Spearman) + 分层回测(Q1-Q5单调性) + 开/关对照 + 超额收益法(个股-沪深300)",
     "数据源": "星耀数智SDK(AmazingData)，日K period=10008",
     "last_validated": "2026-09-04",
+    "版本": "v6.1-trial（试运行，前向验证中）",
     "回测脚本": {
       "回踩单因子": "backtest_bias.py",
       "动量/趋势/量能": "backtest_tech_factors.py",
@@ -12,31 +13,90 @@
       "融资余额/财务/龙虎榜/ROE": "backtest_factors.py / backtest_financial.py / backtest_forecast.py"
     }
   },
-
   "技术因子": {
     "turnover_reversal": {
-      "name": "换手率反转",
+      "name": "成交量收缩反转",
+      "alias": "换手率反转",
+      "note": "代码底层实际用的是 volume(成交量) 的20日变化率，非严格换手率(成交额/流通市值)。星耀日K无直接换手率字段，故更准确命名为『成交量收缩反转』。若后续接入流通市值可升级为真换手率。",
       "status": "strong_positive",
       "weight": 40,
       "ic": -0.108,
-      "evidence": "2388采样点，缩量组(turn_chg<=-30%)未来20日+0.81%/胜率52.5% vs 放量组-1.10%/37.3%，差+1.91%",
-      "decision": "第一因子，缩量(成交额下降)给高分"
+      "evidence": "2388采样点，缩量组(turn_chg<=-30%)未来20日超额+0.81%/胜率52.5% vs 放量组(turn_chg>30%)-1.10%/37.3%；收益差+1.91%，胜率差+15.2pct",
+      "decision": "第一因子，缩量(成交额下降)给高分",
+      "score_map": {
+        "metric": "turn_chg",
+        "定义": "近20日均量/前20日均量-1，单位%",
+        "brackets": [
+          {
+            "range": "<=-40",
+            "score": 40
+          },
+          {
+            "range": "-40~-15",
+            "score": 32
+          },
+          {
+            "range": "-15~0",
+            "score": 24
+          },
+          {
+            "range": "0~15",
+            "score": 12
+          },
+          {
+            "range": "15~50",
+            "score": 6
+          },
+          {
+            "range": ">50",
+            "score": 0
+          }
+        ]
+      }
     },
     "volume_pullback_shrink": {
       "name": "回踩缩量",
       "status": "positive",
       "weight": 30,
       "ic": null,
-      "evidence": "缩量组(vol_ratio<0.85)胜率48.6% vs 放量组(>=1.1)33.8%，差+4.33%；须配合乖离MA20贴线",
-      "decision": "乖离MA20<1% 且 量比<0.85 才给满分"
+      "evidence": "缩量组(vol_ratio<0.85)胜率48.6% vs 放量组(>=1.1)33.8%，胜率差+14.8pct、20日超额差+4.33%；须配合乖离MA20贴线",
+      "decision": "乖离MA20<1% 且 量比<0.85 才给满分",
+      "score_map": {
+        "metric": "vol_ratio(近5日均量/近20日均量) + b20(乖离MA20%)",
+        "brackets": [
+          {
+            "range": "b20<1.0 且 vol_ratio<0.85",
+            "score": 30
+          },
+          {
+            "range": "b20<1.0 且 vol_ratio<1.1",
+            "score": 18
+          },
+          {
+            "range": "vol_ratio<0.85",
+            "score": 12
+          },
+          {
+            "range": "其他",
+            "score": 6
+          }
+        ]
+      }
     },
     "low_volatility_atr": {
       "name": "低振幅",
       "status": "positive",
       "weight": 20,
       "ic": null,
-      "evidence": "回踩洗盘票特征，振幅越小越稳",
-      "decision": "ATR振幅约3%得满分，随振幅线性递减"
+      "evidence": "回踩洗盘票特征，振幅越小越稳。⚠️ 证据偏定性，尚未做IC/分层实证——按『不实证不上车』，20分暂属试运行权重，前向验证通过前不升级",
+      "decision": "ATR振幅约3%得满分，随振幅线性递减",
+      "pending": "待补：用超额收益法+IC对 atr_pct 做单因子验证，确认单调性后再固化20分",
+      "score_map": {
+        "metric": "atr_pct(近10日平均振幅%)",
+        "formula": "max(0, min(weight, weight - (atr_pct-3)*2))",
+        "center": 3.0,
+        "slope": 2.0
+      }
     },
     "bias_ma20_near_zero": {
       "name": "乖离贴0",
@@ -44,7 +104,11 @@
       "weight": 10,
       "ic": null,
       "evidence": "配合性条件，非独立买点",
-      "decision": "乖离MA20越接近0越稳"
+      "decision": "乖离MA20越接近0越稳",
+      "score_map": {
+        "metric": "b20(乖离MA20%)",
+        "formula": "max(0, weight - abs(b20)*2)"
+      }
     },
     "momentum_20_60": {
       "name": "动量(r20/r60)",
@@ -80,7 +144,6 @@
       "decision": "不纳入"
     }
   },
-
   "财务资金面因子": {
     "margin_balance_change": {
       "name": "融资余额变化",
@@ -147,7 +210,6 @@
       "decision": "仅留可选开关"
     }
   },
-
   "大盘闸门": {
     "gate_three_signal": {
       "name": "三信号动态MA20闸门",

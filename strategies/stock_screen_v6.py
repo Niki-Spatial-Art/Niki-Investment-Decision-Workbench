@@ -76,6 +76,60 @@ except ImportError:
     CSRANK_SPECS = {}
 
 # ---------------------------------------------------------------------------
+# 因子权重唯一来源：factor_registry.json（裁判结论 → 执行器权重）
+# ---------------------------------------------------------------------------
+# score_stock 的权重与打分阈值全部从本文件读取，代码内不再硬编码。
+# 改权重 = 只改 factor_registry.json，无需动本脚本。
+# ---------------------------------------------------------------------------
+
+_REGISTRY_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "factor_registry.json")
+FACTOR_WEIGHTS = {}          # {因子key: weight}
+FACTOR_SCORE_MAP = {}        # {因子key: score_map 原始结构}
+_REGISTRY_LOADED = False
+
+
+def _load_registry():
+    """加载 factor_registry.json；失败则回退内置默认权重并告警。"""
+    global FACTOR_WEIGHTS, FACTOR_SCORE_MAP, _REGISTRY_LOADED
+    default_weights = {
+        "turnover_reversal": 40,
+        "volume_pullback_shrink": 30,
+        "low_volatility_atr": 20,
+        "bias_ma20_near_zero": 10,
+        "momentum_20_60": 0,
+        "trend_ma_alignment": 0,
+    }
+    try:
+        with open(_REGISTRY_PATH, "r", encoding="utf-8") as f:
+            reg = json.load(f)
+        tech = reg.get("技术因子", {})
+        for key, cfg in tech.items():
+            if not isinstance(cfg, dict):
+                continue
+            w = cfg.get("weight", 0)
+            FACTOR_WEIGHTS[key] = float(w)
+            if "score_map" in cfg:
+                FACTOR_SCORE_MAP[key] = cfg["score_map"]
+        if not FACTOR_WEIGHTS:
+            raise ValueError("registry 技术因子为空")
+        _REGISTRY_LOADED = True
+        return FACTOR_WEIGHTS
+    except Exception as e:
+        FACTOR_WEIGHTS = dict(default_weights)
+        _REGISTRY_LOADED = False
+        print(f"[warn] factor_registry.json 加载失败({e})，已回退内置默认权重")
+        return FACTOR_WEIGHTS
+
+
+def _w(name: str, default: float) -> float:
+    """取因子权重，registry 未加载时用默认值。"""
+    return FACTOR_WEIGHTS.get(name, default)
+
+
+# 启动即加载（模块 import 时执行一次）
+_load_registry()
+
+# ---------------------------------------------------------------------------
 # 凭据读取（Windows 用户级环境变量，Bash 子进程读不到，需用 winreg）
 # ---------------------------------------------------------------------------
 
@@ -233,11 +287,11 @@ def score_stock(df):
     r60 = (c / float(close.iloc[-61]) - 1) * 100
     hi60 = float(TSF.HHV(high, 60).iloc[-1])
 
-    # 量能基础量（供换手反转与回踩缩量共用）
+    # 量能基础量（供成交量收缩反转与回踩缩量共用）
     v5 = float(vol.iloc[-5:].mean())
     v20 = float(vol.iloc[-20:].mean())
     vol_ratio = v5 / v20 if v20 else 1.0
-    # 换手率变化：近20日均量 / 前20日均量 - 1（%），负=缩量=关注度低=未来超额高
+    # 成交量收缩变化率：近20日均量 / 前20日均量 - 1（%），负=缩量=关注度低=未来超额高
     if len(vol) >= 40:
         v_prev20 = float(vol.iloc[-40:-20].mean())
     else:
@@ -245,42 +299,48 @@ def score_stock(df):
     turn_chg = (v20 / v_prev20 - 1) * 100 if v_prev20 else 0.0
 
     # ------------------------------------------------------------------
-    # 因子权重（2026-09-04 实证校准，见 factor_registry.json）：
-    #   换手率反转 40（IC -0.108 强有效）+ 回踩缩量 30（缩量组胜率48.6% vs 放量33.8%）
+    # 因子权重唯一来源：factor_registry.json（FACTOR_WEIGHTS，模块加载时读入）。
+    #   成交量收缩反转 40（IC -0.108 强有效）+ 回踩缩量 30（缩量组胜率48.6% vs 放量33.8%）
     #   + 低振幅 20 + 乖离贴0 10。动量/趋势已实证强反向（IC -0.17/-0.29/-0.11），归 0 仅展示。
+    #   权重值与分档阈值 = FACTOR_WEIGHTS + FACTOR_SCORE_MAP，改权重只改 registry。
     # ------------------------------------------------------------------
+    W_TURN = _w("turnover_reversal", 40.0)
+    W_VOL = _w("volume_pullback_shrink", 30.0)
+    W_VOL2 = _w("low_volatility_atr", 20.0)
+    W_BIAS = _w("bias_ma20_near_zero", 10.0)
 
-    # 因子1 换手率反转（40分）：缩量(负变化)给高分
+    # 因子1 成交量收缩反转（40分）：缩量(负变化)给高分
+    # 分档系数按权重等比缩放，满分=W_TURN
     if turn_chg <= -40:
-        turn_score = 40.0
+        turn_score = W_TURN * 1.0
     elif turn_chg <= -15:
-        turn_score = 32.0
+        turn_score = W_TURN * 0.8
     elif turn_chg <= 0:
-        turn_score = 24.0
+        turn_score = W_TURN * 0.6
     elif turn_chg <= 15:
-        turn_score = 12.0
+        turn_score = W_TURN * 0.3
     elif turn_chg <= 50:
-        turn_score = 6.0
+        turn_score = W_TURN * 0.15
     else:
         turn_score = 0.0
 
     # 因子2 回踩缩量（30分）：乖离MA20贴线 + 缩量，才是有效"回踩洗盘"信号
     if b20 < 1.0 and vol_ratio < 0.85:
-        vol_score = 30.0
+        vol_score = W_VOL * 1.0
     elif b20 < 1.0 and vol_ratio < 1.1:
-        vol_score = 18.0
+        vol_score = W_VOL * 0.6
     elif vol_ratio < 0.85:
-        vol_score = 12.0
+        vol_score = W_VOL * 0.4
     else:
-        vol_score = 6.0
+        vol_score = W_VOL * 0.2
 
-    # 因子3 低振幅（20分）：振幅越小越稳（回踩洗盘特征）
+    # 因子3 低振幅（20分）：振幅越小越稳（回踩洗盘特征）。证据偏定性，试运行权重。
     atr = float((high.iloc[-10:] - low.iloc[-10:]).mean())
     atr_pct = atr / c * 100 if c else 0
-    vol_score2 = max(0.0, min(20.0, 20 - (atr_pct - 3) * 2))
+    vol_score2 = max(0.0, min(W_VOL2, W_VOL2 - (atr_pct - 3) * 2))
 
     # 因子4 乖离贴0（10分）：乖离MA20越接近0越稳（配合性条件，非独立买点）
-    bias_score = max(0.0, 10 - abs(b20) * 2)
+    bias_score = max(0.0, W_BIAS - abs(b20) * 2)
 
     # 动量/趋势：已实证反向，归 0（仅展示，供参考）
     mom_score = 0.0
@@ -360,7 +420,7 @@ def eval_one(item, df):
     return {"code": code, "name": name, "pct": round(pct, 2), "amount": round(amount / 1e8, 2),
             "price": round(c, 2), "industry": "",
             "tech_score": sc["total"],
-            "factor": {"换手反转": sc["turn"], "回踩缩量": sc["vol"],
+            "factor": {"成交量收缩": sc["turn"], "回踩缩量": sc["vol"],
                        "低振幅": sc["vol2"], "乖离": sc["bias"],
                        "动量": sc["mom"], "趋势": sc["trend"]},
             "b20": sc["b20"], "r20": sc["r20"], "r60": sc["r60"],
@@ -887,8 +947,8 @@ def main():
         fd = r["fund_detail"]
         print(f"{i:<4}{r['code']:<10}{r['name']:<10}{r['price']:>7.2f}{r['buy_low']:>8.2f}{r['stop']:>7.2f}"
               f"{r['tech_score']:>7.1f}{r['fund_score']:>7.0f}{r['score']:>7.1f}")
-        print(f"     技术[换手反转{r['factor']['换手反转']}/回踩缩量{r['factor']['回踩缩量']}/低振幅{r['factor']['低振幅']}/乖离{r['factor']['乖离']}] "
-              f"乖离20={r['b20']}% 换手变化={r.get('turn_chg', '?')}% 量比={r.get('vol_ratio', '?')} 振幅={r.get('atr_pct', '?')}% 成交额={r['amount']}亿")
+        print(f"     技术[成交量收缩{r['factor']['成交量收缩']}/回踩缩量{r['factor']['回踩缩量']}/低振幅{r['factor']['低振幅']}/乖离{r['factor']['乖离']}] "
+              f"乖离20={r['b20']}% 量收缩={r.get('turn_chg', '?')}% 量比={r.get('vol_ratio', '?')} 振幅={r.get('atr_pct', '?')}% 成交额={r['amount']}亿")
         np_label = fd.get('净利增速')
         np_nature = fd.get('增速性质', '')
         np_str = f"{np_label}%({np_nature})" if np_label is not None and np_nature and np_nature != "正常" else (f"{np_label}%" if np_label is not None else "无")
