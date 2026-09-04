@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "date": "20260904",
+      "code": "600519.SH",
+      "name": "贵州茅台",
+      "price": 1329.38,
+      "score": 71.2,
+      "tech_score": 71.2,
+      "b20": 1.38,
+      "turn_chg": -35.64,
+      "vol_ratio": 0.763,
+      "gate_open": false
+    },
+    {
+      "date": "20260904",
+      "code": "688052.SH",
+      "name": "纳芯微",
+      "price": 244.8,
+      "score": 63.2,
+      "tech_score": 63.2,
+      "b20": 3.09,
+      "turn_chg": -16.6,
+      "vol_ratio": 0.641,
+      "gate_open": false
+    },
+    {
+      "date": "20260904",
+      "code": "300857.SZ",
+      "name": "协创数据",
+      "price": 257.8,
+      "score": 59.7,
+      "tech_score": 59.7,
+      "b20": 1.5,
+      "turn_chg": -30.57,
+      "vol_ratio": 0.97,
+      "gate_open": false
+    },
+    {
+      "date": "20260904",
+      "code": "603268.SH",
+      "name": "松发股份",
+      "price": 190.75,
+      "score": 57.1,
+      "tech_score": 57.1,
+      "b20": 4.14,
+      "turn_chg": -32.26,
+      "vol_ratio": 1.081,
+      "gate_open": false
+    }
+  ],
+  "_meta": {
+    "说明": "v6.1 前向验证记录。每只票记录选股日与价格，供 forward_verify.py 对照次日/5日表现。"
+  }
+}
