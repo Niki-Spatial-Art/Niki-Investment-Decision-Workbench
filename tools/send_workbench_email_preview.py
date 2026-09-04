@@ -36,7 +36,10 @@ INTRADAY_WINDOWS = [
     (14, 30),
     (14, 55),
 ]
-DEFAULT_INTRADAY_TOLERANCE_MINUTES = 12
+# GitHub scheduled jobs can start a few minutes late. Keep this bounded so a
+# delayed run can service its intended Beijing checkpoint without turning a
+# stale after-hours run into an intraday email.
+DEFAULT_INTRADAY_TOLERANCE_MINUTES = 20
 
 
 def as_float(value: object, default: float = 0.0) -> float:

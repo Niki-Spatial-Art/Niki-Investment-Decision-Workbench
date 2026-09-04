@@ -12,18 +12,20 @@ on:
     # GitHub Actions cron is UTC. These entries are the UTC equivalents of
     # the Beijing A-share intraday checkpoints below. Do not write local
     # Beijing hours here; the script still validates actual Asia/Shanghai time.
-    # 09:30, 10:00, 10:30, 11:00, 11:30, 13:00, 13:30, 14:00, 14:30, 14:55.
+    # Triggers are offset by 7 minutes to avoid GitHub's busy :00/:30 peaks.
+    # The script maps each trigger back to its Beijing checkpoint and allows
+    # at most 20 minutes of scheduler delay.
     # 注：14:55 为尾盘风险确认，15:00 已删除(与收盘复盘边界混淆)，尾盘只保留 14:55。
-    - cron: '30 1 * * 1-5'   # Beijing 09:30
-    - cron: '0 2 * * 1-5'    # Beijing 10:00
-    - cron: '30 2 * * 1-5'   # Beijing 10:30
-    - cron: '0 3 * * 1-5'    # Beijing 11:00
-    - cron: '30 3 * * 1-5'   # Beijing 11:30
-    - cron: '0 5 * * 1-5'    # Beijing 13:00
-    - cron: '30 5 * * 1-5'   # Beijing 13:30
-    - cron: '0 6 * * 1-5'    # Beijing 14:00
-    - cron: '30 6 * * 1-5'   # Beijing 14:30
-    - cron: '55 6 * * 1-5'   # Beijing 14:55
+    - cron: '37 1 * * 1-5'   # Beijing checkpoint 09:30 (trigger 09:37)
+    - cron: '7 2 * * 1-5'    # Beijing checkpoint 10:00 (trigger 10:07)
+    - cron: '37 2 * * 1-5'   # Beijing checkpoint 10:30 (trigger 10:37)
+    - cron: '7 3 * * 1-5'    # Beijing checkpoint 11:00 (trigger 11:07)
+    - cron: '37 3 * * 1-5'   # Beijing checkpoint 11:30 (trigger 11:37)
+    - cron: '7 5 * * 1-5'    # Beijing checkpoint 13:00 (trigger 13:07)
+    - cron: '37 5 * * 1-5'   # Beijing checkpoint 13:30 (trigger 13:37)
+    - cron: '7 6 * * 1-5'    # Beijing checkpoint 14:00 (trigger 14:07)
+    - cron: '37 6 * * 1-5'   # Beijing checkpoint 14:30 (trigger 14:37)
+    - cron: '57 6 * * 1-5'   # Beijing checkpoint 14:55 (trigger 14:57)
 
 permissions:
   contents: read
