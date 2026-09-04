@@ -233,47 +233,74 @@ def score_stock(df):
     r60 = (c / float(close.iloc[-61]) - 1) * 100
     hi60 = float(TSF.HHV(high, 60).iloc[-1])
 
-    # 因子1 动量
-    if r20 > 0 and r60 > 0:
-        mom = min(r20, 25)
-    elif r20 > 0 and r60 <= 0:
-        mom = r20 * 0.4
-    else:
-        mom = r20 * 0.4
-    mom_score = max(0, min(30, 15 + mom))
-
-    # 因子2 回踩度
-    bias_score = max(0, 30 - abs(b20) * 6)
-
-    # 因子3 量能
+    # 量能基础量（供换手反转与回踩缩量共用）
     v5 = float(vol.iloc[-5:].mean())
     v20 = float(vol.iloc[-20:].mean())
-    vol_ratio = v5 / v20 if v20 else 1
-    if b20 < 1.0:
-        vol_score = 20 if vol_ratio < 0.85 else (10 if vol_ratio < 1.1 else 3)
+    vol_ratio = v5 / v20 if v20 else 1.0
+    # 换手率变化：近20日均量 / 前20日均量 - 1（%），负=缩量=关注度低=未来超额高
+    if len(vol) >= 40:
+        v_prev20 = float(vol.iloc[-40:-20].mean())
     else:
-        vol_score = 12 if vol_ratio < 1.2 else 6
-    vol_score = min(20, vol_score)
+        v_prev20 = v20
+    turn_chg = (v20 / v_prev20 - 1) * 100 if v_prev20 else 0.0
 
-    # 因子4 趋势强度
+    # ------------------------------------------------------------------
+    # 因子权重（2026-09-04 实证校准，见 factor_registry.json）：
+    #   换手率反转 40（IC -0.108 强有效）+ 回踩缩量 30（缩量组胜率48.6% vs 放量33.8%）
+    #   + 低振幅 20 + 乖离贴0 10。动量/趋势已实证强反向（IC -0.17/-0.29/-0.11），归 0 仅展示。
+    # ------------------------------------------------------------------
+
+    # 因子1 换手率反转（40分）：缩量(负变化)给高分
+    if turn_chg <= -40:
+        turn_score = 40.0
+    elif turn_chg <= -15:
+        turn_score = 32.0
+    elif turn_chg <= 0:
+        turn_score = 24.0
+    elif turn_chg <= 15:
+        turn_score = 12.0
+    elif turn_chg <= 50:
+        turn_score = 6.0
+    else:
+        turn_score = 0.0
+
+    # 因子2 回踩缩量（30分）：乖离MA20贴线 + 缩量，才是有效"回踩洗盘"信号
+    if b20 < 1.0 and vol_ratio < 0.85:
+        vol_score = 30.0
+    elif b20 < 1.0 and vol_ratio < 1.1:
+        vol_score = 18.0
+    elif vol_ratio < 0.85:
+        vol_score = 12.0
+    else:
+        vol_score = 6.0
+
+    # 因子3 低振幅（20分）：振幅越小越稳（回踩洗盘特征）
+    atr = float((high.iloc[-10:] - low.iloc[-10:]).mean())
+    atr_pct = atr / c * 100 if c else 0
+    vol_score2 = max(0.0, min(20.0, 20 - (atr_pct - 3) * 2))
+
+    # 因子4 乖离贴0（10分）：乖离MA20越接近0越稳（配合性条件，非独立买点）
+    bias_score = max(0.0, 10 - abs(b20) * 2)
+
+    # 动量/趋势：已实证反向，归 0（仅展示，供参考）
+    mom_score = 0.0
     trend = 0
     if m5 > m10: trend += 5
     if m10 > m20: trend += 5
     if c > m20: trend += 5
     if c > m60: trend += 5
-    trend_score = min(20, trend)
+    trend_score = 0.0  # 反向，归0
 
-    # 因子5 波动
-    atr = float((high.iloc[-10:] - low.iloc[-10:]).mean())
-    atr_pct = atr / c * 100 if c else 0
-    vol_score2 = max(0, min(10, 10 - (atr_pct - 3)))
-
-    total = mom_score + bias_score + vol_score + trend_score + vol_score2
-    return {"total": round(total, 1), "mom": round(mom_score, 1), "bias": round(bias_score, 1),
-            "vol": round(vol_score, 1), "trend": round(trend_score, 1), "vol2": round(vol_score2, 1),
+    total = turn_score + vol_score + vol_score2 + bias_score
+    return {"total": round(total, 1),
+            "turn": round(turn_score, 1), "vol": round(vol_score, 1),
+            "vol2": round(vol_score2, 1), "bias": round(bias_score, 1),
+            "mom": round(mom_score, 1), "trend": round(trend_score, 1),
             "b20": round(b20, 2), "r20": round(r20, 2), "r60": round(r60, 2),
             "hi60": round(hi60, 2), "m20": round(m20, 2), "m5": round(m5, 2),
-            "m10": round(m10, 2), "m60": round(m60, 2)}
+            "m10": round(m10, 2), "m60": round(m60, 2),
+            "turn_chg": round(turn_chg, 2), "vol_ratio": round(vol_ratio, 3),
+            "atr_pct": round(atr_pct, 2), "trend_raw": trend}
 
 
 # ---------------------------------------------------------------------------
@@ -333,9 +360,12 @@ def eval_one(item, df):
     return {"code": code, "name": name, "pct": round(pct, 2), "amount": round(amount / 1e8, 2),
             "price": round(c, 2), "industry": "",
             "tech_score": sc["total"],
-            "factor": {"动量": sc["mom"], "回踩": sc["bias"], "量能": sc["vol"],
-                       "趋势": sc["trend"], "波动": sc["vol2"]},
+            "factor": {"换手反转": sc["turn"], "回踩缩量": sc["vol"],
+                       "低振幅": sc["vol2"], "乖离": sc["bias"],
+                       "动量": sc["mom"], "趋势": sc["trend"]},
             "b20": sc["b20"], "r20": sc["r20"], "r60": sc["r60"],
+            "turn_chg": sc["turn_chg"], "vol_ratio": sc["vol_ratio"],
+            "atr_pct": sc["atr_pct"],
             "ma20": sc["m20"], "drawdown60": round(drawdown60, 1),
             "buy": buy, "buy_low": buy_low, "stop": stop}
 
@@ -857,8 +887,8 @@ def main():
         fd = r["fund_detail"]
         print(f"{i:<4}{r['code']:<10}{r['name']:<10}{r['price']:>7.2f}{r['buy_low']:>8.2f}{r['stop']:>7.2f}"
               f"{r['tech_score']:>7.1f}{r['fund_score']:>7.0f}{r['score']:>7.1f}")
-        print(f"     技术[动量{r['factor']['动量']}/回踩{r['factor']['回踩']}/量能{r['factor']['量能']}/趋势{r['factor']['趋势']}/波动{r['factor']['波动']}] "
-              f"乖离20={r['b20']}% 20日={r['r20']}% 成交额={r['amount']}亿")
+        print(f"     技术[换手反转{r['factor']['换手反转']}/回踩缩量{r['factor']['回踩缩量']}/低振幅{r['factor']['低振幅']}/乖离{r['factor']['乖离']}] "
+              f"乖离20={r['b20']}% 换手变化={r.get('turn_chg', '?')}% 量比={r.get('vol_ratio', '?')} 振幅={r.get('atr_pct', '?')}% 成交额={r['amount']}亿")
         np_label = fd.get('净利增速')
         np_nature = fd.get('增速性质', '')
         np_str = f"{np_label}%({np_nature})" if np_label is not None and np_nature and np_nature != "正常" else (f"{np_label}%" if np_label is not None else "无")

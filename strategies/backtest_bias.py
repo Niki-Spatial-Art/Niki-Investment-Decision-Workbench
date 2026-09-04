@@ -3,7 +3,7 @@
 验证：历史上当某票"乖离MA20 ∈ 回踩区间"时买入，未来5/10/20日涨幅 vs 全市场平均，看因子是否有超额。
 即回答"晶晶的选股因子到底有没有效、胜率多少"。
 """
-import urllib.request, json, ssl, time, sys, random
+import urllib.request, urllib.parse, json, ssl, time, sys, random
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 ctx = ssl.create_default_context(); ctx.check_hostname=False; ctx.verify_mode=ssl.CERT_NONE
@@ -104,10 +104,10 @@ if __name__ == '__main__':
             if not s: continue
             for samp in s:
                 b20, f5, f10, f20 = samp
-            if b20 == 'chase':
-                chase.append((0, f5, f10, f20))
-            else:
-                hit.append((b20, f5, f10, f20))
+                if b20 == 'chase':
+                    chase.append((0, f5, f10, f20))
+                else:
+                    hit.append((b20, f5, f10, f20))
     print('\n===== 乖离MA20因子回测结果 =====')
     print(f'命中组(回踩区间[-4%,+6%]买入)样本数: {len(hit)}')
     print(f'对照组(追高乖离>8%买入)样本数: {len(chase)}')

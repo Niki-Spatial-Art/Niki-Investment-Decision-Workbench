@@ -1,0 +1,159 @@
+{
+  "_meta": {
+    "说明": "A股选股因子实证结论注册表 —— 裁判(factor-validation)与执行器(stock_screen_v6 / a-stock-full-screen)的唯一权重来源。改权重=改本文件=改 stock_screen_v6.score_stock=改两个 SKILL.md 权重表，四处必须一致。",
+    "方法": "单因子IC(Spearman) + 分层回测(Q1-Q5单调性) + 开/关对照 + 超额收益法(个股-沪深300)",
+    "数据源": "星耀数智SDK(AmazingData)，日K period=10008",
+    "last_validated": "2026-09-04",
+    "回测脚本": {
+      "回踩单因子": "backtest_bias.py",
+      "动量/趋势/量能": "backtest_tech_factors.py",
+      "IVOL/换手率反转": "backtest_reversal.py",
+      "大盘闸门": "backtest_market_gate.py",
+      "融资余额/财务/龙虎榜/ROE": "backtest_factors.py / backtest_financial.py / backtest_forecast.py"
+    }
+  },
+
+  "技术因子": {
+    "turnover_reversal": {
+      "name": "换手率反转",
+      "status": "strong_positive",
+      "weight": 40,
+      "ic": -0.108,
+      "evidence": "2388采样点，缩量组(turn_chg<=-30%)未来20日+0.81%/胜率52.5% vs 放量组-1.10%/37.3%，差+1.91%",
+      "decision": "第一因子，缩量(成交额下降)给高分"
+    },
+    "volume_pullback_shrink": {
+      "name": "回踩缩量",
+      "status": "positive",
+      "weight": 30,
+      "ic": null,
+      "evidence": "缩量组(vol_ratio<0.85)胜率48.6% vs 放量组(>=1.1)33.8%，差+4.33%；须配合乖离MA20贴线",
+      "decision": "乖离MA20<1% 且 量比<0.85 才给满分"
+    },
+    "low_volatility_atr": {
+      "name": "低振幅",
+      "status": "positive",
+      "weight": 20,
+      "ic": null,
+      "evidence": "回踩洗盘票特征，振幅越小越稳",
+      "decision": "ATR振幅约3%得满分，随振幅线性递减"
+    },
+    "bias_ma20_near_zero": {
+      "name": "乖离贴0",
+      "status": "weak_positive",
+      "weight": 10,
+      "ic": null,
+      "evidence": "配合性条件，非独立买点",
+      "decision": "乖离MA20越接近0越稳"
+    },
+    "momentum_20_60": {
+      "name": "动量(r20/r60)",
+      "status": "negative",
+      "weight": 0,
+      "ic": -0.169,
+      "ic_r60": -0.288,
+      "evidence": "1980采样点，IC r20=-0.169/r60=-0.288，分层Q5-Q1=-7.15%/-14.24%，强反向(A股反转效应)",
+      "decision": "剔除(归0仅展示)"
+    },
+    "trend_ma_alignment": {
+      "name": "趋势(MA多头排列)",
+      "status": "negative",
+      "weight": 0,
+      "ic": -0.114,
+      "evidence": "IC -0.114，分层Q1=-1.64%到Q5=-6.68%，反向",
+      "decision": "剔除(归0仅展示)"
+    },
+    "ma20_pullback_single": {
+      "name": "回踩单因子(乖离MA20)",
+      "status": "invalid",
+      "weight": 0,
+      "ic": null,
+      "evidence": "修复backtest_bias.py缩进bug后重跑800只：命中组5日胜率46.4%/超额-0.55%、20日-1.85%，几乎无效(原'59%胜率'是bug假结论)",
+      "decision": "仅作过滤条件，不给分"
+    },
+    "ivol": {
+      "name": "IVOL特质波动率",
+      "status": "invalid",
+      "weight": 0,
+      "ic": -0.012,
+      "evidence": "IC≈-0.012无效，分层Q5-Q1仅+1.18%无单调，论文结论不可直接套用",
+      "decision": "不纳入"
+    }
+  },
+
+  "财务资金面因子": {
+    "margin_balance_change": {
+      "name": "融资余额变化",
+      "status": "reverse",
+      "weight": 10,
+      "ic": -0.054,
+      "evidence": "IC 20日 -0.054, t<-2.7，反向",
+      "decision": "反转打分(暴增扣分)"
+    },
+    "profit_notice": {
+      "name": "业绩预告",
+      "status": "reverse",
+      "weight": 10,
+      "ic": null,
+      "evidence": "300只/1275事件，预增见光死/预减利空出尽70.1%胜率",
+      "decision": "反转打分"
+    },
+    "revenue_growth": {
+      "name": "营收增速",
+      "status": "weak_positive",
+      "weight": 10,
+      "ic": 0.031,
+      "evidence": "IC 60日 +0.031",
+      "decision": "升权 5→10"
+    },
+    "net_profit_growth": {
+      "name": "净利增速",
+      "status": "invalid",
+      "weight": 0,
+      "ic": 0.009,
+      "evidence": "IC 20日 +0.009 无效",
+      "decision": "归零仅展示"
+    },
+    "chip_concentration": {
+      "name": "筹码集中(股东户数)",
+      "status": "invalid",
+      "weight": 0,
+      "ic": 0,
+      "evidence": "IC≈0 无效",
+      "decision": "归零"
+    },
+    "dragon_tiger": {
+      "name": "龙虎榜",
+      "status": "weak_positive",
+      "weight": 3,
+      "ic": null,
+      "evidence": "分组对照 +1.99% 差异，胜率53%接近随机",
+      "decision": "3分保留"
+    },
+    "roe": {
+      "name": "ROE",
+      "status": "exclusion",
+      "weight": 0,
+      "ic": null,
+      "evidence": "倒U型，亏损股已由_growth_nature识别归零",
+      "decision": "排除型(不新增打分)"
+    },
+    "csrank": {
+      "name": "CSRANK横截面",
+      "status": "not_adopted",
+      "weight": 0,
+      "ic": null,
+      "evidence": "截面排名不提升IC/单调性",
+      "decision": "仅留可选开关"
+    }
+  },
+
+  "大盘闸门": {
+    "gate_three_signal": {
+      "name": "三信号动态MA20闸门",
+      "condition": "沪深300站上MA20 且 上证站上MA20 且 中证1000站上MA20",
+      "evidence": "固定阈值'上证>4000'是追高陷阱(60日-9.53%/胜率22.6%)，改动态MA20(60日-0.50%)",
+      "decision": "三信号全开才允许买入，否则只进观察池"
+    }
+  }
+}
