@@ -65,6 +65,11 @@ import winreg
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 try:
+    import requests
+except ImportError:
+    requests = None
+
+try:
     import pandas as pd
 except ImportError:
     pd = None
@@ -124,6 +129,32 @@ def _load_registry():
 def _w(name: str, default: float) -> float:
     """取因子权重，registry 未加载时用默认值。"""
     return FACTOR_WEIGHTS.get(name, default)
+
+
+# 板块共振上下文（main 选股时现拉后写入；score/eval 读取）
+_SECTOR_RESEARCH = set()   # research 档行业名（满分加分）
+_SECTOR_HOT = set()        # hot 档行业名（半分加分）
+_SECTOR_IND_MAP = {}       # {code: 行业名}
+
+
+def set_sector_context(research_names, hot_names, ind_map):
+    global _SECTOR_RESEARCH, _SECTOR_HOT, _SECTOR_IND_MAP
+    _SECTOR_RESEARCH = set(research_names or [])
+    _SECTOR_HOT = set(hot_names or [])
+    _SECTOR_IND_MAP = dict(ind_map or {})
+
+
+def sector_bonus(code):
+    """板块共振加分：research 档满分、hot 档半分、非热门 0。"""
+    ind = _SECTOR_IND_MAP.get(code, "")
+    if not ind:
+        return 0.0, ""
+    w = _w("sector_resonance", 10.0)
+    if ind in _SECTOR_RESEARCH:
+        return float(w), ind
+    if ind in _SECTOR_HOT:
+        return float(w) * 0.5, ind
+    return 0.0, ind
 
 
 # 启动即加载（模块 import 时执行一次）
@@ -249,6 +280,212 @@ def fetch_universe():
             "list_day": r.get("list_day"),
         })
     return rows
+
+
+# ---------------------------------------------------------------------------
+# 板块共振快照（选股时现拉全市场行业涨幅，识别 research/hot 板块）
+# ---------------------------------------------------------------------------
+# 2026-09-04 起因：中国船舶(600150) +9.99% 涨停暴露 v6 单一票 MA 压制的信号死角——
+# 单票技术指标在"板块级合力"（板块共振）面前失效。故引入板块共振加分项：
+#   选股时现拉东财/新浪全市场快照（复用 monitor.py 同款接口逻辑，自包含实现
+#   避免 import monitor.py 的循环依赖与副作用），按 f100 行业聚合 avg_pct/breadth，
+#   复用 whole_market_watchlist.json 的 sector_rules 识别 research/hot 板块，
+#   处于这些板块的候选票额外加分（详见 factor_registry.json 的 sector_resonance）。
+# 阈值与"板块漏斗"（tools/whole_market_watch_report.py classify_sectors）完全一致，
+# 保证同一套"板块涨幅榜前列"口径。
+# ---------------------------------------------------------------------------
+
+_SECTOR_RULES_DEFAULT = {
+    "minimum_sector_count": 3,
+    "research_avg_pct": 1.5,
+    "research_breadth_ratio": 0.55,
+    "observe_avg_pct": 0.5,
+    "observe_breadth_ratio": 0.45,
+    "hot_avg_pct": 1.0,
+    "hot_breadth_ratio": 0.35,
+    "max_research_sectors": 5,
+    "max_observe_sectors": 10,
+    "max_hot_sectors": 8,
+}
+
+
+def _load_sector_rules():
+    """从 whole_market_watchlist.json 读 sector_rules，失败回退默认值。"""
+    try:
+        wl_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                               "watchlists", "whole_market_watchlist.json")
+        with open(wl_path, "r", encoding="utf-8") as f:
+            rules = json.load(f).get("sector_rules", {})
+        merged = dict(_SECTOR_RULES_DEFAULT)
+        merged.update({k: v for k, v in rules.items() if k in merged})
+        return merged
+    except Exception:
+        return dict(_SECTOR_RULES_DEFAULT)
+
+
+def _em_get(url, params, timeout=3, retries=1):
+    """东财 clist 接口（push2 + push2delay fallback）。"""
+    if requests is None:
+        raise RuntimeError("requests 未安装")
+    headers = {"User-Agent": "Mozilla/5.0 ETF Strategy Monitor",
+               "Referer": "https://quote.eastmoney.com/"}
+    urls = [url]
+    if "push2.eastmoney.com" in url:
+        urls.append(url.replace("push2.eastmoney.com", "push2delay.eastmoney.com"))
+    last = None
+    for _ in range(retries):
+        for cand in urls:
+            try:
+                r = requests.get(cand, params=params, headers=headers, timeout=timeout)
+                r.raise_for_status()
+                return r.json()
+            except requests.RequestException as exc:
+                last = exc
+        time.sleep(1)
+    raise last
+
+
+def _fetch_snapshot_page_eastmoney(page, page_size=100):
+    data = _em_get(
+        "https://push2.eastmoney.com/api/qt/clist/get",
+        {"pn": page, "pz": page_size, "po": "1", "np": "1", "fltt": "2",
+         "invt": "2", "fid": "f6",
+         "fs": "m:0+t:6,m:0+t:80,m:1+t:2,m:1+t:23",
+         "fields": "f12,f14,f2,f3,f6,f8,f10,f17,f18,f100",
+         "ut": "fa5fd1943c7b386f172d6893dbfba10b"},
+    ).get("data") or {}
+    return data.get("diff") or []
+
+
+def _parse_sina_rows(text):
+    rows = []
+    try:
+        payload = json.loads(text or "[]")
+    except json.JSONDecodeError:
+        payload = None
+    if isinstance(payload, list):
+        for v in payload:
+            if not isinstance(v, dict):
+                continue
+            code = str(v.get("code") or v.get("symbol", "")[-6:])
+            if len(code) != 6:
+                continue
+            rows.append({"f12": code, "f14": v.get("name") or code,
+                         "f3": v.get("changepercent"),
+                         "f6": v.get("amount"), "f100": v.get("industry") or ""})
+        return rows
+    import re as _re
+    for m in _re.finditer(r"\{([^{}]+)\}", text or ""):
+        vals = {}
+        for item in _re.finditer(r"([A-Za-z_][A-Za-z0-9_]*):(?:\"([^\"]*)\"|([^,}]+))", m.group(1)):
+            key = item.group(1)
+            vals[key] = item.group(2) if item.group(2) is not None else item.group(3)
+        code = str(vals.get("code") or vals.get("symbol", "")[-6:])
+        if len(code) != 6:
+            continue
+        rows.append({"f12": code, "f14": vals.get("name") or code,
+                     "f3": vals.get("changepercent"), "f6": vals.get("amount"),
+                     "f100": vals.get("industry") or ""})
+    return rows
+
+
+def _fetch_snapshot_page_sina(page, page_size=100):
+    r = requests.get(
+        "https://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData",
+        params={"page": page, "num": min(page_size, 200), "sort": "amount",
+                "asc": "0", "node": "hs_a", "symbol": "", "_s_r_a": "init"},
+        headers={"User-Agent": "Mozilla/5.0 ETF Strategy Monitor",
+                 "Referer": "https://vip.stock.finance.sina.com.cn/"},
+        timeout=3)
+    r.raise_for_status()
+    r.encoding = "gbk"
+    return _parse_sina_rows(r.text)
+
+
+def _sfloat(v):
+    try:
+        if v in (None, "-", ""):
+            return None
+        return float(v)
+    except (TypeError, ValueError):
+        return None
+
+
+def fetch_sector_resonance(max_pages=30, page_size=100):
+    """选股时现拉全市场快照，返回 (code_to_industry, hot_sector_names, research_sector_names)。
+
+    返回：
+      code_to_industry: {6位代码: 行业名}
+      hot_sectors:      热门板块名单（research + hot 两档，按 avg_pct 排序）
+      detail:           各行业 avg_pct/breadth 明细（供诊断输出）
+    数据源东财优先、新浪兜底，全失败时返回空映射（板块共振加分自动失效，不阻塞选股）。
+    """
+    code_to_ind = {}
+    ind_stats = {}
+    scanned = 0
+    sources = ["eastmoney", "sina"]
+    for source in sources:
+        empty = 0
+        for page in range(1, max_pages + 1):
+            try:
+                if source == "eastmoney":
+                    rows = _fetch_snapshot_page_eastmoney(page, page_size)
+                else:
+                    rows = _fetch_snapshot_page_sina(page, page_size)
+            except Exception:
+                break
+            if not rows:
+                empty += 1
+                if empty >= 2:
+                    break
+                continue
+            for row in rows:
+                code = str(row.get("f12") or "").strip()
+                name = str(row.get("f14") or "").strip()
+                if len(code) != 6 or code in code_to_ind:
+                    continue
+                if any(t in name for t in ("ST", "*ST", "退", "N", "C")):
+                    continue
+                pct = _sfloat(row.get("f3"))
+                if pct is None:
+                    continue
+                scanned += 1
+                ind = str(row.get("f100") or "").strip() or "未分类"
+                code_to_ind[code] = ind
+                st = ind_stats.setdefault(ind, {"count": 0, "advancers": 0, "pct_sum": 0.0, "amount": 0.0})
+                st["count"] += 1
+                st["advancers"] += int(pct > 0)
+                st["pct_sum"] += pct
+                st["amount"] += _sfloat(row.get("f6")) or 0.0
+        if scanned >= 4000:
+            break
+
+    rules = _load_sector_rules()
+    min_cnt = int(rules.get("minimum_sector_count", 3))
+    research, hot = [], []
+    detail = []
+    for ind, st in ind_stats.items():
+        cnt = st["count"]
+        if cnt < min_cnt:
+            continue
+        breadth = st["advancers"] / cnt if cnt else 0
+        avg_pct = st["pct_sum"] / cnt if cnt else 0.0
+        detail.append({"industry": ind, "count": cnt, "avg_pct": round(avg_pct, 2),
+                       "breadth_ratio": round(breadth, 4), "amount": round(st["amount"], 0)})
+        if avg_pct >= float(rules.get("research_avg_pct", 1.5)) and breadth >= float(rules.get("research_breadth_ratio", 0.55)):
+            research.append((ind, avg_pct))
+        elif avg_pct >= float(rules.get("observe_avg_pct", 0.5)) and breadth >= float(rules.get("observe_breadth_ratio", 0.45)):
+            hot.append((ind, avg_pct))  # observe 档也纳入"加分"（板块涨幅榜前列）
+        elif avg_pct >= float(rules.get("hot_avg_pct", 1.0)) and breadth >= float(rules.get("hot_breadth_ratio", 0.35)):
+            hot.append((ind, avg_pct))
+    research.sort(key=lambda x: -x[1])
+    hot.sort(key=lambda x: -x[1])
+    research = [x for x in research if x[0] != "未分类"]
+    hot = [x for x in hot if x[0] != "未分类"]
+    research_names = [x[0] for x in research[: int(rules.get("max_research_sectors", 5))]]
+    hot_names = [x[0] for x in hot[: int(rules.get("max_hot_sectors", 8))]]
+    detail.sort(key=lambda x: -x["avg_pct"])
+    return code_to_ind, hot_names, research_names, detail, scanned
 
 
 # ---------------------------------------------------------------------------
@@ -417,12 +654,15 @@ def eval_one(item, df):
     buy = round(sc["m10"], 2)
     buy_low = round(min(sc["m10"], c * 0.985), 2)
     stop = round(buy_low * 0.965, 2)
+    sbonus, industry = sector_bonus(code)
     return {"code": code, "name": name, "pct": round(pct, 2), "amount": round(amount / 1e8, 2),
-            "price": round(c, 2), "industry": "",
-            "tech_score": sc["total"],
+            "price": round(c, 2), "industry": industry,
+            "sector_bonus": round(sbonus, 1),
+            "tech_score": round(sc["total"] + sbonus, 1),
             "factor": {"成交量收缩": sc["turn"], "回踩缩量": sc["vol"],
                        "低振幅": sc["vol2"], "乖离": sc["bias"],
-                       "动量": sc["mom"], "趋势": sc["trend"]},
+                       "动量": sc["mom"], "趋势": sc["trend"],
+                       "板块共振": sbonus},
             "b20": sc["b20"], "r20": sc["r20"], "r60": sc["r60"],
             "turn_chg": sc["turn_chg"], "vol_ratio": sc["vol_ratio"],
             "atr_pct": sc["atr_pct"],
@@ -858,6 +1098,25 @@ def main():
     uni = fetch_universe()
     print(f"  全市场 A 股（沪深主板/创业/科创）{len(uni)} 只", file=sys.stderr)
 
+    # ------------------------------------------------------------------
+    # 步骤2.5：板块共振快照（选股时现拉全市场行业涨幅，识别热门板块）
+    #   2026-09-04 中国船舶涨停教训：单一票 MA 压制漏判，需补板块级合力维度。
+    #   复用板块漏斗 sector_rules 口径（板块涨幅榜前列）给候选票加分。
+    # ------------------------------------------------------------------
+    print("\n=== 步骤2.5/5：板块共振快照（现拉全市场行业涨幅） ===", file=sys.stderr)
+    sector_ctx = {"research": [], "hot": [], "scanned": 0, "detail": []}
+    try:
+        ind_map, hot_names, research_names, detail, scanned = fetch_sector_resonance()
+        set_sector_context(research_names, hot_names, ind_map)
+        sector_ctx.update({"research": research_names, "hot": hot_names,
+                           "scanned": scanned, "detail": detail})
+        print(f"  已拉 {scanned} 只，行业映射 {len(ind_map)} 只", file=sys.stderr)
+        print(f"  research 板块：{research_names or '无'}", file=sys.stderr)
+        print(f"  hot 板块：{hot_names or '无'}", file=sys.stderr)
+    except Exception as e:
+        print(f"  [warn] 板块共振快照失败({e})，本次板块共振加分自动失效（不阻塞选股）", file=sys.stderr)
+        set_sector_context([], [], {})
+
     if args.quick:
         def _size_key(u):
             pc = u.get("pre_close") or 0
@@ -945,9 +1204,12 @@ def main():
     print(f"{'排名':<4}{'代码':<10}{'名称':<10}{'现价':>7}{'回踩买点':>8}{'止损价':>7}{'技术分':>7}{'财务分':>7}{'综合分':>7}")
     for i, r in enumerate(top, 1):
         fd = r["fund_detail"]
+        ind = r.get("industry") or ""
+        sbonus = r.get("sector_bonus", 0)
+        ind_str = f"[{ind}]{'+'+str(sbonus) if sbonus else ''}" if ind else ""
         print(f"{i:<4}{r['code']:<10}{r['name']:<10}{r['price']:>7.2f}{r['buy_low']:>8.2f}{r['stop']:>7.2f}"
-              f"{r['tech_score']:>7.1f}{r['fund_score']:>7.0f}{r['score']:>7.1f}")
-        print(f"     技术[成交量收缩{r['factor']['成交量收缩']}/回踩缩量{r['factor']['回踩缩量']}/低振幅{r['factor']['低振幅']}/乖离{r['factor']['乖离']}] "
+              f"{r['tech_score']:>7.1f}{r['fund_score']:>7.0f}{r['score']:>7.1f}  {ind_str}")
+        print(f"     技术[成交量收缩{r['factor']['成交量收缩']}/回踩缩量{r['factor']['回踩缩量']}/低振幅{r['factor']['低振幅']}/乖离{r['factor']['乖离']}/板块共振{r['factor'].get('板块共振', 0)}] "
               f"乖离20={r['b20']}% 量收缩={r.get('turn_chg', '?')}% 量比={r.get('vol_ratio', '?')} 振幅={r.get('atr_pct', '?')}% 成交额={r['amount']}亿")
         np_label = fd.get('净利增速')
         np_nature = fd.get('增速性质', '')
@@ -961,6 +1223,7 @@ def main():
     out = {"source": "星耀数智 AmazingData", "version": "v6 技术+财务+资金面",
            "trade_date": trade_date,
            "gate": gate, "gate_open": gate_open,
+           "sector_resonance": sector_ctx,
            "total": len(results), "top": top, "all": results}
     with open("screen_result_v6.json", "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)

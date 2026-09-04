@@ -142,6 +142,32 @@
       "ic": -0.012,
       "evidence": "IC≈-0.012无效，分层Q5-Q1仅+1.18%无单调，论文结论不可直接套用",
       "decision": "不纳入"
+    },
+    "sector_resonance": {
+      "name": "板块共振",
+      "alias": "板块涨幅榜前列加分",
+      "status": "trial",
+      "weight": 10,
+      "ic": null,
+      "evidence": "2026-09-04 中国船舶(600150)+9.99%涨停暴露 v6 单一票 MA 压制漏判：单票技术指标在板块级合力(板块共振)面前失效。修正=选股时现拉全市场行业涨幅，处于 research/hot(涨幅榜前列)板块的候选票加分。⚠️ 属定性修正、尚未做 IC/分层实证，按『不实证不上车』为试运行加分项(非独立权重，满分+10)，前向验证通过前不升级。",
+      "decision": "加分项(非独立权重)：research档满分、hot档半分，非热门板块不加分",
+      "score_map": {
+        "metric": "所属行业是否处于 research/hot 板块(avg_pct+breadth 双阈值)",
+        "brackets": [
+          {
+            "range": "research档(avg_pct>=1.5 且 breadth>=0.55)",
+            "score": 10
+          },
+          {
+            "range": "hot档(observe/hot 涨幅榜前列)",
+            "score": 5
+          },
+          {
+            "range": "非热门板块",
+            "score": 0
+          }
+        ]
+      }
     }
   },
   "财务资金面因子": {
