@@ -957,7 +957,9 @@ def main():
         notice_str = f"{fd.get('业绩预告')}%" if fd.get('业绩预告') is not None else "无"
         print(f"     资金[融资余额变化{margin_str}/业绩预告{notice_str}]")
 
+    trade_date = int(str(CAL[-1]))  # 交易日历最新交易日（权威交易日，非本地时钟）
     out = {"source": "星耀数智 AmazingData", "version": "v6 技术+财务+资金面",
+           "trade_date": trade_date,
            "gate": gate, "gate_open": gate_open,
            "total": len(results), "top": top, "all": results}
     with open("screen_result_v6.json", "w", encoding="utf-8") as f:

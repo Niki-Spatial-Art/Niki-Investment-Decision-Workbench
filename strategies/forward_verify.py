@@ -62,6 +62,19 @@ def fetch_kline(code, n=120):
         return []
 
 
+def _hold_days(kline, base_date):
+    """在升序 kline 里找 base_date 当天，返回其后已过去多少个交易日（0=当天）。
+    找不到 base_date 返回 None。兼容 YYYYMMDD 与 YYYY-MM-DD。"""
+    base_date = str(base_date)
+    if len(base_date) == 8 and base_date.isdigit():
+        base_date = f"{base_date[:4]}-{base_date[4:6]}-{base_date[6:8]}"
+    dates = [k[0] for k in kline]
+    if base_date not in dates:
+        return None
+    i = dates.index(base_date)
+    return len(kline) - 1 - i  # 当天之后的交易日数
+
+
 def _find_return(kline, base_date, horizon):
     """在升序 kline 里找 base_date 当天收盘，返回其后第 horizon 个交易日的涨跌%。
     找不到 base_date 或样本不足返回 None。兼容 YYYYMMDD 与 YYYY-MM-DD 两种日期格式。"""
@@ -85,7 +98,7 @@ def _find_return(kline, base_date, horizon):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--min-hold", type=int, default=0, help="只统计已满 N 个交易日的样本（默认0=全部尝试）")
+    ap.add_argument("--min-hold", type=int, default=0, help="只统计已满 N 个交易日的样本（默认0=全部尝试，含未到期样本显示*）")
     args = ap.parse_args()
 
     if not os.path.exists(TRACK_FILE):
@@ -106,6 +119,7 @@ def main():
     print(f"  沪深300 {len(hs300_k)} 根K线", file=sys.stderr)
 
     rows = []
+    skipped_hold = 0
     for r in records:
         code = r["code"]
         date = r["date"]
@@ -113,6 +127,11 @@ def main():
         k = fetch_kline(norm)
         if not k:
             print(f"  [warn] {code} 无K线，跳过", file=sys.stderr)
+            continue
+        # --min-hold：只统计已满 N 个交易日的样本（用个股K线数交易日，比自然日准）
+        hd = _hold_days(k, date)
+        if args.min_hold > 0 and (hd is None or hd < args.min_hold):
+            skipped_hold += 1
             continue
         r1 = _find_return(k, date, 1)
         r5 = _find_return(k, date, 5)
@@ -146,7 +165,10 @@ def main():
     ex5_stat = _stat([r["ex5"] for r in rows])
 
     print("\n===== 前向验证报告（v6.1 试运行） =====\n")
-    print(f"样本总数：{len(rows)} 只（来自 {len(t['records'])} 条记录）\n")
+    print(f"样本总数：{len(rows)} 只（来自 {len(t['records'])} 条记录）")
+    if skipped_hold:
+        print(f"（另有 {skipped_hold} 只因未满 {args.min_hold} 个交易日被 --min-hold 过滤）")
+    print()
     if r1_stat:
         print(f"次日涨跌：平均 {r1_stat['mean']:+}%，胜率 {r1_stat['win_rate']}%（n={r1_stat['n']}）")
     if r5_stat:

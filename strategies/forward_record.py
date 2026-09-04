@@ -35,11 +35,15 @@ def _save_tracking(t):
         json.dump(t, f, ensure_ascii=False, indent=2)
 
 
-def _pick_date(gate):
-    """从结果文件的 gate 里取交易日，fallback 今天。"""
-    # gate 里通常有 "上证现价" 等，但没有直接日期；从结果文件顶层无日期字段，
-    # 用文件 mtime 作为选股日（运行时即当日）。
+def _pick_date(out):
+    """从结果文件顶层取权威交易日 trade_date（stock_screen_v6.py 写入，
+    来自星耀交易日历 CAL[-1]，能正确处理周末/节假日补跑）；无此字段时才
+    降级用文件 mtime，并打 warn 提示非权威。"""
+    td = out.get("trade_date")
+    if td is not None:
+        return str(td)
     mt = os.path.getmtime(RESULT_FILE)
+    print("[warn] 结果文件缺 trade_date 字段，降级用文件修改时间（可能记错交易日，建议重跑 stock_screen_v6.py）", file=sys.stderr)
     return datetime.fromtimestamp(mt).strftime("%Y%m%d")
 
 
