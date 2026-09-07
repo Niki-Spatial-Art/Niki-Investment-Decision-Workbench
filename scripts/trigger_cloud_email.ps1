@@ -33,8 +33,16 @@ if ($DryRun) {
 }
 
 Write-TriggerLog "dispatching workflow=$workflow repo=$repository"
-& $gh workflow run $workflow --repo $repository --ref main 2>&1 | ForEach-Object {
-    Write-TriggerLog $_.ToString()
+if ($Mode -eq "intraday") {
+    # Local Windows checkpoints are deliberate radar slots. Force the manual
+    # workflow path so a closed gate still sends the risk/status card.
+    & $gh workflow run $workflow --repo $repository --ref main --field force_send=true 2>&1 | ForEach-Object {
+        Write-TriggerLog $_.ToString()
+    }
+} else {
+    & $gh workflow run $workflow --repo $repository --ref main 2>&1 | ForEach-Object {
+        Write-TriggerLog $_.ToString()
+    }
 }
 if ($LASTEXITCODE -ne 0) {
     throw "GitHub workflow dispatch failed with exit code $LASTEXITCODE"
