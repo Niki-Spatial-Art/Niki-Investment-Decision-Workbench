@@ -19,11 +19,11 @@ try {
 
 try {
     $branch = (git branch --show-current).Trim()
-    if ([string]::IsNullOrWhiteSpace($branch)) { throw "当前目录不在 Git 分支上。" }
+    if ([string]::IsNullOrWhiteSpace($branch)) { throw "Current directory is not on a Git branch." }
 
     # Scan the complete tracked publish surface before staging anything.
     python tools/pre_publish_check.py
-    if ($LASTEXITCODE -ne 0) { throw "发布前敏感信息检查失败，已停止同步。" }
+    if ($LASTEXITCODE -ne 0) { throw "Pre-publish check failed; sync stopped." }
 
     if (-not $PushOnly) {
         git add -u
@@ -36,7 +36,7 @@ try {
 
     git fetch origin $branch
     git pull --rebase --autostash origin $branch
-    if ($LASTEXITCODE -ne 0) { throw "拉取远程并 rebase 失败；工作区已保留，请解决冲突后重试。" }
+    if ($LASTEXITCODE -ne 0) { throw "Pull/rebase failed; working tree was kept for manual conflict resolution." }
 
     $maxRetry = 3
     for ($attempt = 1; $attempt -le $maxRetry; $attempt++) {
@@ -50,10 +50,10 @@ try {
             Start-Sleep -Seconds (4 * $attempt)
             git fetch origin $branch
             git pull --rebase --autostash origin $branch
-            if ($LASTEXITCODE -ne 0) { throw "重试前 rebase 失败；工作区已保留。" }
+            if ($LASTEXITCODE -ne 0) { throw "Retry rebase failed; working tree was kept." }
         }
     }
-    throw "推送重试 $maxRetry 次仍失败。"
+    throw "Push failed after $maxRetry attempts."
 } finally {
     if ($null -ne $lockStream) { $lockStream.Dispose() }
     Remove-Item -LiteralPath $lockPath -Force -ErrorAction SilentlyContinue
