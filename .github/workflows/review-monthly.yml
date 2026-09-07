@@ -10,6 +10,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: public-main-push-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   monthly-review:
     runs-on: ubuntu-latest

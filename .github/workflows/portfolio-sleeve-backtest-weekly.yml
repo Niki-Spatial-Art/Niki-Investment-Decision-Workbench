@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: public-main-push-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   portfolio-sleeve-backtest:
     runs-on: ubuntu-latest

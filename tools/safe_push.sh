@@ -35,8 +35,8 @@ fi
 # 如果没有待提交改动，直接尝试同步远端（保证本地干净后 push 不会失败）
 if [ -z "$(git status --porcelain)" ]; then
   echo "[safe_push] 工作区干净，无需提交，直接推送。"
-  # 空转：无改动也无 commit 需求，直接拉取对齐并退出
-  git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" >/dev/null 2>&1 || true
+  # 空转：无改动也无 commit 需求，先同步远端；失败必须显式报错。
+  git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" >/dev/null
   exit 0
 fi
 
@@ -62,11 +62,10 @@ while [ "$attempt" -le "$MAX_RETRY" ]; do
     fi
   fi
 
-  # rebase 冲突：放弃本次改动，恢复到安全状态
+  # rebase 冲突：只中止 rebase，保留工作区和提交，交给下次运行处理。
   if git ls-files -u | grep -q .; then
-    echo "[safe_push] 检测到 rebase 冲突，中止并还原，保留工作区改动。"
+    echo "[safe_push] 检测到 rebase 冲突，中止 rebase，保留工作区改动。"
     git rebase --abort >/dev/null 2>&1 || true
-    git reset --hard HEAD >/dev/null 2>&1 || true
   fi
 
   if [ "$attempt" -lt "$MAX_RETRY" ]; then

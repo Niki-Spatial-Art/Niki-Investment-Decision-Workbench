@@ -18,11 +18,8 @@ if (Test-Path -LiteralPath $taskInstaller) {
     powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $projectRoot "setup_windows_0910_task.ps1")
 }
 
-Write-Host "Committing and pushing GitHub changes..."
-git status --short
-git add monitor.py portfolio.json run_monitor_local.ps1 setup_windows_0910_task.ps1 install_windows_tasks_schtasks.ps1 SHORT_TERM_STOCK_EXPANSION_PLAN.md publish_github_and_email.ps1
-git commit -m "Add short-term stock expansion controls"
-git push origin main
+Write-Host "Synchronizing public GitHub changes..."
+& (Join-Path $projectRoot "sync_github.ps1") -CommitMessage "chore: sync short-term stock expansion controls"
 
 Write-Host "Running monitor once now to generate and email the latest report..."
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File (Join-Path $projectRoot "run_monitor_local.ps1")
