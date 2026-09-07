@@ -35,8 +35,9 @@ fi
 # 如果没有待提交改动，直接尝试同步远端（保证本地干净后 push 不会失败）
 if [ -z "$(git status --porcelain)" ]; then
   echo "[safe_push] 工作区干净，无需提交，直接推送。"
-  # 空转：无改动也无 commit 需求，先同步远端；失败必须显式报错。
+  # 无文件改动时仍可能有待推送提交，先同步远端再执行 push。
   git pull --rebase --autostash origin "${GITHUB_REF_NAME:-main}" >/dev/null
+  git push origin "${GITHUB_REF_NAME:-main}"
   exit 0
 fi
 
