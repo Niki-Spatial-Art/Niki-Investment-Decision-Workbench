@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: public-main-push-${{ github.ref }}
+  group: daily-report-push-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
