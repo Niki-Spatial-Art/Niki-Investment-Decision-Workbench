@@ -21,7 +21,15 @@
     "relative_windows": [5, 10, 20],
     "volume_window": 5,
     "chase_day_change_pct": 7.0,
-    "minimum_module_breadth_ratio": 0.5
+    "minimum_module_breadth_ratio": 0.5,
+    "cost_bps": 10,
+    "slippage_bps": 5,
+    "backtest_thresholds": {
+      "minimum_observations": 3,
+      "minimum_win_rate": 0.5,
+      "minimum_net_return": 0.0,
+      "maximum_drawdown": 0.2
+    }
   },
   "mason_rules": {
     "overextension_pct": 8.0

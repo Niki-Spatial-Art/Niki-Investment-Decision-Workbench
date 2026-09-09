@@ -77,6 +77,48 @@ def keyed_metric(payload: dict[str, Any] | None, key: int | str) -> float | None
     return None
 
 
+def signal_backtest(bars: list[dict[str, Any]], rules: dict[str, Any]) -> dict[str, Any]:
+    """Replay the same conservative signal on history and report OOS-like diagnostics."""
+    closes = [finite(row.get("close")) for row in bars]
+    volumes = [finite(row.get("volume")) or 0.0 for row in bars]
+    closes = [x for x in closes]
+    if len(closes) < 30:
+        return {"eligible": False, "reason": "历史样本不足", "observations": 0}
+    horizons = (1, 3, 5)
+    friction = (float(rules.get("cost_bps", 10)) + float(rules.get("slippage_bps", 5))) / 10000
+    samples = {h: [] for h in horizons}
+    for i in range(20, len(closes) - max(horizons)):
+        c = closes[i]
+        ma20 = sum(closes[i-19:i+1]) / 20
+        day_change = (c / closes[i-1] - 1) * 100 if closes[i-1] else 0
+        v20 = sum(volumes[i-19:i+1]) / 20
+        v5 = sum(volumes[i-4:i+1]) / 5
+        # Signal: market-friendly pullback, excluding chase days.
+        if c <= ma20 or day_change >= float(rules.get("chase_day_change_pct", 7)) or v5 > v20 * 1.8:
+            continue
+        for h in horizons:
+            samples[h].append(closes[i+h] / c - 1 - friction)
+    stats = {}
+    for h, values in samples.items():
+        if not values:
+            stats[str(h)] = {"observations": 0, "win_rate": None, "net_return": None, "max_drawdown": None}
+            continue
+        equity = peak = 1.0
+        drawdown = 0.0
+        for value in values:
+            equity *= 1 + value
+            peak = max(peak, equity)
+            drawdown = min(drawdown, equity / peak - 1)
+        stats[str(h)] = {"observations": len(values), "win_rate": round(sum(v > 0 for v in values) / len(values), 4),
+                         "net_return": round(sum(values) / len(values), 4), "max_drawdown": round(drawdown, 4)}
+    thresholds = rules.get("backtest_thresholds") or {}
+    eligible = all((stats[str(h)]["observations"] or 0) >= int(thresholds.get("minimum_observations", 3)) and
+                   (stats[str(h)]["win_rate"] or 0) >= float(thresholds.get("minimum_win_rate", 0.5)) and
+                   (stats[str(h)]["net_return"] or -1) > float(thresholds.get("minimum_net_return", 0)) and
+                   (stats[str(h)]["max_drawdown"] or -1) >= -float(thresholds.get("maximum_drawdown", 0.2)) for h in horizons)
+    return {"eligible": eligible, "reason": "通过" if eligible else "回测阈值未通过", "cost_bps": friction * 10000, "horizons": stats}
+
+
 def quote_day(payload: dict[str, Any], code: str) -> str:
     raw = "".join(char for char in str((payload.get("quotes") or {}).get(code, {}).get("quote_time") or "") if char.isdigit())
     return raw[:8] if len(raw) >= 8 else ""
@@ -203,12 +245,14 @@ def module_metrics(module: dict[str, Any], payload: dict[str, Any], benchmark_re
     stocks = [a_share_metric(str(item["code"]), item, payload, benchmark_returns, rules) for item in module.get("a_share_symbols") or []]
     mason_rules = mason_rules or {}
     for stock in stocks:
-        stock["mason"] = mason_public_tags(stock, clean_bars(payload, str(stock.get("code"))), mason_rules)
+        bars = clean_bars(payload, str(stock.get("code")))
+        stock["mason"] = mason_public_tags(stock, bars, mason_rules)
+        stock["signal_backtest"] = signal_backtest(bars, rules)
     active = [stock for stock in stocks if stock.get("data_ready")]
     threshold = max(1, math.ceil(len(active) * float(rules.get("minimum_module_breadth_ratio", 0.5)))) if active else 1
     above = sum(bool(stock.get("above_ma20")) for stock in active)
     relative = sum(((stock.get("relative_returns") or {}).get(20) or -float("inf")) >= 0 for stock in active)
-    candidates = [stock for stock in active if stock.get("signal_score", 0) >= 3 and not stock.get("is_chase")]
+    candidates = [stock for stock in active if stock.get("signal_score", 0) >= 3 and not stock.get("is_chase") and stock.get("signal_backtest", {}).get("eligible")]
     if len(active) < len(stocks):
         status = "等待：数据不完整"
     elif above >= threshold and relative >= threshold and candidates:
@@ -221,6 +265,7 @@ def module_metrics(module: dict[str, Any], payload: dict[str, Any], benchmark_re
         "id": module.get("id"), "name": module.get("name"), "role": module.get("role"), "thesis": module.get("thesis"),
         "a_share": stocks, "breadth": {"eligible": len(active), "threshold": threshold, "above_ma20": above, "relative_20d_positive": relative, "breadth_ok": above >= threshold and relative >= threshold},
         "status": status, "evidence_to_watch": module.get("evidence_to_watch") or [], "invalidation": module.get("invalidation") or [],
+        "backtest_candidates": candidates,
     }
 
 
