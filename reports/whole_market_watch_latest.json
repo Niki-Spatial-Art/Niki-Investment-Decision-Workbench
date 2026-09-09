@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T23:32:40+08:00",
+  "generated_at": "2026-09-09T23:45:26+08:00",
   "as_of_date": "2026-09-09",
   "a_share_trading_day": true,
   "skip_reason": "",
@@ -1774,48 +1774,48 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-09-09",
-          "price": 224.1649932861328,
-          "return_20d": 3.0643647292564635,
+          "price": 224.2449951171875,
+          "return_20d": 3.1011471803160884,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
           "as_of": "2026-09-09",
-          "price": 491.885009765625,
-          "return_20d": -2.3669613248557764,
+          "price": 491.625,
+          "return_20d": -2.418570019975952,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
           "as_of": "2026-09-09",
-          "price": 250.94920349121094,
-          "return_20d": -7.830751233251165,
+          "price": 251.42999267578125,
+          "return_20d": -7.654165783524592,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
           "as_of": "2026-09-09",
-          "price": 652.1597290039062,
-          "return_20d": 8.85294003187862,
+          "price": 651.5650024414062,
+          "return_20d": 8.753673346181778,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
           "as_of": "2026-09-09",
-          "price": 329.19000244140625,
-          "return_20d": -4.2495595899672995,
+          "price": 329.45001220703125,
+          "return_20d": -4.173931383202623,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-09-09",
-          "price": 360.5,
-          "return_20d": -13.358005279259544,
+          "price": 361.3599853515625,
+          "return_20d": -13.151317772213789,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -2151,16 +2151,16 @@
         {
           "symbol": "MP",
           "as_of": "2026-09-09",
-          "price": 55.040000915527344,
-          "return_20d": -0.3620578509457517,
+          "price": 55.4193000793457,
+          "return_20d": 0.324580730323909,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
           "as_of": "2026-09-09",
-          "price": 76.27999877929688,
-          "return_20d": 10.759395581819685,
+          "price": 76.19000244140625,
+          "return_20d": 10.628719911278806,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -2436,32 +2436,32 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-09-09",
-          "price": 224.19000244140625,
-          "return_20d": 3.0758631914511447,
+          "price": 224.25,
+          "return_20d": 3.103448275862064,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-09-09",
-          "price": 360.510009765625,
-          "return_20d": -13.355599548162623,
+          "price": 361.3599853515625,
+          "return_20d": -13.151317772213789,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
           "as_of": "2026-09-09",
-          "price": 195.30999755859375,
-          "return_20d": -1.283805138521421,
+          "price": 195.91000366210938,
+          "return_20d": -0.9805420174671342,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
           "as_of": "2026-09-09",
-          "price": 1024.6500244140625,
-          "return_20d": 17.976557980445595,
+          "price": 1022.72998046875,
+          "return_20d": 17.755487204627585,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -2521,7 +2521,7 @@
       "latest_tag": "4.4.0",
       "release_at": "2026-05-14T12:18:00Z",
       "pushed_at": "2026-09-01T01:47:09Z",
-      "updated_at": "2026-09-09T14:15:15Z"
+      "updated_at": "2026-09-09T15:42:38Z"
     },
     {
       "repo": "simonlin1212/a-stock-data",
@@ -2530,7 +2530,7 @@
       "latest_tag": "v3.8.0",
       "release_at": "2026-09-05T01:43:29Z",
       "pushed_at": "2026-09-05T01:42:56Z",
-      "updated_at": "2026-09-09T14:33:57Z"
+      "updated_at": "2026-09-09T15:44:22Z"
     }
   ],
   "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。"
