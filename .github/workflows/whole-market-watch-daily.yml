@@ -8,6 +8,11 @@ on:
         required: true
         default: true
         type: boolean
+      refresh_existing_today:
+        description: Force refresh today's market data and backtest
+        required: true
+        default: false
+        type: boolean
       resend_saved_report:
         description: Resend the saved trading-day report without refreshing weekend/holiday data
         required: true
@@ -48,7 +53,7 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.send_email }}" != "true" ]; then
             python tools/whole_market_watch_report.py
           else
-            python tools/whole_market_watch_report.py --email --skip-existing-today
+            python tools/whole_market_watch_report.py --email $([[ "${{ inputs.refresh_existing_today }}" != "true" ]] && echo --skip-existing-today)
           fi
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
