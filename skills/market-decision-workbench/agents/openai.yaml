@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Decision Workbench"
+  short_description: "Turn market evidence into disciplined risk-aware decision cards"
+  default_prompt: "Use $market-decision-workbench to assess today's market state and give me a disciplined action card."
