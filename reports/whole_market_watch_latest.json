@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T20:31:11+08:00",
+  "generated_at": "2026-09-09T23:32:40+08:00",
   "as_of_date": "2026-09-09",
   "a_share_trading_day": true,
   "skip_reason": "",
@@ -1543,6 +1543,31 @@
             "overextended": false,
             "status": "观察：趋势延续，等待合适回踩",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 3,
+                "win_rate": 0.0,
+                "net_return": -0.0627,
+                "max_drawdown": -0.1783
+              },
+              "3": {
+                "observations": 3,
+                "win_rate": 0.0,
+                "net_return": -0.0815,
+                "max_drawdown": -0.226
+              },
+              "5": {
+                "observations": 3,
+                "win_rate": 0.0,
+                "net_return": -0.1229,
+                "max_drawdown": -0.326
+              }
+            }
           }
         },
         {
@@ -1578,6 +1603,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 5,
+                "win_rate": 0.2,
+                "net_return": -0.0358,
+                "max_drawdown": -0.182
+              },
+              "3": {
+                "observations": 5,
+                "win_rate": 0.0,
+                "net_return": -0.081,
+                "max_drawdown": -0.3463
+              },
+              "5": {
+                "observations": 5,
+                "win_rate": 0.0,
+                "net_return": -0.0868,
+                "max_drawdown": -0.3675
+              }
+            }
           }
         },
         {
@@ -1613,6 +1663,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0192,
+                "max_drawdown": -0.1464
+              },
+              "3": {
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0455,
+                "max_drawdown": -0.3061
+              },
+              "5": {
+                "observations": 6,
+                "win_rate": 0.0,
+                "net_return": -0.0932,
+                "max_drawdown": -0.4464
+              }
+            }
           }
         },
         {
@@ -1648,6 +1723,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 15,
+                "win_rate": 0.3333,
+                "net_return": -0.0015,
+                "max_drawdown": -0.1492
+              },
+              "3": {
+                "observations": 15,
+                "win_rate": 0.4667,
+                "net_return": 0.0043,
+                "max_drawdown": -0.3096
+              },
+              "5": {
+                "observations": 15,
+                "win_rate": 0.4667,
+                "net_return": 0.0355,
+                "max_drawdown": -0.3363
+              }
+            }
           }
         }
       ],
@@ -1658,7 +1758,7 @@
         "relative_20d_positive": 2,
         "breadth_ok": true
       },
-      "status": "可人工复核",
+      "status": "观察：趋势或扩散未确认",
       "evidence_to_watch": [
         "海外云厂商AI资本开支指引、订单和客户认证",
         "800G/1.6T出货、ASP、毛利率、库存和应收账款",
@@ -1669,52 +1769,53 @@
         "订单/出货低于预期且库存或应收上升",
         "仅单一龙头上涨，板块广度持续收缩"
       ],
+      "backtest_candidates": [],
       "us_validation": [
         {
           "symbol": "NVDA",
-          "as_of": "2026-09-08",
-          "price": 225.72999572753906,
-          "return_20d": 3.760051740305026,
+          "as_of": "2026-09-09",
+          "price": 224.1649932861328,
+          "return_20d": 3.0643647292564635,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
-          "as_of": "2026-09-08",
-          "price": 493.95001220703125,
-          "return_20d": -2.3929939947803014,
+          "as_of": "2026-09-09",
+          "price": 491.885009765625,
+          "return_20d": -2.3669613248557764,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
-          "as_of": "2026-09-08",
-          "price": 256.9700012207031,
-          "return_20d": -7.594661942289305,
+          "as_of": "2026-09-09",
+          "price": 250.94920349121094,
+          "return_20d": -7.830751233251165,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
-          "as_of": "2026-09-08",
-          "price": 613.47998046875,
-          "return_20d": 3.11974687214307,
+          "as_of": "2026-09-09",
+          "price": 652.1597290039062,
+          "return_20d": 8.85294003187862,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
-          "as_of": "2026-09-08",
-          "price": 338.3599853515625,
-          "return_20d": -5.359141936362244,
+          "as_of": "2026-09-09",
+          "price": 329.19000244140625,
+          "return_20d": -4.2495595899672995,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
-          "as_of": "2026-09-08",
-          "price": 368.55999755859375,
-          "return_20d": -12.746211438413269,
+          "as_of": "2026-09-09",
+          "price": 360.5,
+          "return_20d": -13.358005279259544,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -1759,6 +1860,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 14,
+                "win_rate": 0.3571,
+                "net_return": -0.0078,
+                "max_drawdown": -0.1452
+              },
+              "3": {
+                "observations": 14,
+                "win_rate": 0.2857,
+                "net_return": -0.0245,
+                "max_drawdown": -0.3026
+              },
+              "5": {
+                "observations": 14,
+                "win_rate": 0.1429,
+                "net_return": -0.0315,
+                "max_drawdown": -0.3676
+              }
+            }
           }
         },
         {
@@ -1794,6 +1920,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 12,
+                "win_rate": 0.4167,
+                "net_return": -0.0083,
+                "max_drawdown": -0.1577
+              },
+              "3": {
+                "observations": 12,
+                "win_rate": 0.4167,
+                "net_return": -0.0189,
+                "max_drawdown": -0.2856
+              },
+              "5": {
+                "observations": 12,
+                "win_rate": 0.1667,
+                "net_return": -0.0347,
+                "max_drawdown": -0.4005
+              }
+            }
           }
         },
         {
@@ -1829,6 +1980,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 15,
+                "win_rate": 0.6667,
+                "net_return": 0.0015,
+                "max_drawdown": -0.1238
+              },
+              "3": {
+                "observations": 15,
+                "win_rate": 0.4,
+                "net_return": -0.0056,
+                "max_drawdown": -0.3153
+              },
+              "5": {
+                "observations": 15,
+                "win_rate": 0.2667,
+                "net_return": -0.0179,
+                "max_drawdown": -0.4049
+              }
+            }
           }
         },
         {
@@ -1864,6 +2040,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 16,
+                "win_rate": 0.5625,
+                "net_return": -0.003,
+                "max_drawdown": -0.1128
+              },
+              "3": {
+                "observations": 16,
+                "win_rate": 0.375,
+                "net_return": -0.0148,
+                "max_drawdown": -0.2829
+              },
+              "5": {
+                "observations": 16,
+                "win_rate": 0.3125,
+                "net_return": -0.0207,
+                "max_drawdown": -0.3351
+              }
+            }
           }
         },
         {
@@ -1899,6 +2100,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 12,
+                "win_rate": 0.5,
+                "net_return": -0.0025,
+                "max_drawdown": -0.1094
+              },
+              "3": {
+                "observations": 12,
+                "win_rate": 0.4167,
+                "net_return": -0.0081,
+                "max_drawdown": -0.2112
+              },
+              "5": {
+                "observations": 12,
+                "win_rate": 0.25,
+                "net_return": -0.0241,
+                "max_drawdown": -0.2841
+              }
+            }
           }
         }
       ],
@@ -1920,20 +2146,21 @@
         "供给约束缓解或下游需求转弱",
         "盈利改善不能兑现为现金流"
       ],
+      "backtest_candidates": [],
       "us_validation": [
         {
           "symbol": "MP",
-          "as_of": "2026-09-08",
-          "price": 55.369998931884766,
-          "return_20d": 1.2989372236638763,
+          "as_of": "2026-09-09",
+          "price": 55.040000915527344,
+          "return_20d": -0.3620578509457517,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
-          "as_of": "2026-09-08",
-          "price": 76.62000274658203,
-          "return_20d": 8.665438129680659,
+          "as_of": "2026-09-09",
+          "price": 76.27999877929688,
+          "return_20d": 10.759395581819685,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -1978,6 +2205,31 @@
             "overextended": false,
             "status": "观察：趋势延续，等待合适回踩",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 14,
+                "win_rate": 0.3571,
+                "net_return": -0.0113,
+                "max_drawdown": -0.1627
+              },
+              "3": {
+                "observations": 14,
+                "win_rate": 0.3571,
+                "net_return": -0.0185,
+                "max_drawdown": -0.256
+              },
+              "5": {
+                "observations": 14,
+                "win_rate": 0.3571,
+                "net_return": -0.0213,
+                "max_drawdown": -0.3217
+              }
+            }
           }
         },
         {
@@ -2013,6 +2265,31 @@
             "overextended": false,
             "status": "观察：趋势延续，等待合适回踩",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 16,
+                "win_rate": 0.5625,
+                "net_return": 0.0041,
+                "max_drawdown": -0.1369
+              },
+              "3": {
+                "observations": 16,
+                "win_rate": 0.5,
+                "net_return": 0.0017,
+                "max_drawdown": -0.2893
+              },
+              "5": {
+                "observations": 16,
+                "win_rate": 0.5625,
+                "net_return": 0.0031,
+                "max_drawdown": -0.4195
+              }
+            }
           }
         },
         {
@@ -2048,6 +2325,31 @@
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 15,
+                "win_rate": 0.4,
+                "net_return": -0.0039,
+                "max_drawdown": -0.173
+              },
+              "3": {
+                "observations": 15,
+                "win_rate": 0.1333,
+                "net_return": -0.025,
+                "max_drawdown": -0.3895
+              },
+              "5": {
+                "observations": 15,
+                "win_rate": 0.2,
+                "net_return": -0.0494,
+                "max_drawdown": -0.5817
+              }
+            }
           }
         },
         {
@@ -2083,6 +2385,31 @@
             "overextended": false,
             "status": "观察：趋势延续，等待合适回踩",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
+          },
+          "signal_backtest": {
+            "eligible": false,
+            "reason": "回测阈值未通过",
+            "cost_bps": 15.0,
+            "horizons": {
+              "1": {
+                "observations": 12,
+                "win_rate": 0.4167,
+                "net_return": -0.0066,
+                "max_drawdown": -0.1927
+              },
+              "3": {
+                "observations": 12,
+                "win_rate": 0.3333,
+                "net_return": -0.0293,
+                "max_drawdown": -0.3783
+              },
+              "5": {
+                "observations": 12,
+                "win_rate": 0.3333,
+                "net_return": -0.0434,
+                "max_drawdown": -0.4914
+              }
+            }
           }
         }
       ],
@@ -2093,7 +2420,7 @@
         "relative_20d_positive": 3,
         "breadth_ok": true
       },
-      "status": "可人工复核",
+      "status": "观察：趋势或扩散未确认",
       "evidence_to_watch": [
         "AI服务器、交换机和网络设备订单",
         "高端PCB/覆铜板产能利用率、价格和交付周期",
@@ -2104,36 +2431,37 @@
         "只有个别股票冲高，同层级没有扩散",
         "毛利率或经营现金流明显转弱"
       ],
+      "backtest_candidates": [],
       "us_validation": [
         {
           "symbol": "NVDA",
-          "as_of": "2026-09-08",
-          "price": 225.72999572753906,
-          "return_20d": 3.760051740305026,
+          "as_of": "2026-09-09",
+          "price": 224.19000244140625,
+          "return_20d": 3.0758631914511447,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
-          "as_of": "2026-09-08",
-          "price": 368.55999755859375,
-          "return_20d": -12.746211438413269,
+          "as_of": "2026-09-09",
+          "price": 360.510009765625,
+          "return_20d": -13.355599548162623,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
-          "as_of": "2026-09-08",
-          "price": 194.9600067138672,
-          "return_20d": 1.7961582939985732,
+          "as_of": "2026-09-09",
+          "price": 195.30999755859375,
+          "return_20d": -1.283805138521421,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
-          "as_of": "2026-09-08",
-          "price": 1000.260009765625,
-          "return_20d": 16.174217162093484,
+          "as_of": "2026-09-09",
+          "price": 1024.6500244140625,
+          "return_20d": 17.976557980445595,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -2175,7 +2503,7 @@
       "latest_tag": "release-v1.18.94",
       "release_at": "2026-08-21T05:17:55Z",
       "pushed_at": "2026-09-09T04:20:59Z",
-      "updated_at": "2026-09-09T11:56:51Z"
+      "updated_at": "2026-09-09T14:26:31Z"
     },
     {
       "repo": "ranaroussi/yfinance",
@@ -2184,7 +2512,7 @@
       "latest_tag": "1.7.0",
       "release_at": "2026-08-26T17:23:40Z",
       "pushed_at": "2026-08-27T11:23:24Z",
-      "updated_at": "2026-09-09T11:16:01Z"
+      "updated_at": "2026-09-09T15:04:18Z"
     },
     {
       "repo": "vnpy/vnpy",
@@ -2193,7 +2521,7 @@
       "latest_tag": "4.4.0",
       "release_at": "2026-05-14T12:18:00Z",
       "pushed_at": "2026-09-01T01:47:09Z",
-      "updated_at": "2026-09-09T12:04:41Z"
+      "updated_at": "2026-09-09T14:15:15Z"
     },
     {
       "repo": "simonlin1212/a-stock-data",
@@ -2202,7 +2530,7 @@
       "latest_tag": "v3.8.0",
       "release_at": "2026-09-05T01:43:29Z",
       "pushed_at": "2026-09-05T01:42:56Z",
-      "updated_at": "2026-09-09T12:20:30Z"
+      "updated_at": "2026-09-09T14:33:57Z"
     }
   ],
   "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。"
