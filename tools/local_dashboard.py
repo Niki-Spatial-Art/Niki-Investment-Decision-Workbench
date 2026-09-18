@@ -27,6 +27,9 @@ from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from tools.decision_state import local_decision_state, timestamp, BEIJING
 REPORT = ROOT / "reports" / "latest.json"
 REPORT_MD = ROOT / "reports" / "latest.md"
 IFIND_CLEAN_DIR = ROOT / "reports" / "ifind_clean"
@@ -1203,13 +1206,16 @@ def build_risk_budget(report: dict, broker: dict, route: dict) -> str:
     freshness, _ = snapshot_age_label(latest_snapshot(broker))
     route_status = route.get("status") or {}
     route_available = bool(route.get("available")) or as_float(route_status.get("valid_quote_count")) > 0
-    executable = status == "TRIAL_ALLOWED" and freshness == "新鲜" and route_available
+    state = decision_checks(report, broker, route)
+    executable = status == "TRIAL_ALLOWED" and state["review_allowed"]
     reason = str(budget.get("reason") or "")
     if not executable:
         if freshness != "新鲜":
             reason = f"券商快照为{freshness}，先以券商 App 更新总览和可卖份额。"
         elif not route_available:
             reason = "本地行情快照未生成或不完整。"
+    if not executable:
+        reason = "；".join(reason for key in ("data", "market", "setup", "account") for reason in state[key]["reasons"]) or reason
     label = str(budget.get("label") or "-") if executable else "额度归零，等待复核"
     tone = "ok" if executable else ("danger" if status == "DAILY_STOP" else "warn")
     today_allowed_loss = budget.get("today_allowed_loss") if executable else 0
@@ -1875,20 +1881,45 @@ def build_daily_maintenance_records() -> str:
 
 
 def snapshot_age_label(snapshot: dict) -> tuple[str, str]:
-    """Return a conservative freshness label for the manually imported broker snapshot."""
-    raw = str(snapshot.get("snapshot_time") or "")
-    if not raw:
-        return "未导入", "danger"
-    try:
-        age = datetime.now() - datetime.strptime(raw, "%Y-%m-%d %H:%M:%S")
-        if age.total_seconds() <= 30 * 60:
-            return "新鲜", "ok"
-        if age.total_seconds() <= 24 * 60 * 60:
-            return "今日较早", "warn"
-    except ValueError:
-        pass
+    parsed = timestamp(snapshot.get("snapshot_time"))
+    if parsed is None:
+        return "未导入或时间异常", "danger"
+    now = datetime.now(BEIJING)
+    age = (now - parsed).total_seconds()
+    if age < 0:
+        return "未来时间，需核对", "danger"
+    if age <= 1800:
+        return "新鲜", "ok"
+    if parsed.date() == now.date():
+        return "今日较早", "warn"
     return "需人工确认", "warn"
 
+
+def decision_checks(report: dict, broker: dict, route: dict) -> dict:
+    ready = sum(evidence_assessment(item)["ready"] for item in read_evidence_cards())
+    return local_decision_state(report, latest_snapshot(broker), route, ready)
+
+
+def build_decision_checks(report: dict, broker: dict, route: dict) -> str:
+    state = decision_checks(report, broker, route)
+    cards = [card(label, "通过" if state[key]["ok"] else "待核验",
+                  "；".join(state[key]["reasons"]) or "仅代表此项条件满足", "ok" if state[key]["ok"] else "warn")
+             for key, label in (("data", "行情数据"), ("market", "市场许可"), ("setup", "候选条件"), ("account", "账户许可"))]
+    return section("决策条件", f"规则 {state['rule_version']} · {state['account']['capital_basis']} · 持仓风险复核持续可用",
+                   metric_grid(cards), "decision-checks")
+
+
+def build_historical_review() -> str:
+    data = read_json(ROOT / "data" / "historical_review.local.json")
+    if not data or data.get("_error"):
+        return section("真实交易复盘", "历史核账与当日成交分别记录", '<div class="empty">尚未导入历史核账证据；缺失不等于零交易。</div>', "real-review")
+    stats = (data.get("cycle_stats") or {}).get("all") or {}
+    cards = [card("历史买卖记录", str(data.get("trade_records", "-")), "记录条数不等于独立交易次数"),
+             card("完整持仓周期", str(stats.get("count", "-")), f"盈利 {stats.get('wins', '-')} 个；周期胜率 {stats.get('winRate', '-')}%"),
+             card("覆盖期重建损益", fmt_money(data.get("reconstructed_pnl"), 2), "包含期末未平仓参考收益、分红与利息；含待确认费用", "warn")]
+    notes = "；".join(data.get("limitations") or [])
+    return section("真实交易复盘", f"历史范围 {data.get('coverage_start')}—{data.get('coverage_end')}；不代表当前策略业绩",
+                   metric_grid(cards) + '<div class="decision-note">' + esc(notes) + '。原始成交台账仍需接入，后续盈亏未知。</div>', "real-review")
 
 def build_decision_home(report: dict, broker: dict, route: dict) -> str:
     """The primary screen: account safety and existing positions before research."""
@@ -1906,7 +1937,9 @@ def build_decision_home(report: dict, broker: dict, route: dict) -> str:
         if route_available else "本地行情快照尚未生成；不新增风险。"
     )
     gate = ((report.get("action_stack") or {}).get("new_entry_gate") or {})
-    gate_closed = bool(gate.get("blocked")) or is_stale(report) or freshness != "新鲜" or not route_available
+    state = decision_checks(report, broker, route)
+    gate_closed = not state["review_allowed"]
+    route_available = state["data"]["ok"]
     action = "持仓优先，不新增风险" if gate_closed else "仅人工复核后观察"
     if freshness != "新鲜":
         discipline_reason = f"券商快照为{freshness}；更新账户总览和可卖份额前，新开仓额度为 0。"
@@ -1916,10 +1949,11 @@ def build_decision_home(report: dict, broker: dict, route: dict) -> str:
         discipline_reason = "市场报告已过期；刷新后才可重新评估候选。"
     else:
         discipline_reason = str(gate.get("reason") or "账户、持仓、行情三者一致后再做决定。")
+    discipline_reason = "；".join(reason for key in ("data", "market", "setup", "account") for reason in state[key]["reasons"]) or "全部条件满足后仍需人工确认。"
     cards = [
-        card("账户快照", fmt_money(assets, 2), f"{freshness}；{snap.get('snapshot_time') or '-'}。", freshness_tone),
-        card("现金 / 权益", f"{pct_from_ratio(cash_ratio)} / {pct_from_ratio(1 - cash_ratio)}", f"现金 {fmt_money(cash, 0)}；市值 {fmt_money(market_value, 0)}。", "ok"),
-        card("累计参考盈亏", fmt_money(snap.get("reference_profit"), 2), f"当日 {fmt_money(snap.get('daily_profit'), 2)}。", "ok" if as_float(snap.get("reference_profit")) >= 0 else "warn"),
+        card("账户快照", fmt_money(snap.get("total_assets"), 2) if snap.get("total_assets") is not None else "待核对", f"{freshness}；{snap.get('snapshot_time') or '-'}。", freshness_tone),
+        card("现金 / 权益", f"{pct_from_ratio(cash_ratio)} / {pct_from_ratio(1 - cash_ratio)}" if assets else "待核对", f"现金 {fmt_money(cash, 0)}；市值 {fmt_money(market_value, 0)}。", "ok"),
+        card("持仓参考盈亏（非累计收益）", fmt_money(snap.get("reference_profit"), 2), f"当日 {fmt_money(snap.get('daily_profit'), 2)}。", "ok" if as_float(snap.get("reference_profit")) >= 0 else "warn"),
         card("今日纪律", action, discipline_reason, "danger" if gate_closed else "warn"),
         card("行情快照", "可复核" if route_available else "待刷新", route_note, "ok" if route_available else "warn"),
     ]
@@ -2000,7 +2034,7 @@ def build_evidence_cards(report: dict, broker: dict, route: dict) -> str:
     freshness, _ = snapshot_age_label(latest_snapshot(broker))
     route_status = route.get("status") or {}
     route_available = bool(route.get("available")) or as_float(route_status.get("valid_quote_count")) > 0
-    market_open = not bool(gate.get("blocked")) and not is_stale(report) and freshness == "新鲜" and route_available
+    market_open = decision_checks(report, broker, route)["review_allowed"]
     assessed = [(item, evidence_assessment(item)) for item in cards]
     complete = sum(1 for _, assessment in assessed if assessment["ready"])
     data_passed = sum(1 for _, assessment in assessed if assessment["data_passed"])
@@ -2140,11 +2174,13 @@ def build_html() -> str:
     title = "Niki 投资决策工作台"
     html_body = f"""
     {build_decision_home(report, broker, route)}
+    {build_decision_checks(report, broker, route)}
     {build_risk_budget(report, broker, route)}
     {build_holding_focus(broker)}
     {build_holdings_table(broker)}
     {build_market_observation(report, route)}
     {build_evidence_cards(report, broker, route)}
+    {build_historical_review()}
     {build_trade_attribution()}
     {build_research_sources(route)}
     {build_daily_maintenance_records()}
@@ -2161,7 +2197,9 @@ def build_html() -> str:
 <body>
   <nav>
     <strong>Niki 决策工作台</strong>
+    <a href="#decision-checks">决策条件</a>
     <a href="#risk-budget">风险预算</a>
+    <a href="#real-review">真实复盘</a>
     <a href="#holdings">持仓</a>
     <a href="#market">市场</a>
     <a href="#evidence">证据卡</a>

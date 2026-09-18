@@ -42,5 +42,6 @@ build/
 .venv-a-stock/
 .coverage
 htmlcov/
+codex-work/
 video_frames/
 video_frames_ffmpeg/

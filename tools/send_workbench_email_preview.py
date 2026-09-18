@@ -16,7 +16,9 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from a_stock_market_data import snapshot
+from tools.a_stock_market_data import snapshot
+from tools.decision_state import public_market_gate
+from tools.notification_state import notification_decision, read_state, save_state
 from emailer import EmailNotifier
 from monitor import broad_market_tiers, load_digital_infra_watchlist, run_broad_market_scan
 
@@ -132,21 +134,16 @@ def build_scan_summary(payload: dict, scan: dict) -> dict:
     scan_complete = int(scan.get("scanned_count") or 0) >= int(scan.get("min_rows_target") or 5000)
     stop_confirmed, recovered_count = index_stop_state(payload)
     breadth_healthy = advancers > decliners
-    gate_open = scan_complete and breadth_healthy and stop_confirmed
-    if not scan_complete:
-        gate_reason = "全市场覆盖不足，候选只观察。"
-    elif not breadth_healthy:
-        gate_reason = "下跌家数占优，未形成可开仓的广度环境。"
-    elif not stop_confirmed:
-        gate_reason = "核心指数尚未确认止跌，候选只观察。"
-    else:
-        gate_reason = "覆盖、市场宽度和核心指数止跌条件同时通过；仍需次日人工确认。"
+    decision = public_market_gate(scan, stop_confirmed, is_current_a_share_trading_day(payload), "intraday_two_of_three_ma20")
+    gate_open = decision["open"]
+    gate_reason = decision["status"]
     tiers = broad_market_tiers(scan.get("results") or [], portfolio={})
     candidates = (tiers.get("actionable") or tiers.get("watch") or [])[:3]
     industries = scan.get("industry_breadth") or []
     strong = industries[:5]
     weak = list(reversed(industries[-5:]))
     return {
+        "decision": decision,
         "advancers": advancers,
         "decliners": decliners,
         "flat": int(breadth.get("flat") or 0),
@@ -270,36 +267,27 @@ def build_html(payload: dict, scan: dict, summary: dict, intraday: bool = False)
       {'<h2 style="font-size:17px;margin-top:22px">盘中动作卡（最多 3 张）</h2><table style="width:100%;border-collapse:collapse"><thead><tr style="background:#f7f9fc"><th style="text-align:left;padding:8px">标的</th><th style="text-align:left;padding:8px">行业</th><th style="text-align:left;padding:8px">触发证据</th><th style="text-align:left;padding:8px">处理</th><th style="text-align:left;padding:8px">失效条件</th></tr></thead><tbody>' + action_card_rows(summary['actionable_candidates'], summary['gate_open']) + '</tbody></table>' if intraday else ''}
 
       <h2 style="font-size:17px;margin-top:22px">4. 交易闸门</h2>
-      <div style="border-left:4px solid {gate_color};background:#f7f9fc;padding:12px"><strong style="color:{gate_color}">{gate_label}</strong><br>{html.escape(summary['gate_reason'])}<br><span style="color:#5d6b82">规则：全市场覆盖、上涨家数占优、核心指数止跌三项同时满足，才允许为候选生成次日人工复核计划。</span></div>
+      <div style="border-left:4px solid {gate_color};background:#f7f9fc;padding:12px"><strong style="color:{gate_color}">{gate_label}</strong><br>{html.escape(summary['gate_reason'])}<br><span style="color:#5d6b82">规则 {html.escape((summary.get('decision') or {}).get('rule_version') or '旧版')} / intraday_two_of_three_ma20：全市场覆盖、上涨家数占优、核心指数止跌三项同时满足，才允许为候选生成次日人工复核计划。</span></div>
       <p style="margin-top:20px;color:#5d6b82;font-size:12px">数据路由：腾讯实时行情 -> 通达信日线 -> 腾讯前复权 K 线 -> AKShare。本邮件不包含账户、持仓或个人配置；不连接券商、不自动下单、不承诺收益。</p>
     </section>
   </main>
 </body></html>"""
 
 
+NOTIFICATION_STATE = ROOT / "reports" / "intraday_notification_state.json"
+
+
 def should_send_intraday(summary: dict) -> tuple[bool, str]:
-    """Decide whether an intraday email is worth sending.
+    send, reason, _ = notification_decision(summary, read_state(NOTIFICATION_STATE), datetime.now(BEIJING_TZ).date().isoformat())
+    return send, reason
 
-    Returns (should_send, reason).  The goal is to stop the "no-action spam":
-    only send when there is a concrete, immediately-verifiable action card.
 
-    Design note: GitHub Actions runs each cron in a fresh container, so we
-    deliberately avoid cross-run state.  This keeps the rule stateless and 100%
-    reliable in CI.  Risk-trend changes are instead surfaced by the separate
-    盘前简报 and 收盘日报 reports, which already render the full picture.
-    """
-    gate_open = bool(summary.get("gate_open"))
-    actionable = summary.get("actionable_candidates") or []
-
-    # 有明确动作候选（闸门开放且存在可复核标的）才发邮件。
-    if gate_open and actionable:
-        return True, f"actionable_candidates={len(actionable)} gate_open=True"
-
-    # 其余一律静默：闸门关闭、或闸门开放但无通过过滤的候选，都不发邮件。
-    if not gate_open:
-        return False, "gate_closed_no_action"
-    return False, "gate_open_but_no_candidate"
-
+def audit_event(stage: str, **details) -> None:
+    path = ROOT / "reports" / "intraday_run_audit.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Call sites supply only public scan states, never SMTP values or account data.
+    with path.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps({"at": datetime.now(BEIJING_TZ).isoformat(), "stage": stage, **details}, ensure_ascii=False) + "\n")
 
 def _write_intraday_silent_log(summary: dict) -> None:
     """Append a silent-skip entry so each intraday scan is still auditable.
@@ -327,34 +315,38 @@ def main() -> int:
     parser.add_argument("--intraday", action="store_true", help="Include conditional intraday action cards")
     parser.add_argument("--force", action="store_true", help="Bypass the intraday time guard for manual resend/testing")
     args = parser.parse_args()
+    audit_event("started", dry_run=args.dry_run, intraday=args.intraday)
 
     if args.intraday and not args.force:
         allowed, reason = intraday_window_state()
         if not allowed:
             print(reason)
+            audit_event("skipped_window", reason=reason)
             return 0
         print("intraday_guard=pass " + reason)
 
     payload = snapshot(INDEX_CODES, bars=65)
     if args.intraday and not args.force and not is_current_a_share_trading_day(payload):
+        audit_event("skipped_quote_date")
         print("skip_intraday=a_share_closed_or_quote_not_current")
         return 0
 
     scan = run_broad_market_scan(load_digital_infra_watchlist())
     summary = build_scan_summary(payload, scan)
 
-    # 盘中静默规则：只有"交易闸门开放 且 存在可复核动作候选"才发邮件；
-    # 闸门关闭、或闸门开放但无候选 → 静默，仅写日志，不发送邮件（避免无动作狂发）。
-    if args.intraday and not args.force:
-        email_html = build_html(payload, scan, summary, intraday=True)
-        should_send, skip_reason = should_send_intraday(summary)
-        if not should_send:
-            print(f"skip_intraday=no_action_or_risk_change reason={skip_reason}")
-            _write_intraday_silent_log(summary)
-            return 0
-        print(f"intraday_send=triggered reason={skip_reason}")
-    else:
-        email_html = build_html(payload, scan, summary, intraday=args.intraday)
+    day = datetime.now(BEIJING_TZ).date().isoformat()
+    previous = read_state(NOTIFICATION_STATE)
+    should_send, skip_reason, next_state = notification_decision(summary, previous, day)
+    email_html = build_html(payload, scan, summary, intraday=args.intraday)
+    audit_event("report_generated", gate_open=summary["gate_open"], notification_reason=skip_reason)
+    if args.intraday and not args.force and not should_send and not args.dry_run:
+        if previous.get("fingerprint") == next_state["fingerprint"]:
+            next_state["smtp_accepted"] = bool(previous.get("smtp_accepted"))
+        save_state(NOTIFICATION_STATE, next_state)
+        audit_event("no_notification", reason=skip_reason)
+        _write_intraday_silent_log(summary)
+        print(f"skip_intraday={skip_reason}")
+        return 0
 
     if args.dry_run:
         print(
@@ -378,10 +370,18 @@ def main() -> int:
     label = "盘中动作卡" if args.intraday else "盘后市场扫描"
     sent = notifier.send_html_alert(required["RECIPIENT_EMAIL"], f"Niki 决策工作台 | {label} | {now}", email_html)
     if not sent:
+        audit_event("smtp_failed")
         raise SystemExit("SMTP did not accept the market-scan email")
-    print("market_scan_email=sent")
+    audit_event("smtp_accepted")
+    if args.intraday:
+        save_state(NOTIFICATION_STATE, {**next_state, "smtp_accepted": True})
+    print("market_scan_email=smtp_accepted")
     return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        audit_event("failed", error_type=type(exc).__name__)
+        raise

@@ -80,6 +80,9 @@ def clean_bars(payload: dict[str, Any], code: str) -> list[dict[str, Any]]:
         cleaned.append({
             "date": str(row.get("date") or row.get("datetime") or row.get("日期") or ""),
             "close": close,
+            "open": safe_float(row.get("open", row.get("开盘"))),
+            "high": safe_float(row.get("high", row.get("最高"))),
+            "low": safe_float(row.get("low", row.get("最低"))),
             "volume": volume,
         })
     return cleaned

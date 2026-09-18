@@ -8,7 +8,10 @@ import json
 import sys
 from pathlib import Path
 
-from a_stock_market_data import snapshot
+try:
+    from .a_stock_market_data import snapshot
+except ImportError:
+    from a_stock_market_data import snapshot
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +31,29 @@ def load_portfolio_codes(path: Path) -> list[str]:
     return [code for code in codes if code]
 
 
+def load_workbench_codes(root: Path, portfolio: Path) -> list[str]:
+    """Holdings + three benchmark proxies + at most three research candidates.
+
+    A missing optional portfolio must not prevent the default refresh.
+    """
+    codes = []
+    broker_path = root / "data" / "broker_account_snapshots.local.json"
+    if broker_path.exists():
+        payload = json.loads(broker_path.read_text(encoding="utf-8-sig"))
+        rows = payload.get("snapshots") or []
+        latest = max(rows, key=lambda row: row.get("snapshot_time", "")) if rows else {}
+        codes.extend(str(p.get("code")) for p in latest.get("positions_visible") or [] if float(p.get("shares") or 0) > 0)
+    codes.extend(["510300", "512100", "588000"])
+    research_path = root / "data" / "research_evidence.local.json"
+    if research_path.exists():
+        payload = json.loads(research_path.read_text(encoding="utf-8-sig"))
+        cards = payload if isinstance(payload, list) else payload.get("cards") or []
+        codes.extend(str(card.get("code")) for card in cards[:3])
+    if not broker_path.exists() and portfolio.exists():
+        codes.extend(load_portfolio_codes(portfolio))
+    return list(dict.fromkeys(code for code in codes if len(code) == 6 and code.isdigit()))
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Create an auditable A-share radar source snapshot")
     parser.add_argument("--codes", help="comma-separated six-digit A-share/ETF codes")
@@ -38,7 +64,7 @@ def main() -> int:
 
     codes = [item.strip() for item in (args.codes or "").split(",") if item.strip()]
     if not codes:
-        codes = load_portfolio_codes(ROOT / args.portfolio)
+        codes = load_workbench_codes(ROOT, ROOT / args.portfolio)
     if not codes:
         print("No portfolio positions or watchlist codes found.", file=sys.stderr)
         return 2

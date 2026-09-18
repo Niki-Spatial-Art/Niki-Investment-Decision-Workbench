@@ -24,6 +24,8 @@ ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from tools.signal_diagnostics import signal_backtest
+from tools.decision_state import public_market_gate
 from emailer import EmailNotifier
 from monitor import load_digital_infra_watchlist, run_broad_market_scan
 from tools.a_stock_market_data import snapshot
@@ -75,48 +77,6 @@ def keyed_metric(payload: dict[str, Any] | None, key: int | str) -> float | None
     if text_key in payload:
         return finite(payload.get(text_key))
     return None
-
-
-def signal_backtest(bars: list[dict[str, Any]], rules: dict[str, Any]) -> dict[str, Any]:
-    """Replay the same conservative signal on history and report OOS-like diagnostics."""
-    closes = [finite(row.get("close")) for row in bars]
-    volumes = [finite(row.get("volume")) or 0.0 for row in bars]
-    closes = [x for x in closes]
-    if len(closes) < 30:
-        return {"eligible": False, "reason": "历史样本不足", "observations": 0}
-    horizons = (1, 3, 5)
-    friction = (float(rules.get("cost_bps", 10)) + float(rules.get("slippage_bps", 5))) / 10000
-    samples = {h: [] for h in horizons}
-    for i in range(20, len(closes) - max(horizons)):
-        c = closes[i]
-        ma20 = sum(closes[i-19:i+1]) / 20
-        day_change = (c / closes[i-1] - 1) * 100 if closes[i-1] else 0
-        v20 = sum(volumes[i-19:i+1]) / 20
-        v5 = sum(volumes[i-4:i+1]) / 5
-        # Signal: market-friendly pullback, excluding chase days.
-        if c <= ma20 or day_change >= float(rules.get("chase_day_change_pct", 7)) or v5 > v20 * 1.8:
-            continue
-        for h in horizons:
-            samples[h].append(closes[i+h] / c - 1 - friction)
-    stats = {}
-    for h, values in samples.items():
-        if not values:
-            stats[str(h)] = {"observations": 0, "win_rate": None, "net_return": None, "max_drawdown": None}
-            continue
-        equity = peak = 1.0
-        drawdown = 0.0
-        for value in values:
-            equity *= 1 + value
-            peak = max(peak, equity)
-            drawdown = min(drawdown, equity / peak - 1)
-        stats[str(h)] = {"observations": len(values), "win_rate": round(sum(v > 0 for v in values) / len(values), 4),
-                         "net_return": round(sum(values) / len(values), 4), "max_drawdown": round(drawdown, 4)}
-    thresholds = rules.get("backtest_thresholds") or {}
-    eligible = all((stats[str(h)]["observations"] or 0) >= int(thresholds.get("minimum_observations", 3)) and
-                   (stats[str(h)]["win_rate"] or 0) >= float(thresholds.get("minimum_win_rate", 0.5)) and
-                   (stats[str(h)]["net_return"] or -1) > float(thresholds.get("minimum_net_return", 0)) and
-                   (stats[str(h)]["max_drawdown"] or -1) >= -float(thresholds.get("maximum_drawdown", 0.2)) for h in horizons)
-    return {"eligible": eligible, "reason": "通过" if eligible else "回测阈值未通过", "cost_bps": friction * 10000, "horizons": stats}
 
 
 def quote_day(payload: dict[str, Any], code: str) -> str:
@@ -302,7 +262,9 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
     breadth = market_scan.get("breadth") or {}
     breadth_ok = int(breadth.get("advancers") or 0) > int(breadth.get("decliners") or 0)
     is_trading = trading_day(payload, benchmark)
-    gate = "等待：A股未开市" if not is_trading else "等待：市场基准或广度未确认" if not benchmark_info.get("above_ma20") or not breadth_ok else "观察：市场层通过初筛，仍需板块和个股证据"
+    decision = public_market_gate(market_scan, bool(benchmark_info.get("above_ma20")), is_trading, "postclose_benchmark_ma20")
+    gate = decision["status"]
+    payload["market_gate_ok"] = decision["open"]
     sector_groups = classify_sectors(market_scan.get("industry_breadth") or [], config.get("sector_rules") or {})
     modules = []
     for module in config.get("deep_research_modules") or []:
@@ -317,7 +279,7 @@ def build_report(config: dict[str, Any]) -> dict[str, Any]:
     return {
         "generated_at": now_beijing().isoformat(timespec="seconds"), "as_of_date": now_beijing().date().isoformat(), "a_share_trading_day": is_trading,
         "skip_reason": "A股非交易日或行情时间未更新，跳过邮件发送。" if config.get("skip_if_not_a_share_trading_day") and not is_trading else "",
-        "market_gate": {"status": gate, "benchmark": benchmark_info, "breadth": breadth, "breadth_ok": breadth_ok},
+        "market_gate": {"decision": decision, "status": gate, "benchmark": benchmark_info, "breadth": breadth, "breadth_ok": breadth_ok},
         "sector_funnel": sector_groups,
         "market_scan": {key: market_scan.get(key) for key in ("scanned_count", "min_rows_target", "missing_estimate", "sources", "source_counts", "failures", "candidate_count")},
         "candidates": market_scan.get("results") or [], "final_candidates": final_candidates, "modules": modules, "secondary_themes": config.get("secondary_themes") or [], "github_components": components,
@@ -343,10 +305,17 @@ def render_html(report: dict[str, Any]) -> str:
         us = "；".join(f"{row.get('symbol')} 20日{pct(row.get('return_20d'))}" if not row.get("error") else f"{row.get('symbol')} 数据不可用" for row in module.get("us_validation") or [])
         evidence = "；".join(str(item) for item in module.get("evidence_to_watch") or [])
         invalidation = "；".join(str(item) for item in module.get("invalidation") or [])
-        bt_summary = "；".join(f"{s.get('code')}: 1日{(s.get('signal_backtest',{}).get('horizons',{}).get('1',{}).get('win_rate') or 0)*100:.0f}%/3日{(s.get('signal_backtest',{}).get('horizons',{}).get('3',{}).get('win_rate') or 0)*100:.0f}%/5日{(s.get('signal_backtest',{}).get('horizons',{}).get('5',{}).get('win_rate') or 0)*100:.0f}% {s.get('signal_backtest',{}).get('reason')}" for s in module.get('a_share') or [])
-        module_sections.append(f"<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>{str(module.get('name'))}</h2><p><strong>{html.escape(str(module.get('status')))}</strong> | {html.escape(str(module.get('thesis')))}</p><p>模块广度：{module.get('breadth', {}).get('above_ma20', 0)}/{module.get('breadth', {}).get('eligible', 0)} 站上MA20；20日相对沪深300为正 {module.get('breadth', {}).get('relative_20d_positive', 0)}/{module.get('breadth', {}).get('eligible', 0)}。</p><p><strong>1/3/5日回测：</strong>{html.escape(bt_summary or '暂无')}</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>标的</th><th>5日</th><th>20日</th><th>20日相对300</th><th>趋势</th><th>5/20量比</th><th>梅森观察标签</th></tr>{rows}</table><p><strong>美股验证：</strong>{html.escape(us or '-')}</p><p><strong>待核验产业/财务证据：</strong>{html.escape(evidence)}</p><p><strong>反证条件：</strong>{html.escape(invalidation)}</p></section>")
+        bt_summary = "；".join(
+            f"{stock.get('code')}: " + " / ".join(
+                f"{h}日样本{(stock.get('signal_backtest', {}).get('horizons', {}).get(h, {})).get('observations', 0)}，胜率"
+                + pct((stock.get('signal_backtest', {}).get('horizons', {}).get(h, {})).get('win_rate') * 100
+                      if (stock.get('signal_backtest', {}).get('horizons', {}).get(h, {})).get('win_rate') is not None else None)
+                for h in ('1', '3', '5')) + f" {stock.get('signal_backtest', {}).get('reason', '旧版结果待重算')}"
+            for stock in module.get('a_share') or [])
+        bt_summary += "。样本内诊断不是下一笔胜率；新方法按信号次日开盘、各期限不重叠模拟，仍待样本外验证。"
+        module_sections.append(f"<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>{str(module.get('name'))}</h2><p><strong>{html.escape(str(module.get('status')))}</strong> | {html.escape(str(module.get('thesis')))}</p><p>模块广度：{module.get('breadth', {}).get('above_ma20', 0)}/{module.get('breadth', {}).get('eligible', 0)} 站上MA20；20日相对沪深300为正 {module.get('breadth', {}).get('relative_20d_positive', 0)}/{module.get('breadth', {}).get('eligible', 0)}。</p><p><strong>1/3/5日样本内诊断：</strong>{html.escape(bt_summary or '暂无')}</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>标的</th><th>5日</th><th>20日</th><th>20日相对300</th><th>趋势</th><th>5/20量比</th><th>梅森观察标签</th></tr>{rows}</table><p><strong>美股验证：</strong>{html.escape(us or '-')}</p><p><strong>待核验产业/财务证据：</strong>{html.escape(evidence)}</p><p><strong>反证条件：</strong>{html.escape(invalidation)}</p></section>")
     component_rows = "".join("<tr>" + "".join(cell(value) for value in [item.get("repo"), item.get("latest_tag") or "无Release", item.get("release_at") or "-", item.get("pushed_at") or "-", item.get("release_error") or item.get("repo_error") or "-"]) + "</tr>" for item in report.get("github_components") or [])
-    return f"""<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'></head><body style='margin:0;background:#f4f6f8;color:#172033;font:14px Arial,'Microsoft YaHei',sans-serif;line-height:1.55'><main style='max-width:980px;margin:0 auto;padding:20px'><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px'><h1>全市场观察日报</h1><p>{html.escape(report.get('generated_at') or '-')} | A股交易日：{'是' if report.get('a_share_trading_day') else '否'}</p><p style='background:#eef5ff;padding:10px;border-radius:6px'><strong>市场总闸门：{html.escape(str(gate.get('status') or '-'))}</strong><br>基准 {html.escape(str(benchmark.get('name') or benchmark.get('code') or '-'))}：20日 {html.escape(pct(benchmark.get('return_20d')))}，{'MA20上方' if benchmark.get('above_ma20') else 'MA20下方' if benchmark.get('ma20') else '数据不足'}；上涨 {breadth.get('advancers', 0)}、下跌 {breadth.get('decliners', 0)}、平盘 {breadth.get('flat', 0)}。</p></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>全市场行业漏斗</h2><p>读取 {report.get('market_scan', {}).get('scanned_count', 0)} 行，目标 {report.get('market_scan', {}).get('min_rows_target', 0)} 行；缺口估算 {report.get('market_scan', {}).get('missing_estimate', 0)}。重点研究只保留前5个行业，其他行业只进入观察或等待。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>行业</th><th>分类</th><th>平均涨跌</th><th>上涨/样本</th><th>上涨比例</th><th>成交额</th></tr>{sector_rows or '<tr><td colspan=6>行业广度不可用</td></tr>'}</table></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>最终通过筛选</h2><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>代码</th><th>名称</th><th>结果</th><th>样本数</th><th>5日净收益</th></tr>{final_rows}</table><h2>初筛观察池</h2><p>以下仅为行情初筛，不代表通过市场闸门或回测。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>代码</th><th>名称</th><th>行业</th><th>当日</th><th>成交额</th><th>状态</th></tr>{candidate_rows}</table></section>{''.join(module_sections)}<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>GitHub组件更新</h2><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>仓库</th><th>最新Release</th><th>发布日期</th><th>最近推送</th><th>错误/备注</th></tr>{component_rows}</table></section><p style='color:#5d6b82;font-size:12px'>{html.escape(str(report.get('disclaimer') or ''))}</p></main></body></html>"""
+    return f"""<!doctype html><html lang='zh-CN'><head><meta charset='utf-8'></head><body style='margin:0;background:#f4f6f8;color:#172033;font:14px Arial,'Microsoft YaHei',sans-serif;line-height:1.55'><main style='max-width:980px;margin:0 auto;padding:20px'><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:20px'><h1>全市场观察日报</h1><p>{html.escape(report.get('generated_at') or '-')} | A股交易日：{'是' if report.get('a_share_trading_day') else '否'}</p><p style='background:#eef5ff;padding:10px;border-radius:6px'><strong>市场总闸门：{html.escape(str(gate.get('status') or '-'))}</strong><br>基准 {html.escape(str(benchmark.get('name') or benchmark.get('code') or '-'))}：20日 {html.escape(pct(benchmark.get('return_20d')))}，{'MA20上方' if benchmark.get('above_ma20') else 'MA20下方' if benchmark.get('ma20') else '数据不足'}；上涨 {breadth.get('advancers', 0)}、下跌 {breadth.get('decliners', 0)}、平盘 {breadth.get('flat', 0)}。</p></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>全市场行业漏斗</h2><p>读取 {report.get('market_scan', {}).get('scanned_count', 0)} 行，目标 {report.get('market_scan', {}).get('min_rows_target', 0)} 行；缺口估算 {report.get('market_scan', {}).get('missing_estimate', 0)}。重点研究只保留前5个行业，其他行业只进入观察或等待。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>行业</th><th>分类</th><th>平均涨跌</th><th>上涨/样本</th><th>上涨比例</th><th>成交额</th></tr>{sector_rows or '<tr><td colspan=6>行业广度不可用</td></tr>'}</table></section><section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>最终通过筛选</h2><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>代码</th><th>名称</th><th>结果</th><th>样本数</th><th>5日平均净收益（小数）</th></tr>{final_rows}</table><h2>初筛观察池</h2><p>以下仅为行情初筛，不代表通过市场闸门或回测。</p><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>代码</th><th>名称</th><th>行业</th><th>当日</th><th>成交额</th><th>状态</th></tr>{candidate_rows}</table></section>{''.join(module_sections)}<section style='background:#fff;border:1px solid #d8dee8;border-radius:8px;padding:16px;margin-top:14px'><h2>GitHub组件更新</h2><table style='border-collapse:collapse;width:100%;font-size:13px'><tr><th>仓库</th><th>最新Release</th><th>发布日期</th><th>最近推送</th><th>错误/备注</th></tr>{component_rows}</table></section><p style='color:#5d6b82;font-size:12px'>{html.escape(str(report.get('disclaimer') or ''))}</p></main></body></html>"""
 
 
 def send_email(report: dict[str, Any], content: str) -> None:
