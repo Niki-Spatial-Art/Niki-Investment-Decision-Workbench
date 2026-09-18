@@ -1,0 +1,13 @@
+{
+  "repositories": [
+    {"repo": "akfamily/akshare", "purpose": "核对A股接口修复；隔离验证后才更新数据依赖"},
+    {"repo": "mootdx/mootdx", "purpose": "通达信数据连接、故障处理与缓存"},
+    {"repo": "simonlin1212/a-stock-data", "purpose": "A股数据路由及降级参考"},
+    {"repo": "ranaroussi/yfinance", "purpose": "海外产业验证的数据质量与兼容性"},
+    {"repo": "vnpy/vnpy", "purpose": "事件、行情、订单状态分离；只学习架构"},
+    {"repo": "ricequant/rqalpha", "purpose": "A股交易日、T+1、账户与成交模拟"},
+    {"repo": "kernc/backtesting.py", "purpose": "信号后成交、费用和可重复策略试验"},
+    {"repo": "ranaroussi/quantstats", "purpose": "统一净值、基准与绩效归因"},
+    {"repo": "microsoft/qlib", "purpose": "时间切分、实验记录与样本外验证；暂不引入训练平台"}
+  ]
+}

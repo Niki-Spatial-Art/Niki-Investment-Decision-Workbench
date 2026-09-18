@@ -7,6 +7,13 @@ $ErrorActionPreference = "Stop"
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $projectRoot
 
+# Local maintenance marker: a scheduled sync must never publish a partial edit.
+$maintenancePath = Join-Path $projectRoot ".git\codex-maintenance.lock"
+if (Test-Path -LiteralPath $maintenancePath) {
+    Write-Host "GitHub sync paused for local maintenance; see .git/codex-maintenance.lock."
+    exit 0
+}
+
 # Prevent overlapping scheduled/manual syncs from sharing a rebase state.
 $lockPath = Join-Path $projectRoot ".git\codex-github-sync.lock"
 $lockStream = $null
@@ -20,6 +27,11 @@ try {
 try {
     $branch = (git branch --show-current).Trim()
     if ([string]::IsNullOrWhiteSpace($branch)) { throw "Current directory is not on a Git branch." }
+
+    # git add -u omits new modules. Refuse a partial dependency graph instead of
+    # silently publishing callers without their implementation or tests.
+    python tools/check_tracked_imports.py
+    if ($LASTEXITCODE -ne 0) { throw "Tracked code depends on unpublished local modules; sync stopped." }
 
     # Scan the complete tracked publish surface before staging anything.
     python tools/pre_publish_check.py

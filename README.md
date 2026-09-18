@@ -66,6 +66,9 @@ $env:A_STOCK_PYTHON = 'C:\path\to\python.exe'
 
 ## 文档
 
+- [2026-09-18工作台优化、验证与运行说明](docs/workbench_optimization_2026-09-18.md)
+- [GitHub开源更新核查与学习取舍](docs/github_learning_2026-09-18.md)
+- 本地一键检查：`./check_workbench_local.ps1`；只生成健康报告和页面，不发送邮件或发布。
 - [投资决策工作台说明](docs/investment_workbench.md)
 - [候选证据与成交归因闭环](docs/evidence_and_attribution_workflow.md)
 - [可替换主题观察模块与QQ日报](docs/theme_watch_modules.md)

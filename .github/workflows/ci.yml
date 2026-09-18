@@ -29,6 +29,12 @@ jobs:
       - name: Workflow timezone guard
         run: python tools/check_workflow_timezones.py
 
+      - name: Verify local imports are published
+        run: python tools/check_tracked_imports.py
+
+      - name: Offline decision regression tests
+        run: python -m unittest discover -s tests -v
+
       - name: Offline action-card demo
         run: python workflows/demo_quant_research.py
         env:

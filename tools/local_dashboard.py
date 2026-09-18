@@ -272,7 +272,7 @@ def broker_positions(broker: dict) -> list[dict]:
 def latest_execution_note(broker: dict) -> str:
     trade = latest_real_trade()
     if not trade:
-        return '<div class="decision-note"><strong>本地成交联动：</strong>尚未记录真实成交；先录入成交与券商快照，再执行持仓建议。</div>'
+        return '<div class="decision-note"><strong>本地成交联动：</strong>逐笔成交台账尚未接入；历史核账另见真实交易复盘。缺少台账不代表没有交易。</div>'
     code = str(trade.get("code") or "-")
     held = next((item for item in broker_positions(broker) if str(item.get("code") or "") == code), {})
     remaining = fmt_number(held.get("shares"), 0) if held else "0"
@@ -541,6 +541,8 @@ def pick_primary_stock_card(report: dict, broker: dict) -> dict:
 
 
 def classify_holding_action(pos: dict) -> tuple[str, str, str, int]:
+    if pos.get("available") is None:
+        return ("核对", "warn", "可卖份额未知，不能据此推断T+1限制", 0)
     rule = str(pos.get("tomorrow_rule") or "")
     available = as_float(pos.get("available"))
     ref_profit = as_float(pos.get("reference_profit"))
@@ -548,7 +550,7 @@ def classify_holding_action(pos: dict) -> tuple[str, str, str, int]:
     urgent_words = ("跌破", "止损", "减仓", "减风险", "减亏", "出清")
     profit_words = ("保护利润", "止盈", "落袋", "强势利润仓")
     if available <= 0:
-        return ("等", "warn", "T+1 等明天", 0)
+        return ("等", "warn", "快照可卖份额为0，需核对当日买入或冻结原因", 0)
     if any(word in rule for word in urgent_words):
         if ref_profit <= 0 or daily_profit < 0:
             return ("卖/减", "danger", "先减风险", 1)
@@ -1293,7 +1295,7 @@ def build_holdings_table(broker: dict) -> str:
             <tr class="{'watch-row' if code in {'600021', '588000'} else ''}">
               <td><strong>{esc(code)}</strong><br>{esc(pos.get('name') or '')}</td>
               <td>{fmt_number(pos.get('shares'), 0)}</td>
-              <td>{fmt_number(pos.get('available'), 0)}</td>
+              <td>{fmt_number(pos.get('available'), 0) if pos.get('available') is not None else '待核对'}</td>
               <td>{fmt_price(pos.get('price'))}</td>
               <td>{fmt_money(pos.get('daily_profit'), 2)}</td>
               <td>{fmt_money(pos.get('reference_profit'), 2)}</td>
@@ -1949,11 +1951,12 @@ def build_decision_home(report: dict, broker: dict, route: dict) -> str:
         discipline_reason = "市场报告已过期；刷新后才可重新评估候选。"
     else:
         discipline_reason = str(gate.get("reason") or "账户、持仓、行情三者一致后再做决定。")
-    discipline_reason = "；".join(reason for key in ("data", "market", "setup", "account") for reason in state[key]["reasons"]) or "全部条件满足后仍需人工确认。"
+    pending = [label for key, label in (("data", "行情"), ("market", "市场"), ("setup", "候选"), ("account", "账户")) if not state[key]["ok"]]
+    discipline_reason = "、".join(pending) + "待核验，具体原因见下方决策条件。" if pending else "全部条件满足后仍需人工确认。"
     cards = [
         card("账户快照", fmt_money(snap.get("total_assets"), 2) if snap.get("total_assets") is not None else "待核对", f"{freshness}；{snap.get('snapshot_time') or '-'}。", freshness_tone),
         card("现金 / 权益", f"{pct_from_ratio(cash_ratio)} / {pct_from_ratio(1 - cash_ratio)}" if assets else "待核对", f"现金 {fmt_money(cash, 0)}；市值 {fmt_money(market_value, 0)}。", "ok"),
-        card("持仓参考盈亏（非累计收益）", fmt_money(snap.get("reference_profit"), 2), f"当日 {fmt_money(snap.get('daily_profit'), 2)}。", "ok" if as_float(snap.get("reference_profit")) >= 0 else "warn"),
+        card("持仓参考盈亏（非累计收益）", fmt_money(snap.get("reference_profit"), 2), f"快照当日 {fmt_money(snap.get('daily_profit'), 2)}。", "ok" if as_float(snap.get("reference_profit")) >= 0 else "warn"),
         card("今日纪律", action, discipline_reason, "danger" if gate_closed else "warn"),
         card("行情快照", "可复核" if route_available else "待刷新", route_note, "ok" if route_available else "warn"),
     ]
@@ -1985,7 +1988,7 @@ def build_holding_focus(broker: dict) -> str:
         cards.append(status_source_card(
             f"{pos.get('code') or '-'} {pos.get('name') or ''}",
             action,
-            f"持仓 {fmt_number(pos.get('shares'), 0)} | 可卖 {fmt_number(pos.get('available'), 0)} | 现价 {fmt_price(pos.get('price'))}",
+            f"持仓 {fmt_number(pos.get('shares'), 0)} | 可卖 {fmt_number(pos.get('available'), 0) if pos.get('available') is not None else '待核对'} | 快照价 {fmt_price(pos.get('price'))}",
             headline,
             f"当日 {fmt_money(pos.get('daily_profit'), 2)}；参考 {fmt_money(pos.get('reference_profit'), 2)}。{str(pos.get('tomorrow_rule') or '未设置处理线')}",
             tone,
@@ -2183,7 +2186,7 @@ def build_html() -> str:
     {build_historical_review()}
     {build_trade_attribution()}
     {build_research_sources(route)}
-    {build_daily_maintenance_records()}
+    <details><summary>历史公开维护记录（非当前账户状态）</summary>{build_daily_maintenance_records()}</details>
     <footer>本页只读取本地账户快照与公开行情快照，用于纪律提醒和复盘；不连接券商、不自动下单、不承诺收益。</footer>
     """
     return f"""<!doctype html>

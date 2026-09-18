@@ -17,7 +17,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from tools.a_stock_market_data import snapshot
-from tools.decision_state import public_market_gate
+from tools.decision_state import public_market_gate, number
 from tools.notification_state import notification_decision, read_state, save_state
 from emailer import EmailNotifier
 from monitor import broad_market_tiers, load_digital_infra_watchlist, run_broad_market_scan
@@ -111,7 +111,7 @@ def quote_day(payload: dict, code: str) -> str:
 
 def is_current_a_share_trading_day(payload: dict) -> bool:
     today = datetime.now(BEIJING_TZ).strftime("%Y%m%d")
-    return any(quote_day(payload, code) == today for code in CORE_INDEX_CODES)
+    return all(quote_day(payload, code) == today for code in CORE_INDEX_CODES)
 
 
 def index_stop_state(payload: dict) -> tuple[bool, int]:
@@ -121,8 +121,8 @@ def index_stop_state(payload: dict) -> tuple[bool, int]:
         quote = quotes.get(code) or {}
         price = as_float(quote.get("price"))
         ma20 = as_float(quote.get("ma20"))
-        change = as_float(quote.get("change_pct"))
-        if price and ma20 and price >= ma20 and change >= 0:
+        change = number(quote.get("change_pct"))
+        if price > 0 and ma20 > 0 and price >= ma20 and change is not None and change >= 0:
             recovered += 1
     return recovered >= 2, recovered
 

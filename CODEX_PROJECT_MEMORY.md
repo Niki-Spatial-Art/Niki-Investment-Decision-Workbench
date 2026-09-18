@@ -16,7 +16,7 @@ Niki Smart Tools is a local-first A-share/ETF research and decision-discipline w
 - New entries require: complete broad-market scan, fresh valid local broker snapshot, and fresh local A-share route snapshot.
 - Existing holdings can still be reviewed while the new-entry gate is blocked.
 - The market route is Tencent quote -> TDX/mootdx daily bars -> Tencent qfq daily bars -> AKShare fallback.
-- `requirements-a-stock.txt` pins the optional full route (`mootdx`, `akshare`, `pandas`, `stockstats`). The local `.venv-a-stock` has `mootdx==0.11.7` installed; radar and workbench launchers prefer it unless `A_STOCK_PYTHON` explicitly overrides it.
+- `requirements-a-stock.txt` pins the optional full route (`mootdx`, `akshare`, `pandas`, `stockstats`). The local `.venv-a-stock` was rebuilt with Python 3.12, `akshare==1.18.96`, `mootdx==0.11.7`, pandas 2.3.3 and stockstats 0.6.8; radar and workbench launchers prefer it unless `A_STOCK_PYTHON` explicitly overrides it.
 - The dashboard refresh action independently selects the same `A_STOCK_PYTHON` / `.venv-a-stock` route, so an older dashboard process cannot silently fall back to a Python environment without `mootdx`.
 - `data/broker_account_snapshots.json` is historical and may be malformed; use `data/broker_account_snapshots.local.json` for current manual snapshots.
 - `data/trade_journal.local.csv` is an optional ignored local ledger of user-confirmed fills. The dashboard reconciles its latest entry against the latest broker snapshot; it is never sent to GitHub or cloud email.
@@ -42,6 +42,16 @@ Niki Smart Tools is a local-first A-share/ETF research and decision-discipline w
 - `tools/review_aggregator.py` uses Asia/Shanghai for report dates and generated-time labels. It supports weekly, monthly, quarterly, and yearly outputs; daily trade reviews remain sourced from `reviews/daily/YYYY-MM-DD_trade_review.md`.
 
 ## Local Commands
+
+- Shared decision checks: `tools/decision_state.py`, version `2026-09-18.1`. Data/market/setup/account are separate. Intraday and post-close keep named strategy profiles rather than pretending to use identical trend rules.
+- `tools/signal_diagnostics.py` replaces overlapping close-to-close diagnostics with next-open entry, at least one trading-session delay to exit, independent non-overlapping horizons and daily marked equity. Still in-sample, not evidence of live Alpha. `clean_bars` must preserve OHLC for these diagnostics.
+- Dashboard, budget and evidence cards share `local_decision_state`; missing gates, stale/future timestamps, mixed account times and unknown sellable shares do not grant review permission. Historical snapshots are not current execution authority.
+- `tools/import_review_evidence.py` imports previously reconciled summaries into ignored `data/historical_review.local.json`, with coverage and SHA256 provenance. This is NOT a raw fill-ledger import. Missing journal rows must not be displayed as proof of zero historical trades.
+- Default radar refresh now uses latest local positions, three market proxies and up to three evidence cards; missing optional `portfolio.local.json` no longer aborts refresh.
+- Public notification event state is cached across Actions runs, with public audit artifacts retained 14 days. SMTP acceptance is not inbox delivery; cache loss can repeat a notification. No private holdings go into these artifacts.
+- Scheduled `sync_github.ps1` checks `.git/codex-maintenance.lock` and runs `tools/check_tracked_imports.py` to reject tracked callers depending on untracked local modules; unrelated scratch files are not automatically staged. A background `git add -u` sync produced partial commit `26329d5` during the September 18 edits. Use the maintenance marker during edits; remove only after the complete authorized changeset is verified on the remote.
+- `python tools/github_research_audit.py` reads configured upstream metadata/releases/READMEs into ignored `codex-work/exports/`. It never installs packages or executes upstream code. Learning decisions: `docs/github_learning_2026-09-18.md`.
+- `./check_workbench_local.ps1` runs offline tests, compile checks, timezone/privacy checks, local health and preview generation, with no network, email or publication.
 
 - `./run_a_stock_radar.ps1`
 - `./run_investment_workbench.ps1`

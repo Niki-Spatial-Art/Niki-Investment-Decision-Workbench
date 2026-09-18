@@ -1,7 +1,7 @@
 # Optional full A-share route used by tools/a_stock_market_data.py.
 # Tencent quote and Tencent qfq K-line remain available when these packages
 # are absent, so a temporary package failure does not block risk review.
-akshare==1.18.64
+akshare==1.18.96
 mootdx==0.11.7
 pandas>=2.2,<3.0
 stockstats>=0.6,<1.0
