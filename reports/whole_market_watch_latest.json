@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-09T22:39:54+08:00",
-  "as_of_date": "2026-10-09",
+  "generated_at": "2026-10-13T23:17:28+08:00",
+  "as_of_date": "2026-10-13",
   "a_share_trading_day": true,
   "skip_reason": "",
   "market_gate": {
@@ -10,11 +10,11 @@
       "data": {
         "ok": true,
         "reasons": [],
-        "scanned": 5572.0,
+        "scanned": 5562.0,
         "target": 5000.0,
-        "classified": 5363,
-        "unclassified": 209,
-        "coverage_ratio": 1.1144,
+        "classified": 5011,
+        "unclassified": 551,
+        "coverage_ratio": 1.1124,
         "note": "未分类行需核对停牌、无效字段或股票范围，不自动视为平盘。"
       },
       "market": {
@@ -32,111 +32,192 @@
     "benchmark": {
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
-      "price": 4.385,
-      "ma20": 4.540799999999999,
+      "price": 4.345,
+      "ma20": 4.51355,
       "above_ma20": false,
-      "return_20d": -5.107119671066885,
-      "as_of": "20261009",
+      "return_20d": -6.236512731981025,
+      "as_of": "20261013",
       "source": "Tencent Finance quote"
     },
     "breadth": {
-      "advancers": 3206,
-      "decliners": 2044,
-      "flat": 113,
-      "sample_rows": 5363,
-      "total_amount": 1896268294849.7202
+      "advancers": 2712,
+      "decliners": 2162,
+      "flat": 137,
+      "sample_rows": 5011,
+      "total_amount": 1653779585728.2847
     },
     "breadth_ok": true
   },
   "sector_funnel": {
     "research": [
       {
-        "name": "软件开发",
+        "name": "林业Ⅱ",
         "count": 3,
         "advancers": 3,
         "decliners": 0,
-        "amount": 2561296644.92,
-        "avg_pct": 7.12,
+        "amount": 2703349506.0399995,
+        "avg_pct": 4.95,
         "breadth_ratio": 1.0,
         "status": "重点研究"
       },
       {
-        "name": "贵金属",
-        "count": 3,
-        "advancers": 3,
+        "name": "元件",
+        "count": 61,
+        "advancers": 56,
+        "decliners": 5,
+        "amount": 99131339690.06001,
+        "avg_pct": 4.87,
+        "breadth_ratio": 0.918,
+        "status": "重点研究"
+      },
+      {
+        "name": "地面兵装Ⅱ",
+        "count": 12,
+        "advancers": 12,
         "decliners": 0,
-        "amount": 7256312018.61,
-        "avg_pct": 3.96,
+        "amount": 4861452809.669999,
+        "avg_pct": 4.54,
         "breadth_ratio": 1.0,
         "status": "重点研究"
       },
       {
-        "name": "工业金属",
-        "count": 3,
-        "advancers": 3,
+        "name": "航海装备Ⅱ",
+        "count": 10,
+        "advancers": 10,
         "decliners": 0,
-        "amount": 8930698278.99,
-        "avg_pct": 3.17,
+        "amount": 8552342553.07,
+        "avg_pct": 4.37,
         "breadth_ratio": 1.0,
         "status": "重点研究"
       },
       {
-        "name": "证券Ⅱ",
-        "count": 4,
-        "advancers": 4,
-        "decliners": 0,
-        "amount": 9250636560.15,
-        "avg_pct": 2.31,
-        "breadth_ratio": 1.0,
+        "name": "互联网电商",
+        "count": 16,
+        "advancers": 15,
+        "decliners": 1,
+        "amount": 4360485311.56,
+        "avg_pct": 3.53,
+        "breadth_ratio": 0.9375,
         "status": "重点研究"
       }
     ],
     "observe": [
       {
-        "name": "化学制药",
-        "count": 8,
-        "advancers": 4,
-        "decliners": 4,
-        "amount": 11403551107.039999,
-        "avg_pct": 1.42,
-        "breadth_ratio": 0.5,
+        "name": "炼化及贸易",
+        "count": 29,
+        "advancers": 21,
+        "decliners": 7,
+        "amount": 8932224592.64,
+        "avg_pct": 1.43,
+        "breadth_ratio": 0.7241,
         "status": "可继续观察"
       },
       {
-        "name": "铁路公路",
-        "count": 3,
-        "advancers": 2,
+        "name": "装修建材",
+        "count": 30,
+        "advancers": 18,
+        "decliners": 11,
+        "amount": 4434533791.589999,
+        "avg_pct": 1.4,
+        "breadth_ratio": 0.6,
+        "status": "可继续观察"
+      },
+      {
+        "name": "油气开采Ⅱ",
+        "count": 4,
+        "advancers": 4,
         "decliners": 0,
-        "amount": 2720209672.69,
-        "avg_pct": 1.2,
+        "amount": 1967211089.96,
+        "avg_pct": 1.36,
+        "breadth_ratio": 1.0,
+        "status": "可继续观察"
+      },
+      {
+        "name": "光学光电子",
+        "count": 89,
+        "advancers": 68,
+        "decliners": 18,
+        "amount": 32386299534.640003,
+        "avg_pct": 1.34,
+        "breadth_ratio": 0.764,
+        "status": "可继续观察"
+      },
+      {
+        "name": "贸易Ⅱ",
+        "count": 14,
+        "advancers": 11,
+        "decliners": 3,
+        "amount": 1100153571.01,
+        "avg_pct": 1.28,
+        "breadth_ratio": 0.7857,
+        "status": "可继续观察"
+      },
+      {
+        "name": "饮料乳品",
+        "count": 26,
+        "advancers": 19,
+        "decliners": 7,
+        "amount": 4719878768.029999,
+        "avg_pct": 1.27,
+        "breadth_ratio": 0.7308,
+        "status": "可继续观察"
+      },
+      {
+        "name": "水泥",
+        "count": 22,
+        "advancers": 13,
+        "decliners": 8,
+        "amount": 2904026032.55,
+        "avg_pct": 1.26,
+        "breadth_ratio": 0.5909,
+        "status": "可继续观察"
+      },
+      {
+        "name": "文娱用品",
+        "count": 21,
+        "advancers": 14,
+        "decliners": 7,
+        "amount": 2855718645.43,
+        "avg_pct": 1.26,
         "breadth_ratio": 0.6667,
         "status": "可继续观察"
       },
       {
-        "name": "消费电子",
-        "count": 4,
-        "advancers": 2,
-        "decliners": 2,
-        "amount": 12489141060.210001,
-        "avg_pct": 1.06,
-        "breadth_ratio": 0.5,
+        "name": "照明设备Ⅱ",
+        "count": 12,
+        "advancers": 8,
+        "decliners": 4,
+        "amount": 1381187980.72,
+        "avg_pct": 1.26,
+        "breadth_ratio": 0.6667,
         "status": "可继续观察"
       },
       {
-        "name": "未分类",
-        "count": 5165,
-        "advancers": 3124,
-        "decliners": 1932,
-        "amount": 1322534915712.0,
-        "avg_pct": 0.67,
-        "breadth_ratio": 0.6048,
+        "name": "农产品加工",
+        "count": 22,
+        "advancers": 17,
+        "decliners": 5,
+        "amount": 8386045635.590001,
+        "avg_pct": 1.2,
+        "breadth_ratio": 0.7727,
         "status": "可继续观察"
       }
     ],
-    "hot": []
+    "hot": [
+      {
+        "name": "黑色家电",
+        "count": 9,
+        "advancers": 4,
+        "decliners": 5,
+        "amount": 1435316832.78,
+        "avg_pct": 1.12,
+        "breadth_ratio": 0.4444,
+        "status": "价格强、证据待补"
+      }
+    ]
   },
   "market_scan": {
-    "scanned_count": 5572,
+    "scanned_count": 5562,
     "min_rows_target": 5000,
     "missing_estimate": 0,
     "sources": [
@@ -144,116 +225,149 @@
       "sina"
     ],
     "source_counts": {
-      "eastmoney": 200,
-      "sina": 5572
+      "eastmoney": 5562
     },
     "failures": [
       {
-        "page": 2,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=2&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 3,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=3&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 4,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=4&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 6,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=6&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 7,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=7&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 8,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=8&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
         "page": 57,
-        "source": "sina",
+        "source": "eastmoney",
         "error": "empty page"
       },
       {
         "page": 58,
-        "source": "sina",
+        "source": "eastmoney",
         "error": "empty page"
       }
     ],
-    "candidate_count": 354
+    "candidate_count": 271
   },
   "candidates": [
     {
-      "code": "688099",
-      "name": "晶晨股份",
+      "code": "688808",
+      "name": "联讯仪器",
       "board": "科创板",
-      "price": 99.71,
-      "pct_change": 5.44,
-      "amount": 3913551804.0,
-      "turnover": 9.22,
-      "volume_ratio": 3.6,
-      "intraday_pct": -0.29000000000000137,
-      "industry": "半导体",
-      "theme_layers": [],
+      "price": 1332.8,
+      "pct_change": 4.37,
+      "amount": 4776271339.0,
+      "turnover": 12.45,
+      "volume_ratio": 2.4,
+      "intraday_pct": 0.9696969696969759,
+      "industry": "通用设备",
+      "theme_layers": [
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连",
+        "光模块测试仪器、检测设备"
+      ],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 16.313142173969876,
+      "score": 16.202177982006067,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.44%，未超过追高过滤线",
-        "成交额 39.1亿",
-        "量比 3.60",
-        "换手 9.22%",
-        "开盘后变化 -0.29%，等待9:40确认",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：半导体"
+        "涨幅 4.37%，未超过追高过滤线",
+        "成交额 47.8亿",
+        "量比 2.40",
+        "换手 12.45%",
+        "开盘后仍上涨 0.97%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
+        "行业：通用设备"
       ]
     },
     {
-      "code": "002083",
-      "name": "孚日股份",
+      "code": "002463",
+      "name": "沪电股份",
       "board": "沪深主板",
-      "price": 10.19,
-      "pct_change": 4.84,
-      "amount": 931693495.33,
-      "turnover": 9.58,
-      "volume_ratio": 4.47,
-      "intraday_pct": 4.192229038854811,
-      "industry": "纺织制造",
-      "theme_layers": [],
+      "price": 115.9,
+      "pct_change": 5.73,
+      "amount": 6691281659.25,
+      "turnover": 3.11,
+      "volume_ratio": 1.56,
+      "intraday_pct": 10.401981329777099,
+      "industry": "元件",
+      "theme_layers": [
+        "华为昇腾/国产GPU算力",
+        "PCB、CCL、高速连接",
+        "铜箔、覆铜板、高速材料"
+      ],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 14.393459707143736,
+      "score": 15.053518622450092,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.84%，未超过追高过滤线",
-        "成交额 9.3亿",
-        "量比 4.47",
-        "换手 9.58%",
-        "开盘后仍上涨 4.19%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：纺织制造"
+        "涨幅 5.73%，未超过追高过滤线",
+        "成交额 66.9亿",
+        "量比 1.56",
+        "换手 3.11%",
+        "开盘后仍上涨 10.40%，承接较好",
+        "命中主题层：华为昇腾/国产GPU算力 / PCB、CCL、高速连接",
+        "行业：元件"
       ]
     },
     {
-      "code": "688313",
-      "name": "仕佳光子",
+      "code": "603083",
+      "name": "剑桥科技",
+      "board": "沪深主板",
+      "price": 186.11,
+      "pct_change": 5.82,
+      "amount": 3939692999.0,
+      "turnover": 7.99,
+      "volume_ratio": 1.09,
+      "intraday_pct": 10.137294354361481,
+      "industry": "通信设备",
+      "theme_layers": [
+        "光子计算、硅光、CPO、光互连"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.96342476139991,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.82%，未超过追高过滤线",
+        "成交额 39.4亿",
+        "量比 1.09",
+        "换手 7.99%",
+        "开盘后仍上涨 10.14%，承接较好",
+        "命中主题层：光子计算、硅光、CPO、光互连",
+        "行业：通信设备"
+      ]
+    },
+    {
+      "code": "688143",
+      "name": "长盈通",
       "board": "科创板",
-      "price": 131.97,
-      "pct_change": 3.42,
-      "amount": 3511825817.0,
-      "turnover": 5.99,
-      "volume_ratio": 1.45,
-      "intraday_pct": 5.576000000000003,
+      "price": 158.0,
+      "pct_change": 5.97,
+      "amount": 1693256601.0,
+      "turnover": 8.99,
+      "volume_ratio": 1.06,
+      "intraday_pct": 12.857142857142856,
+      "industry": "通信设备",
+      "theme_layers": [
+        "湖北光谷、光模块、存储、材料"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.381445554674956,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.97%，未超过追高过滤线",
+        "成交额 16.9亿",
+        "量比 1.06",
+        "换手 8.99%",
+        "开盘后仍上涨 12.86%，承接较好",
+        "命中主题层：湖北光谷、光模块、存储、材料",
+        "行业：通信设备"
+      ]
+    },
+    {
+      "code": "300620",
+      "name": "光库科技",
+      "board": "创业板",
+      "price": 251.41,
+      "pct_change": 5.1,
+      "amount": 2035220648.32,
+      "turnover": 3.4,
+      "volume_ratio": 1.1,
+      "intraday_pct": 9.308695652173915,
       "industry": "通信设备",
       "theme_layers": [
         "光子计算、硅光、CPO、光互连",
@@ -261,1222 +375,1214 @@
       ],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 13.543565934404514,
+      "score": 14.347223000245942,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.42%，未超过追高过滤线",
-        "成交额 35.1亿",
-        "量比 1.45",
-        "换手 5.99%",
-        "开盘后仍上涨 5.58%，承接较好",
+        "涨幅 5.10%，未超过追高过滤线",
+        "成交额 20.4亿",
+        "量比 1.10",
+        "换手 3.40%",
+        "开盘后仍上涨 9.31%，承接较好",
         "命中主题层：光子计算、硅光、CPO、光互连 / 量子计算/光子计算验证",
         "行业：通信设备"
       ]
     },
     {
-      "code": "002407",
-      "name": "多氟多",
-      "board": "沪深主板",
-      "price": 31.89,
-      "pct_change": 6.12,
-      "amount": 4481247222.8,
-      "turnover": 13.37,
-      "volume_ratio": 3.11,
-      "intraday_pct": 6.087824351297422,
-      "industry": "化学制品",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 13.470108955812691,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 6.12%，未超过追高过滤线",
-        "成交额 44.8亿",
-        "量比 3.11",
-        "换手 13.37%",
-        "开盘后仍上涨 6.09%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：化学制品"
-      ]
-    },
-    {
-      "code": "600026",
-      "name": "中远海能",
-      "board": "沪深主板",
-      "price": 23.49,
-      "pct_change": 3.85,
-      "amount": 3582837246.0,
-      "turnover": 4.07,
-      "volume_ratio": 2.96,
-      "intraday_pct": 1.820546163849146,
-      "industry": "航运港口",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 13.294710128867308,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.85%，未超过追高过滤线",
-        "成交额 35.8亿",
-        "量比 2.96",
-        "换手 4.07%",
-        "开盘后仍上涨 1.82%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：航运港口"
-      ]
-    },
-    {
-      "code": "300033",
-      "name": "同花顺",
-      "board": "创业板",
-      "price": 200.43,
-      "pct_change": 4.773,
-      "amount": 2562956474.0,
-      "turnover": 3.01343,
-      "volume_ratio": null,
-      "intraday_pct": 4.745231251633131,
-      "industry": "",
-      "theme_layers": [
-        "AI应用、办公软件、教育、内容、金融科技"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 13.007551744544392,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.77%，未超过追高过滤线",
-        "成交额 25.6亿",
-        "换手 3.01%",
-        "开盘后仍上涨 4.75%，承接较好",
-        "命中主题层：AI应用、办公软件、教育、内容、金融科技",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "300409",
-      "name": "道氏技术",
-      "board": "创业板",
-      "price": 18.23,
-      "pct_change": 4.95,
-      "amount": 896247246.28,
-      "turnover": 7.13,
-      "volume_ratio": 2.82,
-      "intraday_pct": 5.681159420289861,
-      "industry": "电池",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 12.934355668615895,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.95%，未超过追高过滤线",
-        "成交额 9.0亿",
-        "量比 2.82",
-        "换手 7.13%",
-        "开盘后仍上涨 5.68%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：电池"
-      ]
-    },
-    {
-      "code": "600988",
-      "name": "赤峰黄金",
-      "board": "沪深主板",
-      "price": 41.38,
-      "pct_change": 5.91,
-      "amount": 3097807476.0,
-      "turnover": 4.58,
-      "volume_ratio": 1.84,
-      "intraday_pct": 4.284274193548399,
-      "industry": "贵金属",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 12.925628939189478,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.91%，未超过追高过滤线",
-        "成交额 31.0亿",
-        "量比 1.84",
-        "换手 4.58%",
-        "开盘后仍上涨 4.28%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：贵金属"
-      ]
-    },
-    {
-      "code": "300489",
-      "name": "光智科技",
-      "board": "创业板",
-      "price": 278.82,
-      "pct_change": 6.02,
-      "amount": 4506745364.25,
-      "turnover": 11.98,
-      "volume_ratio": 1.24,
-      "intraday_pct": 8.89704733635368,
-      "industry": "光学光电子",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 12.671726041358195,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 6.02%，未超过追高过滤线",
-        "成交额 45.1亿",
-        "量比 1.24",
-        "换手 11.98%",
-        "开盘后仍上涨 8.90%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：光学光电子"
-      ]
-    },
-    {
-      "code": "688036",
-      "name": "传音控股",
+      "code": "688498",
+      "name": "源杰科技",
       "board": "科创板",
-      "price": 48.95,
-      "pct_change": 6.18,
-      "amount": 909929322.0,
-      "turnover": 1.65,
-      "volume_ratio": 1.76,
-      "intraday_pct": 6.4130434782608825,
-      "industry": "消费电子",
+      "price": 1163.0,
+      "pct_change": 3.64,
+      "amount": 7450509043.0,
+      "turnover": 5.28,
+      "volume_ratio": 1.43,
+      "intraday_pct": 10.43061292313534,
+      "industry": "半导体",
       "theme_layers": [
-        "端侧AI芯片、AI眼镜、终端入口"
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连",
+        "量子计算/光子计算验证"
       ],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 12.64151532034006,
+      "score": 14.334371892345851,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 6.18%，未超过追高过滤线",
-        "成交额 9.1亿",
-        "量比 1.76",
-        "换手 1.65%",
-        "开盘后仍上涨 6.41%，承接较好",
-        "命中主题层：端侧AI芯片、AI眼镜、终端入口",
-        "行业：消费电子"
+        "涨幅 3.64%，未超过追高过滤线",
+        "成交额 74.5亿",
+        "量比 1.43",
+        "换手 5.28%",
+        "开盘后仍上涨 10.43%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
+        "行业：半导体"
       ]
     },
     {
-      "code": "301536",
-      "name": "星宸科技",
-      "board": "创业板",
-      "price": 119.25,
-      "pct_change": 5.27,
-      "amount": 2321965863.0,
-      "turnover": 10.45997,
-      "volume_ratio": null,
-      "intraday_pct": 4.148471615720517,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.886502621558803,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.27%，未超过追高过滤线",
-        "成交额 23.2亿",
-        "换手 10.46%",
-        "开盘后仍上涨 4.15%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "601899",
-      "name": "紫金矿业",
+      "code": "002281",
+      "name": "光迅科技",
       "board": "沪深主板",
-      "price": 30.8,
-      "pct_change": 4.87,
-      "amount": 7241916951.0,
-      "turnover": 1.16,
-      "volume_ratio": 1.69,
-      "intraday_pct": 4.371399525584541,
-      "industry": "工业金属",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 11.618377832665717,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.87%，未超过追高过滤线",
-        "成交额 72.4亿",
-        "量比 1.69",
-        "换手 1.16%",
-        "开盘后仍上涨 4.37%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：工业金属"
-      ]
-    },
-    {
-      "code": "301487",
-      "name": "盟固利",
-      "board": "创业板",
-      "price": 18.18,
-      "pct_change": 4.18,
-      "amount": 968602107.32,
-      "turnover": 11.77,
-      "volume_ratio": 2.06,
-      "intraday_pct": 4.123711340206171,
-      "industry": "电池",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 11.471213455254635,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.18%，未超过追高过滤线",
-        "成交额 9.7亿",
-        "量比 2.06",
-        "换手 11.77%",
-        "开盘后仍上涨 4.12%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：电池"
-      ]
-    },
-    {
-      "code": "300750",
-      "name": "宁德时代",
-      "board": "创业板",
-      "price": 297.75,
-      "pct_change": 3.84,
-      "amount": 16028123330.46,
-      "turnover": 1.27,
-      "volume_ratio": 1.71,
-      "intraday_pct": 1.9691780821917915,
-      "industry": "电池",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 11.240845248474281,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.84%，未超过追高过滤线",
-        "成交额 160.3亿",
-        "量比 1.71",
-        "换手 1.27%",
-        "开盘后仍上涨 1.97%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：电池"
-      ]
-    },
-    {
-      "code": "600256",
-      "name": "广汇能源",
-      "board": "沪深主板",
-      "price": 7.2,
-      "pct_change": 5.882,
-      "amount": 2000957759.0,
-      "turnover": 4.36839,
-      "volume_ratio": null,
-      "intraday_pct": 1.9830028328611915,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.216134341213607,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.88%，未超过追高过滤线",
-        "成交额 20.0亿",
-        "换手 4.37%",
-        "开盘后仍上涨 1.98%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "603757",
-      "name": "大元泵业",
-      "board": "沪深主板",
-      "price": 72.78,
-      "pct_change": 4.55,
-      "amount": 878390440.0,
-      "turnover": 6.87,
-      "volume_ratio": 1.58,
-      "intraday_pct": 5.417149478563155,
-      "industry": "通用设备",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 11.15787520093826,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.55%，未超过追高过滤线",
-        "成交额 8.8亿",
-        "量比 1.58",
-        "换手 6.87%",
-        "开盘后仍上涨 5.42%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：通用设备"
-      ]
-    },
-    {
-      "code": "603626",
-      "name": "科森科技",
-      "board": "沪深主板",
-      "price": 24.49,
-      "pct_change": 5.333,
-      "amount": 1418877611.0,
-      "turnover": 10.78748,
-      "volume_ratio": null,
-      "intraday_pct": 6.4782608695652,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.103489871732847,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.33%，未超过追高过滤线",
-        "成交额 14.2亿",
-        "换手 10.79%",
-        "开盘后仍上涨 6.48%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002354",
-      "name": "天娱数科",
-      "board": "沪深主板",
-      "price": 7.37,
-      "pct_change": 5.286,
-      "amount": 1239714380.0,
-      "turnover": 10.70856,
-      "volume_ratio": null,
-      "intraday_pct": 5.135520684736106,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.986986134760725,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.29%，未超过追高过滤线",
-        "成交额 12.4亿",
-        "换手 10.71%",
-        "开盘后仍上涨 5.14%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002155",
-      "name": "湖南黄金",
-      "board": "沪深主板",
-      "price": 23.96,
-      "pct_change": 5.272,
-      "amount": 1472863397.0,
-      "turnover": 4.00793,
-      "volume_ratio": null,
-      "intraday_pct": 4.128639721860061,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.903281749862321,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.27%，未超过追高过滤线",
-        "成交额 14.7亿",
-        "换手 4.01%",
-        "开盘后仍上涨 4.13%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "300142",
-      "name": "沃森生物",
-      "board": "创业板",
-      "price": 14.75,
-      "pct_change": 4.759,
-      "amount": 2119854243.0,
-      "turnover": 9.40702,
-      "volume_ratio": null,
-      "intraday_pct": 4.758522727272729,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.763412001445246,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.76%，未超过追高过滤线",
-        "成交额 21.2亿",
-        "换手 9.41%",
-        "开盘后仍上涨 4.76%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688111",
-      "name": "金山办公",
-      "board": "科创板",
-      "price": 228.95,
-      "pct_change": 4.548,
-      "amount": 1320274877.0,
-      "turnover": 1.27419,
-      "volume_ratio": null,
-      "intraday_pct": 4.70114784835598,
-      "industry": "",
+      "price": 145.86,
+      "pct_change": 4.06,
+      "amount": 4917096627.71,
+      "turnover": 4.45,
+      "volume_ratio": 1.33,
+      "intraday_pct": 7.502948113207553,
+      "industry": "通信设备",
       "theme_layers": [
-        "AI应用、办公软件、教育、内容、金融科技"
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连",
+        "光模块测试仪器、检测设备",
+        "湖北光谷、光模块、存储、材料"
       ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.690057218679012,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.55%，未超过追高过滤线",
-        "成交额 13.2亿",
-        "换手 1.27%",
-        "开盘后仍上涨 4.70%，承接较好",
-        "命中主题层：AI应用、办公软件、教育、内容、金融科技",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "603236",
-      "name": "移远通信",
-      "board": "沪深主板",
-      "price": 72.2,
-      "pct_change": 5.417,
-      "amount": 1329209733.0,
-      "turnover": 4.67486,
-      "volume_ratio": null,
-      "intraday_pct": 6.176470588235294,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.648816025388966,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.42%，未超过追高过滤线",
-        "成交额 13.3亿",
-        "换手 4.67%",
-        "开盘后仍上涨 6.18%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002131",
-      "name": "利欧股份",
-      "board": "沪深主板",
-      "price": 4.3,
-      "pct_change": 4.37,
-      "amount": 985197919.83,
-      "turnover": 4.04,
-      "volume_ratio": 1.53,
-      "intraday_pct": 4.622871046228694,
-      "industry": "通用设备",
-      "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 10.567046972376952,
+      "score": 14.252917485715534,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.37%，未超过追高过滤线",
-        "成交额 9.9亿",
-        "量比 1.53",
-        "换手 4.04%",
-        "开盘后仍上涨 4.62%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：通用设备"
+        "涨幅 4.06%，未超过追高过滤线",
+        "成交额 49.2亿",
+        "量比 1.33",
+        "换手 4.45%",
+        "开盘后仍上涨 7.50%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
+        "行业：通信设备"
       ]
     },
     {
-      "code": "688820",
-      "name": "盛合晶微",
-      "board": "科创板",
-      "price": 111.55,
-      "pct_change": 5.286,
-      "amount": 1115935731.0,
-      "turnover": 6.15533,
-      "volume_ratio": null,
-      "intraday_pct": 7.2802462011925195,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.561777866845079,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.29%，未超过追高过滤线",
-        "成交额 11.2亿",
-        "换手 6.16%",
-        "开盘后仍上涨 7.28%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "605179",
-      "name": "一鸣食品",
+      "code": "600601",
+      "name": "方正科技",
       "board": "沪深主板",
-      "price": 25.54,
-      "pct_change": 5.494,
-      "amount": 684554005.0,
-      "turnover": 6.89402,
-      "volume_ratio": null,
-      "intraday_pct": 6.19542619542619,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.497718431304708,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.49%，未超过追高过滤线",
-        "成交额 6.8亿",
-        "换手 6.89%",
-        "开盘后仍上涨 6.20%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688017",
-      "name": "绿的谐波",
-      "board": "科创板",
-      "price": 263.76,
-      "pct_change": 3.08,
-      "amount": 1445620570.0,
-      "turnover": 3.10031,
-      "volume_ratio": null,
-      "intraday_pct": 3.4352941176470475,
-      "industry": "",
+      "price": 12.1,
+      "pct_change": 4.31,
+      "amount": 2671774049.0,
+      "turnover": 5.46,
+      "volume_ratio": 1.25,
+      "intraday_pct": 7.843137254901955,
+      "industry": "元件",
       "theme_layers": [
-        "机器人、减速器、伺服、传感器"
+        "PCB、CCL、高速连接"
       ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.481155138505217,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.094599454447028,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.08%，未超过追高过滤线",
-        "成交额 14.5亿",
-        "换手 3.10%",
-        "开盘后仍上涨 3.44%，承接较好",
-        "命中主题层：机器人、减速器、伺服、传感器",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "涨幅 4.31%，未超过追高过滤线",
+        "成交额 26.7亿",
+        "量比 1.25",
+        "换手 5.46%",
+        "开盘后仍上涨 7.84%，承接较好",
+        "命中主题层：PCB、CCL、高速连接",
+        "行业：元件"
       ]
     },
     {
-      "code": "603588",
-      "name": "高能环境",
+      "code": "002902",
+      "name": "铭普光磁",
       "board": "沪深主板",
-      "price": 16.59,
-      "pct_change": 5.4,
-      "amount": 1012911744.0,
-      "turnover": 4.15555,
-      "volume_ratio": null,
-      "intraday_pct": 5.400254129606097,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.314475713003734,
+      "price": 23.73,
+      "pct_change": 4.86,
+      "amount": 421320038.46,
+      "turnover": 9.84,
+      "volume_ratio": 1.38,
+      "intraday_pct": 7.8636363636363615,
+      "industry": "通信设备",
+      "theme_layers": [
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 13.661224230314687,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.40%，未超过追高过滤线",
-        "成交额 10.1亿",
-        "换手 4.16%",
-        "开盘后仍上涨 5.40%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "涨幅 4.86%，未超过追高过滤线",
+        "成交额 4.2亿",
+        "量比 1.38",
+        "换手 9.84%",
+        "开盘后仍上涨 7.86%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
+        "行业：通信设备"
       ]
     },
     {
       "code": "002428",
       "name": "云南锗业",
       "board": "沪深主板",
-      "price": 87.86,
-      "pct_change": 2.51,
-      "amount": 4432673496.71,
-      "turnover": 8.04,
-      "volume_ratio": 1.52,
-      "intraday_pct": 5.664461815995181,
+      "price": 85.62,
+      "pct_change": 6.1,
+      "amount": 5097783087.52,
+      "turnover": 9.38,
+      "volume_ratio": 1.61,
+      "intraday_pct": 12.657894736842113,
       "industry": "小金属",
       "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 10.225331486149596,
+      "score": 13.244762704284032,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.51%，未超过追高过滤线",
-        "成交额 44.3亿",
-        "量比 1.52",
-        "换手 8.04%",
-        "开盘后仍上涨 5.66%，承接较好",
+        "涨幅 6.10%，未超过追高过滤线",
+        "成交额 51.0亿",
+        "量比 1.61",
+        "换手 9.38%",
+        "开盘后仍上涨 12.66%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "行业：小金属"
       ]
     },
     {
-      "code": "600521",
-      "name": "华海药业",
-      "board": "沪深主板",
-      "price": 17.45,
-      "pct_change": 4.805,
-      "amount": 1238170946.0,
-      "turnover": 4.82213,
-      "volume_ratio": null,
-      "intraday_pct": 4.054859868813354,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.163169006217549,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.80%，未超过追高过滤线",
-        "成交额 12.4亿",
-        "换手 4.82%",
-        "开盘后仍上涨 4.05%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "300059",
-      "name": "东方财富",
+      "code": "300315",
+      "name": "掌趣科技",
       "board": "创业板",
-      "price": 17.95,
-      "pct_change": 3.88,
-      "amount": 4583008432.15,
-      "turnover": 1.94,
-      "volume_ratio": 1.88,
-      "intraday_pct": 4.299825682742586,
-      "industry": "证券Ⅱ",
+      "price": 4.21,
+      "pct_change": 4.47,
+      "amount": 797525400.79,
+      "turnover": 7.05,
+      "volume_ratio": 3.71,
+      "intraday_pct": 5.513784461152871,
+      "industry": "游戏Ⅱ",
       "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 10.149301312583766,
+      "score": 13.134989048028363,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.88%，未超过追高过滤线",
-        "成交额 45.8亿",
-        "量比 1.88",
-        "换手 1.94%",
-        "开盘后仍上涨 4.30%，承接较好",
+        "涨幅 4.47%，未超过追高过滤线",
+        "成交额 8.0亿",
+        "量比 3.71",
+        "换手 7.05%",
+        "开盘后仍上涨 5.51%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：证券Ⅱ"
-      ]
-    },
-    {
-      "code": "600458",
-      "name": "时代新材",
-      "board": "沪深主板",
-      "price": 11.27,
-      "pct_change": 4.74,
-      "amount": 463490730.0,
-      "turnover": 4.78662,
-      "volume_ratio": null,
-      "intraday_pct": 1.7148014440433235,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.127666183074954,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.74%，未超过追高过滤线",
-        "成交额 4.6亿",
-        "换手 4.79%",
-        "开盘后仍上涨 1.71%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002594",
-      "name": "比亚迪",
-      "board": "沪深主板",
-      "price": 84.95,
-      "pct_change": 3.95,
-      "amount": 3370036570.9,
-      "turnover": 1.15,
-      "volume_ratio": 1.92,
-      "intraday_pct": 3.471376370280166,
-      "industry": "乘用车",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 10.073770206483857,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.95%，未超过追高过滤线",
-        "成交额 33.7亿",
-        "量比 1.92",
-        "换手 1.15%",
-        "开盘后仍上涨 3.47%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：乘用车"
-      ]
-    },
-    {
-      "code": "300426",
-      "name": "华智数媒",
-      "board": "创业板",
-      "price": 8.2,
-      "pct_change": 5.263,
-      "amount": 305465073.0,
-      "turnover": 9.86417,
-      "volume_ratio": null,
-      "intraday_pct": 4.3256997455470625,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.044958293320216,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.26%，未超过追高过滤线",
-        "成交额 3.1亿",
-        "换手 9.86%",
-        "开盘后仍上涨 4.33%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002812",
-      "name": "恩捷股份",
-      "board": "沪深主板",
-      "price": 47.85,
-      "pct_change": 4.385,
-      "amount": 2202451267.0,
-      "turnover": 5.66164,
-      "volume_ratio": null,
-      "intraday_pct": 4.9342105263157965,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.99705861536487,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.38%，未超过追高过滤线",
-        "成交额 22.0亿",
-        "换手 5.66%",
-        "开盘后仍上涨 4.93%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "003040",
-      "name": "楚天龙",
-      "board": "沪深主板",
-      "price": 15.23,
-      "pct_change": 4.818,
-      "amount": 736321946.0,
-      "turnover": 10.92901,
-      "volume_ratio": null,
-      "intraday_pct": 4.673539518900349,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.970793989199981,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.82%，未超过追高过滤线",
-        "成交额 7.4亿",
-        "换手 10.93%",
-        "开盘后仍上涨 4.67%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000676",
-      "name": "智度股份",
-      "board": "沪深主板",
-      "price": 6.75,
-      "pct_change": 5.469,
-      "amount": 460132186.0,
-      "turnover": 5.61273,
-      "volume_ratio": null,
-      "intraday_pct": 5.799373040752354,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.930474725987533,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.47%，未超过追高过滤线",
-        "成交额 4.6亿",
-        "换手 5.61%",
-        "开盘后仍上涨 5.80%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002246",
-      "name": "北化股份",
-      "board": "沪深主板",
-      "price": 25.75,
-      "pct_change": 5.059,
-      "amount": 785598491.0,
-      "turnover": 5.7402,
-      "volume_ratio": null,
-      "intraday_pct": 5.6193601312551245,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.92223128114892,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.06%，未超过追高过滤线",
-        "成交额 7.9亿",
-        "换手 5.74%",
-        "开盘后仍上涨 5.62%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：游戏Ⅱ"
       ]
     },
     {
       "code": "300377",
       "name": "赢时胜",
       "board": "创业板",
-      "price": 13.5,
-      "pct_change": 5.469,
-      "amount": 462097043.0,
-      "turnover": 5.04696,
-      "volume_ratio": null,
-      "intraday_pct": 6.132075471698117,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.849310378877306,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.47%，未超过追高过滤线",
-        "成交额 4.6亿",
-        "换手 5.05%",
-        "开盘后仍上涨 6.13%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688143",
-      "name": "长盈通",
-      "board": "科创板",
-      "price": 163.03,
-      "pct_change": 1.709,
-      "amount": 1744634943.0,
-      "turnover": 8.77804,
-      "volume_ratio": null,
-      "intraday_pct": 4.506410256410254,
-      "industry": "",
-      "theme_layers": [
-        "湖北光谷、光模块、存储、材料"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.734209133276188,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 1.71%，未超过追高过滤线",
-        "成交额 17.4亿",
-        "换手 8.78%",
-        "开盘后仍上涨 4.51%，承接较好",
-        "命中主题层：湖北光谷、光模块、存储、材料",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000603",
-      "name": "盛达资源",
-      "board": "沪深主板",
-      "price": 30.52,
-      "pct_change": 3.18,
-      "amount": 986524152.61,
-      "turnover": 4.95,
-      "volume_ratio": 1.5,
-      "intraday_pct": 2.0053475935828846,
-      "industry": "贵金属",
+      "price": 14.04,
+      "pct_change": 4.85,
+      "amount": 863188333.37,
+      "turnover": 8.74,
+      "volume_ratio": 3.04,
+      "intraday_pct": 5.722891566265065,
+      "industry": "软件开发",
       "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 9.706485559637132,
+      "score": 13.132211123805519,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.18%，未超过追高过滤线",
-        "成交额 9.9亿",
-        "量比 1.50",
-        "换手 4.95%",
-        "开盘后仍上涨 2.01%，承接较好",
+        "涨幅 4.85%，未超过追高过滤线",
+        "成交额 8.6亿",
+        "量比 3.04",
+        "换手 8.74%",
+        "开盘后仍上涨 5.72%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：贵金属"
+        "行业：软件开发"
       ]
     },
     {
-      "code": "603636",
-      "name": "南威软件",
+      "code": "002961",
+      "name": "瑞达期货",
       "board": "沪深主板",
-      "price": 7.85,
-      "pct_change": 5.228,
-      "amount": 331701970.0,
-      "turnover": 7.5514,
-      "volume_ratio": null,
-      "intraday_pct": 5.087014725568939,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.701425404610804,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.23%，未超过追高过滤线",
-        "成交额 3.3亿",
-        "换手 7.55%",
-        "开盘后仍上涨 5.09%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000506",
-      "name": "招金黄金",
-      "board": "沪深主板",
-      "price": 17.06,
-      "pct_change": 3.834,
-      "amount": 1168255212.0,
-      "turnover": 7.50054,
-      "volume_ratio": null,
-      "intraday_pct": 2.2168963451168144,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.693944890272343,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.83%，未超过追高过滤线",
-        "成交额 11.7亿",
-        "换手 7.50%",
-        "开盘后仍上涨 2.22%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600547",
-      "name": "山东黄金",
-      "board": "沪深主板",
-      "price": 27.17,
-      "pct_change": 2.8,
-      "amount": 3171980390.0,
-      "turnover": 3.26,
-      "volume_ratio": 1.21,
-      "intraday_pct": 1.874765654293209,
-      "industry": "贵金属",
+      "price": 14.36,
+      "pct_change": 5.9,
+      "amount": 654448787.93,
+      "turnover": 6.4,
+      "volume_ratio": 3.53,
+      "intraday_pct": 7.324364723467847,
+      "industry": "多元金融",
       "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 9.624884597001593,
+      "score": 12.901751335418794,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.80%，未超过追高过滤线",
-        "成交额 31.7亿",
-        "量比 1.21",
-        "换手 3.26%",
-        "开盘后仍上涨 1.87%，承接较好",
+        "涨幅 5.90%，未超过追高过滤线",
+        "成交额 6.5亿",
+        "量比 3.53",
+        "换手 6.40%",
+        "开盘后仍上涨 7.32%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：贵金属"
+        "行业：多元金融"
       ]
     },
     {
-      "code": "000850",
-      "name": "华茂股份",
+      "code": "002086",
+      "name": "东方海洋",
       "board": "沪深主板",
-      "price": 4.23,
-      "pct_change": 4.963,
-      "amount": 366360615.0,
-      "turnover": 9.46941,
-      "volume_ratio": null,
-      "intraday_pct": 4.702970297029707,
-      "industry": "",
+      "price": 2.15,
+      "pct_change": 5.91,
+      "amount": 360622254.05,
+      "turnover": 10.61,
+      "volume_ratio": 3.64,
+      "intraday_pct": 6.435643564356441,
+      "industry": "农产品加工",
       "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.58267314189796,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.746105047173765,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.96%，未超过追高过滤线",
+        "涨幅 5.91%，未超过追高过滤线",
+        "成交额 3.6亿",
+        "量比 3.64",
+        "换手 10.61%",
+        "开盘后仍上涨 6.44%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：农产品加工"
+      ]
+    },
+    {
+      "code": "603661",
+      "name": "恒林股份",
+      "board": "沪深主板",
+      "price": 35.16,
+      "pct_change": 4.24,
+      "amount": 369014513.0,
+      "turnover": 7.5,
+      "volume_ratio": 4.62,
+      "intraday_pct": 5.712567648827416,
+      "industry": "家居用品",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.547086893791672,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.24%，未超过追高过滤线",
         "成交额 3.7亿",
-        "换手 9.47%",
-        "开盘后仍上涨 4.70%，承接较好",
+        "量比 4.62",
+        "换手 7.50%",
+        "开盘后仍上涨 5.71%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：家居用品"
       ]
     },
     {
-      "code": "002768",
-      "name": "国恩股份",
+      "code": "603690",
+      "name": "至纯科技",
       "board": "沪深主板",
-      "price": 70.64,
-      "pct_change": 3.88,
-      "amount": 837061537.47,
-      "turnover": 4.85,
-      "volume_ratio": 1.14,
-      "intraday_pct": 4.34268833087148,
-      "industry": "塑料",
-      "theme_layers": [],
-      "data_source": "eastmoney",
-      "data_quality": "full",
-      "score": 9.569014773576136,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.88%，未超过追高过滤线",
-        "成交额 8.4亿",
-        "量比 1.14",
-        "换手 4.85%",
-        "开盘后仍上涨 4.34%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "行业：塑料"
-      ]
-    },
-    {
-      "code": "002400",
-      "name": "省广集团",
-      "board": "沪深主板",
-      "price": 6.55,
-      "pct_change": 5.136,
-      "amount": 530506400.0,
-      "turnover": 4.81742,
-      "volume_ratio": null,
-      "intraday_pct": 5.305466237942125,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.53519425514736,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.14%，未超过追高过滤线",
-        "成交额 5.3亿",
-        "换手 4.82%",
-        "开盘后仍上涨 5.31%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600699",
-      "name": "均胜电子",
-      "board": "沪深主板",
-      "price": 22.0,
-      "pct_change": 4.216,
-      "amount": 1644130532.0,
-      "turnover": 5.50646,
-      "volume_ratio": null,
-      "intraday_pct": 7.843137254901977,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.517041588788711,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.22%，未超过追高过滤线",
-        "成交额 16.4亿",
-        "换手 5.51%",
-        "开盘后仍上涨 7.84%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688981",
-      "name": "中芯国际",
-      "board": "科创板",
-      "price": 108.42,
-      "pct_change": 1.25,
-      "amount": 4868002924.0,
-      "turnover": 2.3,
-      "volume_ratio": 1.49,
-      "intraday_pct": 2.2830188679245245,
+      "price": 22.89,
+      "pct_change": 4.47,
+      "amount": 1032810633.0,
+      "turnover": 11.99,
+      "volume_ratio": 2.58,
+      "intraday_pct": 8.073654390934859,
       "industry": "半导体",
-      "theme_layers": [
-        "国产CPU、信创服务器、计算底座",
-        "晶圆制造、先进制程、国产制造验证"
-      ],
+      "theme_layers": [],
       "data_source": "eastmoney",
       "data_quality": "full",
-      "score": 9.509701660840246,
+      "score": 12.372041400866562,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 1.25%，未超过追高过滤线",
-        "成交额 48.7亿",
-        "量比 1.49",
-        "换手 2.30%",
-        "开盘后仍上涨 2.28%，承接较好",
-        "命中主题层：国产CPU、信创服务器、计算底座 / 晶圆制造、先进制程、国产制造验证",
+        "涨幅 4.47%，未超过追高过滤线",
+        "成交额 10.3亿",
+        "量比 2.58",
+        "换手 11.99%",
+        "开盘后仍上涨 8.07%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
         "行业：半导体"
       ]
     },
     {
-      "code": "002164",
-      "name": "宁波东力",
+      "code": "002300",
+      "name": "太阳电缆",
       "board": "沪深主板",
-      "price": 13.58,
-      "pct_change": 5.846,
-      "amount": 600459341.0,
-      "turnover": 9.55694,
-      "volume_ratio": null,
-      "intraday_pct": 6.593406593406592,
-      "industry": "",
+      "price": 7.97,
+      "pct_change": 5.28,
+      "amount": 599357199.67,
+      "turnover": 10.48,
+      "volume_ratio": 2.06,
+      "intraday_pct": 8.435374149659868,
+      "industry": "电网设备",
       "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.472167210564725,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.351371453159148,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.85%，未超过追高过滤线",
+        "涨幅 5.28%，未超过追高过滤线",
         "成交额 6.0亿",
-        "换手 9.56%",
-        "开盘后仍上涨 6.59%，承接较好",
+        "量比 2.06",
+        "换手 10.48%",
+        "开盘后仍上涨 8.44%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：电网设备"
       ]
     },
     {
-      "code": "300613",
-      "name": "富瀚微",
+      "code": "301069",
+      "name": "凯盛新材",
       "board": "创业板",
-      "price": 75.18,
-      "pct_change": 3.854,
-      "amount": 1545503075.0,
-      "turnover": 9.49899,
-      "volume_ratio": null,
-      "intraday_pct": 3.696551724137942,
-      "industry": "",
+      "price": 16.9,
+      "pct_change": 4.32,
+      "amount": 337374463.47,
+      "turnover": 4.72,
+      "volume_ratio": 4.21,
+      "intraday_pct": 3.872157344806393,
+      "industry": "化学原料",
       "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.463721622932388,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.321063919977329,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.85%，未超过追高过滤线",
-        "成交额 15.5亿",
-        "换手 9.50%",
-        "开盘后仍上涨 3.70%，承接较好",
+        "涨幅 4.32%，未超过追高过滤线",
+        "成交额 3.4亿",
+        "量比 4.21",
+        "换手 4.72%",
+        "开盘后仍上涨 3.87%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：化学原料"
+      ]
+    },
+    {
+      "code": "002389",
+      "name": "航天彩虹",
+      "board": "沪深主板",
+      "price": 18.43,
+      "pct_change": 4.84,
+      "amount": 455764766.48,
+      "turnover": 2.55,
+      "volume_ratio": 1.97,
+      "intraday_pct": 5.676605504587151,
+      "industry": "航空装备Ⅱ",
+      "theme_layers": [
+        "低空经济、无人机、eVTOL、空管"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.277981496823601,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.84%，未超过追高过滤线",
+        "成交额 4.6亿",
+        "量比 1.97",
+        "换手 2.55%",
+        "开盘后仍上涨 5.68%，承接较好",
+        "命中主题层：低空经济、无人机、eVTOL、空管",
+        "行业：航空装备Ⅱ"
+      ]
+    },
+    {
+      "code": "688072",
+      "name": "拓荆科技",
+      "board": "科创板",
+      "price": 654.23,
+      "pct_change": 3.35,
+      "amount": 4775633710.0,
+      "turnover": 2.6,
+      "volume_ratio": 1.7,
+      "intraday_pct": 7.786216781719024,
+      "industry": "半导体",
+      "theme_layers": [
+        "长鑫存储、国产DRAM、HBM产业链",
+        "半导体设备、材料、封测",
+        "晶圆制造、先进制程、国产制造验证",
+        "OLED 8.6代线、大平板设备、泛半导体设备"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.26806201822494,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.35%，未超过追高过滤线",
+        "成交额 47.8亿",
+        "量比 1.70",
+        "换手 2.60%",
+        "开盘后仍上涨 7.79%，承接较好",
+        "命中主题层：长鑫存储、国产DRAM、HBM产业链 / 半导体设备、材料、封测",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "603228",
+      "name": "景旺电子",
+      "board": "沪深主板",
+      "price": 98.51,
+      "pct_change": 2.52,
+      "amount": 4126910219.0,
+      "turnover": 4.39,
+      "volume_ratio": 1.31,
+      "intraday_pct": 12.944278835129563,
+      "industry": "元件",
+      "theme_layers": [
+        "PCB、CCL、高速连接",
+        "铜箔、覆铜板、高速材料"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.223750041793114,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 2.52%，未超过追高过滤线",
+        "成交额 41.3亿",
+        "量比 1.31",
+        "换手 4.39%",
+        "开盘后仍上涨 12.94%，承接较好",
+        "命中主题层：PCB、CCL、高速连接 / 铜箔、覆铜板、高速材料",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "688361",
+      "name": "中科飞测",
+      "board": "科创板",
+      "price": 366.51,
+      "pct_change": 6.04,
+      "amount": 3858374729.0,
+      "turnover": 3.12,
+      "volume_ratio": 1.6,
+      "intraday_pct": 8.229978738483346,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.188808808893485,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 6.04%，未超过追高过滤线",
+        "成交额 38.6亿",
+        "量比 1.60",
+        "换手 3.12%",
+        "开盘后仍上涨 8.23%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "300131",
+      "name": "英唐智控",
+      "board": "创业板",
+      "price": 14.31,
+      "pct_change": 6.0,
+      "amount": 1175994021.7,
+      "turnover": 8.03,
+      "volume_ratio": 1.9,
+      "intraday_pct": 11.796874999999996,
+      "industry": "其他电子Ⅱ",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.140810227920204,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 6.00%，未超过追高过滤线",
+        "成交额 11.8亿",
+        "量比 1.90",
+        "换手 8.03%",
+        "开盘后仍上涨 11.80%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：其他电子Ⅱ"
+      ]
+    },
+    {
+      "code": "001309",
+      "name": "德明利",
+      "board": "沪深主板",
+      "price": 233.78,
+      "pct_change": 2.3,
+      "amount": 2915351885.32,
+      "turnover": 5.47,
+      "volume_ratio": 1.61,
+      "intraday_pct": 5.306306306306308,
+      "industry": "半导体",
+      "theme_layers": [
+        "存储、HBM、企业级SSD"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.119881963904993,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 2.30%，未超过追高过滤线",
+        "成交额 29.2亿",
+        "量比 1.61",
+        "换手 5.47%",
+        "开盘后仍上涨 5.31%，承接较好",
+        "命中主题层：存储、HBM、企业级SSD",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "002655",
+      "name": "共达电声",
+      "board": "沪深主板",
+      "price": 33.21,
+      "pct_change": 4.93,
+      "amount": 1088727807.23,
+      "turnover": 9.33,
+      "volume_ratio": 1.57,
+      "intraday_pct": 9.243421052631584,
+      "industry": "消费电子",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.959838630780864,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.93%，未超过追高过滤线",
+        "成交额 10.9亿",
+        "量比 1.57",
+        "换手 9.33%",
+        "开盘后仍上涨 9.24%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：消费电子"
+      ]
+    },
+    {
+      "code": "603101",
+      "name": "汇嘉时代",
+      "board": "沪深主板",
+      "price": 8.08,
+      "pct_change": 4.53,
+      "amount": 395607637.0,
+      "turnover": 10.57,
+      "volume_ratio": 2.88,
+      "intraday_pct": 5.897771952817821,
+      "industry": "一般零售",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.910529333671033,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.53%，未超过追高过滤线",
+        "成交额 4.0亿",
+        "量比 2.88",
+        "换手 10.57%",
+        "开盘后仍上涨 5.90%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：一般零售"
+      ]
+    },
+    {
+      "code": "600330",
+      "name": "天通股份",
+      "board": "沪深主板",
+      "price": 23.38,
+      "pct_change": 4.84,
+      "amount": 1935160346.0,
+      "turnover": 7.0,
+      "volume_ratio": 1.21,
+      "intraday_pct": 9.662288930581608,
+      "industry": "电子化学品Ⅱ",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.841433912351064,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.84%，未超过追高过滤线",
+        "成交额 19.4亿",
+        "量比 1.21",
+        "换手 7.00%",
+        "开盘后仍上涨 9.66%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：电子化学品Ⅱ"
+      ]
+    },
+    {
+      "code": "002674",
+      "name": "兴业科技",
+      "board": "沪深主板",
+      "price": 21.71,
+      "pct_change": 4.73,
+      "amount": 541244532.0,
+      "turnover": 8.77,
+      "volume_ratio": 2.19,
+      "intraday_pct": 6.7879980324643485,
+      "industry": "纺织制造",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.732787043723405,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.73%，未超过追高过滤线",
+        "成交额 5.4亿",
+        "量比 2.19",
+        "换手 8.77%",
+        "开盘后仍上涨 6.79%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：纺织制造"
+      ]
+    },
+    {
+      "code": "600418",
+      "name": "江淮汽车",
+      "board": "沪深主板",
+      "price": 23.09,
+      "pct_change": 4.72,
+      "amount": 6440907012.0,
+      "turnover": 12.47,
+      "volume_ratio": 1.25,
+      "intraday_pct": 6.947660954145429,
+      "industry": "商用车",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.731894058499122,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.72%，未超过追高过滤线",
+        "成交额 64.4亿",
+        "量比 1.25",
+        "换手 12.47%",
+        "开盘后仍上涨 6.95%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：商用车"
+      ]
+    },
+    {
+      "code": "300903",
+      "name": "科翔股份",
+      "board": "创业板",
+      "price": 89.12,
+      "pct_change": 5.87,
+      "amount": 2086750853.41,
+      "turnover": 6.95,
+      "volume_ratio": 1.16,
+      "intraday_pct": 9.997531473710207,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.585441199569924,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.87%，未超过追高过滤线",
+        "成交额 20.9亿",
+        "量比 1.16",
+        "换手 6.95%",
+        "开盘后仍上涨 10.00%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "603936",
+      "name": "博敏电子",
+      "board": "沪深主板",
+      "price": 18.49,
+      "pct_change": 6.14,
+      "amount": 992924156.0,
+      "turnover": 8.82,
+      "volume_ratio": 1.31,
+      "intraday_pct": 10.718562874251504,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.571832152804147,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 6.14%，未超过追高过滤线",
+        "成交额 9.9亿",
+        "量比 1.31",
+        "换手 8.82%",
+        "开盘后仍上涨 10.72%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "000811",
+      "name": "冰轮环境",
+      "board": "沪深主板",
+      "price": 36.51,
+      "pct_change": 4.34,
+      "amount": 1895157783.42,
+      "turnover": 5.39,
+      "volume_ratio": 1.8,
+      "intraday_pct": 7.319223985890644,
+      "industry": "通用设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.571790746936438,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.34%，未超过追高过滤线",
+        "成交额 19.0亿",
+        "量比 1.80",
+        "换手 5.39%",
+        "开盘后仍上涨 7.32%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：通用设备"
+      ]
+    },
+    {
+      "code": "301248",
+      "name": "杰创智能",
+      "board": "创业板",
+      "price": 54.25,
+      "pct_change": 5.44,
+      "amount": 350379349.47,
+      "turnover": 5.86,
+      "volume_ratio": 1.77,
+      "intraday_pct": 7.917246866918637,
+      "industry": "IT服务Ⅱ",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.46607700392182,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.44%，未超过追高过滤线",
+        "成交额 3.5亿",
+        "量比 1.77",
+        "换手 5.86%",
+        "开盘后仍上涨 7.92%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：IT服务Ⅱ"
+      ]
+    },
+    {
+      "code": "300657",
+      "name": "弘信电子",
+      "board": "创业板",
+      "price": 33.27,
+      "pct_change": 4.52,
+      "amount": 1003377849.57,
+      "turnover": 6.39,
+      "volume_ratio": 1.69,
+      "intraday_pct": 4.0337711069418525,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.463930432506432,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.52%，未超过追高过滤线",
+        "成交额 10.0亿",
+        "量比 1.69",
+        "换手 6.39%",
+        "开盘后仍上涨 4.03%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "600556",
+      "name": "天下秀",
+      "board": "沪深主板",
+      "price": 5.02,
+      "pct_change": 4.58,
+      "amount": 520999434.0,
+      "turnover": 5.82,
+      "volume_ratio": 2.45,
+      "intraday_pct": 5.6842105263157805,
+      "industry": "广告营销",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.452674502987492,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.58%，未超过追高过滤线",
+        "成交额 5.2亿",
+        "量比 2.45",
+        "换手 5.82%",
+        "开盘后仍上涨 5.68%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：广告营销"
+      ]
+    },
+    {
+      "code": "002425",
+      "name": "凯撒文化",
+      "board": "沪深主板",
+      "price": 3.38,
+      "pct_change": 4.32,
+      "amount": 326587117.39,
+      "turnover": 10.57,
+      "volume_ratio": 2.83,
+      "intraday_pct": 6.624605678233442,
+      "industry": "游戏Ⅱ",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.441998098971649,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.32%，未超过追高过滤线",
+        "成交额 3.3亿",
+        "量比 2.83",
+        "换手 10.57%",
+        "开盘后仍上涨 6.62%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：游戏Ⅱ"
+      ]
+    },
+    {
+      "code": "600641",
+      "name": "先导基电",
+      "board": "沪深主板",
+      "price": 45.33,
+      "pct_change": 4.11,
+      "amount": 3296789229.0,
+      "turnover": 8.02,
+      "volume_ratio": 1.07,
+      "intraday_pct": 8.940158615717376,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.43818236525491,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.11%，未超过追高过滤线",
+        "成交额 33.0亿",
+        "量比 1.07",
+        "换手 8.02%",
+        "开盘后仍上涨 8.94%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "002636",
+      "name": "金安国纪",
+      "board": "沪深主板",
+      "price": 67.18,
+      "pct_change": 4.16,
+      "amount": 3104131606.23,
+      "turnover": 6.52,
+      "volume_ratio": 1.24,
+      "intraday_pct": 11.966666666666681,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.393880251620647,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.16%，未超过追高过滤线",
+        "成交额 31.0亿",
+        "量比 1.24",
+        "换手 6.52%",
+        "开盘后仍上涨 11.97%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "603002",
+      "name": "宏昌电子",
+      "board": "沪深主板",
+      "price": 16.65,
+      "pct_change": 4.65,
+      "amount": 1538633692.0,
+      "turnover": 8.62,
+      "volume_ratio": 1.01,
+      "intraday_pct": 11.970410221923334,
+      "industry": "电子化学品Ⅱ",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.36427047620798,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.65%，未超过追高过滤线",
+        "成交额 15.4亿",
+        "量比 1.01",
+        "换手 8.62%",
+        "开盘后仍上涨 11.97%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：电子化学品Ⅱ"
+      ]
+    },
+    {
+      "code": "600577",
+      "name": "精达股份",
+      "board": "沪深主板",
+      "price": 8.89,
+      "pct_change": 5.71,
+      "amount": 1184729179.0,
+      "turnover": 6.07,
+      "volume_ratio": 1.75,
+      "intraday_pct": 7.757575757575763,
+      "industry": "电网设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.3597381698771,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.71%，未超过追高过滤线",
+        "成交额 11.8亿",
+        "量比 1.75",
+        "换手 6.07%",
+        "开盘后仍上涨 7.76%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：电网设备"
+      ]
+    },
+    {
+      "code": "600256",
+      "name": "广汇能源",
+      "board": "沪深主板",
+      "price": 7.31,
+      "pct_change": 5.64,
+      "amount": 1948710474.0,
+      "turnover": 4.2,
+      "volume_ratio": 1.54,
+      "intraday_pct": 5.788712011577424,
+      "industry": "煤炭开采",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.217494638846363,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.64%，未超过追高过滤线",
+        "成交额 19.5亿",
+        "量比 1.54",
+        "换手 4.20%",
+        "开盘后仍上涨 5.79%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：煤炭开采"
+      ]
+    },
+    {
+      "code": "688297",
+      "name": "中无人机",
+      "board": "科创板",
+      "price": 39.8,
+      "pct_change": 4.3,
+      "amount": 416670182.0,
+      "turnover": 1.59,
+      "volume_ratio": 1.77,
+      "intraday_pct": 4.461942257217832,
+      "industry": "航空装备Ⅱ",
+      "theme_layers": [
+        "低空经济、无人机、eVTOL、空管"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.208084844657245,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.30%，未超过追高过滤线",
+        "成交额 4.2亿",
+        "量比 1.77",
+        "换手 1.59%",
+        "开盘后仍上涨 4.46%，承接较好",
+        "命中主题层：低空经济、无人机、eVTOL、空管",
+        "行业：航空装备Ⅱ"
+      ]
+    },
+    {
+      "code": "300058",
+      "name": "蓝色光标",
+      "board": "创业板",
+      "price": 13.04,
+      "pct_change": 3.57,
+      "amount": 3312462810.39,
+      "turnover": 7.36,
+      "volume_ratio": 1.54,
+      "intraday_pct": 5.076551168412569,
+      "industry": "广告营销",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.168302022141457,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.57%，未超过追高过滤线",
+        "成交额 33.1亿",
+        "量比 1.54",
+        "换手 7.36%",
+        "开盘后仍上涨 5.08%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：广告营销"
+      ]
+    },
+    {
+      "code": "600026",
+      "name": "中远海能",
+      "board": "沪深主板",
+      "price": 22.7,
+      "pct_change": 4.85,
+      "amount": 2211444455.0,
+      "turnover": 2.57,
+      "volume_ratio": 1.21,
+      "intraday_pct": 2.2522522522522515,
+      "industry": "航运港口",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.121018353032648,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.85%，未超过追高过滤线",
+        "成交额 22.1亿",
+        "量比 1.21",
+        "换手 2.57%",
+        "开盘后仍上涨 2.25%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：航运港口"
+      ]
+    },
+    {
+      "code": "002938",
+      "name": "鹏鼎控股",
+      "board": "沪深主板",
+      "price": 80.53,
+      "pct_change": 5.3,
+      "amount": 3173575271.78,
+      "turnover": 1.77,
+      "volume_ratio": 1.48,
+      "intraday_pct": 10.557386051619977,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.108597606989578,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.30%，未超过追高过滤线",
+        "成交额 31.7亿",
+        "量比 1.48",
+        "换手 1.77%",
+        "开盘后仍上涨 10.56%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "688025",
+      "name": "杰普特",
+      "board": "科创板",
+      "price": 387.0,
+      "pct_change": 4.87,
+      "amount": 1287763775.0,
+      "turnover": 3.64,
+      "volume_ratio": 1.23,
+      "intraday_pct": 7.270560190703224,
+      "industry": "自动化设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.039672408310034,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.87%，未超过追高过滤线",
+        "成交额 12.9亿",
+        "量比 1.23",
+        "换手 3.64%",
+        "开盘后仍上涨 7.27%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：自动化设备"
+      ]
+    },
+    {
+      "code": "002457",
+      "name": "青龙管业",
+      "board": "沪深主板",
+      "price": 12.08,
+      "pct_change": 4.32,
+      "amount": 579468023.11,
+      "turnover": 14.42,
+      "volume_ratio": 2.35,
+      "intraday_pct": 2.372881355932188,
+      "industry": "装修建材",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.019989865789217,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.32%，未超过追高过滤线",
+        "成交额 5.8亿",
+        "量比 2.35",
+        "换手 14.42%",
+        "开盘后仍上涨 2.37%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：装修建材"
+      ]
+    },
+    {
+      "code": "002869",
+      "name": "金溢科技",
+      "board": "沪深主板",
+      "price": 21.95,
+      "pct_change": 6.14,
+      "amount": 376563477.48,
+      "turnover": 11.14,
+      "volume_ratio": 1.58,
+      "intraday_pct": 9.749999999999993,
+      "industry": "计算机设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.999676391860104,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 6.14%，未超过追高过滤线",
+        "成交额 3.8亿",
+        "量比 1.58",
+        "换手 11.14%",
+        "开盘后仍上涨 9.75%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：计算机设备"
+      ]
+    },
+    {
+      "code": "603920",
+      "name": "世运电路",
+      "board": "沪深主板",
+      "price": 41.3,
+      "pct_change": 4.56,
+      "amount": 1447299658.0,
+      "turnover": 5.07,
+      "volume_ratio": 1.24,
+      "intraday_pct": 8.086888249149426,
+      "industry": "元件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.993616918965712,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.56%，未超过追高过滤线",
+        "成交额 14.5亿",
+        "量比 1.24",
+        "换手 5.07%",
+        "开盘后仍上涨 8.09%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：元件"
+      ]
+    },
+    {
+      "code": "002491",
+      "name": "通鼎互联",
+      "board": "沪深主板",
+      "price": 18.35,
+      "pct_change": 4.08,
+      "amount": 2055301177.14,
+      "turnover": 9.81,
+      "volume_ratio": 1.04,
+      "intraday_pct": 7.184579439252348,
+      "industry": "通信设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.9617509419483,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.08%，未超过追高过滤线",
+        "成交额 20.6亿",
+        "量比 1.04",
+        "换手 9.81%",
+        "开盘后仍上涨 7.18%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：通信设备"
       ]
     }
   ],
@@ -1492,22 +1598,22 @@
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "as_of": "20261009",
-          "price": 775.29,
-          "daily_change_pct": -0.98,
+          "as_of": "20261013",
+          "price": 735.0,
+          "daily_change_pct": 1.45,
           "returns": {
-            "5": -13.458576116803966,
-            "10": -13.472098214285722,
-            "20": -4.638376383763843
+            "5": -9.46224267568021,
+            "10": -21.792369914641963,
+            "20": -18.08449222415649
           },
           "relative_returns": {
-            "5": -10.579284865419691,
-            "10": -10.228497155150674,
-            "20": 0.4687432873030417
+            "5": -7.854452820607738,
+            "10": -16.084904636864184,
+            "20": -11.847979492175465
           },
-          "ma20": 874.4445,
+          "ma20": 860.7203999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9738466090036415,
+          "volume_ratio_5_20": 1.04836531338984,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -1516,8 +1622,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -11.339141592176517,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -14.606415741976134,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1532,8 +1638,8 @@
                 "observations": 8,
                 "win_rate": 0.125,
                 "net_return": -0.0502,
-                "max_drawdown": -0.343,
-                "cumulative_return": -0.343,
+                "max_drawdown": -0.3434,
+                "cumulative_return": -0.3434,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -1580,9 +1686,9 @@
               "3": {
                 "observations": 5,
                 "win_rate": 0.2,
-                "net_return": -0.0625,
-                "max_drawdown": -0.2816,
-                "cumulative_return": -0.2816,
+                "net_return": -0.0626,
+                "max_drawdown": -0.2819,
+                "cumulative_return": -0.2819,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -1612,11 +1718,11 @@
                 ]
               },
               "5": {
-                "observations": 3,
+                "observations": 4,
                 "win_rate": 0.0,
-                "net_return": -0.0633,
-                "max_drawdown": -0.2175,
-                "cumulative_return": -0.1844,
+                "net_return": -0.0927,
+                "max_drawdown": -0.3321,
+                "cumulative_return": -0.3321,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -1632,6 +1738,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -1644,22 +1755,22 @@
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "as_of": "20261009",
-          "price": 370.2,
-          "daily_change_pct": -2.19,
+          "as_of": "20261013",
+          "price": 351.3,
+          "daily_change_pct": 1.06,
           "returns": {
-            "5": -14.896551724137929,
-            "10": -12.758636942074752,
-            "20": -3.784177149391832
+            "5": -10.590211498816526,
+            "10": -23.083659930374623,
+            "20": -15.79578139980824
           },
           "relative_returns": {
-            "5": -12.017260472753653,
-            "10": -9.515035882939703,
-            "20": 1.3229425216750528
+            "5": -8.982421643744054,
+            "10": -17.376194652596844,
+            "20": -9.559268667827215
           },
-          "ma20": 414.424,
+          "ma20": 409.209,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9958168441820991,
+          "volume_ratio_5_20": 1.0820910784189874,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -1668,8 +1779,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -10.671196648842729,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -14.15144828192928,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1769,11 +1880,11 @@
                 ]
               },
               "5": {
-                "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.0259,
-                "max_drawdown": -0.1956,
-                "cumulative_return": -0.0788,
+                "observations": 4,
+                "win_rate": 0.25,
+                "net_return": -0.0688,
+                "max_drawdown": -0.2904,
+                "cumulative_return": -0.2608,
                 "trades": [
                   {
                     "signal_date": "2026-08-14",
@@ -1789,6 +1900,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -1801,32 +1917,32 @@
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连验证",
-          "as_of": "20261009",
-          "price": 197.6,
-          "daily_change_pct": 0.3,
+          "as_of": "20261013",
+          "price": 184.8,
+          "daily_change_pct": -3.67,
           "returns": {
-            "5": -7.878787878787885,
-            "10": 1.6827046776102472,
-            "20": 3.994526603862947
+            "5": -13.076199435559733,
+            "10": -12.041884816753923,
+            "20": -6.581740976645422
           },
           "relative_returns": {
-            "5": -4.999496627403611,
-            "10": 4.926305736745295,
-            "20": 9.10164627492983
+            "5": -11.468409580487261,
+            "10": -6.334419538976144,
+            "20": -0.34522824466439683
           },
-          "ma20": 201.04549999999998,
+          "ma20": 200.60150000000002,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9793800750604299,
+          "volume_ratio_5_20": 0.9670353426136312,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -1.7137911567281943,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -7.87705974282346,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1892,11 +2008,11 @@
                 ]
               },
               "3": {
-                "observations": 5,
-                "win_rate": 0.2,
-                "net_return": -0.0218,
-                "max_drawdown": -0.1857,
-                "cumulative_return": -0.1161,
+                "observations": 6,
+                "win_rate": 0.1667,
+                "net_return": -0.0349,
+                "max_drawdown": -0.2143,
+                "cumulative_return": -0.2052,
                 "trades": [
                   {
                     "signal_date": "2026-08-12",
@@ -1922,15 +2038,20 @@
                     "signal_date": "2026-09-22",
                     "entry_date": "2026-09-23",
                     "exit_date": "2026-09-29"
+                  },
+                  {
+                    "signal_date": "2026-09-29",
+                    "entry_date": "2026-09-30",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "5": {
-                "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.0183,
+                "observations": 4,
+                "win_rate": 0.25,
+                "net_return": -0.0384,
                 "max_drawdown": -0.186,
-                "cumulative_return": -0.0624,
+                "cumulative_return": -0.1549,
                 "trades": [
                   {
                     "signal_date": "2026-08-12",
@@ -1946,6 +2067,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -1958,23 +2084,23 @@
           "code": "300394",
           "name": "天孚通信",
           "role": "器件环节验证",
-          "as_of": "20261009",
-          "price": 235.04,
-          "daily_change_pct": -0.01,
+          "as_of": "20261013",
+          "price": 246.7,
+          "daily_change_pct": 7.48,
           "returns": {
-            "5": -12.275594371664244,
-            "10": -15.346659463353141,
-            "20": -5.344126293745721
+            "5": -3.629048009687885,
+            "10": -11.659385518871302,
+            "20": -7.42964352720451
           },
           "relative_returns": {
-            "5": -9.396303120279969,
-            "10": -12.103058404218093,
-            "20": -0.23700662267883654
+            "5": -2.021258154615413,
+            "10": -5.951920241093523,
+            "20": -1.1931307952234844
           },
-          "ma20": 261.7215,
+          "ma20": 259.79849999999993,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9046678570685678,
-          "is_chase": false,
+          "volume_ratio_5_20": 0.9692235065998346,
+          "is_chase": true,
           "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
@@ -1982,10 +2108,10 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -10.194615268520165,
-            "overextended": false,
-            "status": "等待：趋势未确认",
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -5.041792004187841,
+            "overextended": true,
+            "status": "不追：单日或均线乖离过大",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
           },
           "signal_backtest": {
@@ -2156,10 +2282,10 @@
         "eligible": 4,
         "threshold": 2,
         "above_ma20": 0,
-        "relative_20d_positive": 3,
+        "relative_20d_positive": 0,
         "breadth_ok": false
       },
-      "status": "观察：趋势或扩散未确认",
+      "status": "等待：存在单日过热",
       "evidence_to_watch": [
         "海外云厂商AI资本开支指引、订单和客户认证",
         "800G/1.6T出货、ASP、毛利率、库存和应收账款",
@@ -2176,22 +2302,22 @@
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "as_of": "20261009",
-          "price": 775.29,
-          "daily_change_pct": -0.98,
+          "as_of": "20261013",
+          "price": 735.0,
+          "daily_change_pct": 1.45,
           "returns": {
-            "5": -13.458576116803966,
-            "10": -13.472098214285722,
-            "20": -4.638376383763843
+            "5": -9.46224267568021,
+            "10": -21.792369914641963,
+            "20": -18.08449222415649
           },
           "relative_returns": {
-            "5": -10.579284865419691,
-            "10": -10.228497155150674,
-            "20": 0.4687432873030417
+            "5": -7.854452820607738,
+            "10": -16.084904636864184,
+            "20": -11.847979492175465
           },
-          "ma20": 874.4445,
+          "ma20": 860.7203999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9738466090036415,
+          "volume_ratio_5_20": 1.04836531338984,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -2200,8 +2326,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -11.339141592176517,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -14.606415741976134,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2216,8 +2342,8 @@
                 "observations": 8,
                 "win_rate": 0.125,
                 "net_return": -0.0502,
-                "max_drawdown": -0.343,
-                "cumulative_return": -0.343,
+                "max_drawdown": -0.3434,
+                "cumulative_return": -0.3434,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -2264,9 +2390,9 @@
               "3": {
                 "observations": 5,
                 "win_rate": 0.2,
-                "net_return": -0.0625,
-                "max_drawdown": -0.2816,
-                "cumulative_return": -0.2816,
+                "net_return": -0.0626,
+                "max_drawdown": -0.2819,
+                "cumulative_return": -0.2819,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -2296,11 +2422,11 @@
                 ]
               },
               "5": {
-                "observations": 3,
+                "observations": 4,
                 "win_rate": 0.0,
-                "net_return": -0.0633,
-                "max_drawdown": -0.2175,
-                "cumulative_return": -0.1844,
+                "net_return": -0.0927,
+                "max_drawdown": -0.3321,
+                "cumulative_return": -0.3321,
                 "trades": [
                   {
                     "signal_date": "2026-08-17",
@@ -2316,6 +2442,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -2328,22 +2459,22 @@
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "as_of": "20261009",
-          "price": 370.2,
-          "daily_change_pct": -2.19,
+          "as_of": "20261013",
+          "price": 351.3,
+          "daily_change_pct": 1.06,
           "returns": {
-            "5": -14.896551724137929,
-            "10": -12.758636942074752,
-            "20": -3.784177149391832
+            "5": -10.590211498816526,
+            "10": -23.083659930374623,
+            "20": -15.79578139980824
           },
           "relative_returns": {
-            "5": -12.017260472753653,
-            "10": -9.515035882939703,
-            "20": 1.3229425216750528
+            "5": -8.982421643744054,
+            "10": -17.376194652596844,
+            "20": -9.559268667827215
           },
-          "ma20": 414.424,
+          "ma20": 409.209,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9958168441820991,
+          "volume_ratio_5_20": 1.0820910784189874,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -2352,8 +2483,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -10.671196648842729,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -14.15144828192928,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2453,11 +2584,11 @@
                 ]
               },
               "5": {
-                "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.0259,
-                "max_drawdown": -0.1956,
-                "cumulative_return": -0.0788,
+                "observations": 4,
+                "win_rate": 0.25,
+                "net_return": -0.0688,
+                "max_drawdown": -0.2904,
+                "cumulative_return": -0.2608,
                 "trades": [
                   {
                     "signal_date": "2026-08-14",
@@ -2473,6 +2604,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -2485,32 +2621,32 @@
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连验证",
-          "as_of": "20261009",
-          "price": 197.6,
-          "daily_change_pct": 0.3,
+          "as_of": "20261013",
+          "price": 184.8,
+          "daily_change_pct": -3.67,
           "returns": {
-            "5": -7.878787878787885,
-            "10": 1.6827046776102472,
-            "20": 3.994526603862947
+            "5": -13.076199435559733,
+            "10": -12.041884816753923,
+            "20": -6.581740976645422
           },
           "relative_returns": {
-            "5": -4.999496627403611,
-            "10": 4.926305736745295,
-            "20": 9.10164627492983
+            "5": -11.468409580487261,
+            "10": -6.334419538976144,
+            "20": -0.34522824466439683
           },
-          "ma20": 201.04549999999998,
+          "ma20": 200.60150000000002,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9793800750604299,
+          "volume_ratio_5_20": 0.9670353426136312,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -1.7137911567281943,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -7.87705974282346,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2576,11 +2712,11 @@
                 ]
               },
               "3": {
-                "observations": 5,
-                "win_rate": 0.2,
-                "net_return": -0.0218,
-                "max_drawdown": -0.1857,
-                "cumulative_return": -0.1161,
+                "observations": 6,
+                "win_rate": 0.1667,
+                "net_return": -0.0349,
+                "max_drawdown": -0.2143,
+                "cumulative_return": -0.2052,
                 "trades": [
                   {
                     "signal_date": "2026-08-12",
@@ -2606,15 +2742,20 @@
                     "signal_date": "2026-09-22",
                     "entry_date": "2026-09-23",
                     "exit_date": "2026-09-29"
+                  },
+                  {
+                    "signal_date": "2026-09-29",
+                    "entry_date": "2026-09-30",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "5": {
-                "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.0183,
+                "observations": 4,
+                "win_rate": 0.25,
+                "net_return": -0.0384,
                 "max_drawdown": -0.186,
-                "cumulative_return": -0.0624,
+                "cumulative_return": -0.1549,
                 "trades": [
                   {
                     "signal_date": "2026-08-12",
@@ -2630,6 +2771,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -2642,23 +2788,23 @@
           "code": "300394",
           "name": "天孚通信",
           "role": "器件环节验证",
-          "as_of": "20261009",
-          "price": 235.04,
-          "daily_change_pct": -0.01,
+          "as_of": "20261013",
+          "price": 246.7,
+          "daily_change_pct": 7.48,
           "returns": {
-            "5": -12.275594371664244,
-            "10": -15.346659463353141,
-            "20": -5.344126293745721
+            "5": -3.629048009687885,
+            "10": -11.659385518871302,
+            "20": -7.42964352720451
           },
           "relative_returns": {
-            "5": -9.396303120279969,
-            "10": -12.103058404218093,
-            "20": -0.23700662267883654
+            "5": -2.021258154615413,
+            "10": -5.951920241093523,
+            "20": -1.1931307952234844
           },
-          "ma20": 261.7215,
+          "ma20": 259.79849999999993,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9046678570685678,
-          "is_chase": false,
+          "volume_ratio_5_20": 0.9692235065998346,
+          "is_chase": true,
           "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
@@ -2666,10 +2812,10 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -10.194615268520165,
-            "overextended": false,
-            "status": "等待：趋势未确认",
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -5.041792004187841,
+            "overextended": true,
+            "status": "不追：单日或均线乖离过大",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
           },
           "signal_backtest": {
@@ -2839,50 +2985,50 @@
       "us_validation": [
         {
           "symbol": "NVDA",
-          "as_of": "2026-10-09",
-          "price": 231.0498046875,
-          "return_20d": 5.84534875340883,
-          "above_ma20": true,
+          "as_of": "2026-10-13",
+          "price": 224.91690063476562,
+          "return_20d": 6.007872260841651,
+          "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
-          "as_of": "2026-10-09",
-          "price": 531.8150024414062,
-          "return_20d": 7.300808506770973,
+          "as_of": "2026-10-13",
+          "price": 547.3499755859375,
+          "return_20d": 10.104196363477413,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
-          "as_of": "2026-10-09",
-          "price": 259.1600036621094,
-          "return_20d": 0.9268653688475625,
+          "as_of": "2026-10-13",
+          "price": 260.6600036621094,
+          "return_20d": 4.927141769335286,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
-          "as_of": "2026-10-09",
-          "price": 721.7899780273438,
-          "return_20d": 11.38218067000687,
+          "as_of": "2026-10-13",
+          "price": 766.4249877929688,
+          "return_20d": 14.350829398430708,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
-          "as_of": "2026-10-09",
-          "price": 351.6236877441406,
-          "return_20d": 3.877012627515697,
+          "as_of": "2026-10-13",
+          "price": 355.8900146484375,
+          "return_20d": 3.1625031348676558,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
-          "as_of": "2026-10-09",
-          "price": 363.2650146484375,
-          "return_20d": 0.3522264284813392,
-          "above_ma20": true,
+          "as_of": "2026-10-13",
+          "price": 353.9800109863281,
+          "return_20d": 4.335786379284934,
+          "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
       ]
@@ -2897,22 +3043,22 @@
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "as_of": "20261009",
-          "price": 43.05,
-          "daily_change_pct": -0.32,
+          "as_of": "20261013",
+          "price": 40.42,
+          "daily_change_pct": -0.93,
           "returns": {
-            "5": -7.37951807228916,
-            "10": -12.677484787018257,
-            "20": -14.260107548297164
+            "5": -7.6114285714285685,
+            "10": -18.80273202089192,
+            "20": -18.965517241379317
           },
           "relative_returns": {
-            "5": -4.500226820904885,
-            "10": -9.433883727883208,
-            "20": -9.152987877230279
+            "5": -6.003638716356097,
+            "10": -13.095266743114141,
+            "20": -12.72900450939829
           },
-          "ma20": 47.802,
+          "ma20": 46.95049999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8284336239707532,
+          "volume_ratio_5_20": 0.9075650195967999,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -2921,8 +3067,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -9.941006652441326,
+            "down_days_last_5": 4,
+            "deviation_from_ma20_pct": -13.909330039083695,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3039,22 +3185,22 @@
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "as_of": "20261009",
-          "price": 51.13,
-          "daily_change_pct": -1.39,
+          "as_of": "20261013",
+          "price": 48.17,
+          "daily_change_pct": -0.35,
           "returns": {
-            "5": -10.580622595313038,
-            "10": -16.042692939244663,
-            "20": -14.811729423525488
+            "5": -10.281244179549255,
+            "10": -20.367002810381884,
+            "20": -19.71666666666666
           },
           "relative_returns": {
-            "5": -7.7013313439287625,
-            "10": -12.799091880109614,
-            "20": -9.704609752458603
+            "5": -8.673454324476783,
+            "10": -14.659537532604105,
+            "20": -13.480153934685635
           },
-          "ma20": 58.0895,
+          "ma20": 57.033,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.6775303111259235,
+          "volume_ratio_5_20": 0.6892573408860879,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3063,8 +3209,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -11.980650547861487,
+            "down_days_last_5": 4,
+            "deviation_from_ma20_pct": -15.54012589202742,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3181,22 +3327,22 @@
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "as_of": "20261009",
-          "price": 29.9,
-          "daily_change_pct": -0.17,
+          "as_of": "20261013",
+          "price": 28.58,
+          "daily_change_pct": 1.17,
           "returns": {
-            "5": -5.409680480860491,
-            "10": -9.476233726914929,
-            "20": -13.458755426917513
+            "5": -6.601307189542494,
+            "10": -15.16770555060849,
+            "20": -15.891701000588576
           },
           "relative_returns": {
-            "5": -2.530389229476216,
-            "10": -6.23263266777988,
-            "20": -8.351635755850628
+            "5": -4.993517334470022,
+            "10": -9.460240272830712,
+            "20": -9.65518826860755
           },
-          "ma20": 32.74100000000001,
+          "ma20": 32.212500000000006,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.864562245599991,
+          "volume_ratio_5_20": 0.9746264563739745,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3206,7 +3352,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.677193732628838,
+            "deviation_from_ma20_pct": -11.276678308110226,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3218,104 +3364,99 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 8,
-                "win_rate": 0.375,
-                "net_return": -0.0075,
-                "max_drawdown": -0.1796,
-                "cumulative_return": -0.0706,
+                "observations": 7,
+                "win_rate": 0.2857,
+                "net_return": -0.0007,
+                "max_drawdown": -0.0822,
+                "cumulative_return": -0.0077,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-05"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-06"
                   },
                   {
-                    "signal_date": "2026-08-05",
-                    "entry_date": "2026-08-06",
-                    "exit_date": "2026-08-07"
+                    "signal_date": "2026-08-06",
+                    "entry_date": "2026-08-07",
+                    "exit_date": "2026-08-10"
                   },
                   {
-                    "signal_date": "2026-08-07",
-                    "entry_date": "2026-08-10",
-                    "exit_date": "2026-08-11"
+                    "signal_date": "2026-08-10",
+                    "entry_date": "2026-08-11",
+                    "exit_date": "2026-08-12"
                   },
                   {
-                    "signal_date": "2026-08-11",
-                    "entry_date": "2026-08-12",
-                    "exit_date": "2026-08-13"
+                    "signal_date": "2026-08-12",
+                    "entry_date": "2026-08-13",
+                    "exit_date": "2026-08-14"
                   },
                   {
-                    "signal_date": "2026-08-13",
-                    "entry_date": "2026-08-14",
-                    "exit_date": "2026-08-17"
+                    "signal_date": "2026-08-14",
+                    "entry_date": "2026-08-17",
+                    "exit_date": "2026-08-18"
                   },
                   {
-                    "signal_date": "2026-08-17",
-                    "entry_date": "2026-08-18",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-18",
+                    "entry_date": "2026-08-19",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-21"
-                  },
-                  {
-                    "signal_date": "2026-08-21",
-                    "entry_date": "2026-08-24",
-                    "exit_date": "2026-08-25"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-24"
                   }
                 ]
               },
               "3": {
                 "observations": 4,
                 "win_rate": 0.25,
-                "net_return": -0.0085,
-                "max_drawdown": -0.1767,
-                "cumulative_return": -0.049,
+                "net_return": -0.014,
+                "max_drawdown": -0.1472,
+                "cumulative_return": -0.0608,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-07"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-10"
                   },
                   {
-                    "signal_date": "2026-08-07",
-                    "entry_date": "2026-08-10",
-                    "exit_date": "2026-08-13"
+                    "signal_date": "2026-08-10",
+                    "entry_date": "2026-08-11",
+                    "exit_date": "2026-08-14"
                   },
                   {
-                    "signal_date": "2026-08-13",
-                    "entry_date": "2026-08-14",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-14",
+                    "entry_date": "2026-08-17",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-25"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-26"
                   }
                 ]
               },
               "5": {
                 "observations": 3,
                 "win_rate": 0.3333,
-                "net_return": -0.0029,
-                "max_drawdown": -0.1754,
-                "cumulative_return": -0.0155,
+                "net_return": -0.0098,
+                "max_drawdown": -0.1392,
+                "cumulative_return": -0.0319,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-11"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-12"
                   },
                   {
-                    "signal_date": "2026-08-11",
-                    "entry_date": "2026-08-12",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-12",
+                    "entry_date": "2026-08-13",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-27"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-28"
                   }
                 ]
               }
@@ -3328,34 +3469,34 @@
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "as_of": "20261009",
-          "price": 48.99,
-          "daily_change_pct": 0.57,
+          "as_of": "20261013",
+          "price": 47.71,
+          "daily_change_pct": -0.6,
           "returns": {
-            "5": 2.812172088142706,
-            "10": 3.946530872056009,
-            "20": 2.72593835185575
+            "5": -1.9120065789473673,
+            "10": -4.5227136281769,
+            "20": -0.23002927645336957
           },
           "relative_returns": {
-            "5": 5.691463339526981,
-            "10": 7.190131931191058,
-            "20": 7.833058022922635
+            "5": -0.30421672387489496,
+            "10": 1.1847516496008783,
+            "20": 6.006483455527656
           },
-          "ma20": 47.424,
+          "ma20": 47.37949999999999,
           "above_ma20": true,
-          "volume_ratio_5_20": 1.0274630706172487,
+          "volume_ratio_5_20": 0.8827571380727715,
           "is_chase": false,
-          "signal_score": 4,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": true,
-            "pullback_candidate": false,
-            "double_drop_observed": false,
-            "down_days_last_5": 1,
-            "deviation_from_ma20_pct": 3.30212550607288,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": 0.6975590709062102,
             "overextended": false,
-            "status": "观察：趋势延续，等待合适回踩",
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
           },
           "signal_backtest": {
@@ -3365,11 +3506,11 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 12,
-                "win_rate": 0.25,
-                "net_return": -0.0129,
+                "observations": 13,
+                "win_rate": 0.2308,
+                "net_return": -0.013,
                 "max_drawdown": -0.1927,
-                "cumulative_return": -0.1516,
+                "cumulative_return": -0.1634,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -3430,15 +3571,20 @@
                     "signal_date": "2026-09-29",
                     "entry_date": "2026-09-30",
                     "exit_date": "2026-10-08"
+                  },
+                  {
+                    "signal_date": "2026-10-08",
+                    "entry_date": "2026-10-09",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "3": {
-                "observations": 7,
-                "win_rate": 0.4286,
-                "net_return": -0.0102,
+                "observations": 8,
+                "win_rate": 0.375,
+                "net_return": -0.0116,
                 "max_drawdown": -0.1787,
-                "cumulative_return": -0.0746,
+                "cumulative_return": -0.0945,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -3474,15 +3620,20 @@
                     "signal_date": "2026-09-22",
                     "entry_date": "2026-09-23",
                     "exit_date": "2026-09-29"
+                  },
+                  {
+                    "signal_date": "2026-09-29",
+                    "entry_date": "2026-09-30",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "5": {
-                "observations": 4,
-                "win_rate": 0.5,
-                "net_return": -0.0042,
+                "observations": 5,
+                "win_rate": 0.6,
+                "net_return": -0.0018,
                 "max_drawdown": -0.1093,
-                "cumulative_return": -0.0167,
+                "cumulative_return": -0.0091,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -3503,6 +3654,11 @@
                     "signal_date": "2026-09-09",
                     "entry_date": "2026-09-10",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -3515,32 +3671,32 @@
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "as_of": "20261009",
-          "price": 35.01,
-          "daily_change_pct": 1.48,
+          "as_of": "20261013",
+          "price": 36.07,
+          "daily_change_pct": 3.5,
           "returns": {
-            "5": -5.531570426335685,
-            "10": -4.682820582629999,
-            "20": -10.276781137878022
+            "5": 1.8638802598136328,
+            "10": -4.778247096092936,
+            "20": -7.036082474226801
           },
           "relative_returns": {
-            "5": -2.6522791749514103,
-            "10": -1.4392195234949505,
-            "20": -5.169661466811137
+            "5": 3.471670114886105,
+            "10": 0.9292181816848428,
+            "20": -0.7995697422457759
           },
-          "ma20": 37.13249999999999,
+          "ma20": 36.805,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0056172016474716,
+          "volume_ratio_5_20": 1.1706983270967155,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -5.716016966269429,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -1.997011275641895,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3663,22 +3819,22 @@
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "as_of": "20261009",
-          "price": 43.05,
-          "daily_change_pct": -0.32,
+          "as_of": "20261013",
+          "price": 40.42,
+          "daily_change_pct": -0.93,
           "returns": {
-            "5": -7.37951807228916,
-            "10": -12.677484787018257,
-            "20": -14.260107548297164
+            "5": -7.6114285714285685,
+            "10": -18.80273202089192,
+            "20": -18.965517241379317
           },
           "relative_returns": {
-            "5": -4.500226820904885,
-            "10": -9.433883727883208,
-            "20": -9.152987877230279
+            "5": -6.003638716356097,
+            "10": -13.095266743114141,
+            "20": -12.72900450939829
           },
-          "ma20": 47.802,
+          "ma20": 46.95049999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8284336239707532,
+          "volume_ratio_5_20": 0.9075650195967999,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3687,8 +3843,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -9.941006652441326,
+            "down_days_last_5": 4,
+            "deviation_from_ma20_pct": -13.909330039083695,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3805,22 +3961,22 @@
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "as_of": "20261009",
-          "price": 51.13,
-          "daily_change_pct": -1.39,
+          "as_of": "20261013",
+          "price": 48.17,
+          "daily_change_pct": -0.35,
           "returns": {
-            "5": -10.580622595313038,
-            "10": -16.042692939244663,
-            "20": -14.811729423525488
+            "5": -10.281244179549255,
+            "10": -20.367002810381884,
+            "20": -19.71666666666666
           },
           "relative_returns": {
-            "5": -7.7013313439287625,
-            "10": -12.799091880109614,
-            "20": -9.704609752458603
+            "5": -8.673454324476783,
+            "10": -14.659537532604105,
+            "20": -13.480153934685635
           },
-          "ma20": 58.0895,
+          "ma20": 57.033,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.6775303111259235,
+          "volume_ratio_5_20": 0.6892573408860879,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3829,8 +3985,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -11.980650547861487,
+            "down_days_last_5": 4,
+            "deviation_from_ma20_pct": -15.54012589202742,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3947,22 +4103,22 @@
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "as_of": "20261009",
-          "price": 29.9,
-          "daily_change_pct": -0.17,
+          "as_of": "20261013",
+          "price": 28.58,
+          "daily_change_pct": 1.17,
           "returns": {
-            "5": -5.409680480860491,
-            "10": -9.476233726914929,
-            "20": -13.458755426917513
+            "5": -6.601307189542494,
+            "10": -15.16770555060849,
+            "20": -15.891701000588576
           },
           "relative_returns": {
-            "5": -2.530389229476216,
-            "10": -6.23263266777988,
-            "20": -8.351635755850628
+            "5": -4.993517334470022,
+            "10": -9.460240272830712,
+            "20": -9.65518826860755
           },
-          "ma20": 32.74100000000001,
+          "ma20": 32.212500000000006,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.864562245599991,
+          "volume_ratio_5_20": 0.9746264563739745,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3972,7 +4128,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.677193732628838,
+            "deviation_from_ma20_pct": -11.276678308110226,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3984,104 +4140,99 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 8,
-                "win_rate": 0.375,
-                "net_return": -0.0075,
-                "max_drawdown": -0.1796,
-                "cumulative_return": -0.0706,
+                "observations": 7,
+                "win_rate": 0.2857,
+                "net_return": -0.0007,
+                "max_drawdown": -0.0822,
+                "cumulative_return": -0.0077,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-05"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-06"
                   },
                   {
-                    "signal_date": "2026-08-05",
-                    "entry_date": "2026-08-06",
-                    "exit_date": "2026-08-07"
+                    "signal_date": "2026-08-06",
+                    "entry_date": "2026-08-07",
+                    "exit_date": "2026-08-10"
                   },
                   {
-                    "signal_date": "2026-08-07",
-                    "entry_date": "2026-08-10",
-                    "exit_date": "2026-08-11"
+                    "signal_date": "2026-08-10",
+                    "entry_date": "2026-08-11",
+                    "exit_date": "2026-08-12"
                   },
                   {
-                    "signal_date": "2026-08-11",
-                    "entry_date": "2026-08-12",
-                    "exit_date": "2026-08-13"
+                    "signal_date": "2026-08-12",
+                    "entry_date": "2026-08-13",
+                    "exit_date": "2026-08-14"
                   },
                   {
-                    "signal_date": "2026-08-13",
-                    "entry_date": "2026-08-14",
-                    "exit_date": "2026-08-17"
+                    "signal_date": "2026-08-14",
+                    "entry_date": "2026-08-17",
+                    "exit_date": "2026-08-18"
                   },
                   {
-                    "signal_date": "2026-08-17",
-                    "entry_date": "2026-08-18",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-18",
+                    "entry_date": "2026-08-19",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-21"
-                  },
-                  {
-                    "signal_date": "2026-08-21",
-                    "entry_date": "2026-08-24",
-                    "exit_date": "2026-08-25"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-24"
                   }
                 ]
               },
               "3": {
                 "observations": 4,
                 "win_rate": 0.25,
-                "net_return": -0.0085,
-                "max_drawdown": -0.1767,
-                "cumulative_return": -0.049,
+                "net_return": -0.014,
+                "max_drawdown": -0.1472,
+                "cumulative_return": -0.0608,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-07"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-10"
                   },
                   {
-                    "signal_date": "2026-08-07",
-                    "entry_date": "2026-08-10",
-                    "exit_date": "2026-08-13"
+                    "signal_date": "2026-08-10",
+                    "entry_date": "2026-08-11",
+                    "exit_date": "2026-08-14"
                   },
                   {
-                    "signal_date": "2026-08-13",
-                    "entry_date": "2026-08-14",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-14",
+                    "entry_date": "2026-08-17",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-25"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-26"
                   }
                 ]
               },
               "5": {
                 "observations": 3,
                 "win_rate": 0.3333,
-                "net_return": -0.0029,
-                "max_drawdown": -0.1754,
-                "cumulative_return": -0.0155,
+                "net_return": -0.0098,
+                "max_drawdown": -0.1392,
+                "cumulative_return": -0.0319,
                 "trades": [
                   {
-                    "signal_date": "2026-08-03",
-                    "entry_date": "2026-08-04",
-                    "exit_date": "2026-08-11"
+                    "signal_date": "2026-08-04",
+                    "entry_date": "2026-08-05",
+                    "exit_date": "2026-08-12"
                   },
                   {
-                    "signal_date": "2026-08-11",
-                    "entry_date": "2026-08-12",
-                    "exit_date": "2026-08-19"
+                    "signal_date": "2026-08-12",
+                    "entry_date": "2026-08-13",
+                    "exit_date": "2026-08-20"
                   },
                   {
-                    "signal_date": "2026-08-19",
-                    "entry_date": "2026-08-20",
-                    "exit_date": "2026-08-27"
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-28"
                   }
                 ]
               }
@@ -4094,34 +4245,34 @@
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "as_of": "20261009",
-          "price": 48.99,
-          "daily_change_pct": 0.57,
+          "as_of": "20261013",
+          "price": 47.71,
+          "daily_change_pct": -0.6,
           "returns": {
-            "5": 2.812172088142706,
-            "10": 3.946530872056009,
-            "20": 2.72593835185575
+            "5": -1.9120065789473673,
+            "10": -4.5227136281769,
+            "20": -0.23002927645336957
           },
           "relative_returns": {
-            "5": 5.691463339526981,
-            "10": 7.190131931191058,
-            "20": 7.833058022922635
+            "5": -0.30421672387489496,
+            "10": 1.1847516496008783,
+            "20": 6.006483455527656
           },
-          "ma20": 47.424,
+          "ma20": 47.37949999999999,
           "above_ma20": true,
-          "volume_ratio_5_20": 1.0274630706172487,
+          "volume_ratio_5_20": 0.8827571380727715,
           "is_chase": false,
-          "signal_score": 4,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": true,
-            "pullback_candidate": false,
-            "double_drop_observed": false,
-            "down_days_last_5": 1,
-            "deviation_from_ma20_pct": 3.30212550607288,
+            "pullback_candidate": true,
+            "double_drop_observed": true,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": 0.6975590709062102,
             "overextended": false,
-            "status": "观察：趋势延续，等待合适回踩",
+            "status": "可人工复核：顺大势逆小势（双跌观察）",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
           },
           "signal_backtest": {
@@ -4131,11 +4282,11 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 12,
-                "win_rate": 0.25,
-                "net_return": -0.0129,
+                "observations": 13,
+                "win_rate": 0.2308,
+                "net_return": -0.013,
                 "max_drawdown": -0.1927,
-                "cumulative_return": -0.1516,
+                "cumulative_return": -0.1634,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -4196,15 +4347,20 @@
                     "signal_date": "2026-09-29",
                     "entry_date": "2026-09-30",
                     "exit_date": "2026-10-08"
+                  },
+                  {
+                    "signal_date": "2026-10-08",
+                    "entry_date": "2026-10-09",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "3": {
-                "observations": 7,
-                "win_rate": 0.4286,
-                "net_return": -0.0102,
+                "observations": 8,
+                "win_rate": 0.375,
+                "net_return": -0.0116,
                 "max_drawdown": -0.1787,
-                "cumulative_return": -0.0746,
+                "cumulative_return": -0.0945,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -4240,15 +4396,20 @@
                     "signal_date": "2026-09-22",
                     "entry_date": "2026-09-23",
                     "exit_date": "2026-09-29"
+                  },
+                  {
+                    "signal_date": "2026-09-29",
+                    "entry_date": "2026-09-30",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               },
               "5": {
-                "observations": 4,
-                "win_rate": 0.5,
-                "net_return": -0.0042,
+                "observations": 5,
+                "win_rate": 0.6,
+                "net_return": -0.0018,
                 "max_drawdown": -0.1093,
-                "cumulative_return": -0.0167,
+                "cumulative_return": -0.0091,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -4269,6 +4430,11 @@
                     "signal_date": "2026-09-09",
                     "entry_date": "2026-09-10",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -4281,32 +4447,32 @@
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "as_of": "20261009",
-          "price": 35.01,
-          "daily_change_pct": 1.48,
+          "as_of": "20261013",
+          "price": 36.07,
+          "daily_change_pct": 3.5,
           "returns": {
-            "5": -5.531570426335685,
-            "10": -4.682820582629999,
-            "20": -10.276781137878022
+            "5": 1.8638802598136328,
+            "10": -4.778247096092936,
+            "20": -7.036082474226801
           },
           "relative_returns": {
-            "5": -2.6522791749514103,
-            "10": -1.4392195234949505,
-            "20": -5.169661466811137
+            "5": 3.471670114886105,
+            "10": 0.9292181816848428,
+            "20": -0.7995697422457759
           },
-          "ma20": 37.13249999999999,
+          "ma20": 36.805,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0056172016474716,
+          "volume_ratio_5_20": 1.1706983270967155,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -5.716016966269429,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -1.997011275641895,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4408,17 +4574,17 @@
       "us_validation": [
         {
           "symbol": "MP",
-          "as_of": "2026-10-09",
-          "price": 46.0,
-          "return_20d": -8.928921939026313,
+          "as_of": "2026-10-13",
+          "price": 42.370201110839844,
+          "return_20d": -13.829158656345186,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
-          "as_of": "2026-10-09",
-          "price": 72.93499755859375,
-          "return_20d": 2.6241703556745044,
+          "as_of": "2026-10-13",
+          "price": 71.81500244140625,
+          "return_20d": 3.5096645782417113,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         }
@@ -4434,24 +4600,24 @@
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB核心",
-          "as_of": "20261009",
-          "price": 112.29,
-          "daily_change_pct": -3.1,
+          "as_of": "20261013",
+          "price": 115.9,
+          "daily_change_pct": 5.73,
           "returns": {
-            "5": -9.480048367593707,
-            "10": -9.062196307094261,
-            "20": -3.5475004294794665
+            "5": -2.662299487696307,
+            "10": -8.015873015873009,
+            "20": -5.503465144720754
           },
           "relative_returns": {
-            "5": -6.600757116209431,
-            "10": -5.8185952479592125,
-            "20": 1.5596192415874182
+            "5": -1.0545096326238346,
+            "10": -2.30840773809523,
+            "20": 0.7330475872602715
           },
-          "ma20": 122.6365,
+          "ma20": 122.205,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8461754741224073,
+          "volume_ratio_5_20": 1.0034635418227058,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -4459,7 +4625,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.436721530702517,
+            "deviation_from_ma20_pct": -5.159363364837766,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4604,11 +4770,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.6,
-                "net_return": -0.0081,
-                "max_drawdown": -0.0994,
-                "cumulative_return": -0.0415,
+                "observations": 6,
+                "win_rate": 0.5,
+                "net_return": -0.0251,
+                "max_drawdown": -0.1963,
+                "cumulative_return": -0.1472,
                 "trades": [
                   {
                     "signal_date": "2026-08-10",
@@ -4634,6 +4800,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -4646,22 +4817,22 @@
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板/材料验证",
-          "as_of": "20261009",
-          "price": 124.14,
-          "daily_change_pct": -5.85,
+          "as_of": "20261013",
+          "price": 122.54,
+          "daily_change_pct": 2.12,
           "returns": {
-            "5": -9.604602053447909,
-            "10": -14.990070533452027,
-            "20": -13.304001676094702
+            "5": -7.850804632275521,
+            "10": -16.223422437957204,
+            "20": -17.28653391832602
           },
           "relative_returns": {
-            "5": -6.725310802063634,
-            "10": -11.746469474316978,
-            "20": -8.196882005027817
+            "5": -6.243014777203049,
+            "10": -10.515957160179426,
+            "20": -11.050021186344992
           },
-          "ma20": 141.8835,
+          "ma20": 139.728,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8225722066649528,
+          "volume_ratio_5_20": 0.9225973170390257,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -4671,7 +4842,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -12.505682478935181,
+            "deviation_from_ma20_pct": -12.301042024504753,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4863,22 +5034,22 @@
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB验证",
-          "as_of": "20261009",
-          "price": 202.69,
-          "daily_change_pct": -1.72,
+          "as_of": "20261013",
+          "price": 199.1,
+          "daily_change_pct": 1.18,
           "returns": {
-            "5": -12.892689844857962,
-            "10": -9.066846119336025,
-            "20": -8.90337078651685
+            "5": -8.147259642000371,
+            "10": -19.71774193548387,
+            "20": -14.717724663753973
           },
           "relative_returns": {
-            "5": -10.013398593473687,
-            "10": -5.823245060200977,
-            "20": -3.796251115449966
+            "5": -6.539469786927899,
+            "10": -14.01027665770609,
+            "20": -8.481211931772947
           },
-          "ma20": 226.118,
+          "ma20": 223.26400000000004,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8243517469726793,
+          "volume_ratio_5_20": 0.8172622247049746,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -4888,7 +5059,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -10.360961975605656,
+            "deviation_from_ma20_pct": -10.823061487745466,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5030,22 +5201,22 @@
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB验证",
-          "as_of": "20261009",
-          "price": 347.25,
-          "daily_change_pct": -5.64,
+          "as_of": "20261013",
+          "price": 337.24,
+          "daily_change_pct": 2.89,
           "returns": {
-            "5": -11.977186311787069,
-            "10": -9.494891576313591,
-            "20": 1.6718393160391143
+            "5": -10.212992545260924,
+            "10": -14.627107488228441,
+            "20": -7.600416461175952
           },
           "relative_returns": {
-            "5": -9.097895060402793,
-            "10": -6.251290517178543,
-            "20": 6.778958987105999
+            "5": -8.605202690188452,
+            "10": -8.919642210450663,
+            "20": -1.3639037291949263
           },
-          "ma20": 381.5125000000001,
+          "ma20": 379.9245,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9302699880063616,
+          "volume_ratio_5_20": 1.0001439108818537,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -5055,7 +5226,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.980701811867263,
+            "deviation_from_ma20_pct": -11.234995374080906,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5200,11 +5371,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.4,
-                "net_return": -0.025,
-                "max_drawdown": -0.2182,
-                "cumulative_return": -0.127,
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0477,
+                "max_drawdown": -0.327,
+                "cumulative_return": -0.268,
                 "trades": [
                   {
                     "signal_date": "2026-08-06",
@@ -5230,6 +5401,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -5243,7 +5419,7 @@
         "eligible": 4,
         "threshold": 2,
         "above_ma20": 0,
-        "relative_20d_positive": 2,
+        "relative_20d_positive": 1,
         "breadth_ok": false
       },
       "status": "观察：趋势或扩散未确认",
@@ -5263,24 +5439,24 @@
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB核心",
-          "as_of": "20261009",
-          "price": 112.29,
-          "daily_change_pct": -3.1,
+          "as_of": "20261013",
+          "price": 115.9,
+          "daily_change_pct": 5.73,
           "returns": {
-            "5": -9.480048367593707,
-            "10": -9.062196307094261,
-            "20": -3.5475004294794665
+            "5": -2.662299487696307,
+            "10": -8.015873015873009,
+            "20": -5.503465144720754
           },
           "relative_returns": {
-            "5": -6.600757116209431,
-            "10": -5.8185952479592125,
-            "20": 1.5596192415874182
+            "5": -1.0545096326238346,
+            "10": -2.30840773809523,
+            "20": 0.7330475872602715
           },
-          "ma20": 122.6365,
+          "ma20": 122.205,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8461754741224073,
+          "volume_ratio_5_20": 1.0034635418227058,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -5288,7 +5464,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.436721530702517,
+            "deviation_from_ma20_pct": -5.159363364837766,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5433,11 +5609,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.6,
-                "net_return": -0.0081,
-                "max_drawdown": -0.0994,
-                "cumulative_return": -0.0415,
+                "observations": 6,
+                "win_rate": 0.5,
+                "net_return": -0.0251,
+                "max_drawdown": -0.1963,
+                "cumulative_return": -0.1472,
                 "trades": [
                   {
                     "signal_date": "2026-08-10",
@@ -5463,6 +5639,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -5475,22 +5656,22 @@
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板/材料验证",
-          "as_of": "20261009",
-          "price": 124.14,
-          "daily_change_pct": -5.85,
+          "as_of": "20261013",
+          "price": 122.54,
+          "daily_change_pct": 2.12,
           "returns": {
-            "5": -9.604602053447909,
-            "10": -14.990070533452027,
-            "20": -13.304001676094702
+            "5": -7.850804632275521,
+            "10": -16.223422437957204,
+            "20": -17.28653391832602
           },
           "relative_returns": {
-            "5": -6.725310802063634,
-            "10": -11.746469474316978,
-            "20": -8.196882005027817
+            "5": -6.243014777203049,
+            "10": -10.515957160179426,
+            "20": -11.050021186344992
           },
-          "ma20": 141.8835,
+          "ma20": 139.728,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8225722066649528,
+          "volume_ratio_5_20": 0.9225973170390257,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -5500,7 +5681,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -12.505682478935181,
+            "deviation_from_ma20_pct": -12.301042024504753,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5692,22 +5873,22 @@
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB验证",
-          "as_of": "20261009",
-          "price": 202.69,
-          "daily_change_pct": -1.72,
+          "as_of": "20261013",
+          "price": 199.1,
+          "daily_change_pct": 1.18,
           "returns": {
-            "5": -12.892689844857962,
-            "10": -9.066846119336025,
-            "20": -8.90337078651685
+            "5": -8.147259642000371,
+            "10": -19.71774193548387,
+            "20": -14.717724663753973
           },
           "relative_returns": {
-            "5": -10.013398593473687,
-            "10": -5.823245060200977,
-            "20": -3.796251115449966
+            "5": -6.539469786927899,
+            "10": -14.01027665770609,
+            "20": -8.481211931772947
           },
-          "ma20": 226.118,
+          "ma20": 223.26400000000004,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8243517469726793,
+          "volume_ratio_5_20": 0.8172622247049746,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -5717,7 +5898,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -10.360961975605656,
+            "deviation_from_ma20_pct": -10.823061487745466,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5859,22 +6040,22 @@
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB验证",
-          "as_of": "20261009",
-          "price": 347.25,
-          "daily_change_pct": -5.64,
+          "as_of": "20261013",
+          "price": 337.24,
+          "daily_change_pct": 2.89,
           "returns": {
-            "5": -11.977186311787069,
-            "10": -9.494891576313591,
-            "20": 1.6718393160391143
+            "5": -10.212992545260924,
+            "10": -14.627107488228441,
+            "20": -7.600416461175952
           },
           "relative_returns": {
-            "5": -9.097895060402793,
-            "10": -6.251290517178543,
-            "20": 6.778958987105999
+            "5": -8.605202690188452,
+            "10": -8.919642210450663,
+            "20": -1.3639037291949263
           },
-          "ma20": 381.5125000000001,
+          "ma20": 379.9245,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9302699880063616,
+          "volume_ratio_5_20": 1.0001439108818537,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -5884,7 +6065,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -8.980701811867263,
+            "deviation_from_ma20_pct": -11.234995374080906,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -6029,11 +6210,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.4,
-                "net_return": -0.025,
-                "max_drawdown": -0.2182,
-                "cumulative_return": -0.127,
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0477,
+                "max_drawdown": -0.327,
+                "cumulative_return": -0.268,
                 "trades": [
                   {
                     "signal_date": "2026-08-06",
@@ -6059,6 +6240,11 @@
                     "signal_date": "2026-09-16",
                     "entry_date": "2026-09-17",
                     "exit_date": "2026-09-24"
+                  },
+                  {
+                    "signal_date": "2026-09-24",
+                    "entry_date": "2026-09-28",
+                    "exit_date": "2026-10-12"
                   }
                 ]
               }
@@ -6071,33 +6257,33 @@
       "us_validation": [
         {
           "symbol": "NVDA",
-          "as_of": "2026-10-09",
-          "price": 231.0498046875,
-          "return_20d": 5.84534875340883,
-          "above_ma20": true,
+          "as_of": "2026-10-13",
+          "price": 224.94000244140625,
+          "return_20d": 6.018760608317741,
+          "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
-          "as_of": "2026-10-09",
-          "price": 363.2650146484375,
-          "return_20d": 0.3522264284813392,
-          "above_ma20": true,
+          "as_of": "2026-10-13",
+          "price": 353.9800109863281,
+          "return_20d": 4.335786379284934,
+          "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
-          "as_of": "2026-10-09",
-          "price": 215.00999450683594,
-          "return_20d": 7.72583719218094,
-          "above_ma20": true,
+          "as_of": "2026-10-13",
+          "price": 199.08999633789062,
+          "return_20d": 3.241028893740938,
+          "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
-          "as_of": "2026-10-09",
-          "price": 1030.18505859375,
-          "return_20d": 5.631836461881035,
+          "as_of": "2026-10-13",
+          "price": 939.1370849609375,
+          "return_20d": 1.2437591287895788,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -6138,8 +6324,8 @@
       "source": "GitHub REST API",
       "latest_tag": "release-v1.19.1",
       "release_at": "2026-09-30T05:39:30Z",
-      "pushed_at": "2026-10-07T04:17:29Z",
-      "updated_at": "2026-10-09T14:11:41Z"
+      "pushed_at": "2026-10-13T04:12:12Z",
+      "updated_at": "2026-10-13T13:59:28Z"
     },
     {
       "repo": "ranaroussi/yfinance",
@@ -6147,8 +6333,8 @@
       "source": "GitHub REST API",
       "latest_tag": "1.7.0",
       "release_at": "2026-08-26T17:23:40Z",
-      "pushed_at": "2026-10-05T19:12:16Z",
-      "updated_at": "2026-10-09T14:20:41Z"
+      "pushed_at": "2026-10-12T18:34:05Z",
+      "updated_at": "2026-10-13T14:54:00Z"
     },
     {
       "repo": "vnpy/vnpy",
@@ -6157,16 +6343,16 @@
       "latest_tag": "4.5.0",
       "release_at": "2026-10-06T09:58:41Z",
       "pushed_at": "2026-10-06T09:57:47Z",
-      "updated_at": "2026-10-09T14:39:44Z"
+      "updated_at": "2026-10-13T14:59:17Z"
     },
     {
       "repo": "simonlin1212/a-stock-data",
       "purpose": "A股多源行情、财报、研报与公告路由参考",
       "source": "GitHub REST API",
-      "latest_tag": "v3.10.1",
-      "release_at": "2026-10-07T06:22:49Z",
-      "pushed_at": "2026-10-07T06:22:49Z",
-      "updated_at": "2026-10-09T12:26:54Z"
+      "latest_tag": "v3.10.2",
+      "release_at": "2026-10-11T13:08:36Z",
+      "pushed_at": "2026-10-11T13:08:34Z",
+      "updated_at": "2026-10-13T14:48:37Z"
     }
   ],
   "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。"
