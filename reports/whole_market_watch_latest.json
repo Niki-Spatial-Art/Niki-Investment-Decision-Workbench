@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-19T22:59:15+08:00",
-  "as_of_date": "2026-10-19",
+  "generated_at": "2026-10-20T20:58:54+08:00",
+  "as_of_date": "2026-10-20",
   "a_share_trading_day": true,
   "skip_reason": "",
   "market_gate": {
@@ -12,46 +12,137 @@
         "reasons": [],
         "scanned": 5574.0,
         "target": 5000.0,
-        "classified": 5366,
-        "unclassified": 208,
+        "classified": 5369,
+        "unclassified": 205,
         "coverage_ratio": 1.1148,
         "note": "未分类行需核对停牌、无效字段或股票范围，不自动视为平盘。"
       },
       "market": {
         "ok": false,
         "trend_ok": false,
-        "breadth_ok": false
+        "breadth_ok": true
       },
       "open": false,
       "reasons": [
-        "上涨家数未占优",
         "策略趋势条件未满足"
       ],
-      "status": "等待：上涨家数未占优；策略趋势条件未满足"
+      "status": "等待：策略趋势条件未满足"
     },
-    "status": "等待：上涨家数未占优；策略趋势条件未满足",
+    "status": "等待：策略趋势条件未满足",
     "benchmark": {
       "code": "510300",
       "name": "沪深300ETF华泰柏瑞",
-      "price": 4.24,
-      "ma20": 4.44105,
+      "price": 4.22,
+      "ma20": 4.42445,
       "above_ma20": false,
-      "return_20d": -7.4033631797335575,
-      "as_of": "20261019",
+      "return_20d": -7.293497363796131,
+      "as_of": "20261020",
       "source": "Tencent Finance quote"
     },
     "breadth": {
-      "advancers": 2222,
-      "decliners": 2990,
-      "flat": 154,
-      "sample_rows": 5366,
-      "total_amount": 1433378076308.0
+      "advancers": 3662,
+      "decliners": 1597,
+      "flat": 110,
+      "sample_rows": 5369,
+      "total_amount": 1459568375955.5002
     },
-    "breadth_ok": false
+    "breadth_ok": true
   },
   "sector_funnel": {
-    "research": [],
-    "observe": [],
+    "research": [
+      {
+        "name": "医疗服务",
+        "count": 4,
+        "advancers": 4,
+        "decliners": 0,
+        "amount": 10145047135.11,
+        "avg_pct": 7.59,
+        "breadth_ratio": 1.0,
+        "status": "重点研究"
+      },
+      {
+        "name": "光学光电子",
+        "count": 3,
+        "advancers": 2,
+        "decliners": 1,
+        "amount": 7664892060.57,
+        "avg_pct": 6.52,
+        "breadth_ratio": 0.6667,
+        "status": "重点研究"
+      },
+      {
+        "name": "消费电子",
+        "count": 10,
+        "advancers": 9,
+        "decliners": 1,
+        "amount": 27441979963.510002,
+        "avg_pct": 6.24,
+        "breadth_ratio": 0.9,
+        "status": "重点研究"
+      },
+      {
+        "name": "汽车零部件",
+        "count": 6,
+        "advancers": 5,
+        "decliners": 1,
+        "amount": 11470966037.73,
+        "avg_pct": 5.2,
+        "breadth_ratio": 0.8333,
+        "status": "重点研究"
+      },
+      {
+        "name": "软件开发",
+        "count": 4,
+        "advancers": 3,
+        "decliners": 1,
+        "amount": 7146224181.26,
+        "avg_pct": 4.99,
+        "breadth_ratio": 0.75,
+        "status": "重点研究"
+      }
+    ],
+    "observe": [
+      {
+        "name": "通信设备",
+        "count": 19,
+        "advancers": 14,
+        "decliners": 5,
+        "amount": 74715048829.34999,
+        "avg_pct": 1.49,
+        "breadth_ratio": 0.7368,
+        "status": "可继续观察"
+      },
+      {
+        "name": "未分类",
+        "count": 5169,
+        "advancers": 3540,
+        "decliners": 1522,
+        "amount": 916208684643.0,
+        "avg_pct": 1.27,
+        "breadth_ratio": 0.6849,
+        "status": "可继续观察"
+      },
+      {
+        "name": "通用设备",
+        "count": 4,
+        "advancers": 2,
+        "decliners": 2,
+        "amount": 6932710482.650001,
+        "avg_pct": 0.64,
+        "breadth_ratio": 0.5,
+        "status": "可继续观察"
+      },
+      {
+        "name": "元件",
+        "count": 19,
+        "advancers": 9,
+        "decliners": 9,
+        "amount": 56583405306.92999,
+        "avg_pct": 0.51,
+        "breadth_ratio": 0.4737,
+        "status": "可继续观察"
+      }
+    ],
     "hot": []
   },
   "market_scan": {
@@ -63,19 +154,10 @@
       "sina"
     ],
     "source_counts": {
+      "eastmoney": 200,
       "sina": 5574
     },
     "failures": [
-      {
-        "page": 1,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=1&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
-      {
-        "page": 2,
-        "source": "eastmoney",
-        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=2&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
-      },
       {
         "page": 3,
         "source": "eastmoney",
@@ -84,7 +166,7 @@
       {
         "page": 4,
         "source": "eastmoney",
-        "error": "HTTPSConnectionPool(host='push2delay.eastmoney.com', port=443): Read timed out. (read timeout=2)"
+        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=4&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
       },
       {
         "page": 5,
@@ -97,6 +179,16 @@
         "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=6&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
       },
       {
+        "page": 7,
+        "source": "eastmoney",
+        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=7&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
+      },
+      {
+        "page": 8,
+        "source": "eastmoney",
+        "error": "502 Server Error: Bad Gateway for url: https://push2delay.eastmoney.com/api/qt/clist/get?pn=8&pz=100&po=1&np=1&fltt=2&invt=2&fid=f6&fs=m%3A0%2Bt%3A6%2Cm%3A0%2Bt%3A80%2Cm%3A1%2Bt%3A2%2Cm%3A1%2Bt%3A23&fields=f12%2Cf14%2Cf2%2Cf3%2Cf6%2Cf8%2Cf10%2Cf17%2Cf18%2Cf100&ut=fa5fd1943c7b386f172d6893dbfba10b"
+      },
+      {
         "page": 57,
         "source": "sina",
         "error": "empty page"
@@ -107,1199 +199,849 @@
         "error": "empty page"
       }
     ],
-    "candidate_count": 283
+    "candidate_count": 377
   },
   "candidates": [
     {
-      "code": "000032",
-      "name": "深桑达Ａ",
-      "board": "沪深主板",
-      "price": 13.72,
-      "pct_change": 5.134,
-      "amount": 1105620235.0,
-      "turnover": 6.8186,
-      "volume_ratio": null,
-      "intraday_pct": 4.732824427480931,
-      "industry": "",
-      "theme_layers": [
-        "长鑫存储、国产DRAM、HBM产业链"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 13.424058662053424,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.13%，未超过追高过滤线",
-        "成交额 11.1亿",
-        "换手 6.82%",
-        "开盘后仍上涨 4.73%，承接较好",
-        "命中主题层：长鑫存储、国产DRAM、HBM产业链",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "301205",
-      "name": "联特科技",
+      "code": "300476",
+      "name": "胜宏科技",
       "board": "创业板",
-      "price": 297.0,
-      "pct_change": 4.383,
-      "amount": 2313235755.0,
-      "turnover": 9.3124,
-      "volume_ratio": null,
-      "intraday_pct": 5.693950177935947,
-      "industry": "",
+      "price": 184.7,
+      "pct_change": 4.44,
+      "amount": 5372016853.01,
+      "turnover": 3.36,
+      "volume_ratio": 1.24,
+      "intraday_pct": 4.356178315159043,
+      "industry": "元件",
       "theme_layers": [
-        "湖北光谷、光模块、存储、材料"
+        "PCB、CCL、高速连接",
+        "铜箔、覆铜板、高速材料"
       ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 13.188039792889253,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.56393998596109,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.38%，未超过追高过滤线",
-        "成交额 23.1亿",
-        "换手 9.31%",
-        "开盘后仍上涨 5.69%，承接较好",
-        "命中主题层：湖北光谷、光模块、存储、材料",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688017",
-      "name": "绿的谐波",
-      "board": "科创板",
-      "price": 250.5,
-      "pct_change": 5.808,
-      "amount": 1716414210.0,
-      "turnover": 3.85086,
-      "volume_ratio": null,
-      "intraday_pct": 6.144067796610164,
-      "industry": "",
-      "theme_layers": [
-        "机器人、减速器、伺服、传感器"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 12.516473202701276,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.81%，未超过追高过滤线",
-        "成交额 17.2亿",
-        "换手 3.85%",
-        "开盘后仍上涨 6.14%，承接较好",
-        "命中主题层：机器人、减速器、伺服、传感器",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "涨幅 4.44%，未超过追高过滤线",
+        "成交额 53.7亿",
+        "量比 1.24",
+        "换手 3.36%",
+        "开盘后仍上涨 4.36%，承接较好",
+        "命中主题层：PCB、CCL、高速连接 / 铜箔、覆铜板、高速材料",
+        "行业：元件"
       ]
     },
     {
       "code": "002747",
       "name": "埃斯顿",
       "board": "沪深主板",
-      "price": 25.38,
-      "pct_change": 4.703,
-      "amount": 876444796.0,
-      "turnover": 4.51041,
-      "volume_ratio": null,
-      "intraday_pct": 6.103678929765866,
-      "industry": "",
+      "price": 26.3,
+      "pct_change": 3.62,
+      "amount": 1595051794.09,
+      "turnover": 7.8,
+      "volume_ratio": 2.59,
+      "intraday_pct": 3.9114974318451345,
+      "industry": "自动化设备",
       "theme_layers": [
         "机器人、减速器、伺服、传感器"
       ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 12.20561063339219,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.509549579829999,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.70%，未超过追高过滤线",
-        "成交额 8.8亿",
-        "换手 4.51%",
-        "开盘后仍上涨 6.10%，承接较好",
+        "涨幅 3.62%，未超过追高过滤线",
+        "成交额 16.0亿",
+        "量比 2.59",
+        "换手 7.80%",
+        "开盘后仍上涨 3.91%，承接较好",
         "命中主题层：机器人、减速器、伺服、传感器",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：自动化设备"
       ]
     },
     {
-      "code": "688156",
-      "name": "路德科技",
+      "code": "002396",
+      "name": "星网锐捷",
+      "board": "沪深主板",
+      "price": 26.65,
+      "pct_change": 4.06,
+      "amount": 1795621814.82,
+      "turnover": 9.09,
+      "volume_ratio": 1.52,
+      "intraday_pct": 3.1746031746031855,
+      "industry": "通信设备",
+      "theme_layers": [
+        "通信设备、交换机、算力网络"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 14.444045521006872,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.06%，未超过追高过滤线",
+        "成交额 18.0亿",
+        "量比 1.52",
+        "换手 9.09%",
+        "开盘后仍上涨 3.17%，承接较好",
+        "命中主题层：通信设备、交换机、算力网络",
+        "行业：通信设备"
+      ]
+    },
+    {
+      "code": "688143",
+      "name": "长盈通",
       "board": "科创板",
-      "price": 27.41,
-      "pct_change": 5.019,
-      "amount": 302458023.0,
-      "turnover": 11.08801,
+      "price": 156.18,
+      "pct_change": 5.356,
+      "amount": 1779798357.0,
+      "turnover": 9.11194,
       "volume_ratio": null,
-      "intraday_pct": 5.585516178736505,
+      "intraday_pct": 6.3316993464052285,
       "industry": "",
       "theme_layers": [
         "湖北光谷、光模块、存储、材料"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 12.18413021817882,
+      "score": 14.127941603041602,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.02%，未超过追高过滤线",
-        "成交额 3.0亿",
-        "换手 11.09%",
-        "开盘后仍上涨 5.59%，承接较好",
+        "涨幅 5.36%，未超过追高过滤线",
+        "成交额 17.8亿",
+        "换手 9.11%",
+        "开盘后仍上涨 6.33%，承接较好",
         "命中主题层：湖北光谷、光模块、存储、材料",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "603019",
-      "name": "中科曙光",
+      "code": "600206",
+      "name": "有研新材",
       "board": "沪深主板",
-      "price": 73.96,
-      "pct_change": 4.938,
-      "amount": 2983557402.0,
-      "turnover": 2.81357,
-      "volume_ratio": null,
-      "intraday_pct": 5.086672350099453,
-      "industry": "",
-      "theme_layers": [
-        "AI芯片与加速卡",
-        "华为昇腾/国产GPU算力",
-        "国产CPU、信创服务器、计算底座",
-        "AI服务器与整机"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 12.097104295693924,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.94%，未超过追高过滤线",
-        "成交额 29.8亿",
-        "换手 2.81%",
-        "开盘后仍上涨 5.09%，承接较好",
-        "命中主题层：AI芯片与加速卡 / 华为昇腾/国产GPU算力",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000099",
-      "name": "中信海直",
-      "board": "沪深主板",
-      "price": 15.25,
-      "pct_change": 3.39,
-      "amount": 1189460874.0,
-      "turnover": 9.89233,
-      "volume_ratio": null,
-      "intraday_pct": 0.39499670836076195,
-      "industry": "",
-      "theme_layers": [
-        "低空经济、无人机、eVTOL、空管"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 12.011920660926144,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.39%，未超过追高过滤线",
-        "成交额 11.9亿",
-        "换手 9.89%",
-        "开盘后变化 0.39%，等待9:40确认",
-        "命中主题层：低空经济、无人机、eVTOL、空管",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600522",
-      "name": "中天科技",
-      "board": "沪深主板",
-      "price": 28.06,
-      "pct_change": 5.409,
-      "amount": 4546745104.0,
-      "turnover": 4.83602,
-      "volume_ratio": null,
-      "intraday_pct": 5.251312828207055,
-      "industry": "",
+      "price": 39.96,
+      "pct_change": 5.41,
+      "amount": 2948128684.0,
+      "turnover": 8.8,
+      "volume_ratio": 1.12,
+      "intraday_pct": 5.157894736842117,
+      "industry": "半导体",
       "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.791709399705038,
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 13.046054624091179,
       "action": "候选，等回踩/二次确认",
       "reasons": [
         "涨幅 5.41%，未超过追高过滤线",
-        "成交额 45.5亿",
-        "换手 4.84%",
-        "开盘后仍上涨 5.25%，承接较好",
+        "成交额 29.5亿",
+        "量比 1.12",
+        "换手 8.80%",
+        "开盘后仍上涨 5.16%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+        "行业：半导体"
       ]
     },
     {
-      "code": "300199",
-      "name": "翰宇药业",
+      "code": "002185",
+      "name": "华天科技",
+      "board": "沪深主板",
+      "price": 14.35,
+      "pct_change": 3.31,
+      "amount": 2149769016.57,
+      "turnover": 4.53,
+      "volume_ratio": 1.25,
+      "intraday_pct": 2.499999999999991,
+      "industry": "半导体",
+      "theme_layers": [
+        "半导体设备、材料、封测"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.88305825672548,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.31%，未超过追高过滤线",
+        "成交额 21.5亿",
+        "量比 1.25",
+        "换手 4.53%",
+        "开盘后仍上涨 2.50%，承接较好",
+        "命中主题层：半导体设备、材料、封测",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "600487",
+      "name": "亨通光电",
+      "board": "沪深主板",
+      "price": 52.07,
+      "pct_change": 3.62,
+      "amount": 10960301175.0,
+      "turnover": 8.66,
+      "volume_ratio": 1.74,
+      "intraday_pct": 4.14000000000001,
+      "industry": "通信设备",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 12.484,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.62%，未超过追高过滤线",
+        "成交额 109.6亿",
+        "量比 1.74",
+        "换手 8.66%",
+        "开盘后仍上涨 4.14%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：通信设备"
+      ]
+    },
+    {
+      "code": "300624",
+      "name": "万兴科技",
       "board": "创业板",
-      "price": 26.3,
-      "pct_change": 5.495,
-      "amount": 2016551780.0,
-      "turnover": 10.60575,
+      "price": 51.36,
+      "pct_change": 5.941,
+      "amount": 542254135.0,
+      "turnover": 6.3188,
       "volume_ratio": null,
-      "intraday_pct": 5.835010060362178,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.603218756163153,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.50%，未超过追高过滤线",
-        "成交额 20.2亿",
-        "换手 10.61%",
-        "开盘后仍上涨 5.84%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002015",
-      "name": "协鑫能科",
-      "board": "沪深主板",
-      "price": 13.74,
-      "pct_change": 5.449,
-      "amount": 969972368.0,
-      "turnover": 4.39167,
-      "volume_ratio": null,
-      "intraday_pct": 2.921348314606753,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.353417651743067,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.45%，未超过追高过滤线",
-        "成交额 9.7亿",
-        "换手 4.39%",
-        "开盘后仍上涨 2.92%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002028",
-      "name": "思源电气",
-      "board": "沪深主板",
-      "price": 125.1,
-      "pct_change": 5.99,
-      "amount": 1713995751.0,
-      "turnover": 2.27479,
-      "volume_ratio": null,
-      "intraday_pct": 6.088873812754403,
+      "intraday_pct": 6.357423897287218,
       "industry": "",
       "theme_layers": [
-        "电力、电网、变压器、线缆"
+        "AI应用、办公软件、教育、内容、金融科技"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 11.29723798194269,
+      "score": 12.045425744888684,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.99%，未超过追高过滤线",
-        "成交额 17.1亿",
-        "换手 2.27%",
-        "开盘后仍上涨 6.09%，承接较好",
-        "命中主题层：电力、电网、变压器、线缆",
+        "涨幅 5.94%，未超过追高过滤线",
+        "成交额 5.4亿",
+        "换手 6.32%",
+        "开盘后仍上涨 6.36%，承接较好",
+        "命中主题层：AI应用、办公软件、教育、内容、金融科技",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "688525",
-      "name": "佰维存储",
+      "code": "300136",
+      "name": "信维通信",
+      "board": "创业板",
+      "price": 45.87,
+      "pct_change": 6.01,
+      "amount": 1781934996.22,
+      "turnover": 4.76,
+      "volume_ratio": 1.37,
+      "intraday_pct": 5.424040450471157,
+      "industry": "消费电子",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.719646436883867,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 6.01%，未超过追高过滤线",
+        "成交额 17.8亿",
+        "量比 1.37",
+        "换手 4.76%",
+        "开盘后仍上涨 5.42%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：消费电子"
+      ]
+    },
+    {
+      "code": "688808",
+      "name": "联讯仪器",
       "board": "科创板",
-      "price": 157.98,
-      "pct_change": 2.939,
-      "amount": 3072527277.0,
-      "turnover": 4.1346,
+      "price": 1193.79,
+      "pct_change": 3.583,
+      "amount": 1924443095.0,
+      "turnover": 5.6569,
       "volume_ratio": null,
-      "intraday_pct": 2.5444631961573316,
+      "intraday_pct": 5.11860944296707,
       "industry": "",
       "theme_layers": [
-        "存储、HBM、企业级SSD",
-        "存算一体、近存计算、端侧AI存储"
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连",
+        "光模块测试仪器、检测设备"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 11.275757476507072,
+      "score": 11.71674514741838,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.94%，未超过追高过滤线",
-        "成交额 30.7亿",
-        "换手 4.13%",
-        "开盘后仍上涨 2.54%，承接较好",
-        "命中主题层：存储、HBM、企业级SSD / 存算一体、近存计算、端侧AI存储",
+        "涨幅 3.58%，未超过追高过滤线",
+        "成交额 19.2亿",
+        "换手 5.66%",
+        "开盘后仍上涨 5.12%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "300747",
-      "name": "锐科激光",
-      "board": "创业板",
-      "price": 42.25,
-      "pct_change": 5.283,
-      "amount": 1723555289.0,
-      "turnover": 8.01977,
-      "volume_ratio": null,
-      "intraday_pct": 5.810167793638876,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 11.212450438931478,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.28%，未超过追高过滤线",
-        "成交额 17.2亿",
-        "换手 8.02%",
-        "开盘后仍上涨 5.81%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688766",
-      "name": "普冉股份",
+      "code": "688521",
+      "name": "芯原股份",
       "board": "科创板",
-      "price": 285.15,
-      "pct_change": 2.705,
-      "amount": 2703017579.0,
-      "turnover": 6.43196,
+      "price": 130.0,
+      "pct_change": 4.75,
+      "amount": 2553886403.0,
+      "turnover": 3.76,
+      "volume_ratio": 1.2,
+      "intraday_pct": 4.283651532167498,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 11.655665258027845,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.75%，未超过追高过滤线",
+        "成交额 25.5亿",
+        "量比 1.20",
+        "换手 3.76%",
+        "开盘后仍上涨 4.28%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "688123",
+      "name": "聚辰股份",
+      "board": "科创板",
+      "price": 130.69,
+      "pct_change": 3.492,
+      "amount": 1131015324.0,
+      "turnover": 5.48896,
       "volume_ratio": null,
-      "intraday_pct": 2.7234410461471903,
+      "intraday_pct": 3.7222222222222268,
       "industry": "",
       "theme_layers": [
         "存储、HBM、企业级SSD"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 11.0744917402601,
+      "score": 11.120680978345261,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.71%，未超过追高过滤线",
-        "成交额 27.0亿",
-        "换手 6.43%",
-        "开盘后仍上涨 2.72%，承接较好",
+        "涨幅 3.49%，未超过追高过滤线",
+        "成交额 11.3亿",
+        "换手 5.49%",
+        "开盘后仍上涨 3.72%，承接较好",
         "命中主题层：存储、HBM、企业级SSD",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "300773",
-      "name": "拉卡拉",
+      "code": "300433",
+      "name": "蓝思科技",
       "board": "创业板",
-      "price": 15.03,
-      "pct_change": 4.52,
-      "amount": 1188281211.0,
-      "turnover": 7.61304,
+      "price": 27.01,
+      "pct_change": 5.26,
+      "amount": 2731057923.86,
+      "turnover": 2.07,
+      "volume_ratio": 1.49,
+      "intraday_pct": 6.296733569460855,
+      "industry": "消费电子",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.98516182264929,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.26%，未超过追高过滤线",
+        "成交额 27.3亿",
+        "量比 1.49",
+        "换手 2.07%",
+        "开盘后仍上涨 6.30%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：消费电子"
+      ]
+    },
+    {
+      "code": "603859",
+      "name": "能科科技",
+      "board": "沪深主板",
+      "price": 40.59,
+      "pct_change": 4.56,
+      "amount": 857612951.0,
+      "turnover": 8.63166,
       "volume_ratio": null,
-      "intraday_pct": 2.244897959183678,
+      "intraday_pct": 1.475000000000004,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 10.805919634155291,
+      "score": 10.938582661547589,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.52%，未超过追高过滤线",
-        "成交额 11.9亿",
-        "换手 7.61%",
-        "开盘后仍上涨 2.24%，承接较好",
+        "涨幅 4.56%，未超过追高过滤线",
+        "成交额 8.6亿",
+        "换手 8.63%",
+        "开盘后仍上涨 1.48%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "600183",
-      "name": "生益科技",
-      "board": "沪深主板",
-      "price": 117.63,
-      "pct_change": 2.644,
-      "amount": 6652334126.0,
-      "turnover": 2.37139,
+      "code": "300756",
+      "name": "金马游乐",
+      "board": "创业板",
+      "price": 31.4,
+      "pct_change": 5.263,
+      "amount": 385348166.0,
+      "turnover": 6.35229,
       "volume_ratio": null,
-      "intraday_pct": 0.9699570815450587,
+      "intraday_pct": 0.6410256410256387,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.84015009275032,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.26%，未超过追高过滤线",
+        "成交额 3.9亿",
+        "换手 6.35%",
+        "开盘后仍上涨 0.64%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "603337",
+      "name": "杰克科技",
+      "board": "沪深主板",
+      "price": 36.3,
+      "pct_change": 5.34,
+      "amount": 557216093.0,
+      "turnover": 3.28311,
+      "volume_ratio": null,
+      "intraday_pct": 1.680672268907557,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.792513801649473,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.34%，未超过追高过滤线",
+        "成交额 5.6亿",
+        "换手 3.28%",
+        "开盘后仍上涨 1.68%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "002173",
+      "name": "创新医疗",
+      "board": "沪深主板",
+      "price": 16.49,
+      "pct_change": 5.367,
+      "amount": 439768787.0,
+      "turnover": 6.39613,
+      "volume_ratio": null,
+      "intraday_pct": 3.0624999999999902,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.780836993420902,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.37%，未超过追高过滤线",
+        "成交额 4.4亿",
+        "换手 6.40%",
+        "开盘后仍上涨 3.06%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "688802",
+      "name": "沐曦股份-U",
+      "board": "科创板",
+      "price": 452.6,
+      "pct_change": 5.6,
+      "amount": 2081633890.0,
+      "turnover": 14.61,
+      "volume_ratio": 1.66,
+      "intraday_pct": 5.624270711785306,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.716808699595841,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.60%，未超过追高过滤线",
+        "成交额 20.8亿",
+        "量比 1.66",
+        "换手 14.61%",
+        "开盘后仍上涨 5.62%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "688432",
+      "name": "有研硅",
+      "board": "科创板",
+      "price": 38.2,
+      "pct_change": 4.09,
+      "amount": 1838336904.0,
+      "turnover": 3.83,
+      "volume_ratio": 1.4,
+      "intraday_pct": 4.2861042861042975,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.611350211205739,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.09%，未超过追高过滤线",
+        "成交额 18.4亿",
+        "量比 1.40",
+        "换手 3.83%",
+        "开盘后仍上涨 4.29%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "301511",
+      "name": "德福科技",
+      "board": "创业板",
+      "price": 77.0,
+      "pct_change": 2.941,
+      "amount": 1459947482.0,
+      "turnover": 4.80817,
+      "volume_ratio": null,
+      "intraday_pct": 2.872411489645965,
       "industry": "",
       "theme_layers": [
-        "PCB、CCL、高速连接",
         "铜箔、覆铜板、高速材料"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 10.637632873976356,
+      "score": 10.605837934705463,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.64%，未超过追高过滤线",
-        "成交额 66.5亿",
-        "换手 2.37%",
-        "开盘后仍上涨 0.97%，承接较好",
-        "命中主题层：PCB、CCL、高速连接 / 铜箔、覆铜板、高速材料",
+        "涨幅 2.94%，未超过追高过滤线",
+        "成交额 14.6亿",
+        "换手 4.81%",
+        "开盘后仍上涨 2.87%，承接较好",
+        "命中主题层：铜箔、覆铜板、高速材料",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "600732",
-      "name": "爱旭股份",
+      "code": "603920",
+      "name": "世运电路",
       "board": "沪深主板",
-      "price": 11.8,
-      "pct_change": 5.357,
-      "amount": 1102308506.0,
-      "turnover": 4.43606,
+      "price": 42.9,
+      "pct_change": 5.405,
+      "amount": 1302427798.0,
+      "turnover": 4.25426,
       "volume_ratio": null,
-      "intraday_pct": 6.498194945848379,
+      "intraday_pct": 5.743159970421496,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 10.378415317348543,
+      "score": 10.553646313771415,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.36%，未超过追高过滤线",
-        "成交额 11.0亿",
-        "换手 4.44%",
-        "开盘后仍上涨 6.50%，承接较好",
+        "涨幅 5.41%，未超过追高过滤线",
+        "成交额 13.0亿",
+        "换手 4.25%",
+        "开盘后仍上涨 5.74%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "002050",
-      "name": "三花智控",
+      "code": "001389",
+      "name": "广合科技",
       "board": "沪深主板",
-      "price": 32.65,
-      "pct_change": 3.915,
-      "amount": 1887736175.0,
-      "turnover": 1.59593,
+      "price": 126.28,
+      "pct_change": 5.233,
+      "amount": 1178040596.0,
+      "turnover": 6.17187,
       "volume_ratio": null,
-      "intraday_pct": 4.9501767920282935,
+      "intraday_pct": 6.260518343991928,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.54770101352526,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.23%，未超过追高过滤线",
+        "成交额 11.8亿",
+        "换手 6.17%",
+        "开盘后仍上涨 6.26%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "002368",
+      "name": "太极股份",
+      "board": "沪深主板",
+      "price": 13.34,
+      "pct_change": 4.627,
+      "amount": 569976963.0,
+      "turnover": 6.85078,
+      "volume_ratio": null,
+      "intraday_pct": 1.67682926829269,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.452515919652361,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.63%，未超过追高过滤线",
+        "成交额 5.7亿",
+        "换手 6.85%",
+        "开盘后仍上涨 1.68%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "002896",
+      "name": "中大力德",
+      "board": "沪深主板",
+      "price": 56.33,
+      "pct_change": 3.548,
+      "amount": 533061300.0,
+      "turnover": 4.87403,
+      "volume_ratio": null,
+      "intraday_pct": 4.314814814814816,
       "industry": "",
       "theme_layers": [
         "机器人、减速器、伺服、传感器"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 10.289272096716626,
+      "score": 10.442258808188054,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.92%，未超过追高过滤线",
-        "成交额 18.9亿",
-        "换手 1.60%",
-        "开盘后仍上涨 4.95%，承接较好",
+        "涨幅 3.55%，未超过追高过滤线",
+        "成交额 5.3亿",
+        "换手 4.87%",
+        "开盘后仍上涨 4.31%，承接较好",
         "命中主题层：机器人、减速器、伺服、传感器",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "600967",
-      "name": "内蒙一机",
+      "code": "603728",
+      "name": "鸣志电器",
       "board": "沪深主板",
-      "price": 14.5,
-      "pct_change": 4.392,
-      "amount": 1958440786.0,
-      "turnover": 8.19905,
+      "price": 49.76,
+      "pct_change": 5.09,
+      "amount": 405753141.0,
+      "turnover": 1.97661,
       "volume_ratio": null,
-      "intraday_pct": 4.693140794223827,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.254220890136706,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.39%，未超过追高过滤线",
-        "成交额 19.6亿",
-        "换手 8.20%",
-        "开盘后仍上涨 4.69%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688297",
-      "name": "中无人机",
-      "board": "科创板",
-      "price": 42.6,
-      "pct_change": 4.591,
-      "amount": 538573005.0,
-      "turnover": 1.91179,
-      "volume_ratio": null,
-      "intraday_pct": 4.4629720451201615,
+      "intraday_pct": 5.8273075287111675,
       "industry": "",
       "theme_layers": [
-        "低空经济、无人机、eVTOL、空管"
+        "机器人、减速器、伺服、传感器"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 10.107561517440226,
+      "score": 10.42101528090874,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.59%，未超过追高过滤线",
-        "成交额 5.4亿",
-        "换手 1.91%",
-        "开盘后仍上涨 4.46%，承接较好",
-        "命中主题层：低空经济、无人机、eVTOL、空管",
+        "涨幅 5.09%，未超过追高过滤线",
+        "成交额 4.1亿",
+        "换手 1.98%",
+        "开盘后仍上涨 5.83%，承接较好",
+        "命中主题层：机器人、减速器、伺服、传感器",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "300223",
-      "name": "君正股份",
+      "code": "605358",
+      "name": "立昂微",
+      "board": "沪深主板",
+      "price": 35.9,
+      "pct_change": 3.46,
+      "amount": 1312003010.0,
+      "turnover": 4.74,
+      "volume_ratio": 1.45,
+      "intraday_pct": 1.7573696145124718,
+      "industry": "半导体",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.41745755905375,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.46%，未超过追高过滤线",
+        "成交额 13.1亿",
+        "量比 1.45",
+        "换手 4.74%",
+        "开盘后仍上涨 1.76%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：半导体"
+      ]
+    },
+    {
+      "code": "300516",
+      "name": "久之洋",
       "board": "创业板",
-      "price": 102.46,
-      "pct_change": 1.93,
-      "amount": 2337333715.0,
-      "turnover": 5.36795,
+      "price": 37.44,
+      "pct_change": 2.829,
+      "amount": 750183053.0,
+      "turnover": 8.13523,
       "volume_ratio": null,
-      "intraday_pct": 1.4555896623428044,
+      "intraday_pct": 6.697064690795074,
       "industry": "",
       "theme_layers": [
-        "存储、HBM、企业级SSD",
-        "存算一体、近存计算、端侧AI存储"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.045661404459816,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 1.93%，未超过追高过滤线",
-        "成交额 23.4亿",
-        "换手 5.37%",
-        "开盘后仍上涨 1.46%，承接较好",
-        "命中主题层：存储、HBM、企业级SSD / 存算一体、近存计算、端侧AI存储",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688036",
-      "name": "传音控股",
-      "board": "科创板",
-      "price": 50.85,
-      "pct_change": 5.673,
-      "amount": 707027590.0,
-      "turnover": 1.20719,
-      "volume_ratio": null,
-      "intraday_pct": 5.5417185554171855,
-      "industry": "",
-      "theme_layers": [
-        "端侧AI芯片、AI眼镜、终端入口"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 10.037426534508175,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.67%，未超过追高过滤线",
-        "成交额 7.1亿",
-        "换手 1.21%",
-        "开盘后仍上涨 5.54%，承接较好",
-        "命中主题层：端侧AI芯片、AI眼镜、终端入口",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "601606",
-      "name": "长城军工",
-      "board": "沪深主板",
-      "price": 33.52,
-      "pct_change": 5.013,
-      "amount": 2631101789.0,
-      "turnover": 10.79193,
-      "volume_ratio": null,
-      "intraday_pct": -1.7296980357666247,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.855875299779083,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.01%，未超过追高过滤线",
-        "成交额 26.3亿",
-        "换手 10.79%",
-        "开盘后回落 -1.73%，可能是高开回落，不急买",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002465",
-      "name": "海格通信",
-      "board": "沪深主板",
-      "price": 9.75,
-      "pct_change": 4.278,
-      "amount": 588508265.0,
-      "turnover": 2.48045,
-      "volume_ratio": null,
-      "intraday_pct": 4.9515608180839665,
-      "industry": "",
-      "theme_layers": [
-        "商业航天、卫星互联网、导航遥感"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.845172632893103,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.28%，未超过追高过滤线",
-        "成交额 5.9亿",
-        "换手 2.48%",
-        "开盘后仍上涨 4.95%，承接较好",
-        "命中主题层：商业航天、卫星互联网、导航遥感",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600498",
-      "name": "烽火通信",
-      "board": "沪深主板",
-      "price": 30.14,
-      "pct_change": 2.273,
-      "amount": 1681556895.0,
-      "turnover": 4.43994,
-      "volume_ratio": null,
-      "intraday_pct": 3.219178082191787,
-      "industry": "",
-      "theme_layers": [
-        "通信设备、交换机、算力网络",
         "湖北光谷、光模块、存储、材料"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 9.845014132259417,
+      "score": 10.34513449800393,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 2.27%，未超过追高过滤线",
-        "成交额 16.8亿",
-        "换手 4.44%",
-        "开盘后仍上涨 3.22%，承接较好",
-        "命中主题层：通信设备、交换机、算力网络 / 湖北光谷、光模块、存储、材料",
+        "涨幅 2.83%，未超过追高过滤线",
+        "成交额 7.5亿",
+        "换手 8.14%",
+        "开盘后仍上涨 6.70%，承接较好",
+        "命中主题层：湖北光谷、光模块、存储、材料",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "300759",
-      "name": "康龙化成",
+      "code": "300364",
+      "name": "中文在线",
       "board": "创业板",
-      "price": 38.5,
-      "pct_change": 5.798,
-      "amount": 2016858292.0,
-      "turnover": 3.81919,
+      "price": 24.27,
+      "pct_change": 2.233,
+      "amount": 1690064817.0,
+      "turnover": 10.67038,
       "volume_ratio": null,
-      "intraday_pct": 5.827377680043977,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.839829269985817,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.80%，未超过追高过滤线",
-        "成交额 20.2亿",
-        "换手 3.82%",
-        "开盘后仍上涨 5.83%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000815",
-      "name": "美利云",
-      "board": "沪深主板",
-      "price": 14.6,
-      "pct_change": 4.36,
-      "amount": 800148818.0,
-      "turnover": 7.93628,
-      "volume_ratio": null,
-      "intraday_pct": 3.399433427762033,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.800477603238628,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.36%，未超过追高过滤线",
-        "成交额 8.0亿",
-        "换手 7.94%",
-        "开盘后仍上涨 3.40%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000519",
-      "name": "中兵红箭",
-      "board": "沪深主板",
-      "price": 15.17,
-      "pct_change": 4.765,
-      "amount": 1050989698.0,
-      "turnover": 5.12963,
-      "volume_ratio": null,
-      "intraday_pct": 4.620689655172416,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.785890036809274,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.76%，未超过追高过滤线",
-        "成交额 10.5亿",
-        "换手 5.13%",
-        "开盘后仍上涨 4.62%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002178",
-      "name": "延华智能",
-      "board": "沪深主板",
-      "price": 4.96,
-      "pct_change": 5.308,
-      "amount": 303626840.0,
-      "turnover": 8.50486,
-      "volume_ratio": null,
-      "intraday_pct": 6.4377682403433445,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.734280319352518,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.31%，未超过追高过滤线",
-        "成交额 3.0亿",
-        "换手 8.50%",
-        "开盘后仍上涨 6.44%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "603061",
-      "name": "金海通",
-      "board": "沪深主板",
-      "price": 267.8,
-      "pct_change": 3.598,
-      "amount": 1154681603.0,
-      "turnover": 4.93424,
-      "volume_ratio": null,
-      "intraday_pct": 0.6766917293233199,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.543202078991987,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 3.60%，未超过追高过滤线",
-        "成交额 11.5亿",
-        "换手 4.93%",
-        "开盘后仍上涨 0.68%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688775",
-      "name": "影石创新",
-      "board": "科创板",
-      "price": 93.6,
-      "pct_change": 5.062,
-      "amount": 771999683.0,
-      "turnover": 3.18724,
-      "volume_ratio": null,
-      "intraday_pct": 5.762711864406778,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.527720244009867,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.06%，未超过追高过滤线",
-        "成交额 7.7亿",
-        "换手 3.19%",
-        "开盘后仍上涨 5.76%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002543",
-      "name": "万和电气",
-      "board": "沪深主板",
-      "price": 8.03,
-      "pct_change": 5.381,
-      "amount": 301239471.0,
-      "turnover": 5.72333,
-      "volume_ratio": null,
-      "intraday_pct": 7.496653279785814,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.473523252550002,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.38%，未超过追高过滤线",
-        "成交额 3.0亿",
-        "换手 5.72%",
-        "开盘后仍上涨 7.50%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "300739",
-      "name": "明阳电路",
-      "board": "创业板",
-      "price": 25.63,
-      "pct_change": 6.041,
-      "amount": 510636434.0,
-      "turnover": 6.863,
-      "volume_ratio": null,
-      "intraday_pct": 7.059314954051787,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.39487359712389,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 6.04%，未超过追高过滤线",
-        "成交额 5.1亿",
-        "换手 6.86%",
-        "开盘后仍上涨 7.06%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688635",
-      "name": "长进光子",
-      "board": "科创板",
-      "price": 217.32,
-      "pct_change": 6.165,
-      "amount": 334925697.0,
-      "turnover": 8.90117,
-      "volume_ratio": null,
-      "intraday_pct": 7.525604868635871,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.347896939673136,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 6.17%，未超过追高过滤线",
-        "成交额 3.3亿",
-        "换手 8.90%",
-        "开盘后仍上涨 7.53%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600237",
-      "name": "铜峰电子",
-      "board": "沪深主板",
-      "price": 9.33,
-      "pct_change": 4.479,
-      "amount": 598018720.0,
-      "turnover": 10.59684,
-      "volume_ratio": null,
-      "intraday_pct": 6.628571428571428,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.328229558162278,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.48%，未超过追高过滤线",
-        "成交额 6.0亿",
-        "换手 10.60%",
-        "开盘后仍上涨 6.63%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688801",
-      "name": "燧原科技",
-      "board": "科创板",
-      "price": 433.89,
-      "pct_change": 4.653,
-      "amount": 1056322771.0,
-      "turnover": 13.74364,
-      "volume_ratio": null,
-      "intraday_pct": 3.6526516961299382,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.217107417935642,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.65%，未超过追高过滤线",
-        "成交额 10.6亿",
-        "换手 13.74%",
-        "开盘后仍上涨 3.65%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "603618",
-      "name": "杭电股份",
-      "board": "沪深主板",
-      "price": 33.74,
-      "pct_change": 4.168,
-      "amount": 3146576733.0,
-      "turnover": 13.90961,
-      "volume_ratio": null,
-      "intraday_pct": 4.7826086956521685,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.197276653995798,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.17%，未超过追高过滤线",
-        "成交额 31.5亿",
-        "换手 13.91%",
-        "开盘后仍上涨 4.78%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600764",
-      "name": "中国海防",
-      "board": "沪深主板",
-      "price": 20.56,
-      "pct_change": 4.898,
-      "amount": 513832279.0,
-      "turnover": 3.61912,
-      "volume_ratio": null,
-      "intraday_pct": 4.631043256997458,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.1441515827549,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.90%，未超过追高过滤线",
-        "成交额 5.1亿",
-        "换手 3.62%",
-        "开盘后仍上涨 4.63%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "002317",
-      "name": "众生药业",
-      "board": "沪深主板",
-      "price": 27.94,
-      "pct_change": 5.514,
-      "amount": 1058268630.0,
-      "turnover": 5.02143,
-      "volume_ratio": null,
-      "intraday_pct": 5.753217259651766,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.119206345263,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.51%，未超过追高过滤线",
-        "成交额 10.6亿",
-        "换手 5.02%",
-        "开盘后仍上涨 5.75%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "603861",
-      "name": "白云电器",
-      "board": "沪深主板",
-      "price": 12.35,
-      "pct_change": 4.661,
-      "amount": 416773803.0,
-      "turnover": 6.59652,
-      "volume_ratio": null,
-      "intraday_pct": 5.917667238421953,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 9.022478825716805,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.66%，未超过追高过滤线",
-        "成交额 4.2亿",
-        "换手 6.60%",
-        "开盘后仍上涨 5.92%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "300065",
-      "name": "海兰信",
-      "board": "创业板",
-      "price": 14.68,
-      "pct_change": 4.261,
-      "amount": 643273999.0,
-      "turnover": 6.80897,
-      "volume_ratio": null,
-      "intraday_pct": 4.558404558404572,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 8.951337495326671,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 4.26%，未超过追高过滤线",
-        "成交额 6.4亿",
-        "换手 6.81%",
-        "开盘后仍上涨 4.56%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "600312",
-      "name": "平高电气",
-      "board": "沪深主板",
-      "price": 21.42,
-      "pct_change": 3.279,
-      "amount": 606553202.0,
-      "turnover": 2.10261,
-      "volume_ratio": null,
-      "intraday_pct": 2.4390243902439046,
+      "intraday_pct": 3.2765957446808436,
       "industry": "",
       "theme_layers": [
-        "电力、电网、变压器、线缆"
+        "AI应用、办公软件、教育、内容、金融科技"
       ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.943798151888736,
+      "score": 10.335406721802059,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.28%，未超过追高过滤线",
-        "成交额 6.1亿",
-        "换手 2.10%",
-        "开盘后仍上涨 2.44%，承接较好",
-        "命中主题层：电力、电网、变压器、线缆",
+        "涨幅 2.23%，未超过追高过滤线",
+        "成交额 16.9亿",
+        "换手 10.67%",
+        "开盘后仍上涨 3.28%，承接较好",
+        "命中主题层：AI应用、办公软件、教育、内容、金融科技",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "300067",
-      "name": "安诺其",
+      "code": "002811",
+      "name": "郑中设计",
+      "board": "沪深主板",
+      "price": 21.96,
+      "pct_change": 5.223,
+      "amount": 508023453.0,
+      "turnover": 8.32452,
+      "volume_ratio": null,
+      "intraday_pct": 4.7210300429184615,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.271030197763594,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.22%，未超过追高过滤线",
+        "成交额 5.1亿",
+        "换手 8.32%",
+        "开盘后仍上涨 4.72%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "300503",
+      "name": "昊志机电",
       "board": "创业板",
-      "price": 5.54,
-      "pct_change": 4.331,
-      "amount": 436465750.0,
-      "turnover": 8.60814,
+      "price": 54.97,
+      "pct_change": 4.785,
+      "amount": 1119499375.0,
+      "turnover": 8.39382,
       "volume_ratio": null,
-      "intraday_pct": 5.725190839694649,
+      "intraday_pct": 4.7047619047619005,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.87710033952142,
+      "score": 10.270547139045537,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.33%，未超过追高过滤线",
-        "成交额 4.4亿",
-        "换手 8.61%",
-        "开盘后仍上涨 5.73%，承接较好",
+        "涨幅 4.79%，未超过追高过滤线",
+        "成交额 11.2亿",
+        "换手 8.39%",
+        "开盘后仍上涨 4.70%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "002585",
-      "name": "双星新材",
-      "board": "沪深主板",
-      "price": 10.48,
-      "pct_change": 4.487,
-      "amount": 1305348123.0,
-      "turnover": 14.49601,
+      "code": "300369",
+      "name": "绿盟科技",
+      "board": "创业板",
+      "price": 10.34,
+      "pct_change": 4.868,
+      "amount": 978254603.0,
+      "turnover": 11.79579,
       "volume_ratio": null,
-      "intraday_pct": 7.487179487179496,
+      "intraday_pct": 4.761904761904767,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.815852698039784,
+      "score": 10.263071751461691,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.49%，未超过追高过滤线",
-        "成交额 13.1亿",
-        "换手 14.50%",
-        "开盘后仍上涨 7.49%，承接较好",
+        "涨幅 4.87%，未超过追高过滤线",
+        "成交额 9.8亿",
+        "换手 11.80%",
+        "开盘后仍上涨 4.76%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "600988",
-      "name": "赤峰黄金",
-      "board": "沪深主板",
-      "price": 41.38,
-      "pct_change": 3.735,
-      "amount": 2127265560.0,
-      "turnover": 3.11732,
+      "code": "688048",
+      "name": "长光华芯",
+      "board": "科创板",
+      "price": 181.78,
+      "pct_change": 2.701,
+      "amount": 1362427015.0,
+      "turnover": 4.26399,
       "volume_ratio": null,
-      "intraday_pct": 4.284274193548399,
+      "intraday_pct": 2.654167607860858,
       "industry": "",
-      "theme_layers": [],
+      "theme_layers": [
+        "光子计算、硅光、CPO、光互连"
+      ],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.805241418022241,
+      "score": 10.167504089015225,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 3.73%，未超过追高过滤线",
-        "成交额 21.3亿",
-        "换手 3.12%",
-        "开盘后仍上涨 4.28%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "000408",
-      "name": "藏格矿业",
-      "board": "沪深主板",
-      "price": 73.75,
-      "pct_change": 5.117,
-      "amount": 1085695816.0,
-      "turnover": 0.94819,
-      "volume_ratio": null,
-      "intraday_pct": 2.430555555555558,
-      "industry": "",
-      "theme_layers": [],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 8.803075615110748,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 5.12%，未超过追高过滤线",
-        "成交额 10.9亿",
-        "换手 0.95%",
-        "开盘后仍上涨 2.43%，承接较好",
-        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "涨幅 2.70%，未超过追高过滤线",
+        "成交额 13.6亿",
+        "换手 4.26%",
+        "开盘后仍上涨 2.65%，承接较好",
+        "命中主题层：光子计算、硅光、CPO、光互连",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
@@ -1307,103 +1049,460 @@
       "code": "603667",
       "name": "五洲新春",
       "board": "沪深主板",
-      "price": 43.08,
-      "pct_change": 4.462,
-      "amount": 613692075.0,
-      "turnover": 4.00023,
+      "price": 45.32,
+      "pct_change": 5.2,
+      "amount": 879656285.0,
+      "turnover": 5.36043,
       "volume_ratio": null,
-      "intraday_pct": 5.847665847665828,
+      "intraday_pct": 6.086142322097388,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.730335529993015,
+      "score": 10.132690520010659,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.46%，未超过追高过滤线",
-        "成交额 6.1亿",
-        "换手 4.00%",
-        "开盘后仍上涨 5.85%，承接较好",
+        "涨幅 5.20%，未超过追高过滤线",
+        "成交额 8.8亿",
+        "换手 5.36%",
+        "开盘后仍上涨 6.09%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "001232",
-      "name": "嘉立创",
-      "board": "沪深主板",
-      "price": 168.11,
-      "pct_change": 4.572,
-      "amount": 949119004.0,
-      "turnover": 12.8665,
+      "code": "301293",
+      "name": "三博脑科",
+      "board": "创业板",
+      "price": 47.31,
+      "pct_change": 5.485,
+      "amount": 347835620.0,
+      "turnover": 4.29588,
       "volume_ratio": null,
-      "intraday_pct": 4.5590247543226825,
+      "intraday_pct": 3.9551746868820237,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.646017700811951,
+      "score": 10.097758870016301,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 4.57%，未超过追高过滤线",
-        "成交额 9.5亿",
-        "换手 12.87%",
+        "涨幅 5.49%，未超过追高过滤线",
+        "成交额 3.5亿",
+        "换手 4.30%",
+        "开盘后仍上涨 3.96%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "600498",
+      "name": "烽火通信",
+      "board": "沪深主板",
+      "price": 30.69,
+      "pct_change": 1.82,
+      "amount": 1456614771.0,
+      "turnover": 3.75,
+      "volume_ratio": 1.0,
+      "intraday_pct": 2.334111370456826,
+      "industry": "通信设备",
+      "theme_layers": [
+        "通信设备、交换机、算力网络",
+        "湖北光谷、光模块、存储、材料"
+      ],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.073189419325569,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 1.82%，未超过追高过滤线",
+        "成交额 14.6亿",
+        "量比 1.00",
+        "换手 3.75%",
+        "开盘后仍上涨 2.33%，承接较好",
+        "命中主题层：通信设备、交换机、算力网络 / 湖北光谷、光模块、存储、材料",
+        "行业：通信设备"
+      ]
+    },
+    {
+      "code": "300489",
+      "name": "光智科技",
+      "board": "创业板",
+      "price": 241.0,
+      "pct_change": 4.09,
+      "amount": 2504177462.0,
+      "turnover": 7.56183,
+      "volume_ratio": null,
+      "intraday_pct": 4.058721934369602,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 10.05169817022611,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.09%，未超过追高过滤线",
+        "成交额 25.0亿",
+        "换手 7.56%",
+        "开盘后仍上涨 4.06%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "600699",
+      "name": "均胜电子",
+      "board": "沪深主板",
+      "price": 21.24,
+      "pct_change": 3.11,
+      "amount": 1902013838.0,
+      "turnover": 6.46,
+      "volume_ratio": 1.59,
+      "intraday_pct": 4.424778761061932,
+      "industry": "汽车零部件",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 10.04942734459835,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.11%，未超过追高过滤线",
+        "成交额 19.0亿",
+        "量比 1.59",
+        "换手 6.46%",
+        "开盘后仍上涨 4.42%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：汽车零部件"
+      ]
+    },
+    {
+      "code": "688222",
+      "name": "成都先导",
+      "board": "科创板",
+      "price": 37.68,
+      "pct_change": 4.725,
+      "amount": 1059264167.0,
+      "turnover": 7.10476,
+      "volume_ratio": null,
+      "intraday_pct": 5.4575986565911005,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.985722562261381,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.72%，未超过追高过滤线",
+        "成交额 10.6亿",
+        "换手 7.10%",
+        "开盘后仍上涨 5.46%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "603232",
+      "name": "格尔软件",
+      "board": "沪深主板",
+      "price": 17.54,
+      "pct_change": 5.219,
+      "amount": 457770235.0,
+      "turnover": 11.50346,
+      "volume_ratio": null,
+      "intraday_pct": 5.4086538461538325,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.984095101379951,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.22%，未超过追高过滤线",
+        "成交额 4.6亿",
+        "换手 11.50%",
+        "开盘后仍上涨 5.41%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "688629",
+      "name": "华丰科技",
+      "board": "科创板",
+      "price": 80.78,
+      "pct_change": 3.964,
+      "amount": 976674386.0,
+      "turnover": 2.63399,
+      "volume_ratio": null,
+      "intraday_pct": 4.51546124983826,
+      "industry": "",
+      "theme_layers": [
+        "华为昇腾/国产GPU算力"
+      ],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.93139809635549,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 3.96%，未超过追高过滤线",
+        "成交额 9.8亿",
+        "换手 2.63%",
+        "开盘后仍上涨 4.52%，承接较好",
+        "命中主题层：华为昇腾/国产GPU算力",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "600176",
+      "name": "中国巨石",
+      "board": "沪深主板",
+      "price": 34.66,
+      "pct_change": 2.79,
+      "amount": 5185516141.0,
+      "turnover": 3.79,
+      "volume_ratio": 1.1,
+      "intraday_pct": 2.0612485276796155,
+      "industry": "玻璃玻纤",
+      "theme_layers": [],
+      "data_source": "eastmoney",
+      "data_quality": "full",
+      "score": 9.930781489761403,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 2.79%，未超过追高过滤线",
+        "成交额 51.9亿",
+        "量比 1.10",
+        "换手 3.79%",
+        "开盘后仍上涨 2.06%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "行业：玻璃玻纤"
+      ]
+    },
+    {
+      "code": "300751",
+      "name": "迈为股份",
+      "board": "创业板",
+      "price": 142.8,
+      "pct_change": 5.039,
+      "amount": 1097303372.0,
+      "turnover": 4.01535,
+      "volume_ratio": null,
+      "intraday_pct": 5.769942967187625,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.929755927566935,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.04%，未超过追高过滤线",
+        "成交额 11.0亿",
+        "换手 4.02%",
+        "开盘后仍上涨 5.77%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "001229",
+      "name": "魅视科技",
+      "board": "沪深主板",
+      "price": 43.1,
+      "pct_change": 5.302,
+      "amount": 342773190.0,
+      "turnover": 11.09113,
+      "volume_ratio": null,
+      "intraday_pct": 5.173255246461705,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.881277606485527,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.30%，未超过追高过滤线",
+        "成交额 3.4亿",
+        "换手 11.09%",
+        "开盘后仍上涨 5.17%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "301487",
+      "name": "盟固利",
+      "board": "创业板",
+      "price": 19.24,
+      "pct_change": 4.679,
+      "amount": 844088053.0,
+      "turnover": 9.81995,
+      "volume_ratio": null,
+      "intraday_pct": 5.1940951339529695,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.867575506846924,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.68%，未超过追高过滤线",
+        "成交额 8.4亿",
+        "换手 9.82%",
+        "开盘后仍上涨 5.19%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "002979",
+      "name": "雷赛智能",
+      "board": "沪深主板",
+      "price": 51.12,
+      "pct_change": 5.034,
+      "amount": 689808591.0,
+      "turnover": 6.12604,
+      "volume_ratio": null,
+      "intraday_pct": 5.423798721385853,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.837163197692956,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 5.03%，未超过追高过滤线",
+        "成交额 6.9亿",
+        "换手 6.13%",
+        "开盘后仍上涨 5.42%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "300570",
+      "name": "太辰光",
+      "board": "创业板",
+      "price": 170.61,
+      "pct_change": 1.93,
+      "amount": 1919883552.0,
+      "turnover": 5.86935,
+      "volume_ratio": null,
+      "intraday_pct": 3.1063032573880545,
+      "industry": "",
+      "theme_layers": [
+        "光通信、光模块、CPO、硅光",
+        "光子计算、硅光、CPO、光互连",
+        "量子计算/光子计算验证"
+      ],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.76295227588886,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 1.93%，未超过追高过滤线",
+        "成交额 19.2亿",
+        "换手 5.87%",
+        "开盘后仍上涨 3.11%，承接较好",
+        "命中主题层：光通信、光模块、CPO、硅光 / 光子计算、硅光、CPO、光互连",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "002510",
+      "name": "天汽模",
+      "board": "沪深主板",
+      "price": 6.31,
+      "pct_change": 4.643,
+      "amount": 712497585.0,
+      "turnover": 11.56704,
+      "volume_ratio": null,
+      "intraday_pct": 8.233276157804447,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.677166793296669,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.64%，未超过追高过滤线",
+        "成交额 7.1亿",
+        "换手 11.57%",
+        "开盘后仍上涨 8.23%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "301171",
+      "name": "易点天下",
+      "board": "创业板",
+      "price": 31.19,
+      "pct_change": 4.28,
+      "amount": 1105247967.0,
+      "turnover": 7.16157,
+      "volume_ratio": null,
+      "intraday_pct": 4.559168622192433,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.497154949469337,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.28%，未超过追高过滤线",
+        "成交额 11.1亿",
+        "换手 7.16%",
         "开盘后仍上涨 4.56%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
     },
     {
-      "code": "688256",
-      "name": "寒武纪",
+      "code": "688499",
+      "name": "利元亨",
       "board": "科创板",
-      "price": 928.51,
-      "pct_change": 1.477,
-      "amount": 8294014385.0,
-      "turnover": 1.42485,
+      "price": 44.75,
+      "pct_change": 5.992,
+      "amount": 547113386.0,
+      "turnover": 7.47995,
       "volume_ratio": null,
-      "intraday_pct": 3.1677777777777694,
-      "industry": "",
-      "theme_layers": [
-        "AI芯片与加速卡",
-        "华为昇腾/国产GPU算力",
-        "端侧AI芯片、AI眼镜、终端入口",
-        "量子计算/光子计算验证"
-      ],
-      "data_source": "sina",
-      "data_quality": "partial",
-      "score": 8.623657068523494,
-      "action": "候选，等回踩/二次确认",
-      "reasons": [
-        "涨幅 1.48%，未超过追高过滤线",
-        "成交额 82.9亿",
-        "换手 1.42%",
-        "开盘后仍上涨 3.17%，承接较好",
-        "命中主题层：AI芯片与加速卡 / 华为昇腾/国产GPU算力",
-        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
-      ]
-    },
-    {
-      "code": "688615",
-      "name": "合合信息",
-      "board": "科创板",
-      "price": 84.15,
-      "pct_change": 5.916,
-      "amount": 417708521.0,
-      "turnover": 3.65836,
-      "volume_ratio": null,
-      "intraday_pct": 6.142785065590317,
+      "intraday_pct": 5.992420653718611,
       "industry": "",
       "theme_layers": [],
       "data_source": "sina",
       "data_quality": "partial",
-      "score": 8.589700669398018,
+      "score": 9.48854718122672,
       "action": "候选，等回踩/二次确认",
       "reasons": [
-        "涨幅 5.92%，未超过追高过滤线",
-        "成交额 4.2亿",
-        "换手 3.66%",
-        "开盘后仍上涨 6.14%，承接较好",
+        "涨幅 5.99%，未超过追高过滤线",
+        "成交额 5.5亿",
+        "换手 7.48%",
+        "开盘后仍上涨 5.99%，承接较好",
+        "未命中当前AI/数字基建主线，降级为全市场异动",
+        "备用源字段不完整：只进观察池，不直接进入今日可操作池"
+      ]
+    },
+    {
+      "code": "300785",
+      "name": "值得买",
+      "board": "创业板",
+      "price": 36.32,
+      "pct_change": 4.729,
+      "amount": 493496402.0,
+      "turnover": 10.67321,
+      "volume_ratio": null,
+      "intraday_pct": 5.550712002324909,
+      "industry": "",
+      "theme_layers": [],
+      "data_source": "sina",
+      "data_quality": "partial",
+      "score": 9.461367981297057,
+      "action": "候选，等回踩/二次确认",
+      "reasons": [
+        "涨幅 4.73%，未超过追高过滤线",
+        "成交额 4.9亿",
+        "换手 10.67%",
+        "开盘后仍上涨 5.55%，承接较好",
         "未命中当前AI/数字基建主线，降级为全市场异动",
         "备用源字段不完整：只进观察池，不直接进入今日可操作池"
       ]
@@ -1421,22 +1520,22 @@
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "as_of": "20261019",
-          "price": 660.7,
-          "daily_change_pct": -1.39,
+          "as_of": "20261020",
+          "price": 647.9,
+          "daily_change_pct": -1.94,
           "returns": {
-            "5": -8.80229685149143,
-            "10": -18.813574734027515,
-            "20": -28.557989459410948
+            "5": -11.850340136054427,
+            "10": -20.191274870167632,
+            "20": -25.683007458081274
           },
           "relative_returns": {
-            "5": -6.050003273509773,
-            "10": -14.806329997781209,
-            "20": -21.15462627967739
+            "5": -8.97347017057687,
+            "10": -15.752869073066169,
+            "20": -18.389510094285143
           },
-          "ma20": 813.6177,
+          "ma20": 802.4224,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1130438956673496,
+          "volume_ratio_5_20": 1.0489065287636719,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -1446,7 +1545,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -18.794785315019567,
+            "deviation_from_ma20_pct": -19.256989834780292,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1578,22 +1677,22 @@
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "as_of": "20261019",
-          "price": 308.0,
-          "daily_change_pct": 0.36,
+          "as_of": "20261020",
+          "price": 298.17,
+          "daily_change_pct": -3.19,
           "returns": {
-            "5": -11.392405063291145,
-            "10": -22.94220665499124,
-            "20": -27.186761229314417
+            "5": -15.12382578992314,
+            "10": -24.11239215087425,
+            "20": -25.80990296093555
           },
           "relative_returns": {
-            "5": -8.640111485309488,
-            "10": -18.934961918744932,
-            "20": -19.78339804958086
+            "5": -12.246955824445582,
+            "10": -19.673986353772786,
+            "20": -18.516405597139418
           },
-          "ma20": 388.54,
+          "ma20": 383.35350000000005,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1359269673955121,
+          "volume_ratio_5_20": 1.0965932976954846,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -1603,7 +1702,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -20.728882483142023,
+            "deviation_from_ma20_pct": -22.22061361119698,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1740,32 +1839,32 @@
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连验证",
-          "as_of": "20261019",
-          "price": 165.25,
-          "daily_change_pct": -2.33,
+          "as_of": "20261020",
+          "price": 169.27,
+          "daily_change_pct": 2.43,
           "returns": {
-            "5": -13.860508757297751,
-            "10": -20.78139980824545,
-            "20": -13.914357157741197
+            "5": -8.403679653679653,
+            "10": -20.380997177798676,
+            "20": -8.329271594909283
           },
           "relative_returns": {
-            "5": -11.108215179316094,
-            "10": -16.774155071999143,
-            "20": -6.510993978007639
+            "5": -5.526809688202095,
+            "10": -15.942591380697213,
+            "20": -1.0357742311131517
           },
-          "ma20": 195.25199999999998,
+          "ma20": 194.483,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0307355412198866,
+          "volume_ratio_5_20": 0.9645836987018284,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -15.365783705160501,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -12.96411511545996,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1907,22 +2006,22 @@
           "code": "300394",
           "name": "天孚通信",
           "role": "器件环节验证",
-          "as_of": "20261019",
-          "price": 203.3,
-          "daily_change_pct": -4.46,
+          "as_of": "20261020",
+          "price": 204.54,
+          "daily_change_pct": 0.61,
           "returns": {
-            "5": -11.431558769713334,
-            "10": -16.952614379084963,
-            "20": -22.244320354930004
+            "5": -17.089582488852862,
+            "10": -20.09844134536506,
+            "20": -20.244872494736022
           },
           "relative_returns": {
-            "5": -8.679265191731677,
-            "10": -12.945369642838656,
-            "20": -14.840957175196447
+            "5": -14.212712523375306,
+            "10": -15.660035548263597,
+            "20": -12.95137513093989
           },
-          "ma20": 250.94549999999998,
+          "ma20": 248.34949999999998,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9829003865728055,
+          "volume_ratio_5_20": 0.8921730035563389,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -1931,8 +2030,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -18.98639345993452,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -17.640261003142744,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -1946,14 +2045,14 @@
               "1": {
                 "observations": 12,
                 "win_rate": 0.5,
-                "net_return": 0.0011,
+                "net_return": 0.0051,
                 "max_drawdown": -0.185,
-                "cumulative_return": -0.0017,
+                "cumulative_return": 0.0419,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
                     "signal_date": "2026-08-14",
@@ -2014,30 +2113,30 @@
               },
               "3": {
                 "observations": 7,
-                "win_rate": 0.4286,
-                "net_return": 0.0105,
-                "max_drawdown": -0.2216,
-                "cumulative_return": 0.0444,
+                "win_rate": 0.5714,
+                "net_return": 0.027,
+                "max_drawdown": -0.149,
+                "cumulative_return": 0.1583,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-18",
+                    "entry_date": "2026-08-19",
+                    "exit_date": "2026-08-24"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-24",
+                    "entry_date": "2026-08-25",
+                    "exit_date": "2026-08-28"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
+                    "exit_date": "2026-09-03"
                   },
                   {
                     "signal_date": "2026-09-10",
@@ -2059,24 +2158,24 @@
               "5": {
                 "observations": 5,
                 "win_rate": 0.4,
-                "net_return": 0.0397,
-                "max_drawdown": -0.1904,
-                "cumulative_return": 0.1505,
+                "net_return": 0.0172,
+                "max_drawdown": -0.2276,
+                "cumulative_return": 0.0496,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-04"
                   },
                   {
                     "signal_date": "2026-09-10",
@@ -2120,22 +2219,22 @@
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "as_of": "20261019",
-          "price": 660.7,
-          "daily_change_pct": -1.39,
+          "as_of": "20261020",
+          "price": 647.9,
+          "daily_change_pct": -1.94,
           "returns": {
-            "5": -8.80229685149143,
-            "10": -18.813574734027515,
-            "20": -28.557989459410948
+            "5": -11.850340136054427,
+            "10": -20.191274870167632,
+            "20": -25.683007458081274
           },
           "relative_returns": {
-            "5": -6.050003273509773,
-            "10": -14.806329997781209,
-            "20": -21.15462627967739
+            "5": -8.97347017057687,
+            "10": -15.752869073066169,
+            "20": -18.389510094285143
           },
-          "ma20": 813.6177,
+          "ma20": 802.4224,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1130438956673496,
+          "volume_ratio_5_20": 1.0489065287636719,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -2145,7 +2244,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -18.794785315019567,
+            "deviation_from_ma20_pct": -19.256989834780292,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2277,22 +2376,22 @@
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "as_of": "20261019",
-          "price": 308.0,
-          "daily_change_pct": 0.36,
+          "as_of": "20261020",
+          "price": 298.17,
+          "daily_change_pct": -3.19,
           "returns": {
-            "5": -11.392405063291145,
-            "10": -22.94220665499124,
-            "20": -27.186761229314417
+            "5": -15.12382578992314,
+            "10": -24.11239215087425,
+            "20": -25.80990296093555
           },
           "relative_returns": {
-            "5": -8.640111485309488,
-            "10": -18.934961918744932,
-            "20": -19.78339804958086
+            "5": -12.246955824445582,
+            "10": -19.673986353772786,
+            "20": -18.516405597139418
           },
-          "ma20": 388.54,
+          "ma20": 383.35350000000005,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1359269673955121,
+          "volume_ratio_5_20": 1.0965932976954846,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -2302,7 +2401,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -20.728882483142023,
+            "deviation_from_ma20_pct": -22.22061361119698,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2439,32 +2538,32 @@
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连验证",
-          "as_of": "20261019",
-          "price": 165.25,
-          "daily_change_pct": -2.33,
+          "as_of": "20261020",
+          "price": 169.27,
+          "daily_change_pct": 2.43,
           "returns": {
-            "5": -13.860508757297751,
-            "10": -20.78139980824545,
-            "20": -13.914357157741197
+            "5": -8.403679653679653,
+            "10": -20.380997177798676,
+            "20": -8.329271594909283
           },
           "relative_returns": {
-            "5": -11.108215179316094,
-            "10": -16.774155071999143,
-            "20": -6.510993978007639
+            "5": -5.526809688202095,
+            "10": -15.942591380697213,
+            "20": -1.0357742311131517
           },
-          "ma20": 195.25199999999998,
+          "ma20": 194.483,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0307355412198866,
+          "volume_ratio_5_20": 0.9645836987018284,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -15.365783705160501,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -12.96411511545996,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2606,22 +2705,22 @@
           "code": "300394",
           "name": "天孚通信",
           "role": "器件环节验证",
-          "as_of": "20261019",
-          "price": 203.3,
-          "daily_change_pct": -4.46,
+          "as_of": "20261020",
+          "price": 204.54,
+          "daily_change_pct": 0.61,
           "returns": {
-            "5": -11.431558769713334,
-            "10": -16.952614379084963,
-            "20": -22.244320354930004
+            "5": -17.089582488852862,
+            "10": -20.09844134536506,
+            "20": -20.244872494736022
           },
           "relative_returns": {
-            "5": -8.679265191731677,
-            "10": -12.945369642838656,
-            "20": -14.840957175196447
+            "5": -14.212712523375306,
+            "10": -15.660035548263597,
+            "20": -12.95137513093989
           },
-          "ma20": 250.94549999999998,
+          "ma20": 248.34949999999998,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.9829003865728055,
+          "volume_ratio_5_20": 0.8921730035563389,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -2630,8 +2729,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -18.98639345993452,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -17.640261003142744,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2645,14 +2744,14 @@
               "1": {
                 "observations": 12,
                 "win_rate": 0.5,
-                "net_return": 0.0011,
+                "net_return": 0.0051,
                 "max_drawdown": -0.185,
-                "cumulative_return": -0.0017,
+                "cumulative_return": 0.0419,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
                     "signal_date": "2026-08-14",
@@ -2713,30 +2812,30 @@
               },
               "3": {
                 "observations": 7,
-                "win_rate": 0.4286,
-                "net_return": 0.0105,
-                "max_drawdown": -0.2216,
-                "cumulative_return": 0.0444,
+                "win_rate": 0.5714,
+                "net_return": 0.027,
+                "max_drawdown": -0.149,
+                "cumulative_return": 0.1583,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-18",
+                    "entry_date": "2026-08-19",
+                    "exit_date": "2026-08-24"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-24",
+                    "entry_date": "2026-08-25",
+                    "exit_date": "2026-08-28"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
+                    "exit_date": "2026-09-03"
                   },
                   {
                     "signal_date": "2026-09-10",
@@ -2758,24 +2857,24 @@
               "5": {
                 "observations": 5,
                 "win_rate": 0.4,
-                "net_return": 0.0397,
-                "max_drawdown": -0.1904,
-                "cumulative_return": 0.1505,
+                "net_return": 0.0172,
+                "max_drawdown": -0.2276,
+                "cumulative_return": 0.0496,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-04"
                   },
                   {
                     "signal_date": "2026-09-10",
@@ -2799,48 +2898,48 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-10-19",
-          "price": 217.6300048828125,
-          "return_20d": -4.287975983211445,
+          "price": 217.08999633789062,
+          "return_20d": -4.525467641811842,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MSFT",
           "as_of": "2026-10-19",
-          "price": 534.7899780273438,
-          "return_20d": 6.614699396888302,
+          "price": 533.52001953125,
+          "return_20d": 6.361522918512641,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AMZN",
           "as_of": "2026-10-19",
-          "price": 262.4750061035156,
-          "return_20d": 1.5573587565784974,
+          "price": 262.45001220703125,
+          "return_20d": 1.5476880677396831,
           "above_ma20": true,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "META",
           "as_of": "2026-10-19",
-          "price": 701.7723999023438,
-          "return_20d": -5.325814515704053,
+          "price": 705.4400024414062,
+          "return_20d": -4.83102833842749,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "GOOGL",
           "as_of": "2026-10-19",
-          "price": 345.3351135253906,
-          "return_20d": -2.7142822385495036,
+          "price": 344.17999267578125,
+          "return_20d": -3.039695891995442,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-10-19",
-          "price": 336.7300109863281,
-          "return_20d": -7.149945517548783,
+          "price": 334.5899963378906,
+          "return_20d": -7.740033927306634,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -2856,22 +2955,22 @@
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "as_of": "20261019",
-          "price": 36.61,
-          "daily_change_pct": -0.57,
+          "as_of": "20261020",
+          "price": 36.94,
+          "daily_change_pct": 0.9,
           "returns": {
-            "5": -10.269607843137251,
-            "10": -15.839080459770116,
-            "20": -24.312590448625183
+            "5": -8.609599208312723,
+            "10": -15.565714285714293,
+            "20": -24.550653594771244
           },
           "relative_returns": {
-            "5": -7.517314265155594,
-            "10": -11.83183572352381,
-            "20": -16.909227268891627
+            "5": -5.732729242835165,
+            "10": -11.12730848861283,
+            "20": -17.257156230975113
           },
-          "ma20": 44.521499999999996,
+          "ma20": 43.92049999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.092086700640346,
+          "volume_ratio_5_20": 1.0122793703032518,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -2880,8 +2979,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -17.77006614781622,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -15.893489372844103,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -2893,41 +2992,36 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 7,
-                "win_rate": 0.2857,
-                "net_return": -0.0118,
-                "max_drawdown": -0.0814,
-                "cumulative_return": -0.0814,
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0188,
+                "max_drawdown": -0.1505,
+                "cumulative_return": -0.1137,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
-                  },
-                  {
-                    "signal_date": "2026-08-24",
-                    "entry_date": "2026-08-25",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -2938,25 +3032,25 @@
               },
               "3": {
                 "observations": 4,
-                "win_rate": 0.0,
-                "net_return": -0.0506,
-                "max_drawdown": -0.191,
-                "cumulative_return": -0.1887,
+                "win_rate": 0.25,
+                "net_return": -0.0295,
+                "max_drawdown": -0.1549,
+                "cumulative_return": -0.1168,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -2967,20 +3061,20 @@
               },
               "5": {
                 "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.059,
-                "max_drawdown": -0.1756,
-                "cumulative_return": -0.1698,
+                "win_rate": 0.0,
+                "net_return": -0.0535,
+                "max_drawdown": -0.1893,
+                "cumulative_return": -0.1549,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -2998,22 +3092,22 @@
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "as_of": "20261019",
-          "price": 42.79,
-          "daily_change_pct": -1.99,
+          "as_of": "20261020",
+          "price": 43.81,
+          "daily_change_pct": 2.38,
           "returns": {
-            "5": -11.481175010343414,
-            "10": -19.64319248826292,
-            "20": -26.879699248120303
+            "5": -9.051276728254098,
+            "10": -18.401937046004836,
+            "20": -25.959100895724184
           },
           "relative_returns": {
-            "5": -8.728881432361757,
-            "10": -15.635947752016612,
-            "20": -19.476336068386747
+            "5": -6.174406762776541,
+            "10": -13.963531248903372,
+            "20": -18.665603531928053
           },
-          "ma20": 53.98349999999999,
+          "ma20": 53.2155,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.895217382391884,
+          "volume_ratio_5_20": 0.8776129748220929,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3022,8 +3116,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -20.73503941019014,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -17.674361793086593,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3140,22 +3234,22 @@
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "as_of": "20261019",
-          "price": 25.43,
-          "daily_change_pct": -0.86,
+          "as_of": "20261020",
+          "price": 25.69,
+          "daily_change_pct": 1.02,
           "returns": {
-            "5": -9.982300884955752,
-            "10": -16.183256427158867,
-            "20": -23.793826790530414
+            "5": -10.111966410076967,
+            "10": -16.045751633986928,
+            "20": -22.151515151515145
           },
           "relative_returns": {
-            "5": -7.230007306974095,
-            "10": -12.17601169091256,
-            "20": -16.390463610796857
+            "5": -7.235096444599409,
+            "10": -11.607345836885465,
+            "20": -14.858017787719014
           },
-          "ma20": 30.52999999999999,
+          "ma20": 30.164499999999997,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1682523940868381,
+          "volume_ratio_5_20": 1.1316139481676486,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -3164,8 +3258,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -16.704880445463456,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -14.833662086227173,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3178,78 +3272,78 @@
             "horizons": {
               "1": {
                 "observations": 5,
-                "win_rate": 0.0,
-                "net_return": -0.017,
-                "max_drawdown": -0.0822,
-                "cumulative_return": -0.0822,
+                "win_rate": 0.2,
+                "net_return": -0.0272,
+                "max_drawdown": -0.1566,
+                "cumulative_return": -0.1333,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   }
                 ]
               },
               "3": {
                 "observations": 3,
-                "win_rate": 0.0,
-                "net_return": -0.0461,
-                "max_drawdown": -0.1472,
-                "cumulative_return": -0.1322,
+                "win_rate": 0.3333,
+                "net_return": -0.0207,
+                "max_drawdown": -0.1189,
+                "cumulative_return": -0.0627,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               },
               "5": {
                 "observations": 2,
                 "win_rate": 0.0,
-                "net_return": -0.0404,
-                "max_drawdown": -0.0951,
-                "cumulative_return": -0.0792,
+                "net_return": -0.0513,
+                "max_drawdown": -0.1553,
+                "cumulative_return": -0.1001,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               }
@@ -3262,24 +3356,24 @@
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "as_of": "20261019",
-          "price": 46.88,
-          "daily_change_pct": -0.89,
+          "as_of": "20261020",
+          "price": 46.32,
+          "daily_change_pct": -1.19,
           "returns": {
-            "5": -2.3333333333333317,
-            "10": -2.7184063083627197,
-            "20": 4.247275961752295
+            "5": -2.913435338503456,
+            "10": -4.7697368421052655,
+            "20": 3.5546613011401718
           },
           "relative_returns": {
-            "5": 0.4189602446483254,
-            "10": 1.288838427883587,
-            "20": 11.650639141485852
+            "5": -0.03656537302589857,
+            "10": -0.33133104500380206,
+            "20": 10.848158664936303
           },
-          "ma20": 47.723,
+          "ma20": 47.8025,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.7640379245252563,
+          "volume_ratio_5_20": 0.7176056101676225,
           "is_chase": false,
-          "signal_score": 2,
+          "signal_score": 1,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -3287,7 +3381,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -1.7664438530687436,
+            "deviation_from_ma20_pct": -3.1013022331468054,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3437,11 +3531,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.6,
-                "net_return": -0.0018,
+                "observations": 6,
+                "win_rate": 0.5,
+                "net_return": -0.0064,
                 "max_drawdown": -0.1093,
-                "cumulative_return": -0.0091,
+                "cumulative_return": -0.0384,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -3467,6 +3561,11 @@
                     "signal_date": "2026-09-24",
                     "entry_date": "2026-09-28",
                     "exit_date": "2026-10-12"
+                  },
+                  {
+                    "signal_date": "2026-10-12",
+                    "entry_date": "2026-10-13",
+                    "exit_date": "2026-10-20"
                   }
                 ]
               }
@@ -3479,32 +3578,32 @@
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "as_of": "20261019",
-          "price": 35.23,
-          "daily_change_pct": -0.25,
+          "as_of": "20261020",
+          "price": 35.58,
+          "daily_change_pct": 0.99,
           "returns": {
-            "5": 1.0903873744619652,
-            "10": -0.9558616811920273,
-            "20": -6.003201707577377
+            "5": -1.3584696423620812,
+            "10": 0.48009036995200205,
+            "20": -4.148706896551724
           },
           "relative_returns": {
-            "5": 3.8426809524436223,
-            "10": 3.0513830550542793,
-            "20": 1.4001614721561806
+            "5": 1.5184003231154763,
+            "10": 4.9184961670534655,
+            "20": 3.144790467244407
           },
-          "ma20": 36.1525,
+          "ma20": 36.075500000000005,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1988643615121708,
+          "volume_ratio_5_20": 0.9807566757190201,
           "is_chase": false,
-          "signal_score": 3,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -2.5516907544430025,
+            "down_days_last_5": 1,
+            "deviation_from_ma20_pct": -1.3735083366828094,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3518,67 +3617,67 @@
               "1": {
                 "observations": 4,
                 "win_rate": 0.25,
-                "net_return": -0.0182,
-                "max_drawdown": -0.0716,
-                "cumulative_return": -0.0716,
+                "net_return": -0.0101,
+                "max_drawdown": -0.0707,
+                "cumulative_return": -0.0416,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   }
                 ]
               },
               "3": {
                 "observations": 2,
-                "win_rate": 0.0,
-                "net_return": -0.0413,
-                "max_drawdown": -0.0816,
-                "cumulative_return": -0.0816,
+                "win_rate": 0.5,
+                "net_return": -0.0148,
+                "max_drawdown": -0.0618,
+                "cumulative_return": -0.031,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   }
                 ]
               },
               "5": {
                 "observations": 2,
                 "win_rate": 0.0,
-                "net_return": -0.0317,
-                "max_drawdown": -0.0677,
-                "cumulative_return": -0.0624,
+                "net_return": -0.015,
+                "max_drawdown": -0.0789,
+                "cumulative_return": -0.0297,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               }
@@ -3612,22 +3711,22 @@
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "as_of": "20261019",
-          "price": 36.61,
-          "daily_change_pct": -0.57,
+          "as_of": "20261020",
+          "price": 36.94,
+          "daily_change_pct": 0.9,
           "returns": {
-            "5": -10.269607843137251,
-            "10": -15.839080459770116,
-            "20": -24.312590448625183
+            "5": -8.609599208312723,
+            "10": -15.565714285714293,
+            "20": -24.550653594771244
           },
           "relative_returns": {
-            "5": -7.517314265155594,
-            "10": -11.83183572352381,
-            "20": -16.909227268891627
+            "5": -5.732729242835165,
+            "10": -11.12730848861283,
+            "20": -17.257156230975113
           },
-          "ma20": 44.521499999999996,
+          "ma20": 43.92049999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.092086700640346,
+          "volume_ratio_5_20": 1.0122793703032518,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -3636,8 +3735,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -17.77006614781622,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -15.893489372844103,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3649,41 +3748,36 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 7,
-                "win_rate": 0.2857,
-                "net_return": -0.0118,
-                "max_drawdown": -0.0814,
-                "cumulative_return": -0.0814,
+                "observations": 6,
+                "win_rate": 0.3333,
+                "net_return": -0.0188,
+                "max_drawdown": -0.1505,
+                "cumulative_return": -0.1137,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
-                  },
-                  {
-                    "signal_date": "2026-08-24",
-                    "entry_date": "2026-08-25",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -3694,25 +3788,25 @@
               },
               "3": {
                 "observations": 4,
-                "win_rate": 0.0,
-                "net_return": -0.0506,
-                "max_drawdown": -0.191,
-                "cumulative_return": -0.1887,
+                "win_rate": 0.25,
+                "net_return": -0.0295,
+                "max_drawdown": -0.1549,
+                "cumulative_return": -0.1168,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -3723,20 +3817,20 @@
               },
               "5": {
                 "observations": 3,
-                "win_rate": 0.3333,
-                "net_return": -0.059,
-                "max_drawdown": -0.1756,
-                "cumulative_return": -0.1698,
+                "win_rate": 0.0,
+                "net_return": -0.0535,
+                "max_drawdown": -0.1893,
+                "cumulative_return": -0.1549,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
                     "signal_date": "2026-08-27",
@@ -3754,22 +3848,22 @@
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "as_of": "20261019",
-          "price": 42.79,
-          "daily_change_pct": -1.99,
+          "as_of": "20261020",
+          "price": 43.81,
+          "daily_change_pct": 2.38,
           "returns": {
-            "5": -11.481175010343414,
-            "10": -19.64319248826292,
-            "20": -26.879699248120303
+            "5": -9.051276728254098,
+            "10": -18.401937046004836,
+            "20": -25.959100895724184
           },
           "relative_returns": {
-            "5": -8.728881432361757,
-            "10": -15.635947752016612,
-            "20": -19.476336068386747
+            "5": -6.174406762776541,
+            "10": -13.963531248903372,
+            "20": -18.665603531928053
           },
-          "ma20": 53.98349999999999,
+          "ma20": 53.2155,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.895217382391884,
+          "volume_ratio_5_20": 0.8776129748220929,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -3778,8 +3872,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -20.73503941019014,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -17.674361793086593,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3896,22 +3990,22 @@
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "as_of": "20261019",
-          "price": 25.43,
-          "daily_change_pct": -0.86,
+          "as_of": "20261020",
+          "price": 25.69,
+          "daily_change_pct": 1.02,
           "returns": {
-            "5": -9.982300884955752,
-            "10": -16.183256427158867,
-            "20": -23.793826790530414
+            "5": -10.111966410076967,
+            "10": -16.045751633986928,
+            "20": -22.151515151515145
           },
           "relative_returns": {
-            "5": -7.230007306974095,
-            "10": -12.17601169091256,
-            "20": -16.390463610796857
+            "5": -7.235096444599409,
+            "10": -11.607345836885465,
+            "20": -14.858017787719014
           },
-          "ma20": 30.52999999999999,
+          "ma20": 30.164499999999997,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1682523940868381,
+          "volume_ratio_5_20": 1.1316139481676486,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -3920,8 +4014,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -16.704880445463456,
+            "down_days_last_5": 2,
+            "deviation_from_ma20_pct": -14.833662086227173,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -3934,78 +4028,78 @@
             "horizons": {
               "1": {
                 "observations": 5,
-                "win_rate": 0.0,
-                "net_return": -0.017,
-                "max_drawdown": -0.0822,
-                "cumulative_return": -0.0822,
+                "win_rate": 0.2,
+                "net_return": -0.0272,
+                "max_drawdown": -0.1566,
+                "cumulative_return": -0.1333,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   }
                 ]
               },
               "3": {
                 "observations": 3,
-                "win_rate": 0.0,
-                "net_return": -0.0461,
-                "max_drawdown": -0.1472,
-                "cumulative_return": -0.1322,
+                "win_rate": 0.3333,
+                "net_return": -0.0207,
+                "max_drawdown": -0.1189,
+                "cumulative_return": -0.0627,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               },
               "5": {
                 "observations": 2,
                 "win_rate": 0.0,
-                "net_return": -0.0404,
-                "max_drawdown": -0.0951,
-                "cumulative_return": -0.0792,
+                "net_return": -0.0513,
+                "max_drawdown": -0.1553,
+                "cumulative_return": -0.1001,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               }
@@ -4018,24 +4112,24 @@
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "as_of": "20261019",
-          "price": 46.88,
-          "daily_change_pct": -0.89,
+          "as_of": "20261020",
+          "price": 46.32,
+          "daily_change_pct": -1.19,
           "returns": {
-            "5": -2.3333333333333317,
-            "10": -2.7184063083627197,
-            "20": 4.247275961752295
+            "5": -2.913435338503456,
+            "10": -4.7697368421052655,
+            "20": 3.5546613011401718
           },
           "relative_returns": {
-            "5": 0.4189602446483254,
-            "10": 1.288838427883587,
-            "20": 11.650639141485852
+            "5": -0.03656537302589857,
+            "10": -0.33133104500380206,
+            "20": 10.848158664936303
           },
-          "ma20": 47.723,
+          "ma20": 47.8025,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.7640379245252563,
+          "volume_ratio_5_20": 0.7176056101676225,
           "is_chase": false,
-          "signal_score": 2,
+          "signal_score": 1,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -4043,7 +4137,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -1.7664438530687436,
+            "deviation_from_ma20_pct": -3.1013022331468054,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4193,11 +4287,11 @@
                 ]
               },
               "5": {
-                "observations": 5,
-                "win_rate": 0.6,
-                "net_return": -0.0018,
+                "observations": 6,
+                "win_rate": 0.5,
+                "net_return": -0.0064,
                 "max_drawdown": -0.1093,
-                "cumulative_return": -0.0091,
+                "cumulative_return": -0.0384,
                 "trades": [
                   {
                     "signal_date": "2026-08-05",
@@ -4223,6 +4317,11 @@
                     "signal_date": "2026-09-24",
                     "entry_date": "2026-09-28",
                     "exit_date": "2026-10-12"
+                  },
+                  {
+                    "signal_date": "2026-10-12",
+                    "entry_date": "2026-10-13",
+                    "exit_date": "2026-10-20"
                   }
                 ]
               }
@@ -4235,32 +4334,32 @@
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "as_of": "20261019",
-          "price": 35.23,
-          "daily_change_pct": -0.25,
+          "as_of": "20261020",
+          "price": 35.58,
+          "daily_change_pct": 0.99,
           "returns": {
-            "5": 1.0903873744619652,
-            "10": -0.9558616811920273,
-            "20": -6.003201707577377
+            "5": -1.3584696423620812,
+            "10": 0.48009036995200205,
+            "20": -4.148706896551724
           },
           "relative_returns": {
-            "5": 3.8426809524436223,
-            "10": 3.0513830550542793,
-            "20": 1.4001614721561806
+            "5": 1.5184003231154763,
+            "10": 4.9184961670534655,
+            "20": 3.144790467244407
           },
-          "ma20": 36.1525,
+          "ma20": 36.075500000000005,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.1988643615121708,
+          "volume_ratio_5_20": 0.9807566757190201,
           "is_chase": false,
-          "signal_score": 3,
+          "signal_score": 2,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 2,
-            "deviation_from_ma20_pct": -2.5516907544430025,
+            "down_days_last_5": 1,
+            "deviation_from_ma20_pct": -1.3735083366828094,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4274,67 +4373,67 @@
               "1": {
                 "observations": 4,
                 "win_rate": 0.25,
-                "net_return": -0.0182,
-                "max_drawdown": -0.0716,
-                "cumulative_return": -0.0716,
+                "net_return": -0.0101,
+                "max_drawdown": -0.0707,
+                "cumulative_return": -0.0416,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   }
                 ]
               },
               "3": {
                 "observations": 2,
-                "win_rate": 0.0,
-                "net_return": -0.0413,
-                "max_drawdown": -0.0816,
-                "cumulative_return": -0.0816,
+                "win_rate": 0.5,
+                "net_return": -0.0148,
+                "max_drawdown": -0.0618,
+                "cumulative_return": -0.031,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   }
                 ]
               },
               "5": {
                 "observations": 2,
                 "win_rate": 0.0,
-                "net_return": -0.0317,
-                "max_drawdown": -0.0677,
-                "cumulative_return": -0.0624,
+                "net_return": -0.015,
+                "max_drawdown": -0.0789,
+                "cumulative_return": -0.0297,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   }
                 ]
               }
@@ -4348,16 +4447,16 @@
         {
           "symbol": "MP",
           "as_of": "2026-10-19",
-          "price": 39.801998138427734,
-          "return_20d": -20.396003723144528,
+          "price": 38.95000076293945,
+          "return_20d": -22.099998474121097,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "FCX",
           "as_of": "2026-10-19",
-          "price": 69.18499755859375,
-          "return_20d": -4.122790954177535,
+          "price": 69.75,
+          "return_20d": -3.3398053489496315,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -4373,24 +4472,24 @@
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB核心",
-          "as_of": "20261019",
-          "price": 111.75,
-          "daily_change_pct": -1.44,
+          "as_of": "20261020",
+          "price": 111.01,
+          "daily_change_pct": -0.66,
           "returns": {
-            "5": 1.9430760810071002,
-            "10": -4.650170648464169,
-            "20": -12.865497076023392
+            "5": -4.2191544434857615,
+            "10": -6.769127404048025,
+            "20": -11.686555290373901
           },
           "relative_returns": {
-            "5": 4.695369658988757,
-            "10": -0.6429259122178621,
-            "20": -5.462133896289834
+            "5": -1.342284478008204,
+            "10": -2.330721606946562,
+            "20": -4.39305792657777
           },
-          "ma20": 119.5895,
+          "ma20": 118.85499999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.2103614200055541,
+          "volume_ratio_5_20": 1.1119810675637203,
           "is_chase": false,
-          "signal_score": 2,
+          "signal_score": 1,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -4398,7 +4497,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -6.555341397029005,
+            "deviation_from_ma20_pct": -6.600479575953881,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4410,31 +4509,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 15,
-                "win_rate": 0.3333,
-                "net_return": -0.0104,
-                "max_drawdown": -0.1792,
-                "cumulative_return": -0.1482,
+                "observations": 14,
+                "win_rate": 0.2857,
+                "net_return": -0.0141,
+                "max_drawdown": -0.2201,
+                "cumulative_return": -0.1865,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -4496,19 +4590,19 @@
               "3": {
                 "observations": 8,
                 "win_rate": 0.25,
-                "net_return": -0.0228,
-                "max_drawdown": -0.1979,
-                "cumulative_return": -0.1706,
+                "net_return": -0.0164,
+                "max_drawdown": -0.1536,
+                "cumulative_return": -0.1263,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -4544,25 +4638,25 @@
               },
               "5": {
                 "observations": 6,
-                "win_rate": 0.5,
-                "net_return": -0.0251,
-                "max_drawdown": -0.1963,
-                "cumulative_return": -0.1472,
+                "win_rate": 0.3333,
+                "net_return": -0.028,
+                "max_drawdown": -0.1903,
+                "cumulative_return": -0.1629,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-31"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-31",
+                    "entry_date": "2026-09-01",
+                    "exit_date": "2026-09-08"
                   },
                   {
                     "signal_date": "2026-09-08",
@@ -4590,24 +4684,24 @@
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板/材料验证",
-          "as_of": "20261019",
-          "price": 117.63,
-          "daily_change_pct": 2.64,
+          "as_of": "20261020",
+          "price": 117.23,
+          "daily_change_pct": -0.34,
           "returns": {
-            "5": -1.9750000000000045,
-            "10": -10.852595680181887,
-            "20": -20.750522131644555
+            "5": -4.3332789293291984,
+            "10": -11.843886298691519,
+            "20": -19.705479452054796
           },
           "relative_returns": {
-            "5": 0.7772935779816526,
-            "10": -6.84535094393558,
-            "20": -13.347158951910998
+            "5": -1.4564089638516409,
+            "10": -7.4054805015900556,
+            "20": -12.411982088258664
           },
-          "ma20": 133.56000000000003,
+          "ma20": 132.12150000000003,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8839153085416231,
+          "volume_ratio_5_20": 0.8738354300038882,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -4615,7 +4709,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -11.927223719676574,
+            "deviation_from_ma20_pct": -11.271064891028349,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4627,31 +4721,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 14,
-                "win_rate": 0.5714,
-                "net_return": 0.0058,
-                "max_drawdown": -0.1124,
-                "cumulative_return": 0.0719,
+                "observations": 13,
+                "win_rate": 0.6923,
+                "net_return": 0.0034,
+                "max_drawdown": -0.1428,
+                "cumulative_return": 0.0276,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-20",
@@ -4707,89 +4796,84 @@
               },
               "3": {
                 "observations": 8,
-                "win_rate": 0.5,
-                "net_return": 0.0004,
-                "max_drawdown": -0.1414,
-                "cumulative_return": -0.0149,
+                "win_rate": 0.625,
+                "net_return": -0.0063,
+                "max_drawdown": -0.167,
+                "cumulative_return": -0.0636,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
-                  },
-                  {
-                    "signal_date": "2026-09-01",
-                    "entry_date": "2026-09-02",
-                    "exit_date": "2026-09-07"
-                  },
-                  {
-                    "signal_date": "2026-09-08",
-                    "entry_date": "2026-09-09",
-                    "exit_date": "2026-09-14"
-                  },
-                  {
-                    "signal_date": "2026-09-14",
-                    "entry_date": "2026-09-15",
-                    "exit_date": "2026-09-18"
-                  },
-                  {
-                    "signal_date": "2026-09-18",
-                    "entry_date": "2026-09-21",
-                    "exit_date": "2026-09-24"
-                  }
-                ]
-              },
-              "5": {
-                "observations": 6,
-                "win_rate": 0.6667,
-                "net_return": -0.0042,
-                "max_drawdown": -0.1795,
-                "cumulative_return": -0.0371,
-                "trades": [
-                  {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
-                  },
-                  {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
                     "exit_date": "2026-09-03"
                   },
                   {
                     "signal_date": "2026-09-03",
                     "entry_date": "2026-09-04",
-                    "exit_date": "2026-09-11"
+                    "exit_date": "2026-09-09"
                   },
                   {
-                    "signal_date": "2026-09-11",
-                    "entry_date": "2026-09-14",
+                    "signal_date": "2026-09-09",
+                    "entry_date": "2026-09-10",
+                    "exit_date": "2026-09-15"
+                  },
+                  {
+                    "signal_date": "2026-09-15",
+                    "entry_date": "2026-09-16",
                     "exit_date": "2026-09-21"
                   },
                   {
                     "signal_date": "2026-09-21",
                     "entry_date": "2026-09-22",
-                    "exit_date": "2026-09-30"
+                    "exit_date": "2026-09-28"
+                  }
+                ]
+              },
+              "5": {
+                "observations": 5,
+                "win_rate": 0.6,
+                "net_return": 0.0114,
+                "max_drawdown": -0.1331,
+                "cumulative_return": 0.0352,
+                "trades": [
+                  {
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
+                  },
+                  {
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-28"
+                  },
+                  {
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
+                    "exit_date": "2026-09-07"
+                  },
+                  {
+                    "signal_date": "2026-09-08",
+                    "entry_date": "2026-09-09",
+                    "exit_date": "2026-09-16"
+                  },
+                  {
+                    "signal_date": "2026-09-16",
+                    "entry_date": "2026-09-17",
+                    "exit_date": "2026-09-24"
                   }
                 ]
               }
@@ -4802,22 +4886,22 @@
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB验证",
-          "as_of": "20261019",
-          "price": 176.85,
-          "daily_change_pct": -2.83,
+          "as_of": "20261020",
+          "price": 184.7,
+          "daily_change_pct": 4.44,
           "returns": {
-            "5": -10.128061794897858,
-            "10": -17.166276346604214,
-            "20": -22.769553255600684
+            "5": -7.232546459065803,
+            "10": -14.790551762317772,
+            "20": -17.91111111111111
           },
           "relative_returns": {
-            "5": -7.375768216916201,
-            "10": -13.159031610357907,
-            "20": -15.366190075867127
+            "5": -4.355676493588246,
+            "10": -10.352145965216309,
+            "20": -10.61761374731498
           },
-          "ma20": 214.19150000000005,
+          "ma20": 212.17650000000003,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8747864755018151,
+          "volume_ratio_5_20": 0.8760202203341245,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -4826,8 +4910,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -17.433698349374296,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -12.949831861681213,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -4840,45 +4924,45 @@
             "horizons": {
               "1": {
                 "observations": 9,
-                "win_rate": 0.1111,
-                "net_return": -0.0266,
-                "max_drawdown": -0.2301,
-                "cumulative_return": -0.2196,
+                "win_rate": 0.3333,
+                "net_return": -0.0271,
+                "max_drawdown": -0.247,
+                "cumulative_return": -0.2274,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   },
                   {
-                    "signal_date": "2026-08-24",
-                    "entry_date": "2026-08-25",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-25",
+                    "entry_date": "2026-08-26",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-08-28"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-08-31"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -4894,30 +4978,30 @@
               },
               "3": {
                 "observations": 5,
-                "win_rate": 0.0,
-                "net_return": -0.0638,
-                "max_drawdown": -0.2934,
-                "cumulative_return": -0.2838,
+                "win_rate": 0.2,
+                "net_return": -0.0564,
+                "max_drawdown": -0.2787,
+                "cumulative_return": -0.2599,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-02"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -4928,25 +5012,25 @@
               },
               "5": {
                 "observations": 4,
-                "win_rate": 0.0,
-                "net_return": -0.0904,
-                "max_drawdown": -0.3209,
-                "cumulative_return": -0.3209,
+                "win_rate": 0.25,
+                "net_return": -0.0909,
+                "max_drawdown": -0.336,
+                "cumulative_return": -0.3278,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-04"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -4964,22 +5048,22 @@
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB验证",
-          "as_of": "20261019",
-          "price": 302.17,
-          "daily_change_pct": -2.52,
+          "as_of": "20261020",
+          "price": 300.99,
+          "daily_change_pct": -0.39,
           "returns": {
-            "5": -7.81316736835681,
-            "10": -18.548169712652975,
-            "20": -23.825249571442974
+            "5": -10.749021468390463,
+            "10": -19.864217252396166,
+            "20": -22.650528101148716
           },
           "relative_returns": {
-            "5": -5.060873790375153,
-            "10": -14.540924976406668,
-            "20": -16.421886391709418
+            "5": -7.872151502912906,
+            "10": -15.425811455294703,
+            "20": -15.357030737352584
           },
-          "ma20": 365.58299999999997,
+          "ma20": 361.17599999999993,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0872788484333695,
+          "volume_ratio_5_20": 1.0623397804495556,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -4989,7 +5073,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -17.345719029604755,
+            "deviation_from_ma20_pct": -16.663897933417484,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5001,31 +5085,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 14,
-                "win_rate": 0.5,
-                "net_return": -0.0136,
-                "max_drawdown": -0.2305,
-                "cumulative_return": -0.1805,
+                "observations": 13,
+                "win_rate": 0.4615,
+                "net_return": -0.0182,
+                "max_drawdown": -0.2472,
+                "cumulative_return": -0.2211,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5082,19 +5161,19 @@
               "3": {
                 "observations": 8,
                 "win_rate": 0.5,
-                "net_return": -0.019,
-                "max_drawdown": -0.2024,
-                "cumulative_return": -0.1483,
+                "net_return": -0.0188,
+                "max_drawdown": -0.1719,
+                "cumulative_return": -0.1466,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5130,25 +5209,25 @@
               },
               "5": {
                 "observations": 6,
-                "win_rate": 0.3333,
-                "net_return": -0.0432,
-                "max_drawdown": -0.2975,
-                "cumulative_return": -0.2453,
+                "win_rate": 0.5,
+                "net_return": -0.0296,
+                "max_drawdown": -0.2055,
+                "cumulative_return": -0.18,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-31"
                   },
                   {
-                    "signal_date": "2026-08-27",
-                    "entry_date": "2026-08-28",
-                    "exit_date": "2026-09-04"
+                    "signal_date": "2026-08-31",
+                    "entry_date": "2026-09-01",
+                    "exit_date": "2026-09-08"
                   },
                   {
                     "signal_date": "2026-09-08",
@@ -5197,24 +5276,24 @@
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB核心",
-          "as_of": "20261019",
-          "price": 111.75,
-          "daily_change_pct": -1.44,
+          "as_of": "20261020",
+          "price": 111.01,
+          "daily_change_pct": -0.66,
           "returns": {
-            "5": 1.9430760810071002,
-            "10": -4.650170648464169,
-            "20": -12.865497076023392
+            "5": -4.2191544434857615,
+            "10": -6.769127404048025,
+            "20": -11.686555290373901
           },
           "relative_returns": {
-            "5": 4.695369658988757,
-            "10": -0.6429259122178621,
-            "20": -5.462133896289834
+            "5": -1.342284478008204,
+            "10": -2.330721606946562,
+            "20": -4.39305792657777
           },
-          "ma20": 119.5895,
+          "ma20": 118.85499999999999,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.2103614200055541,
+          "volume_ratio_5_20": 1.1119810675637203,
           "is_chase": false,
-          "signal_score": 2,
+          "signal_score": 1,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -5222,7 +5301,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -6.555341397029005,
+            "deviation_from_ma20_pct": -6.600479575953881,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5234,31 +5313,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 15,
-                "win_rate": 0.3333,
-                "net_return": -0.0104,
-                "max_drawdown": -0.1792,
-                "cumulative_return": -0.1482,
+                "observations": 14,
+                "win_rate": 0.2857,
+                "net_return": -0.0141,
+                "max_drawdown": -0.2201,
+                "cumulative_return": -0.1865,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5320,19 +5394,19 @@
               "3": {
                 "observations": 8,
                 "win_rate": 0.25,
-                "net_return": -0.0228,
-                "max_drawdown": -0.1979,
-                "cumulative_return": -0.1706,
+                "net_return": -0.0164,
+                "max_drawdown": -0.1536,
+                "cumulative_return": -0.1263,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5368,25 +5442,25 @@
               },
               "5": {
                 "observations": 6,
-                "win_rate": 0.5,
-                "net_return": -0.0251,
-                "max_drawdown": -0.1963,
-                "cumulative_return": -0.1472,
+                "win_rate": 0.3333,
+                "net_return": -0.028,
+                "max_drawdown": -0.1903,
+                "cumulative_return": -0.1629,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-31"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-31",
+                    "entry_date": "2026-09-01",
+                    "exit_date": "2026-09-08"
                   },
                   {
                     "signal_date": "2026-09-08",
@@ -5414,24 +5488,24 @@
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板/材料验证",
-          "as_of": "20261019",
-          "price": 117.63,
-          "daily_change_pct": 2.64,
+          "as_of": "20261020",
+          "price": 117.23,
+          "daily_change_pct": -0.34,
           "returns": {
-            "5": -1.9750000000000045,
-            "10": -10.852595680181887,
-            "20": -20.750522131644555
+            "5": -4.3332789293291984,
+            "10": -11.843886298691519,
+            "20": -19.705479452054796
           },
           "relative_returns": {
-            "5": 0.7772935779816526,
-            "10": -6.84535094393558,
-            "20": -13.347158951910998
+            "5": -1.4564089638516409,
+            "10": -7.4054805015900556,
+            "20": -12.411982088258664
           },
-          "ma20": 133.56000000000003,
+          "ma20": 132.12150000000003,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8839153085416231,
+          "volume_ratio_5_20": 0.8738354300038882,
           "is_chase": false,
-          "signal_score": 1,
+          "signal_score": 0,
           "data_ready": true,
           "source": "Tencent Finance quote / daily bars fallback route",
           "mason": {
@@ -5439,7 +5513,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 3,
-            "deviation_from_ma20_pct": -11.927223719676574,
+            "deviation_from_ma20_pct": -11.271064891028349,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5451,31 +5525,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 14,
-                "win_rate": 0.5714,
-                "net_return": 0.0058,
-                "max_drawdown": -0.1124,
-                "cumulative_return": 0.0719,
+                "observations": 13,
+                "win_rate": 0.6923,
+                "net_return": 0.0034,
+                "max_drawdown": -0.1428,
+                "cumulative_return": 0.0276,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-20",
@@ -5531,89 +5600,84 @@
               },
               "3": {
                 "observations": 8,
-                "win_rate": 0.5,
-                "net_return": 0.0004,
-                "max_drawdown": -0.1414,
-                "cumulative_return": -0.0149,
+                "win_rate": 0.625,
+                "net_return": -0.0063,
+                "max_drawdown": -0.167,
+                "cumulative_return": -0.0636,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
-                  },
-                  {
-                    "signal_date": "2026-09-01",
-                    "entry_date": "2026-09-02",
-                    "exit_date": "2026-09-07"
-                  },
-                  {
-                    "signal_date": "2026-09-08",
-                    "entry_date": "2026-09-09",
-                    "exit_date": "2026-09-14"
-                  },
-                  {
-                    "signal_date": "2026-09-14",
-                    "entry_date": "2026-09-15",
-                    "exit_date": "2026-09-18"
-                  },
-                  {
-                    "signal_date": "2026-09-18",
-                    "entry_date": "2026-09-21",
-                    "exit_date": "2026-09-24"
-                  }
-                ]
-              },
-              "5": {
-                "observations": 6,
-                "win_rate": 0.6667,
-                "net_return": -0.0042,
-                "max_drawdown": -0.1795,
-                "cumulative_return": -0.0371,
-                "trades": [
-                  {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
-                  },
-                  {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
                     "exit_date": "2026-09-03"
                   },
                   {
                     "signal_date": "2026-09-03",
                     "entry_date": "2026-09-04",
-                    "exit_date": "2026-09-11"
+                    "exit_date": "2026-09-09"
                   },
                   {
-                    "signal_date": "2026-09-11",
-                    "entry_date": "2026-09-14",
+                    "signal_date": "2026-09-09",
+                    "entry_date": "2026-09-10",
+                    "exit_date": "2026-09-15"
+                  },
+                  {
+                    "signal_date": "2026-09-15",
+                    "entry_date": "2026-09-16",
                     "exit_date": "2026-09-21"
                   },
                   {
                     "signal_date": "2026-09-21",
                     "entry_date": "2026-09-22",
-                    "exit_date": "2026-09-30"
+                    "exit_date": "2026-09-28"
+                  }
+                ]
+              },
+              "5": {
+                "observations": 5,
+                "win_rate": 0.6,
+                "net_return": 0.0114,
+                "max_drawdown": -0.1331,
+                "cumulative_return": 0.0352,
+                "trades": [
+                  {
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
+                  },
+                  {
+                    "signal_date": "2026-08-20",
+                    "entry_date": "2026-08-21",
+                    "exit_date": "2026-08-28"
+                  },
+                  {
+                    "signal_date": "2026-08-28",
+                    "entry_date": "2026-08-31",
+                    "exit_date": "2026-09-07"
+                  },
+                  {
+                    "signal_date": "2026-09-08",
+                    "entry_date": "2026-09-09",
+                    "exit_date": "2026-09-16"
+                  },
+                  {
+                    "signal_date": "2026-09-16",
+                    "entry_date": "2026-09-17",
+                    "exit_date": "2026-09-24"
                   }
                 ]
               }
@@ -5626,22 +5690,22 @@
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB验证",
-          "as_of": "20261019",
-          "price": 176.85,
-          "daily_change_pct": -2.83,
+          "as_of": "20261020",
+          "price": 184.7,
+          "daily_change_pct": 4.44,
           "returns": {
-            "5": -10.128061794897858,
-            "10": -17.166276346604214,
-            "20": -22.769553255600684
+            "5": -7.232546459065803,
+            "10": -14.790551762317772,
+            "20": -17.91111111111111
           },
           "relative_returns": {
-            "5": -7.375768216916201,
-            "10": -13.159031610357907,
-            "20": -15.366190075867127
+            "5": -4.355676493588246,
+            "10": -10.352145965216309,
+            "20": -10.61761374731498
           },
-          "ma20": 214.19150000000005,
+          "ma20": 212.17650000000003,
           "above_ma20": false,
-          "volume_ratio_5_20": 0.8747864755018151,
+          "volume_ratio_5_20": 0.8760202203341245,
           "is_chase": false,
           "signal_score": 0,
           "data_ready": true,
@@ -5650,8 +5714,8 @@
             "trend_ok": false,
             "pullback_candidate": false,
             "double_drop_observed": false,
-            "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -17.433698349374296,
+            "down_days_last_5": 3,
+            "deviation_from_ma20_pct": -12.949831861681213,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5664,45 +5728,45 @@
             "horizons": {
               "1": {
                 "observations": 9,
-                "win_rate": 0.1111,
-                "net_return": -0.0266,
-                "max_drawdown": -0.2301,
-                "cumulative_return": -0.2196,
+                "win_rate": 0.3333,
+                "net_return": -0.0271,
+                "max_drawdown": -0.247,
+                "cumulative_return": -0.2274,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-24"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-25"
                   },
                   {
-                    "signal_date": "2026-08-24",
-                    "entry_date": "2026-08-25",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-25",
+                    "entry_date": "2026-08-26",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-08-28"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-08-31"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -5718,30 +5782,30 @@
               },
               "3": {
                 "observations": 5,
-                "win_rate": 0.0,
-                "net_return": -0.0638,
-                "max_drawdown": -0.2934,
-                "cumulative_return": -0.2838,
+                "win_rate": 0.2,
+                "net_return": -0.0564,
+                "max_drawdown": -0.2787,
+                "cumulative_return": -0.2599,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
-                    "signal_date": "2026-08-20",
-                    "entry_date": "2026-08-21",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-01"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-02"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -5752,25 +5816,25 @@
               },
               "5": {
                 "observations": 4,
-                "win_rate": 0.0,
-                "net_return": -0.0904,
-                "max_drawdown": -0.3209,
-                "cumulative_return": -0.3209,
+                "win_rate": 0.25,
+                "net_return": -0.0909,
+                "max_drawdown": -0.336,
+                "cumulative_return": -0.3278,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-19",
+                    "entry_date": "2026-08-20",
+                    "exit_date": "2026-08-27"
                   },
                   {
-                    "signal_date": "2026-08-26",
-                    "entry_date": "2026-08-27",
-                    "exit_date": "2026-09-03"
+                    "signal_date": "2026-08-27",
+                    "entry_date": "2026-08-28",
+                    "exit_date": "2026-09-04"
                   },
                   {
                     "signal_date": "2026-09-22",
@@ -5788,22 +5852,22 @@
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB验证",
-          "as_of": "20261019",
-          "price": 302.17,
-          "daily_change_pct": -2.52,
+          "as_of": "20261020",
+          "price": 300.99,
+          "daily_change_pct": -0.39,
           "returns": {
-            "5": -7.81316736835681,
-            "10": -18.548169712652975,
-            "20": -23.825249571442974
+            "5": -10.749021468390463,
+            "10": -19.864217252396166,
+            "20": -22.650528101148716
           },
           "relative_returns": {
-            "5": -5.060873790375153,
-            "10": -14.540924976406668,
-            "20": -16.421886391709418
+            "5": -7.872151502912906,
+            "10": -15.425811455294703,
+            "20": -15.357030737352584
           },
-          "ma20": 365.58299999999997,
+          "ma20": 361.17599999999993,
           "above_ma20": false,
-          "volume_ratio_5_20": 1.0872788484333695,
+          "volume_ratio_5_20": 1.0623397804495556,
           "is_chase": false,
           "signal_score": 1,
           "data_ready": true,
@@ -5813,7 +5877,7 @@
             "pullback_candidate": false,
             "double_drop_observed": false,
             "down_days_last_5": 4,
-            "deviation_from_ma20_pct": -17.345719029604755,
+            "deviation_from_ma20_pct": -16.663897933417484,
             "overextended": false,
             "status": "等待：趋势未确认",
             "note": "梅森规则仅作公开研究标签；需再核对板块广度、产业/财务证据，不能单独触发交易。"
@@ -5825,31 +5889,26 @@
             "reason": "诊断阈值未通过",
             "horizons": {
               "1": {
-                "observations": 14,
-                "win_rate": 0.5,
-                "net_return": -0.0136,
-                "max_drawdown": -0.2305,
-                "cumulative_return": -0.1805,
+                "observations": 13,
+                "win_rate": 0.4615,
+                "net_return": -0.0182,
+                "max_drawdown": -0.2472,
+                "cumulative_return": -0.2211,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-12"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-13"
                   },
                   {
-                    "signal_date": "2026-08-12",
-                    "entry_date": "2026-08-13",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-13",
+                    "entry_date": "2026-08-14",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-18"
-                  },
-                  {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-19"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5906,19 +5965,19 @@
               "3": {
                 "observations": 8,
                 "win_rate": 0.5,
-                "net_return": -0.019,
-                "max_drawdown": -0.2024,
-                "cumulative_return": -0.1483,
+                "net_return": -0.0188,
+                "max_drawdown": -0.1719,
+                "cumulative_return": -0.1466,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-14"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-17"
                   },
                   {
-                    "signal_date": "2026-08-14",
-                    "entry_date": "2026-08-17",
-                    "exit_date": "2026-08-20"
+                    "signal_date": "2026-08-17",
+                    "entry_date": "2026-08-18",
+                    "exit_date": "2026-08-21"
                   },
                   {
                     "signal_date": "2026-08-21",
@@ -5954,25 +6013,25 @@
               },
               "5": {
                 "observations": 6,
-                "win_rate": 0.3333,
-                "net_return": -0.0432,
-                "max_drawdown": -0.2975,
-                "cumulative_return": -0.2453,
+                "win_rate": 0.5,
+                "net_return": -0.0296,
+                "max_drawdown": -0.2055,
+                "cumulative_return": -0.18,
                 "trades": [
                   {
-                    "signal_date": "2026-08-10",
-                    "entry_date": "2026-08-11",
-                    "exit_date": "2026-08-18"
+                    "signal_date": "2026-08-11",
+                    "entry_date": "2026-08-12",
+                    "exit_date": "2026-08-19"
                   },
                   {
-                    "signal_date": "2026-08-18",
-                    "entry_date": "2026-08-19",
-                    "exit_date": "2026-08-26"
+                    "signal_date": "2026-08-21",
+                    "entry_date": "2026-08-24",
+                    "exit_date": "2026-08-31"
                   },
                   {
-                    "signal_date": "2026-08-27",
-                    "entry_date": "2026-08-28",
-                    "exit_date": "2026-09-04"
+                    "signal_date": "2026-08-31",
+                    "entry_date": "2026-09-01",
+                    "exit_date": "2026-09-08"
                   },
                   {
                     "signal_date": "2026-09-08",
@@ -6001,32 +6060,32 @@
         {
           "symbol": "NVDA",
           "as_of": "2026-10-19",
-          "price": 217.625,
-          "return_20d": -4.2901770926779825,
+          "price": 217.08999633789062,
+          "return_20d": -4.525467641811842,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "AVGO",
           "as_of": "2026-10-19",
-          "price": 336.7300109863281,
-          "return_20d": -7.149945517548783,
+          "price": 334.5899963378906,
+          "return_20d": -7.740033927306634,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "ANET",
           "as_of": "2026-10-19",
-          "price": 182.0399932861328,
-          "return_20d": -11.381562209724038,
+          "price": 182.9499969482422,
+          "return_20d": -10.938565583192606,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         },
         {
           "symbol": "MU",
           "as_of": "2026-10-19",
-          "price": 916.864990234375,
-          "return_20d": -12.174314672853049,
+          "price": 904.9000244140625,
+          "return_20d": -13.320428151148489,
           "above_ma20": false,
           "source": "Yahoo Finance chart"
         }
@@ -6068,7 +6127,7 @@
       "latest_tag": "release-v1.19.1",
       "release_at": "2026-09-30T05:39:30Z",
       "pushed_at": "2026-10-14T19:37:02Z",
-      "updated_at": "2026-10-19T14:22:09Z"
+      "updated_at": "2026-10-20T11:43:39Z"
     },
     {
       "repo": "ranaroussi/yfinance",
@@ -6077,7 +6136,7 @@
       "latest_tag": "1.7.0",
       "release_at": "2026-08-26T17:23:40Z",
       "pushed_at": "2026-10-18T14:41:38Z",
-      "updated_at": "2026-10-19T14:05:47Z"
+      "updated_at": "2026-10-20T10:33:37Z"
     },
     {
       "repo": "vnpy/vnpy",
@@ -6086,7 +6145,7 @@
       "latest_tag": "4.5.0",
       "release_at": "2026-10-06T09:58:41Z",
       "pushed_at": "2026-10-06T09:57:47Z",
-      "updated_at": "2026-10-19T14:02:34Z"
+      "updated_at": "2026-10-20T11:54:44Z"
     },
     {
       "repo": "simonlin1212/a-stock-data",
@@ -6095,7 +6154,7 @@
       "latest_tag": "v3.10.2",
       "release_at": "2026-10-11T13:08:36Z",
       "pushed_at": "2026-10-11T13:08:34Z",
-      "updated_at": "2026-10-19T14:41:38Z"
+      "updated_at": "2026-10-20T12:45:20Z"
     }
   ],
   "disclaimer": "全市场行业初筛与公开行情研究，不连接券商、不自动下单、不提供目标价、固定仓位、买入金额或收益承诺；覆盖不足时只作观察，相关性不等于因果。"
