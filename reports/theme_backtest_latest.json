@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-23T22:23:04+08:00",
+  "generated_at": "2026-10-31T00:11:19+08:00",
   "benchmark": "510300",
   "method": {
     "entry": "当日收盘满足MA20、20日相对沪深300、近5日/20日量能和单日不过热后，于下一交易日开盘模拟进入",
@@ -15,8 +15,8 @@
         {
           "code": "300308",
           "name": "中际旭创",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 16,
           "win_rate_pct": 68.75,
           "average_net_return_pct": 12.957910826850092,
@@ -95,25 +95,17 @@
         {
           "code": "300502",
           "name": "新易盛",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
-          "signal_count": 18,
-          "win_rate_pct": 61.111111111111114,
-          "average_net_return_pct": 14.978635876318569,
-          "median_net_return_pct": 9.868284553762319,
-          "worst_net_return_pct": -28.337069133226034,
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
+          "signal_count": 19,
+          "win_rate_pct": 57.89473684210527,
+          "average_net_return_pct": 11.811672554087158,
+          "median_net_return_pct": 5.858059278288074,
+          "worst_net_return_pct": -45.19366724607824,
           "best_net_return_pct": 116.61692789968654,
-          "average_max_adverse_pct": -11.66959729514927,
-          "worst_max_adverse_pct": -32.94852459016393,
+          "average_max_adverse_pct": -13.65191726321199,
+          "worst_max_adverse_pct": -49.33367668834096,
           "events": [
-            {
-              "signal_date": "2025-09-02",
-              "entry_date": "2025-09-03",
-              "exit_date": "2025-10-09",
-              "net_return_pct": -1.3875712359159516,
-              "gross_return_pct": -1.0875712359159517,
-              "max_adverse_close_pct": -16.904020849729296
-            },
             {
               "signal_date": "2025-10-28",
               "entry_date": "2025-10-29",
@@ -169,31 +161,31 @@
               "net_return_pct": -28.337069133226034,
               "gross_return_pct": -28.037069133226034,
               "max_adverse_close_pct": -28.56410165714588
+            },
+            {
+              "signal_date": "2026-09-21",
+              "entry_date": "2026-09-22",
+              "exit_date": "2026-10-28",
+              "net_return_pct": -45.19366724607824,
+              "gross_return_pct": -44.89366724607824,
+              "max_adverse_close_pct": -49.33367668834096
             }
           ]
         },
         {
           "code": "688008",
           "name": "澜起科技",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
-          "signal_count": 17,
-          "win_rate_pct": 64.70588235294117,
-          "average_net_return_pct": 6.673941001879655,
-          "median_net_return_pct": 4.184800030457058,
-          "worst_net_return_pct": -14.587080213589076,
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
+          "signal_count": 18,
+          "win_rate_pct": 61.111111111111114,
+          "average_net_return_pct": 4.954423633580664,
+          "median_net_return_pct": 3.9851896487520744,
+          "worst_net_return_pct": -24.277371627502188,
           "best_net_return_pct": 57.36215888958284,
-          "average_max_adverse_pct": -9.028688598687626,
+          "average_max_adverse_pct": -10.276200290018636,
           "worst_max_adverse_pct": -33.928597696415174,
           "events": [
-            {
-              "signal_date": "2025-07-15",
-              "entry_date": "2025-07-16",
-              "exit_date": "2025-08-13",
-              "net_return_pct": 4.878542005037312,
-              "gross_return_pct": 5.178542005037312,
-              "max_adverse_close_pct": -4.813690181955121
-            },
             {
               "signal_date": "2025-08-15",
               "entry_date": "2025-08-18",
@@ -249,6 +241,14 @@
               "net_return_pct": -14.587080213589076,
               "gross_return_pct": -14.287080213589077,
               "max_adverse_close_pct": -33.928597696415174
+            },
+            {
+              "signal_date": "2026-09-21",
+              "entry_date": "2026-09-22",
+              "exit_date": "2026-10-28",
+              "net_return_pct": -24.277371627502188,
+              "gross_return_pct": -23.977371627502187,
+              "max_adverse_close_pct": -31.483899042645792
             }
           ]
         }
@@ -261,15 +261,15 @@
         {
           "code": "600549",
           "name": "厦门钨业",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 17,
           "win_rate_pct": 64.70588235294117,
-          "average_net_return_pct": 2.870583495109291,
+          "average_net_return_pct": 3.1235351049408457,
           "median_net_return_pct": 2.514462004762941,
           "worst_net_return_pct": -19.99401041666666,
           "best_net_return_pct": 23.246511627906973,
-          "average_max_adverse_pct": -7.476120254547771,
+          "average_max_adverse_pct": -7.152120188000133,
           "worst_max_adverse_pct": -21.09375,
           "events": [
             {
@@ -341,15 +341,15 @@
         {
           "code": "000657",
           "name": "中钨高新",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 18,
           "win_rate_pct": 61.111111111111114,
-          "average_net_return_pct": 7.5753576150971265,
-          "median_net_return_pct": 6.181477887804654,
+          "average_net_return_pct": 8.060333440980047,
+          "median_net_return_pct": 8.808396218819048,
           "worst_net_return_pct": -39.964518768538404,
           "best_net_return_pct": 61.368625146886046,
-          "average_max_adverse_pct": -11.048910169390405,
+          "average_max_adverse_pct": -10.839751311759308,
           "worst_max_adverse_pct": -48.020865296103096,
           "events": [
             {
@@ -421,15 +421,15 @@
         {
           "code": "000960",
           "name": "锡业股份",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 17,
           "win_rate_pct": 58.82352941176471,
-          "average_net_return_pct": 0.24828202673593036,
+          "average_net_return_pct": 0.36917880173552264,
           "median_net_return_pct": 1.781575246132217,
           "worst_net_return_pct": -25.351759834368536,
           "best_net_return_pct": 26.408949964763917,
-          "average_max_adverse_pct": -10.081201258888072,
+          "average_max_adverse_pct": -10.060101189901202,
           "worst_max_adverse_pct": -36.737980216241084,
           "events": [
             {
@@ -501,25 +501,17 @@
         {
           "code": "600301",
           "name": "华锡有色",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
-          "signal_count": 16,
-          "win_rate_pct": 68.75,
-          "average_net_return_pct": 6.175122893336423,
-          "median_net_return_pct": 5.722766336760309,
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
+          "signal_count": 17,
+          "win_rate_pct": 64.70588235294117,
+          "average_net_return_pct": 5.247478637639319,
+          "median_net_return_pct": 4.36431095406361,
           "worst_net_return_pct": -22.882677165354337,
           "best_net_return_pct": 32.54584980237153,
-          "average_max_adverse_pct": -8.800240459699049,
+          "average_max_adverse_pct": -8.830141032492675,
           "worst_max_adverse_pct": -30.094488188976378,
           "events": [
-            {
-              "signal_date": "2025-08-14",
-              "entry_date": "2025-08-15",
-              "exit_date": "2025-09-12",
-              "net_return_pct": 32.54584980237153,
-              "gross_return_pct": 32.84584980237153,
-              "max_adverse_close_pct": -1.5415019762845872
-            },
             {
               "signal_date": "2025-10-31",
               "entry_date": "2025-11-03",
@@ -575,21 +567,29 @@
               "net_return_pct": -12.697179788484148,
               "gross_return_pct": -12.397179788484147,
               "max_adverse_close_pct": -13.807285546415994
+            },
+            {
+              "signal_date": "2026-09-22",
+              "entry_date": "2026-09-23",
+              "exit_date": "2026-10-29",
+              "net_return_pct": -11.28516075845013,
+              "gross_return_pct": -10.98516075845013,
+              "max_adverse_close_pct": -11.04699093157462
             }
           ]
         },
         {
           "code": "600111",
           "name": "北方稀土",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 18,
           "win_rate_pct": 38.88888888888889,
-          "average_net_return_pct": -0.5361102312486161,
-          "median_net_return_pct": -0.35579874835831,
+          "average_net_return_pct": -0.6558367488533652,
+          "median_net_return_pct": -1.3226041091977665,
           "worst_net_return_pct": -24.382031250000015,
           "best_net_return_pct": 24.66653279785812,
-          "average_max_adverse_pct": -8.784044494141927,
+          "average_max_adverse_pct": -8.816540981981225,
           "worst_max_adverse_pct": -25.5859375,
           "events": [
             {
@@ -667,15 +667,15 @@
         {
           "code": "002463",
           "name": "沪电股份",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 17,
-          "win_rate_pct": 70.58823529411765,
-          "average_net_return_pct": 7.992241539011667,
+          "win_rate_pct": 64.70588235294117,
+          "average_net_return_pct": 7.745568901139707,
           "median_net_return_pct": 7.6198287604592245,
           "worst_net_return_pct": -18.503124999999997,
           "best_net_return_pct": 32.20517598343685,
-          "average_max_adverse_pct": -7.727733581906165,
+          "average_max_adverse_pct": -7.012924583790571,
           "worst_max_adverse_pct": -24.453124999999996,
           "events": [
             {
@@ -747,25 +747,17 @@
         {
           "code": "600183",
           "name": "生益科技",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
-          "signal_count": 18,
-          "win_rate_pct": 77.77777777777779,
-          "average_net_return_pct": 11.419725087502098,
-          "median_net_return_pct": 9.083332188353166,
-          "worst_net_return_pct": -25.255330553901135,
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
+          "signal_count": 19,
+          "win_rate_pct": 73.68421052631578,
+          "average_net_return_pct": 9.082752260755164,
+          "median_net_return_pct": 8.529485621709199,
+          "worst_net_return_pct": -32.98275862068966,
           "best_net_return_pct": 82.20430554148518,
-          "average_max_adverse_pct": -7.9263374840063925,
-          "worst_max_adverse_pct": -30.017867778439545,
+          "average_max_adverse_pct": -9.229669993922572,
+          "worst_max_adverse_pct": -32.6896551724138,
           "events": [
-            {
-              "signal_date": "2025-09-15",
-              "entry_date": "2025-09-16",
-              "exit_date": "2025-10-22",
-              "net_return_pct": 9.637178754997134,
-              "gross_return_pct": 9.937178754997134,
-              "max_adverse_close_pct": -3.293356177422435
-            },
             {
               "signal_date": "2025-10-28",
               "entry_date": "2025-10-29",
@@ -821,14 +813,22 @@
               "net_return_pct": 7.4172312223858565,
               "gross_return_pct": 7.717231222385856,
               "max_adverse_close_pct": -10.125184094256268
+            },
+            {
+              "signal_date": "2026-09-18",
+              "entry_date": "2026-09-21",
+              "exit_date": "2026-10-27",
+              "net_return_pct": -32.98275862068966,
+              "gross_return_pct": -32.682758620689654,
+              "max_adverse_close_pct": -32.6896551724138
             }
           ]
         },
         {
           "code": "300476",
           "name": "胜宏科技",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 16,
           "win_rate_pct": 62.5,
           "average_net_return_pct": 7.3024301569491,
@@ -907,8 +907,8 @@
         {
           "code": "002916",
           "name": "深南电路",
-          "sample_start": "2024-03-01",
-          "sample_end": "2026-10-23",
+          "sample_start": "2024-03-11",
+          "sample_end": "2026-10-30",
           "signal_count": 17,
           "win_rate_pct": 58.82352941176471,
           "average_net_return_pct": 3.8672799339654924,
