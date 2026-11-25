@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-11-24T18:14:35+08:00",
-  "as_of_date": "2026-11-24",
+  "generated_at": "2026-11-25T16:58:13+08:00",
+  "as_of_date": "2026-11-25",
   "a_share_trading_day": true,
   "skip_reason": "",
   "us_indices": [
     {
       "symbol": "^GSPC",
-      "as_of": "2026-11-23",
-      "price": 7237.169921875,
-      "daily_change_pct": 4.728818180899608,
-      "return_5d": -2.4191700721619136,
-      "return_20d": -5.726367945604971,
-      "ma20": 7477.25146484375,
+      "as_of": "2026-11-24",
+      "price": 7201.08984375,
+      "daily_change_pct": -0.49853849660134175,
+      "return_5d": -1.8995896139297752,
+      "return_20d": -6.753039744535316,
+      "ma20": 7451.175952148437,
       "above_ma20": false,
-      "volume_ratio_5_20": 1.0130474599781267,
+      "volume_ratio_5_20": 1.0150944895605434,
       "source": "Yahoo Finance chart",
       "name": "标普500",
       "a_share_proxy": "沪深300",
@@ -21,14 +21,14 @@
     },
     {
       "symbol": "^IXIC",
-      "as_of": "2026-11-23",
-      "price": 24089.560546875,
-      "daily_change_pct": 6.507417179449404,
-      "return_5d": -1.7144159011273974,
-      "return_20d": -7.947533507484261,
-      "ma20": 24997.935546875,
+      "as_of": "2026-11-24",
+      "price": 23733.5390625,
+      "daily_change_pct": -1.477907758766417,
+      "return_5d": -2.445052962272154,
+      "return_20d": -10.364419971646367,
+      "ma20": 24860.72197265625,
       "above_ma20": false,
-      "volume_ratio_5_20": 1.0877762949437462,
+      "volume_ratio_5_20": 1.0709899535212242,
       "source": "Yahoo Finance chart",
       "name": "纳斯达克",
       "a_share_proxy": "创业板指",
@@ -36,14 +36,14 @@
     },
     {
       "symbol": "^DJI",
-      "as_of": "2026-11-23",
-      "price": 49595.30859375,
-      "daily_change_pct": 3.0073952701814566,
-      "return_5d": -3.9002801457981295,
-      "return_20d": -5.283014054019208,
-      "ma20": 51502.9689453125,
+      "as_of": "2026-11-24",
+      "price": 50018.69921875,
+      "daily_change_pct": 0.8536908772321938,
+      "return_5d": -1.459281112527444,
+      "return_20d": -4.503590143025504,
+      "ma20": 51385.025390625,
       "above_ma20": false,
-      "volume_ratio_5_20": 1.2981498166459113,
+      "volume_ratio_5_20": 1.2595467357296273,
       "source": "Yahoo Finance chart",
       "name": "道琼斯",
       "a_share_proxy": "上证指数",
@@ -58,97 +58,97 @@
       "us_rows": [
         {
           "symbol": "NVDA",
-          "daily_change_pct": 31.48251784973235,
-          "return_5d": 5.706419685499298,
+          "daily_change_pct": -5.858829439653457,
+          "return_5d": -0.051461358291293724,
           "error": null
         },
         {
           "symbol": "AMD",
-          "daily_change_pct": 6.849825821354916,
-          "return_5d": -10.077736068699528,
+          "daily_change_pct": -8.862965465253769,
+          "return_5d": -17.905884665124738,
           "error": null
         },
         {
           "symbol": "AVGO",
-          "daily_change_pct": 3.002524234060533,
-          "return_5d": -5.953811177836654,
+          "daily_change_pct": -3.977037699308361,
+          "return_5d": -11.861832203530797,
           "error": null
         },
         {
           "symbol": "MSFT",
-          "daily_change_pct": 1.6469931411029926,
-          "return_5d": -4.920942627258407,
+          "daily_change_pct": 0.7370568289974511,
+          "return_5d": -1.9970736304103287,
           "error": null
         },
         {
           "symbol": "GOOGL",
-          "daily_change_pct": 6.336460860623516,
-          "return_5d": -0.5709837551873265,
+          "daily_change_pct": -1.0811833550360417,
+          "return_5d": -0.41042982296973785,
           "error": null
         },
         {
           "symbol": "META",
-          "daily_change_pct": 6.554444577819329,
-          "return_5d": -4.599223957749221,
+          "daily_change_pct": -1.3018689055484978,
+          "return_5d": -4.694037200408774,
           "error": null
         },
         {
           "symbol": "AMZN",
-          "daily_change_pct": 3.4721626331419175,
-          "return_5d": -0.9156161436863486,
+          "daily_change_pct": -1.2138322216704966,
+          "return_5d": -2.1714766156955667,
           "error": null
         }
       ],
-      "avg_us_change": 8.477847016833651,
+      "avg_us_change": -3.0798086082104534,
       "a_share_rows": [
         {
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "prev_close": 417.2,
-          "change_pct": -0.05
+          "prev_close": 417.0,
+          "change_pct": -1.92
         },
         {
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "prev_close": 181.36,
-          "change_pct": -0.74
+          "prev_close": 180.01,
+          "change_pct": 0.72
         },
         {
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连",
-          "prev_close": 132.2,
-          "change_pct": 0.73
+          "prev_close": 133.17,
+          "change_pct": -5.08
         },
         {
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB",
-          "prev_close": 82.7,
-          "change_pct": 1.73
+          "prev_close": 84.13,
+          "change_pct": -5.52
         },
         {
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板",
-          "prev_close": 60.75,
-          "change_pct": 1.4
+          "prev_close": 61.6,
+          "change_pct": -5.15
         },
         {
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB",
-          "prev_close": 115.1,
-          "change_pct": 6.27
+          "prev_close": 122.32,
+          "change_pct": -0.68
         },
         {
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB",
-          "prev_close": 208.1,
-          "change_pct": -0.29
+          "prev_close": 207.5,
+          "change_pct": -5.08
         }
       ]
     },
@@ -159,53 +159,53 @@
       "us_rows": [
         {
           "symbol": "MP",
-          "daily_change_pct": 4.683358223436529,
-          "return_5d": -1.5239657376978633,
+          "daily_change_pct": 1.041077440499194,
+          "return_5d": 3.0120459514528797,
           "error": null
         },
         {
           "symbol": "FCX",
-          "daily_change_pct": 8.088709002477845,
-          "return_5d": -9.929334442099991,
+          "daily_change_pct": -3.983101144040857,
+          "return_5d": -13.688968895592701,
           "error": null
         }
       ],
-      "avg_us_change": 6.386033612957187,
+      "avg_us_change": -1.4710118517708315,
       "a_share_rows": [
         {
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "prev_close": 32.04,
-          "change_pct": -0.28
+          "prev_close": 31.95,
+          "change_pct": -5.26
         },
         {
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "prev_close": 34.93,
-          "change_pct": -2.66
+          "prev_close": 34.0,
+          "change_pct": -5.29
         },
         {
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "prev_close": 20.34,
-          "change_pct": -3.1
+          "prev_close": 19.71,
+          "change_pct": -5.63
         },
         {
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "prev_close": 44.35,
-          "change_pct": -1.29
+          "prev_close": 43.78,
+          "change_pct": 0.05
         },
         {
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "prev_close": 32.45,
-          "change_pct": -2.77
+          "prev_close": 31.55,
+          "change_pct": 0.0
         }
       ]
     },
@@ -216,45 +216,45 @@
       "us_rows": [
         {
           "symbol": "MU",
-          "daily_change_pct": 19.039208858069422,
-          "return_5d": -1.5743660839372176,
+          "daily_change_pct": -11.008906716945999,
+          "return_5d": -11.598496233258103,
           "error": null
         },
         {
           "symbol": "TSM",
-          "daily_change_pct": 14.08490974615859,
-          "return_5d": -2.637570165094827,
+          "daily_change_pct": -3.960394294488745,
+          "return_5d": -2.916397498727763,
           "error": null
         },
         {
           "symbol": "INTC",
-          "daily_change_pct": 16.341656138062287,
-          "return_5d": 7.553629952229302,
+          "daily_change_pct": -8.146162626184417,
+          "return_5d": -0.6706524273423553,
           "error": null
         }
       ],
-      "avg_us_change": 16.488591580763437,
+      "avg_us_change": -7.705154545873054,
       "a_share_rows": [
         {
           "code": "688981",
           "name": "中芯国际",
           "role": "晶圆代工核心",
-          "prev_close": 121.6,
-          "change_pct": 4.04
+          "prev_close": 126.51,
+          "change_pct": -3.56
         },
         {
           "code": "603986",
           "name": "兆易创新",
           "role": "存储芯片",
-          "prev_close": 214.61,
-          "change_pct": -0.98
+          "prev_close": 212.5,
+          "change_pct": -6.69
         },
         {
           "code": "688525",
           "name": "佰维存储",
           "role": "存储模组",
-          "prev_close": 122.18,
-          "change_pct": 0.27
+          "prev_close": 122.51,
+          "change_pct": -5.9
         }
       ]
     },
@@ -265,78 +265,78 @@
       "us_rows": [
         {
           "symbol": "ADM",
-          "daily_change_pct": 0.7767054461002232,
-          "return_5d": -4.460494765459866,
+          "daily_change_pct": -3.809099819662687,
+          "return_5d": -6.578378601585932,
           "error": null
         },
         {
           "symbol": "BG",
-          "daily_change_pct": 1.1771173562847403,
-          "return_5d": -7.11976940150395,
+          "daily_change_pct": -8.600634508123473,
+          "return_5d": -12.0711308574458,
           "error": null
         },
         {
           "symbol": "ZC=F",
-          "daily_change_pct": 3.799654576856648,
-          "return_5d": 0.8953553441522155,
+          "daily_change_pct": 3.1105990783410142,
+          "return_5d": 2.7554535017221493,
           "error": null
         },
         {
           "symbol": "ZS=F",
-          "daily_change_pct": 0.38657171922684697,
-          "return_5d": 0.6527947776417742,
+          "daily_change_pct": -1.0129659643435929,
+          "return_5d": 0.390384220258877,
           "error": null
         },
         {
           "symbol": "ZW=F",
-          "daily_change_pct": 3.466204506065851,
-          "return_5d": 0.2939941201175911,
+          "daily_change_pct": 1.623519087318992,
+          "return_5d": 1.5789473684210575,
           "error": null
         }
       ],
-      "avg_us_change": 1.9212507209068619,
+      "avg_us_change": -1.7377164252939494,
       "a_share_rows": [
         {
           "code": "000998",
           "name": "隆平高科",
           "role": "种业核心",
-          "prev_close": 7.82,
-          "change_pct": -1.02
+          "prev_close": 7.74,
+          "change_pct": -1.42
         },
         {
           "code": "002041",
           "name": "登海种业",
           "role": "玉米种业核心",
-          "prev_close": 8.26,
-          "change_pct": -0.73
+          "prev_close": 8.2,
+          "change_pct": -1.59
         },
         {
           "code": "002385",
           "name": "大北农",
           "role": "种业+饲料",
           "prev_close": 2.96,
-          "change_pct": 0.0
+          "change_pct": -1.69
         },
         {
           "code": "600598",
           "name": "北大荒",
           "role": "粮食种植",
-          "prev_close": 12.96,
-          "change_pct": -0.62
+          "prev_close": 12.88,
+          "change_pct": 3.11
         },
         {
           "code": "601952",
           "name": "苏垦农发",
           "role": "粮食种植",
-          "prev_close": 7.81,
-          "change_pct": -1.66
+          "prev_close": 7.68,
+          "change_pct": -0.52
         },
         {
           "code": "600737",
           "name": "中粮糖业",
           "role": "中粮系",
-          "prev_close": 11.42,
-          "change_pct": 2.8
+          "prev_close": 11.74,
+          "change_pct": -4.86
         }
       ]
     },
@@ -347,33 +347,33 @@
       "us_rows": [
         {
           "symbol": "TSN",
-          "daily_change_pct": -3.3323124878960053,
-          "return_5d": -1.5637216388893704,
+          "daily_change_pct": 0.746620175233681,
+          "return_5d": -0.3613564044300577,
           "error": null
         }
       ],
-      "avg_us_change": -3.3323124878960053,
+      "avg_us_change": 0.746620175233681,
       "a_share_rows": [
         {
           "code": "002714",
           "name": "牧原股份",
           "role": "生猪龙头",
-          "prev_close": 45.38,
-          "change_pct": -0.15
+          "prev_close": 45.31,
+          "change_pct": -2.67
         },
         {
           "code": "300498",
           "name": "温氏股份",
           "role": "生猪+禽",
-          "prev_close": 17.46,
-          "change_pct": -0.23
+          "prev_close": 17.42,
+          "change_pct": -0.34
         },
         {
           "code": "002311",
           "name": "海大集团",
           "role": "饲料龙头",
-          "prev_close": 49.61,
-          "change_pct": -0.42
+          "prev_close": 49.4,
+          "change_pct": -0.3
         }
       ]
     }
@@ -384,49 +384,49 @@
         "code": "510300",
         "name": "沪深300ETF",
         "role": "",
-        "prev_close": 4.023,
-        "price": 4.033,
-        "change_pct": 0.25
+        "prev_close": 4.033,
+        "price": 3.97,
+        "change_pct": -1.56
       },
       {
         "code": "515220",
         "name": "煤炭ETF",
         "role": "",
-        "prev_close": 1.148,
-        "price": 1.133,
-        "change_pct": -1.31
+        "prev_close": 1.133,
+        "price": 1.129,
+        "change_pct": -0.35
       },
       {
         "code": "512100",
         "name": "中证1000ETF",
         "role": "",
-        "prev_close": 2.362,
-        "price": 2.354,
-        "change_pct": -0.34
+        "prev_close": 2.354,
+        "price": 2.254,
+        "change_pct": -4.25
       },
       {
         "code": "512800",
         "name": "银行ETF",
         "role": "",
-        "prev_close": 0.916,
-        "price": 0.923,
-        "change_pct": 0.76
+        "prev_close": 0.923,
+        "price": 0.921,
+        "change_pct": -0.22
       },
       {
         "code": "513120",
         "name": "港股创新药ETF",
         "role": "",
-        "prev_close": 1.123,
-        "price": 1.102,
-        "change_pct": -1.87
+        "prev_close": 1.102,
+        "price": 1.095,
+        "change_pct": -0.64
       },
       {
         "code": "518880",
         "name": "黄金ETF",
         "role": "",
-        "prev_close": 7.396,
-        "price": 7.391,
-        "change_pct": -0.07
+        "prev_close": 7.391,
+        "price": 7.169,
+        "change_pct": -3.0
       }
     ],
     "农业种业主线": [
@@ -434,57 +434,57 @@
         "code": "000998",
         "name": "隆平高科",
         "role": "种业核心",
-        "prev_close": 7.82,
-        "price": 7.74,
-        "change_pct": -1.02
+        "prev_close": 7.74,
+        "price": 7.63,
+        "change_pct": -1.42
       },
       {
         "code": "002041",
         "name": "登海种业",
         "role": "玉米种业核心",
-        "prev_close": 8.26,
-        "price": 8.2,
-        "change_pct": -0.73
+        "prev_close": 8.2,
+        "price": 8.07,
+        "change_pct": -1.59
       },
       {
         "code": "002385",
         "name": "大北农",
         "role": "种业+饲料",
         "prev_close": 2.96,
-        "price": 2.96,
-        "change_pct": 0.0
+        "price": 2.91,
+        "change_pct": -1.69
       },
       {
         "code": "600598",
         "name": "北大荒",
         "role": "粮食种植",
-        "prev_close": 12.96,
-        "price": 12.88,
-        "change_pct": -0.62
+        "prev_close": 12.88,
+        "price": 13.28,
+        "change_pct": 3.11
       },
       {
         "code": "601952",
         "name": "苏垦农发",
         "role": "粮食种植",
-        "prev_close": 7.81,
-        "price": 7.68,
-        "change_pct": -1.66
+        "prev_close": 7.68,
+        "price": 7.64,
+        "change_pct": -0.52
       },
       {
         "code": "600354",
         "name": "敦煌种业",
         "role": "玉米种业",
-        "prev_close": 6.57,
-        "price": 6.47,
-        "change_pct": -1.52
+        "prev_close": 6.47,
+        "price": 6.38,
+        "change_pct": -1.39
       },
       {
         "code": "600371",
         "name": "万向德农",
         "role": "玉米种业",
-        "prev_close": 11.5,
-        "price": 12.02,
-        "change_pct": 4.52
+        "prev_close": 12.02,
+        "price": 11.16,
+        "change_pct": -7.15
       }
     ],
     "小金属主线": [
@@ -492,41 +492,41 @@
         "code": "600549",
         "name": "厦门钨业",
         "role": "钨/稀土",
-        "prev_close": 32.04,
-        "price": 31.95,
-        "change_pct": -0.28
+        "prev_close": 31.95,
+        "price": 30.27,
+        "change_pct": -5.26
       },
       {
         "code": "000657",
         "name": "中钨高新",
         "role": "钨",
-        "prev_close": 34.93,
-        "price": 34.0,
-        "change_pct": -2.66
+        "prev_close": 34.0,
+        "price": 32.2,
+        "change_pct": -5.29
       },
       {
         "code": "000960",
         "name": "锡业股份",
         "role": "锡",
-        "prev_close": 20.34,
-        "price": 19.71,
-        "change_pct": -3.1
+        "prev_close": 19.71,
+        "price": 18.6,
+        "change_pct": -5.63
       },
       {
         "code": "600301",
         "name": "华锡有色",
         "role": "锡/锑",
-        "prev_close": 44.35,
-        "price": 43.78,
-        "change_pct": -1.29
+        "prev_close": 43.78,
+        "price": 43.8,
+        "change_pct": 0.05
       },
       {
         "code": "600111",
         "name": "北方稀土",
         "role": "稀土",
-        "prev_close": 32.45,
+        "prev_close": 31.55,
         "price": 31.55,
-        "change_pct": -2.77
+        "change_pct": 0.0
       }
     ],
     "AI算力主线": [
@@ -534,57 +534,57 @@
         "code": "300308",
         "name": "中际旭创",
         "role": "光模块",
-        "prev_close": 417.2,
-        "price": 417.0,
-        "change_pct": -0.05
+        "prev_close": 417.0,
+        "price": 409.0,
+        "change_pct": -1.92
       },
       {
         "code": "300502",
         "name": "新易盛",
         "role": "光模块",
-        "prev_close": 181.36,
-        "price": 180.01,
-        "change_pct": -0.74
+        "prev_close": 180.01,
+        "price": 181.3,
+        "change_pct": 0.72
       },
       {
         "code": "688008",
         "name": "澜起科技",
         "role": "服务器互连",
-        "prev_close": 132.2,
-        "price": 133.17,
-        "change_pct": 0.73
+        "prev_close": 133.17,
+        "price": 126.4,
+        "change_pct": -5.08
       },
       {
         "code": "002463",
         "name": "沪电股份",
         "role": "PCB",
-        "prev_close": 82.7,
-        "price": 84.13,
-        "change_pct": 1.73
+        "prev_close": 84.13,
+        "price": 79.49,
+        "change_pct": -5.52
       },
       {
         "code": "600183",
         "name": "生益科技",
         "role": "覆铜板",
-        "prev_close": 60.75,
-        "price": 61.6,
-        "change_pct": 1.4
+        "prev_close": 61.6,
+        "price": 58.43,
+        "change_pct": -5.15
       },
       {
         "code": "300476",
         "name": "胜宏科技",
         "role": "PCB",
-        "prev_close": 115.1,
-        "price": 122.32,
-        "change_pct": 6.27
+        "prev_close": 122.32,
+        "price": 121.49,
+        "change_pct": -0.68
       },
       {
         "code": "002916",
         "name": "深南电路",
         "role": "PCB",
-        "prev_close": 208.1,
-        "price": 207.5,
-        "change_pct": -0.29
+        "prev_close": 207.5,
+        "price": 196.96,
+        "change_pct": -5.08
       }
     ]
   },
