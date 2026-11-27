@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-26T16:44:41+08:00",
-  "as_of_date": "2026-11-26",
+  "generated_at": "2026-11-27T16:55:42+08:00",
+  "as_of_date": "2026-11-27",
   "a_share_trading_day": true,
   "skip_reason": "",
   "us_indices": [
@@ -105,50 +105,50 @@
           "code": "300308",
           "name": "中际旭创",
           "role": "光模块核心",
-          "prev_close": 409.0,
-          "change_pct": 5.18
+          "prev_close": 430.18,
+          "change_pct": 19.98
         },
         {
           "code": "300502",
           "name": "新易盛",
           "role": "光模块核心",
-          "prev_close": 181.3,
-          "change_pct": 4.26
+          "prev_close": 189.03,
+          "change_pct": 20.0
         },
         {
           "code": "688008",
           "name": "澜起科技",
           "role": "服务器互连",
-          "prev_close": 126.4,
-          "change_pct": -1.19
+          "prev_close": 124.9,
+          "change_pct": 15.69
         },
         {
           "code": "002463",
           "name": "沪电股份",
           "role": "高端PCB",
-          "prev_close": 79.49,
-          "change_pct": 2.01
+          "prev_close": 81.09,
+          "change_pct": 10.0
         },
         {
           "code": "600183",
           "name": "生益科技",
           "role": "覆铜板",
-          "prev_close": 58.43,
-          "change_pct": 5.85
+          "prev_close": 61.85,
+          "change_pct": 10.01
         },
         {
           "code": "300476",
           "name": "胜宏科技",
           "role": "PCB",
-          "prev_close": 121.49,
-          "change_pct": 1.82
+          "prev_close": 123.7,
+          "change_pct": 15.08
         },
         {
           "code": "002916",
           "name": "深南电路",
           "role": "高端PCB",
-          "prev_close": 196.96,
-          "change_pct": 3.81
+          "prev_close": 204.47,
+          "change_pct": 10.0
         }
       ]
     },
@@ -176,36 +176,36 @@
           "code": "600549",
           "name": "厦门钨业",
           "role": "钨/稀土核心",
-          "prev_close": 30.27,
-          "change_pct": 1.35
+          "prev_close": 30.68,
+          "change_pct": 8.41
         },
         {
           "code": "000657",
           "name": "中钨高新",
           "role": "钨验证",
-          "prev_close": 32.2,
-          "change_pct": 2.7
+          "prev_close": 33.07,
+          "change_pct": 10.01
         },
         {
           "code": "000960",
           "name": "锡业股份",
           "role": "锡验证",
-          "prev_close": 18.6,
-          "change_pct": 2.15
+          "prev_close": 19.0,
+          "change_pct": 8.26
         },
         {
           "code": "600301",
           "name": "华锡有色",
           "role": "锡/锑验证",
-          "prev_close": 43.8,
-          "change_pct": 0.07
+          "prev_close": 43.83,
+          "change_pct": 3.08
         },
         {
           "code": "600111",
           "name": "北方稀土",
           "role": "稀土温度计",
-          "prev_close": 31.55,
-          "change_pct": -2.09
+          "prev_close": 30.89,
+          "change_pct": 4.76
         }
       ]
     },
@@ -239,22 +239,22 @@
           "code": "688981",
           "name": "中芯国际",
           "role": "晶圆代工核心",
-          "prev_close": 122.0,
-          "change_pct": -4.51
+          "prev_close": 116.5,
+          "change_pct": 15.38
         },
         {
           "code": "603986",
           "name": "兆易创新",
           "role": "存储芯片",
-          "prev_close": 198.28,
-          "change_pct": -0.35
+          "prev_close": 197.58,
+          "change_pct": 10.0
         },
         {
           "code": "688525",
           "name": "佰维存储",
           "role": "存储模组",
-          "prev_close": 115.28,
-          "change_pct": -1.79
+          "prev_close": 113.22,
+          "change_pct": 15.67
         }
       ]
     },
@@ -300,43 +300,43 @@
           "code": "000998",
           "name": "隆平高科",
           "role": "种业核心",
-          "prev_close": 7.63,
-          "change_pct": 0.39
+          "prev_close": 7.66,
+          "change_pct": 2.74
         },
         {
           "code": "002041",
           "name": "登海种业",
           "role": "玉米种业核心",
-          "prev_close": 8.07,
-          "change_pct": 1.61
+          "prev_close": 8.2,
+          "change_pct": 2.93
         },
         {
           "code": "002385",
           "name": "大北农",
           "role": "种业+饲料",
-          "prev_close": 2.91,
-          "change_pct": -0.34
+          "prev_close": 2.9,
+          "change_pct": 1.38
         },
         {
           "code": "600598",
           "name": "北大荒",
           "role": "粮食种植",
-          "prev_close": 13.28,
-          "change_pct": -2.56
+          "prev_close": 12.94,
+          "change_pct": 1.62
         },
         {
           "code": "601952",
           "name": "苏垦农发",
           "role": "粮食种植",
-          "prev_close": 7.64,
-          "change_pct": 0.13
+          "prev_close": 7.65,
+          "change_pct": 1.44
         },
         {
           "code": "600737",
           "name": "中粮糖业",
           "role": "中粮系",
-          "prev_close": 11.17,
-          "change_pct": 1.16
+          "prev_close": 11.3,
+          "change_pct": 2.48
         }
       ]
     },
@@ -358,22 +358,22 @@
           "code": "002714",
           "name": "牧原股份",
           "role": "生猪龙头",
-          "prev_close": 44.1,
-          "change_pct": -2.0
+          "prev_close": 43.22,
+          "change_pct": -0.62
         },
         {
           "code": "300498",
           "name": "温氏股份",
           "role": "生猪+禽",
-          "prev_close": 17.36,
-          "change_pct": -2.02
+          "prev_close": 17.01,
+          "change_pct": -2.47
         },
         {
           "code": "002311",
           "name": "海大集团",
           "role": "饲料龙头",
-          "prev_close": 49.25,
-          "change_pct": -1.2
+          "prev_close": 48.66,
+          "change_pct": -2.28
         }
       ]
     }
@@ -384,49 +384,49 @@
         "code": "510300",
         "name": "沪深300ETF",
         "role": "",
-        "prev_close": 3.97,
-        "price": 3.959,
-        "change_pct": -0.28
+        "prev_close": 3.959,
+        "price": 4.162,
+        "change_pct": 5.13
       },
       {
         "code": "515220",
         "name": "煤炭ETF",
         "role": "",
-        "prev_close": 1.129,
-        "price": 1.157,
-        "change_pct": 2.48
+        "prev_close": 1.157,
+        "price": 1.156,
+        "change_pct": -0.09
       },
       {
         "code": "512100",
         "name": "中证1000ETF",
         "role": "",
-        "prev_close": 2.254,
-        "price": 2.249,
-        "change_pct": -0.22
+        "prev_close": 2.249,
+        "price": 2.464,
+        "change_pct": 9.56
       },
       {
         "code": "512800",
         "name": "银行ETF",
         "role": "",
-        "prev_close": 0.921,
-        "price": 0.927,
-        "change_pct": 0.65
+        "prev_close": 0.927,
+        "price": 0.913,
+        "change_pct": -1.51
       },
       {
         "code": "513120",
         "name": "港股创新药ETF",
         "role": "",
-        "prev_close": 1.095,
-        "price": 1.11,
-        "change_pct": 1.37
+        "prev_close": 1.11,
+        "price": 1.176,
+        "change_pct": 5.95
       },
       {
         "code": "518880",
         "name": "黄金ETF",
         "role": "",
-        "prev_close": 7.169,
-        "price": 7.27,
-        "change_pct": 1.41
+        "prev_close": 7.27,
+        "price": 7.441,
+        "change_pct": 2.35
       }
     ],
     "农业种业主线": [
@@ -434,57 +434,57 @@
         "code": "000998",
         "name": "隆平高科",
         "role": "种业核心",
-        "prev_close": 7.63,
-        "price": 7.66,
-        "change_pct": 0.39
+        "prev_close": 7.66,
+        "price": 7.87,
+        "change_pct": 2.74
       },
       {
         "code": "002041",
         "name": "登海种业",
         "role": "玉米种业核心",
-        "prev_close": 8.07,
-        "price": 8.2,
-        "change_pct": 1.61
+        "prev_close": 8.2,
+        "price": 8.44,
+        "change_pct": 2.93
       },
       {
         "code": "002385",
         "name": "大北农",
         "role": "种业+饲料",
-        "prev_close": 2.91,
-        "price": 2.9,
-        "change_pct": -0.34
+        "prev_close": 2.9,
+        "price": 2.94,
+        "change_pct": 1.38
       },
       {
         "code": "600598",
         "name": "北大荒",
         "role": "粮食种植",
-        "prev_close": 13.28,
-        "price": 12.94,
-        "change_pct": -2.56
+        "prev_close": 12.94,
+        "price": 13.15,
+        "change_pct": 1.62
       },
       {
         "code": "601952",
         "name": "苏垦农发",
         "role": "粮食种植",
-        "prev_close": 7.64,
-        "price": 7.65,
-        "change_pct": 0.13
+        "prev_close": 7.65,
+        "price": 7.76,
+        "change_pct": 1.44
       },
       {
         "code": "600354",
         "name": "敦煌种业",
         "role": "玉米种业",
-        "prev_close": 6.38,
-        "price": 6.69,
-        "change_pct": 4.86
+        "prev_close": 6.69,
+        "price": 6.73,
+        "change_pct": 0.6
       },
       {
         "code": "600371",
         "name": "万向德农",
         "role": "玉米种业",
-        "prev_close": 11.16,
-        "price": 11.57,
-        "change_pct": 3.67
+        "prev_close": 11.57,
+        "price": 11.16,
+        "change_pct": -3.54
       }
     ],
     "小金属主线": [
@@ -492,41 +492,41 @@
         "code": "600549",
         "name": "厦门钨业",
         "role": "钨/稀土",
-        "prev_close": 30.27,
-        "price": 30.68,
-        "change_pct": 1.35
+        "prev_close": 30.68,
+        "price": 33.26,
+        "change_pct": 8.41
       },
       {
         "code": "000657",
         "name": "中钨高新",
         "role": "钨",
-        "prev_close": 32.2,
-        "price": 33.07,
-        "change_pct": 2.7
+        "prev_close": 33.07,
+        "price": 36.38,
+        "change_pct": 10.01
       },
       {
         "code": "000960",
         "name": "锡业股份",
         "role": "锡",
-        "prev_close": 18.6,
-        "price": 19.0,
-        "change_pct": 2.15
+        "prev_close": 19.0,
+        "price": 20.57,
+        "change_pct": 8.26
       },
       {
         "code": "600301",
         "name": "华锡有色",
         "role": "锡/锑",
-        "prev_close": 43.8,
-        "price": 43.83,
-        "change_pct": 0.07
+        "prev_close": 43.83,
+        "price": 45.18,
+        "change_pct": 3.08
       },
       {
         "code": "600111",
         "name": "北方稀土",
         "role": "稀土",
-        "prev_close": 31.55,
-        "price": 30.89,
-        "change_pct": -2.09
+        "prev_close": 30.89,
+        "price": 32.36,
+        "change_pct": 4.76
       }
     ],
     "AI算力主线": [
@@ -534,57 +534,57 @@
         "code": "300308",
         "name": "中际旭创",
         "role": "光模块",
-        "prev_close": 409.0,
-        "price": 430.18,
-        "change_pct": 5.18
+        "prev_close": 430.18,
+        "price": 516.15,
+        "change_pct": 19.98
       },
       {
         "code": "300502",
         "name": "新易盛",
         "role": "光模块",
-        "prev_close": 181.3,
-        "price": 189.03,
-        "change_pct": 4.26
+        "prev_close": 189.03,
+        "price": 226.84,
+        "change_pct": 20.0
       },
       {
         "code": "688008",
         "name": "澜起科技",
         "role": "服务器互连",
-        "prev_close": 126.4,
-        "price": 124.9,
-        "change_pct": -1.19
+        "prev_close": 124.9,
+        "price": 144.5,
+        "change_pct": 15.69
       },
       {
         "code": "002463",
         "name": "沪电股份",
         "role": "PCB",
-        "prev_close": 79.49,
-        "price": 81.09,
-        "change_pct": 2.01
+        "prev_close": 81.09,
+        "price": 89.2,
+        "change_pct": 10.0
       },
       {
         "code": "600183",
         "name": "生益科技",
         "role": "覆铜板",
-        "prev_close": 58.43,
-        "price": 61.85,
-        "change_pct": 5.85
+        "prev_close": 61.85,
+        "price": 68.04,
+        "change_pct": 10.01
       },
       {
         "code": "300476",
         "name": "胜宏科技",
         "role": "PCB",
-        "prev_close": 121.49,
-        "price": 123.7,
-        "change_pct": 1.82
+        "prev_close": 123.7,
+        "price": 142.36,
+        "change_pct": 15.08
       },
       {
         "code": "002916",
         "name": "深南电路",
         "role": "PCB",
-        "prev_close": 196.96,
-        "price": 204.47,
-        "change_pct": 3.81
+        "prev_close": 204.47,
+        "price": 224.92,
+        "change_pct": 10.0
       }
     ]
   },
